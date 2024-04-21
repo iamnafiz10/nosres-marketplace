@@ -1,0 +1,18 @@
+// Return ar upora........
+const loading = useLoading();
+useTitle("Title Here")
+
+// Loading show ar jonna..........
+{loading ? (
+<Skeleton height={10} count={1}/>
+    ) : (
+    <>
+    <p>
+     Content
+    </p>
+</>
+)}
+
+
+
+
