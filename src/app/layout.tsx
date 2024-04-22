@@ -1,8 +1,9 @@
+import "./globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import "./globals.css";
 import Header from "@/app/Header";
 import "react-loading-skeleton/dist/skeleton.css";
+import LeftSidebar from "@/app/LeftSidebar";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -20,6 +21,7 @@ export default function RootLayout({
         <html lang="en">
         <body className={inter.className}>
         <Header/>
+        <LeftSidebar/>
         {children}
         </body>
         </html>

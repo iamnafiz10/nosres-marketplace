@@ -32,39 +32,39 @@ function Header() {
                             position: 'fixed',
                         }}
                 >
-                    <div className="container flex items-center justify-between">
-                        <div className="logo flex items-center gap-12">
+                    <div className="container grid grid-cols-12 items-center">
+                        <div className="col-span-3 logo">
                             <Link href='/' className="flex items-center gap-2">
                                 <Image src={LogoImg} className="h-10 w-7" alt="LogoImg"/>
                                 <span className="font-[500] text-[16px]">Marketplace</span>
                             </Link>
+                        </div>
 
-                            <div className="hidden lg:flex search-bar relative">
-                                <input
-                                    type="text"
-                                    className="border text-[14px] border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                    placeholder="Search Marketplace"
-                                    style={{
-                                        position: 'absolute',
-                                        zIndex: 999,
-                                        top: '50%',
-                                        transform: 'translateY(-50%)',
-                                        left: 0,
-                                    }}
-                                />
+                        <div className="col-span-3 hidden lg:flex search-bar relative">
+                            <input
+                                type="text"
+                                className="border text-[14px] border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                placeholder="Search Marketplace"
+                                style={{
+                                    position: 'absolute',
+                                    zIndex: 999,
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    left: 0,
+                                }}
+                            />
 
-                                <div className="absolute left-0 inset-y-0 flex items-center justify-between">
-                                    <IoSearchOutline
-                                        className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
-                                </div>
+                            <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                <IoSearchOutline
+                                    className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
                             </div>
                         </div>
 
-                        <div className="nav hidden lg:flex items-center text-[12px] gap-3">
+                        <div className="col-span-6 nav hidden lg:flex items-center justify-end text-[12px] gap-3">
                             {/* Home */}
                             <Link href='/'
                                   className="group px-[10px] flex flex-col items-center border-b-2 border-primary">
-                                <GoHomeFill className="w-5 h-5 text-primary"/>
+                                <GoHomeFill className="w-full h-[22px] text-primary"/>
                                 <div
                                     className="text-primary group-hover:text-primary transition">
                                     Home
@@ -75,7 +75,7 @@ function Header() {
                             <Link href='#'
                                   className="group px-[10px] flex flex-col items-center">
                                 {/* Main SVG */}
-                                <IoCartOutline className="w-5 h-5 text-prgcolor group-hover:text-primary"/>
+                                <IoCartOutline className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
                                 <div
                                     className="text-prgcolor group-hover:text-primary transition">
                                     Cart
@@ -88,7 +88,7 @@ function Header() {
                                 {/* Main SVG */}
                                 <div className="relative">
                                     <HiOutlineChatBubbleLeft
-                                        className="w-5 h-5 text-prgcolor group-hover:text-primary"/>
+                                        className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
                                         className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         3
@@ -105,7 +105,7 @@ function Header() {
                                   className="group px-[10px] flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
-                                    <GoBell className="w-5 h-5 text-prgcolor group-hover:text-primary"/>
+                                    <GoBell className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
                                         className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         12
@@ -122,7 +122,8 @@ function Header() {
                                   className="group px-[10px] flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
-                                    <HiOutlineSquaresPlus className="w-5 h-5 text-prgcolor group-hover:text-primary"/>
+                                    <HiOutlineSquaresPlus
+                                        className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
                                         className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         12
@@ -139,7 +140,8 @@ function Header() {
                                 <div className="dropdown inline-block relative">
                                     <div
                                         className="text-center cursor-pointer text-prgcolor transition relative">
-                                        <HiUserCircle className="w-6 h-6 text-prgcolor group-hover:text-primary"/>
+                                        <HiUserCircle
+                                            className="w-full h-[24px] text-prgcolor group-hover:text-primary"/>
                                     </div>
                                 </div>
                                 <div
