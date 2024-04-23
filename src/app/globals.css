@@ -55,3 +55,26 @@ textarea {
 .last_user_icon:hover .profile_icon {
     color: #4D7FB8;
 }
+
+/*------------------- Business -------------------*/
+#business_dropdown_menu {
+    top: 47px;
+    right: -25px;
+    width: 315px;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.show-business-dropdown-menu {
+    visibility: visible !important;
+    height: 145px !important;
+}
+
+.last_business_icon:hover .profile_text {
+    color: #4D7FB8;
+}
+
+.last_business_icon:hover .profile_icon {
+    color: #4D7FB8;
+}

@@ -26,7 +26,7 @@ function Header() {
     };
 
 
-    // 👇️ Toggle class on click Show And Hide Account (Icon)
+    // 👇️ Toggle class on click Show And Hide Account Dropdown (Icon)
     const [isAccountVisible, setAccountVisible] = useState(false);
     const handleAccountClick = () => {
         const account = document.getElementById('account_dropdown_menu');
@@ -37,6 +37,21 @@ function Header() {
                 account.classList.add('show-account-dropdown-menu');
             }
             setAccountVisible(!isAccountVisible);
+        }
+    };
+
+
+    // 👇️ Toggle class on click Show And Hide Business Dropdown (Icon)
+    const [isBusinessVisible, setBusinessVisible] = useState(false);
+    const handleBusinessClick = () => {
+        const business = document.getElementById('business_dropdown_menu');
+        if (business) {
+            if (isBusinessVisible) {
+                business.classList.remove('show-business-dropdown-menu');
+            } else {
+                business.classList.add('show-business-dropdown-menu');
+            }
+            setBusinessVisible(!isBusinessVisible);
         }
     };
     return (
@@ -132,23 +147,105 @@ function Header() {
                                 </div>
                             </Link>
 
-                            {/* For Business */}
-                            <Link href='#'
-                                  className="group px-[10px] flex flex-col items-center">
-                                {/* Main SVG */}
-                                <div className="relative">
-                                    <HiOutlineSquaresPlus
-                                        className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
-                                    <div
-                                        className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                        12
+                            {/* Business Icon */}
+                            <div onClick={handleBusinessClick}
+                                 className="last_business_icon cursor-pointer px-[10px] flex flex-col items-center">
+                                <div className="dropdown inline-block relative">
+                                    {/* Main SVG */}
+                                    <div className="relative">
+                                        <HiOutlineSquaresPlus
+                                            className={`w-full h-[24px] profile_icon ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}/>
+                                        <div
+                                            className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                            12
+                                        </div>
+                                    </div>
+                                    <div id="business_dropdown_menu"
+                                         className="business-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
+                                        <div className="container">
+                                            <div className="mt-3 space-y-0 text-[14px]">
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                        fill="#6B7280"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                        <path d="m8.878.392 5.25 3.045c.54.314.872.89.872
+                                                        1.514v6.098a1.75 1.75 0 0 1-.872 1.514l-5.25 3.045a1.75 1.75 0 0 1-1.756
+                                                        0l-5.25-3.045A1.75 1.75 0 0 1 1
+                                                        11.049V4.951c0-.624.332-1.201.872-1.514L7.122.392a1.75 1.75 0 0 1 1.756
+                                                        0ZM7.875 1.69l-4.63 2.685L8 7.133l4.755-2.758-4.63-2.685a.248.248 0 0 0-.25
+                                                        0ZM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432Zm6.25 8.271
+                                                        4.625-2.683a.25.25 0 0 0 .125-.216V5.677L8.75 8.432Z"></path>
+                                                    </svg>
+                                                    <h4 className="relative">
+                                                        Sell on Nosres
+                                                        <span
+                                                            className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                    </h4>
+                                                </Link>
+
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24
+                                                        24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M22 8.35V20a2 2
+                                                        0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2
+                                                        0 0 1 22 8.35Z"/>
+                                                        <path d="M6 18h12"/>
+                                                        <path d="M6 14h12"/>
+                                                        <rect width="12"
+                                                              height="12" x="6" y="10"/>
+                                                    </svg>
+                                                    <h4 className="relative">
+                                                        Fulfill with Nosres
+                                                        <span
+                                                            className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                    </h4>
+                                                </Link>
+
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                        fill="#6B7280"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                        <path d="M3.25 9a.75.75 0 0 1 .75.75c0 2.142.456 3.828.733
+                                                        4.653a.122.122 0 0 0 .05.064.212.212 0 0 0 .117.033h1.31c.085 0
+                                                        .18-.042.258-.152a.45.45 0 0 0 .075-.366A16.743 16.743 0 0 1 6 9.75a.75.75 0 0 1
+                                                        1.5 0c0 1.588.25 2.926.494 3.85.293 1.113-.504 2.4-1.783 2.4H4.9c-.686
+                                                        0-1.35-.41-1.589-1.12A16.4 16.4 0 0 1 2.5 9.75.75.75 0 0 1 3.25 9Z"></path>
+                                                        <path
+                                                            d="M0 6a4 4 0 0 1 4-4h2.75a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75H4a4 4 0 0
+                                                        1-4-4Zm4-2.5a2.5 2.5 0 1 0 0 5h2v-5Z"></path>
+                                                        <path d="M15.59.082A.75.75 0 0 1
+                                                        16 .75v10.5a.75.75 0 0 1-1.189.608l-.002-.001h.001l-.014-.01a5.775 5.775 0 0
+                                                        0-.422-.25 10.63 10.63 0 0 0-1.469-.64C11.576 10.484 9.536 10 6.75 10a.75.75 0 0
+                                                        1 0-1.5c2.964 0 5.174.516 6.658 1.043.423.151.787.302
+                                                        1.092.443V2.014c-.305.14-.669.292-1.092.443C11.924 2.984 9.713 3.5 6.75
+                                                        3.5a.75.75 0 0 1 0-1.5c2.786 0 4.826-.484 6.155-.957.665-.236 1.154-.47
+                                                        1.47-.64.144-.077.284-.161.421-.25l.014-.01a.75.75 0 0 1 .78-.061Z"></path>
+                                                    </svg>
+                                                    <h4 className="relative">
+                                                        Advertise with Nosres
+                                                        <span
+                                                            className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                    </h4>
+                                                </Link>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div
-                                    className="text-prgcolor group-hover:text-primary transition">
+                                    className={`profile_text transition ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}>
                                     For Business
                                 </div>
-                            </Link>
+                            </div>
 
                             {/* User Icon */}
                             <div onClick={handleAccountClick}
@@ -157,7 +254,7 @@ function Header() {
                                     <div
                                         className="text-center cursor-pointer text-prgcolor transition relative">
                                         <HiUserCircle
-                                            className={`w-full h-[24px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-prgcolor'}`}/>
+                                            className={`w-full h-[24px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
                                     </div>
                                     <div id="account_dropdown_menu"
                                          className="account-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
