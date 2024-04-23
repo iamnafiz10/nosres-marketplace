@@ -33,3 +33,25 @@ textarea {
     background: rgba(250, 250, 250, 0.73);
 }
 
+/*------------------- Account -------------------*/
+#account_dropdown_menu {
+    top: 47px;
+    right: -8px;
+    width: 315px;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.show-account-dropdown-menu {
+    visibility: visible !important;
+    height: 350px !important;
+}
+
+.last_user_icon:hover .profile_text {
+    color: #4D7FB8;
+}
+
+.last_user_icon:hover .profile_icon {
+    color: #4D7FB8;
+}

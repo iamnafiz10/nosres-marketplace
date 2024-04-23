@@ -24,6 +24,21 @@ function Header() {
             setMenuVisible(!isMenuVisible);
         }
     };
+
+
+    // 👇️ Toggle class on click Show And Hide Account (Icon)
+    const [isAccountVisible, setAccountVisible] = useState(false);
+    const handleAccountClick = () => {
+        const account = document.getElementById('account_dropdown_menu');
+        if (account) {
+            if (isAccountVisible) {
+                account.classList.remove('show-account-dropdown-menu');
+            } else {
+                account.classList.add('show-account-dropdown-menu');
+            }
+            setAccountVisible(!isAccountVisible);
+        }
+    };
     return (
         <>
             <section id="header-section" className="relative">
@@ -136,16 +151,152 @@ function Header() {
                             </Link>
 
                             {/* User Icon */}
-                            <div className="last_user_icon cursor-pointer group px-[10px] flex flex-col items-center">
+                            <div onClick={handleAccountClick}
+                                 className="last_user_icon cursor-pointer px-[10px] flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     <div
                                         className="text-center cursor-pointer text-prgcolor transition relative">
                                         <HiUserCircle
-                                            className="w-full h-[24px] text-prgcolor group-hover:text-primary"/>
+                                            className={`w-full h-[24px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-prgcolor'}`}/>
+                                    </div>
+                                    <div id="account_dropdown_menu"
+                                         className="account-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
+                                        <div className="container">
+                                            <div className="col flex items-center px-0 pt-[15px] pb-2">
+                                                <div className="flex cursor-pointer items-center gap-3">
+                                                    <HiUserCircle size={50} className="text-primary"/>
+                                                    <div className="text">
+                                                        <h2 className="text-[#252C32] font-semibold text-[14px]">
+                                                            John Doe
+                                                        </h2>
+                                                        <h4 className="text-graycolor text-[12px]">
+                                                            johndoe
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div className="mx-0">
+                                                <button type="button"
+                                                        className="mt-2 w-full rounded text-[14px] text-primary hover:text-white hover:bg-primary py-2 bg-[#F9FAFB] transition">
+                                                    My Nosres Account
+                                                </button>
+                                            </div>
+
+                                            <div className="mt-3 space-y-0 text-[14px]">
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24
+                                                        24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M6 2 3 6v14a2
+                                                        2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                                                        <path d="M3 6h18"/>
+                                                        <path d="M16 10a4 4 0
+                                                        0 1-8 0"/>
+                                                    </svg>
+                                                    <h4 className="relative">
+                                                        My Orders
+                                                        <span
+                                                            className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                    </h4>
+                                                </Link>
+
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                        strokeWidth="1.5" strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path
+                                                            d="m2 7 4.41-4.41A2 2 0 01 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 00 2-2v-8"/>
+                                                        <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                                                        <path d="M27h20"/>
+                                                        <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82
+                                                        0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7
+                                                        2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0
+                                                        0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
+                                                    </svg>
+                                                    <h4 className="relative">
+                                                        Store Manager
+                                                        <span
+                                                            className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                    </h4>
+                                                </Link>
+
+                                                <div className="py-2">
+                                                    <hr/>
+                                                </div>
+
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24
+                                                         24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M12.22 2h-.44a2 2 0
+                                                        0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0
+                                                        0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1
+                                                        1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2
+                                                        0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1
+                                                        1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0
+                                                        0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0
+                                                        .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0
+                                                        1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                                                        <circle cx="12" cy="12" r="3"/>
+                                                    </svg>
+                                                    <h4>Settings</h4>
+                                                </Link>
+
+                                                <Link href='#'
+                                                      className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24
+                                                         24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <circle cx="12" cy="12"
+                                                                r="10"/>
+                                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                        <path d="M12 17h.01"/>
+                                                    </svg>
+                                                    <h4>Help & Support</h4>
+                                                </Link>
+
+                                                <Link href='#'
+                                                      className="flex gap-2 cursor-pointer items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                    <svg
+                                                        className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                        fill="#6B7280"
+                                                    >
+                                                        <path d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 0 1 0
+                                                        1.5h-2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 0
+                                                        1.5h-2.5A1.75 1.75 0 0 1 2 13.25Zm10.44 4.5-1.97-1.97a.749.749 0 0 1
+                                                        .326-1.275.749.749 0 0 1 .734.215l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25
+                                                        3.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.97-1.97H6.75a.75.75 0 0
+                                                        1 0-1.5Z"></path>
+                                                    </svg>
+                                                    <h4>Sign Out</h4>
+                                                </Link>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div
-                                    className="text-prgcolor group-hover:text-primary transition">
+                                    className={`profile_text transition ${isAccountVisible ? 'text-primary' : 'text-prgcolor'}`}>
                                     Profile
                                 </div>
                             </div>
