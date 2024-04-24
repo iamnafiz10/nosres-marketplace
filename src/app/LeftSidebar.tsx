@@ -4,19 +4,26 @@ import Link from "next/link";
 import {GoBell, GoHomeFill} from "react-icons/go";
 import {IoCartOutline} from "react-icons/io5";
 import {HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "react-icons/hi2";
-import React from "react";
+import React, {useState} from "react";
 
 function LeftSidebar() {
+// Define a state to manage the visibility of the drawer navigation
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+// Create a function to toggle the visibility of the drawer navigation
+    const toggleDrawer = () => {
+        setIsDrawerOpen(!isDrawerOpen);
+    };
     return (
         <>
             <section id="left-sidebar-section">
                 <div className="container">
-                    <div className="grid grid-cols-1">
+                    <div className="grid grid-cols-12">
                         <div className="col-span-3">
                             <div id="drawer-navigation"
-                                 className="hidden lg:block fixed top-[50px] z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform bg-transparent w-64"
+                                 className={`fixed bg-white lg:bg-transparent top-[47px] lg:w-64 lg:visible z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-64 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
                                  tabIndex={-1} aria-labelledby="drawer-navigation-label">
-                                <div className="py-4 overflow-y-auto">
+                                <div className="py-4 pl-4 sm:pl-0 overflow-y-auto">
                                     <ul className="space-y-2 font-medium text-[14px]">
                                         <li>
                                             <Link href="#"
@@ -156,7 +163,7 @@ function LeftSidebar() {
 
             {/* Mobile/Tap Bottom Menu */}
             <div
-                className="fixed flex lg:hidden py-1 bottom-0 w-full bg-[#e0e0e0] border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
+                className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-[#e0e0e0] border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
                 {/* Home */}
                 <Link href='/' className="group px-[5px] flex flex-col items-center border-b-2 border-primary">
                     <GoHomeFill className="w-full h-[20px] text-primary"/>
@@ -166,10 +173,13 @@ function LeftSidebar() {
                 </Link>
 
                 {/* Category */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
+                <Link onClick={toggleDrawer} href='#'
+                      className="group px-[5px] sm:px-[10px] flex flex-col items-center">
                     {/* Main SVG */}
-                    <HiOutlineSquaresPlus className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
-                    <div className="text-prgcolor group-hover:text-primary transition">
+                    <HiOutlineSquaresPlus
+                        className={`w-full h-[20px] group-hover:text-primary ${isDrawerOpen ? 'text-primary' : 'text-prgcolor'}`}/>
+                    <div
+                        className={`group-hover:text-primary transition ${isDrawerOpen ? 'text-primary' : 'text-prgcolor'}`}>
                         Categories
                     </div>
                 </Link>

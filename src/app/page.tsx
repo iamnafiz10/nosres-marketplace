@@ -10,9 +10,9 @@ export default function Home() {
         <>
             <section id="home-page-section">
                 <div className="container pt-16">
-                    <div className="grid grid-cols-12">
-                        <div className="col-span-3"></div>
-                        <div className="col-span-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-12">
+                        <div className="col lg:col-span-3"></div>
+                        <div className="col lg:col-span-6">
                             <div className="box py-6 px-4 border">
                                 {loading ? (
                                     <Skeleton height={10} count={1}/>
@@ -25,7 +25,7 @@ export default function Home() {
                                 )}
                             </div>
                         </div>
-                        <div className="col-span-3">
+                        <div className="col lg:col-span-3">
                         </div>
                     </div>
                 </div>
