@@ -7,10 +7,10 @@ function LeftSidebar() {
         <>
             <section id="left-sidebar-section">
                 <div className="container">
-                    <div className="grid grid-cols-12">
+                    <div className="grid grid-cols-1">
                         <div className="col-span-3">
                             <div id="drawer-navigation"
-                                 className="fixed top-[50px] z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform bg-transparent w-64"
+                                 className="hidden lg:block fixed top-[50px] z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform bg-transparent w-64"
                                  tabIndex={-1} aria-labelledby="drawer-navigation-label">
                                 <div className="py-4 overflow-y-auto">
                                     <ul className="space-y-2 font-medium text-[14px]">
