@@ -113,3 +113,11 @@ textarea {
 .last_business_icon:hover .profile_icon {
     color: #4D7FB8;
 }
+
+/*---------------- Main Home Page Design -------------------------*/
+em-emoji-picker {
+    min-height: 300px;
+    max-height: 300px;
+    position: relative;
+    z-index: 9999;
+}

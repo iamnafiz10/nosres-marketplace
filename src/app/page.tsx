@@ -1,5 +1,5 @@
-'use client';
-import React from "react";
+"use client";
+import React, {useState} from "react";
 import useLoading from "@/app/useLoading";
 import Skeleton from "react-loading-skeleton";
 import useTitle from "@/app/useTitle";
@@ -9,11 +9,62 @@ import Image from "next/image";
 import ProductImg from '@/../public/assets/images/product-1.png';
 import PostImg from '@/../public/assets/images/post-image.jpg';
 import {GoComment, GoHeart, GoSync} from "react-icons/go";
+import {IoMdGlobe} from "react-icons/io";
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 export default function Home() {
     const loading = useLoading();
     useTitle("Home")
     const currentYear = new Date().getFullYear();
+
+    // Comment Emoji With Display In The Input (One)
+    const [showCommentEmoji, setShowCommentEmoji] = useState(false);
+    const [commentText, setCommentText] = useState("");
+    const addCommentEmoji = (e: { unified: string }) => {
+        const hexCodePoint = e.unified.toLowerCase(); // Convert to lowercase for consistency
+        // Check if hexCodePoint is a valid hexadecimal Unicode code point
+        if (/^[0-9a-f]+$/.test(hexCodePoint)) {
+            const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
+            if (!isNaN(codePoint)) {
+                const emoji = String.fromCodePoint(codePoint);
+                setCommentText(commentText + emoji);
+            } else {
+                console.error("Invalid Unicode code point:", e.unified);
+            }
+        } else {
+            console.error("Invalid Unicode code point:", e.unified);
+        }
+    };
+    // Function to handle OutSide Click
+    const handleCommentEmojiClickOutside = () => {
+        setShowCommentEmoji(false);
+    };
+
+
+    // Comment Emoji With Display In The Input (Two)
+    const [showCommentEmojiTwo, setShowCommentEmojiTwo] = useState(false);
+    const [commentTextTwo, setCommentTextTwo] = useState("");
+    const addCommentEmojiTwo = (e: { unified: string }) => {
+        const hexCodePoint = e.unified.toLowerCase(); // Convert to lowercase for consistency
+        // Check if hexCodePoint is a valid hexadecimal Unicode code point
+        if (/^[0-9a-f]+$/.test(hexCodePoint)) {
+            const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
+            if (!isNaN(codePoint)) {
+                const emoji = String.fromCodePoint(codePoint);
+                setCommentTextTwo(commentTextTwo + emoji);
+            } else {
+                console.error("Invalid Unicode code point:", e.unified);
+            }
+        } else {
+            console.error("Invalid Unicode code point:", e.unified);
+        }
+    };
+    // Function to handle OutSide Click
+    const handleCommentEmojiClickOutsideTwo = () => {
+        setShowCommentEmojiTwo(false);
+    };
+
     return (
         <>
             <section id="home-page-section">
@@ -37,7 +88,7 @@ export default function Home() {
                                             </div>
 
                                             <div className="flex items-center gap-4">
-                                                <div className="icon cursor-pointer">
+                                                <div className="cursor-pointer">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                          fill="#4D7FB8"
                                                          className="w-5 h-5">
@@ -49,11 +100,11 @@ export default function Home() {
                                                               clipRule="evenodd"/>
                                                     </svg>
                                                 </div>
-                                                <div className="icon cursor-pointer">
+                                                <div className="cursor-pointer">
                                                     <svg
                                                         className="w-5 h-5 hover:fill-primary transition"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                         fill="#828D9E">
+                                                        fill="#828D9E">
                                                         <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0
                                                         1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0
                                                         18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z"/>
@@ -82,7 +133,7 @@ export default function Home() {
 
                                         <div className="flex items-center justify-end text-end">
                                             <div
-                                                className="icon cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
                                                 <svg
                                                     className="w-3 h-3"
                                                     fill="#828D9E"
@@ -93,7 +144,7 @@ export default function Home() {
                                             </div>
 
                                             <div
-                                                className="icon cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
                                                 <svg
                                                     className="w-4 h-4"
                                                     fill="#828D9E"
@@ -130,7 +181,7 @@ export default function Home() {
                                     <div
                                         className="flex items-center justify-between bg-white border-t-2 px-4 py-3 mt-0">
                                         <div className="flex items-center gap-1">
-                                            <div className="icon cursor-pointer">
+                                            <div className="cursor-pointer">
                                                 <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-red-600"/>
                                             </div>
                                             <div className="count">
@@ -139,7 +190,7 @@ export default function Home() {
                                         </div>
 
                                         <div className="flex items-center gap-1">
-                                            <div className="icon cursor-pointer">
+                                            <div className="cursor-pointer">
                                                 <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                             </div>
                                             <div className="count">
@@ -148,7 +199,7 @@ export default function Home() {
                                         </div>
 
                                         <div className="flex items-center gap-1">
-                                            <div className="icon cursor-pointer">
+                                            <div className="cursor-pointer">
                                                 <GoSync className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                             </div>
                                             <div className="count">
@@ -158,7 +209,313 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Post Box */}
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="leading-[17px]">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                    John Doe
+                                                </h4>
+                                                <span
+                                                    className="text-[12px] text-graycolor font-normal flex items-center gap-1">
+                                                    2h ago
+                                                    <IoMdGlobe size={13}/>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center justify-end text-end">
+                                            <div
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="#828D9E"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                </svg>
+                                            </div>
+
+                                            <div
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    fill="#828D9E"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 className="mt-3 text-[12px] text-graycolor">
+                                        The SRS-XB100 speaker provides powerful, clear,
+                                        expansive sound in a small, portable and durable
+                                        body. Despite its size...
+                                    </h4>
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    <div
+                                        className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-red-600"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">112</h4>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">852</h4>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoSync className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Post Write Comment */}
+                                <div className="post_write_comment mt-0">
+                                    <div
+                                        className="flex items-center justify-between box border-t bg-white px-4 py-2 rounded rounded-b-none">
+                                        <div className="relative w-full flex items-center">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <input
+                                                className="m-0 rounded-full w-full py-1 px-3 border-graycolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                value={commentText}
+                                                onChange={(e) => setCommentText(e.target.value)}
+                                                type="text"
+                                                placeholder="Write a comment..."
+                                            />
+
+                                            <div className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                <div className="cursor-pointer">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                         fill="#4D7FB8"
+                                                         className="w-5 h-5">
+                                                        <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                              clipRule="evenodd"/>
+                                                    </svg>
+                                                </div>
+                                                <div onClick={() => setShowCommentEmoji(!showCommentEmoji)}
+                                                     className="cursor-pointer">
+                                                    <svg
+                                                        className="w-5 h-5 hover:fill-primary transition"
+                                                        fill="#828D9E"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0
+                                                        6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1
+                                                        1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0
+                                                        1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1
+                                                        1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.01
+                                                        4.019a2.066 2.066 0 0
+                                                        1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946
+                                                        0-1.652-.308-2.126-.63a3.331 3.331 0 0
+                                                        1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0
+                                                        1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0
+                                                        2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+
+                                            {/* Post Reactions */}
+                                            {showCommentEmoji &&
+                                                <div className="comment_emoji absolute top-[100%] right-0">
+                                                    <Picker
+                                                        data={data}
+                                                        theme="light"
+                                                        perLine={8}
+                                                        onClickOutside={handleCommentEmojiClickOutside}
+                                                        emojiSize={22}
+                                                        onEmojiSelect={addCommentEmoji}
+                                                        maxFrequentRows={0}
+                                                        maxEmojiRows={2}
+                                                    />
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Post Box Two */}
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="leading-[17px]">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                    John Doe
+                                                </h4>
+                                                <span
+                                                    className="text-[12px] text-graycolor font-normal flex items-center gap-1">
+                                                    2h ago
+                                                    <IoMdGlobe size={13}/>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center justify-end text-end">
+                                            <div
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="#828D9E"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                </svg>
+                                            </div>
+
+                                            <div
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    fill="#828D9E"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 className="mt-3 text-[12px] text-graycolor">
+                                        The SRS-XB100 speaker provides powerful, clear,
+                                        expansive sound in a small, portable and durable
+                                        body. Despite its size...
+                                    </h4>
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    <div
+                                        className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-red-600"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">112</h4>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">852</h4>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoSync className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Post Write Comment */}
+                                <div className="post_write_comment mt-0">
+                                    <div
+                                        className="flex items-center justify-between box border-t bg-white px-4 py-2 rounded rounded-b-none">
+                                        <div className="relative w-full flex items-center">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <input
+                                                className="m-0 rounded-full w-full py-1 px-3 border-graycolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                value={commentTextTwo}
+                                                onChange={(e) => setCommentTextTwo(e.target.value)}
+                                                type="text"
+                                                placeholder="Write a comment..."
+                                            />
+
+                                            <div className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                <div className="cursor-pointer">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                         fill="#4D7FB8"
+                                                         className="w-5 h-5">
+                                                        <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                              clipRule="evenodd"/>
+                                                    </svg>
+                                                </div>
+                                                <div onClick={() => setShowCommentEmojiTwo(!showCommentEmojiTwo)}
+                                                     className="cursor-pointer">
+                                                    <svg
+                                                        className="w-5 h-5 hover:fill-primary transition"
+                                                        fill="#828D9E"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0
+                                                        6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1
+                                                        1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0
+                                                        1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1
+                                                        1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.01
+                                                        4.019a2.066 2.066 0 0
+                                                        1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946
+                                                        0-1.652-.308-2.126-.63a3.331 3.331 0 0
+                                                        1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0
+                                                        1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0
+                                                        2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+
+                                            {/* Post Reactions */}
+                                            {showCommentEmojiTwo &&
+                                                <div className="comment_emoji absolute top-[100%] right-0">
+                                                    <Picker
+                                                        data={data}
+                                                        theme="light"
+                                                        perLine={8}
+                                                        onClickOutside={handleCommentEmojiClickOutsideTwo}
+                                                        emojiSize={22}
+                                                        onEmojiSelect={addCommentEmojiTwo}
+                                                        maxFrequentRows={0}
+                                                        maxEmojiRows={2}
+                                                    />
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        {/* Right Sidebar */}
                         <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mr-[10px]">
                             <div className="box bg-white px-4 py-4 rounded">
                                 <div className="flex items-center justify-between">
@@ -178,7 +535,7 @@ export default function Home() {
                                         </h4>
                                     </div>
 
-                                    <div className="icon cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                    <div className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
                                         <svg
                                             className="w-3 h-3"
                                             fill="#6B7280"
@@ -268,7 +625,7 @@ export default function Home() {
                                     </div>
 
 
-                                    <div className="icon cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                    <div className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
                                         <svg
                                             className="w-3 h-3"
                                             fill="#6B7280"
