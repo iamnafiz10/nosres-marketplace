@@ -13,6 +13,7 @@
     "@emoji-mart/react": "^1.1.1",
     "emoji-mart": "^5.6.0",
     "flowbite": "^2.3.0",
+    "lightbox.js-react": "^1.0.7",
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
