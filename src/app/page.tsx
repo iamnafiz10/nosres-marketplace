@@ -911,19 +911,112 @@ export default function Home() {
                                     </h4>
                                 </div>
                                 <div className="post_image mt-0">
-                                    <SlideshowLightbox className="flex" lightboxIdentifier="l2" framework="next" images={images}>
+                                    <SlideshowLightbox className="flex w-full" lightboxIdentifier="l2" framework="next"
+                                                       images={images}>
                                         {images.slice(0, 2).map((image, index) => (
                                             <Image
                                                 key={index}
                                                 src={image.src}
                                                 alt={image.alt}
-                                                height={500}
-                                                width="100%"
+                                                height={100}
+                                                width={100}
+                                                className="w-1/2"
                                                 data-lightboxjs="l2"
                                                 quality={80}
                                             />
                                         ))}
                                     </SlideshowLightbox>
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    <div
+                                        className="flex items-center justify-between bg-white px-4 py-3 mt-0">
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-red-600"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">112</h4>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">852</h4>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <div className="cursor-pointer">
+                                                <GoSync className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                            </div>
+                                            <div className="count">
+                                                <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {/* Post Box */}
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        <Link href='#' className="flex items-center gap-1">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="leading-[17px]">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                    Robert Fox
+                                                </h4>
+                                                <span
+                                                    className="text-[12px] text-graycolor font-normal flex items-center gap-1">
+                                                    1m ago
+                                                    <IoMdGlobe size={13}/>
+                                                </span>
+                                            </div>
+                                        </Link>
+
+                                        <div className="flex items-center justify-end text-end">
+                                            <div
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                            <svg
+                                                    className="w-3 h-3"
+                                                    fill="#828D9E"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                </svg>
+                                            </div>
+
+                                            <div
+                                                className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    fill="#828D9E"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 className="mt-3 text-[12px] text-prgcolor">
+                                        The HTCU23 Pro 5G stands as the pinnacle of smartphone innovation, offering
+                                        unparalleled performance, connectivity, and functionality. Its sleek design houses a
+                                        powerhouse of cutting-edge technology, delivering lightning-fast 5G connectivity
+                                        and an immersive multimedia experience. With its advanced features and premium
+                                        build quality, the HTCU23 Pro 5G redefines what a flagship smartphone can achieve
+                                    </h4>
+                                </div>
+                                <div className="post_image mt-0">
+                                    <Image src={SliderOneImg} className="w-full h-56" alt="PostImg"/>
                                 </div>
                                 {/* Post Icons */}
                                 <div className="post_icons mt-0">
