@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductImg from '@/../public/assets/images/product-1.png';
 import PostImg from '@/../public/assets/images/post-image.jpg';
-import {GoComment, GoHeart, GoReply, GoSmiley, GoSync} from "react-icons/go";
+import {GoComment, GoHeart, GoHeartFill, GoReply, GoSmiley, GoSync} from "react-icons/go";
 import {IoMdGlobe} from "react-icons/io";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
@@ -135,6 +135,35 @@ export default function Home() {
         setShowCommentReplyThree(prevState => !prevState);
     };
 
+    // Comment Reply LoadMore
+    const [showCommentReplyLoadMore, setShowCommentReplyLoadMore] = useState(false);
+    const toggleCommentReplyLoadMore = () => {
+        setShowCommentReplyLoadMore(prevState => !prevState);
+    };
+
+    // Comment Emoji With Display In The Input (LoadMore)
+    const [showCommentEmojiLoadMore, setShowCommentEmojiLoadMore] = useState(false);
+    const [commentTextLoadMore, setCommentTextLoadMore] = useState("");
+    const addCommentEmojiLoadMore = (e: { unified: string }) => {
+        const hexCodePoint = e.unified.toLowerCase(); // Convert to lowercase for consistency
+        // Check if hexCodePoint is a valid hexadecimal Unicode code point
+        if (/^[0-9a-f]+$/.test(hexCodePoint)) {
+            const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
+            if (!isNaN(codePoint)) {
+                const emoji = String.fromCodePoint(codePoint);
+                setCommentTextLoadMore(commentTextLoadMore + emoji);
+            } else {
+                console.error("Invalid Unicode code point:", e.unified);
+            }
+        } else {
+            console.error("Invalid Unicode code point:", e.unified);
+        }
+    };
+    // Function to handle OutSide Click
+    const handleCommentEmojiClickOutsideLoadMore = () => {
+        setShowCommentEmojiLoadMore(false);
+    };
+
 
     // Lightbox Images
     const images = [
@@ -148,6 +177,18 @@ export default function Home() {
         },
     ]
 
+    // Like button
+    const [isClickedLikePostOne, setIsClickedLikePostOne] = useState(false);
+    const [isClickedLikePostTwo, setIsClickedLikePostTwo] = useState(false);
+    const [isClickedLikePostThree, setIsClickedLikePostThree] = useState(false);
+    const [isClickedLikePostFour, setIsClickedLikePostFour] = useState(false);
+
+    // Load comment
+    const [showLoadComments, setShowLoadComments] = useState(false);
+
+    const toggleComments = () => {
+        setShowLoadComments(true); // Always show comments when the button is clicked
+    };
     return (
         <>
             <section id="home-page-section">
@@ -269,8 +310,14 @@ export default function Home() {
                                         <div
                                             className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
                                             <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                <div className="cursor-pointer"
+                                                     onClick={() => setIsClickedLikePostOne(!isClickedLikePostOne)}>
+                                                    {isClickedLikePostOne ? (
+                                                        <GoHeartFill
+                                                            className="w-4 h-4 text-primary hover:text-primary"/>
+                                                    ) : (
+                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    )}
                                                 </div>
                                                 <div className="count">
                                                     <h4 className="text-[12px] text-prgcolor">112</h4>
@@ -316,11 +363,15 @@ export default function Home() {
                                                     <h4 className="text-[14px] font-semibold text-prgcolor">
                                                         John Doe
                                                     </h4>
-                                                    <span
-                                                        className="text-[12px] text-graycolor font-normal flex items-center gap-1">
-                                                    2h ago.
-                                                    <IoMdGlobe size={13}/>
-                                                </span>
+
+                                                    <div className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            2h ago
+                                                        </span>
+                                                        <LuDot size={12}/>
+                                                        <IoMdGlobe size={13}/>
+                                                    </div>
                                                 </div>
                                             </Link>
 
@@ -369,8 +420,15 @@ export default function Home() {
                                             <div
                                                 className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
                                                 <div className="flex items-center gap-1">
-                                                    <div className="cursor-pointer">
-                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    <div className="cursor-pointer"
+                                                         onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>
+                                                        {isClickedLikePostTwo ? (
+                                                            <GoHeartFill
+                                                                className="w-4 h-4 text-primary hover:text-primary"/>
+                                                        ) : (
+                                                            <GoHeart
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        )}
                                                     </div>
                                                     <div className="count">
                                                         <h4 className="text-[12px] text-prgcolor">112</h4>
@@ -497,7 +555,7 @@ export default function Home() {
                                                                 <h4 className="group-hover:text-primary">Like</h4>
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
-                                                                         className='cursor-pointer hover:text-red-600'/>
+                                                                         className='cursor-pointer hover:text-primary'/>
                                                                 <span className="ml-1">3</span>
                                                             </Link>
                                                             <div
@@ -547,26 +605,11 @@ export default function Home() {
                                                                                           clipRule="evenodd"/>
                                                                                 </svg>
                                                                             </div>
-                                                                            <div
-                                                                                onClick={() => setShowCommentEmojiOne(!showCommentEmojiOne)}
-                                                                                className="cursor-pointer">
-                                                                                <svg
-                                                                                    className="w-5 h-5 hover:fill-primary transition"
-                                                                                    fill="#828D9E"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    viewBox="0 0 16 16">
-                                                                                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0
-                                                        6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1
-                                                        1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0
-                                                        1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1
-                                                        1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.01
-                                                        4.019a2.066 2.066 0 0
-                                                        1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946
-                                                        0-1.652-.308-2.126-.63a3.331 3.331 0 0
-                                                        1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0
-                                                        1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0
-                                                        2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
-                                                                                </svg>
+                                                                            <div className="cursor-pointer">
+                                                                                <GoSmiley
+                                                                                    onClick={() => setShowCommentEmojiOne(!showCommentEmojiOne)}
+                                                                                    size={20}
+                                                                                    className="cursor-pointer text-graycolor hover:text-primary"/>
                                                                             </div>
                                                                         </div>
 
@@ -620,7 +663,7 @@ export default function Home() {
                                                                 fill="#828D9E"
                                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                                                                 <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -635,7 +678,7 @@ export default function Home() {
                                                                 <h4 className="group-hover:text-primary">Like</h4>
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
-                                                                         className='cursor-pointer hover:text-red-600'/>
+                                                                         className='cursor-pointer hover:text-primary'/>
                                                                 <span className="ml-1">3</span>
                                                             </Link>
                                                             <div
@@ -656,7 +699,7 @@ export default function Home() {
                                             {/* Comment Replay */}
                                             {showCommentReplyTwo && (
                                                 <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
-                                                    <div className="ml-9 flex items-start justify-start gap-1">
+                                                    <div className="ml-[70px] flex items-start justify-start gap-1">
                                                         <Link href='#' className="flex items-center gap-">
                                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                         </Link>
@@ -687,26 +730,11 @@ export default function Home() {
                                                                                   clipRule="evenodd"/>
                                                                         </svg>
                                                                     </div>
-                                                                    <div
-                                                                        onClick={() => setShowCommentEmojiTwo(!showCommentEmojiTwo)}
-                                                                        className="cursor-pointer">
-                                                                        <svg
-                                                                            className="w-5 h-5 hover:fill-primary transition"
-                                                                            fill="#828D9E"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 16 16">
-                                                                            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0
-                                                        6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1
-                                                        1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0
-                                                        1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1
-                                                        1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.01
-                                                        4.019a2.066 2.066 0 0
-                                                        1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946
-                                                        0-1.652-.308-2.126-.63a3.331 3.331 0 0
-                                                        1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0
-                                                        1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0
-                                                        2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
-                                                                        </svg>
+                                                                    <div className="cursor-pointer">
+                                                                        <GoSmiley
+                                                                            onClick={() => setShowCommentEmojiTwo(!showCommentEmojiTwo)}
+                                                                            size={20}
+                                                                            className="cursor-pointer text-graycolor hover:text-primary"/>
                                                                     </div>
                                                                 </div>
 
@@ -731,6 +759,65 @@ export default function Home() {
                                                     </div>
                                                 </div>
                                             )}
+
+                                            {/* Sub Comment Replay */}
+                                            <div className="box bg-white px-4 pt-2 pb-3 rounded rounded-b-none">
+                                                <div className="ml-[70px] flex items-start justify-start gap-1">
+                                                    <Link href='#' className="flex items-center gap-">
+                                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    </Link>
+
+                                                    <div
+                                                        className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
+                                                        <div className="wrap">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                Kathy Erickson
+                                                            </h4>
+                                                            <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
+                                                                Thank you, <Link href='#' className="text-primary">John
+                                                                Doe</Link>!
+                                                            </h4>
+                                                        </div>
+
+                                                        <div
+                                                            className="cursor-pointer py-2 px-2 rounded-full hover:bg-white">
+                                                            <svg
+                                                                className="w-3 h-3"
+                                                                fill="#828D9E"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                                0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/* Comment Icons */}
+                                                <div className="ml-[110px] box bg-white pt-2 rounded rounded-b-none">
+                                                    <div
+                                                        className="flex items-center text-[12px] text-graycolor justify-between px-2">
+                                                        <div className="c_icons flex items-center gap-6">
+                                                            <Link href='#'
+                                                                  className="left flex items-center gap-0 group">
+                                                                <h4 className="group-hover:text-primary">Like</h4>
+                                                                <LuDot size={12}/>
+                                                                <GoHeart size={13}
+                                                                         className='cursor-pointer hover:text-primary'/>
+                                                                <span className="ml-1">3</span>
+                                                            </Link>
+                                                            <div
+                                                                className="right cursor-pointer flex items-center gap-0 group">
+                                                                <h4
+                                                                    className="group-hover:text-primary">Reply</h4>
+                                                                <LuDot size={12}/>
+                                                                <GoReply size={13}
+                                                                         className='cursor-pointer group-hover:text-primary'/>
+                                                                <span className="ml-1">6</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="c_time">1d</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Post User Comments (Two) */}
@@ -775,7 +862,7 @@ export default function Home() {
                                                                 <h4 className="group-hover:text-primary">Like</h4>
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
-                                                                         className='cursor-pointer hover:text-red-600'/>
+                                                                         className='cursor-pointer hover:text-primary'/>
                                                                 <span className="ml-1">3</span>
                                                             </Link>
                                                             <div
@@ -827,26 +914,11 @@ export default function Home() {
                                                                                   clipRule="evenodd"/>
                                                                         </svg>
                                                                     </div>
-                                                                    <div
-                                                                        onClick={() => setShowCommentEmojiThree(!showCommentEmojiThree)}
-                                                                        className="cursor-pointer">
-                                                                        <svg
-                                                                            className="w-5 h-5 hover:fill-primary transition"
-                                                                            fill="#828D9E"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 16 16">
-                                                                            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0
-                                                        6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1
-                                                        1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0
-                                                        1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1
-                                                        1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.01
-                                                        4.019a2.066 2.066 0 0
-                                                        1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946
-                                                        0-1.652-.308-2.126-.63a3.331 3.331 0 0
-                                                        1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0
-                                                        1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0
-                                                        2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
-                                                                        </svg>
+                                                                    <div className="cursor-pointer">
+                                                                        <GoSmiley
+                                                                            onClick={() => setShowCommentEmojiThree(!showCommentEmojiThree)}
+                                                                            size={20}
+                                                                            className="cursor-pointer text-graycolor hover:text-primary"/>
                                                                     </div>
                                                                 </div>
 
@@ -873,11 +945,153 @@ export default function Home() {
                                             )}
                                         </div>
 
-                                        <div className="box bg-white px-4 pt-2 pb-4 rounded">
-                                            <h4 className="text-[14px] text-primary hover:underline cursor-pointer">
-                                                View more comments
-                                            </h4>
+                                        {/* Post User Comments (Load more) */}
+                                        <div className="post_user_comments"
+                                             style={{display: showLoadComments ? 'block' : 'none'}}>
+                                            <div className="box bg-white px-4 pt-2 pb-3 rounded rounded-b-none">
+                                                <div className="flex items-start justify-start gap-1 w-full">
+                                                    <Link href='#' className="flex items-center gap-2">
+                                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    </Link>
+
+                                                    <div
+                                                        className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
+                                                        <div className="wrap">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                Roshan Nafiz
+                                                            </h4>
+                                                            <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
+                                                                Thanks for your visiting nosres Marketplace
+                                                            </h4>
+                                                        </div>
+
+                                                        <div
+                                                            className="cursor-pointer py-2 px-2 rounded-full hover:bg-white">
+                                                            <svg
+                                                                className="w-3 h-3"
+                                                                fill="#828D9E"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/* Comment Icons */}
+                                                <div className="ml-10 box bg-white pt-2 rounded rounded-b-none">
+                                                    <div
+                                                        className="flex items-center text-[12px] text-graycolor justify-between px-2">
+                                                        <div className="c_icons flex items-center gap-6">
+                                                            <Link href='#'
+                                                                  className="left flex items-center gap-0 group">
+                                                                <h4 className="group-hover:text-primary">Like</h4>
+                                                                <LuDot size={12}/>
+                                                                <GoHeart size={13}
+                                                                         className='cursor-pointer hover:text-primary'/>
+                                                                <span className="ml-1">3</span>
+                                                            </Link>
+                                                            <div
+                                                                className="right cursor-pointer flex items-center gap-0 group">
+                                                                <h4 onClick={toggleCommentReplyLoadMore}
+                                                                    className="group-hover:text-primary">Reply</h4>
+                                                                <LuDot size={12}/>
+                                                                <GoReply size={13}
+                                                                         className='cursor-pointer group-hover:text-primary'/>
+                                                                <span className="ml-1">6</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="c_time">1d</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Comment Replay */}
+                                            {showCommentReplyLoadMore && (
+                                                <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                                    <div className="ml-9 flex items-start justify-start gap-1">
+                                                        <Link href='#' className="flex items-center gap-">
+                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                        </Link>
+
+                                                        <div
+                                                            className="write_comment_text rounded flex items-start justify-between w-full">
+                                                            <div className="relative w-full flex items-center gap-1">
+                                                                <input
+                                                                    className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                                    value={commentTextLoadMore}
+                                                                    onChange={(e) => setCommentTextLoadMore(e.target.value)}
+                                                                    type="text"
+                                                                    placeholder="Write a reply..."
+                                                                />
+
+                                                                <div
+                                                                    className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                                    <div className="cursor-pointer">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             viewBox="0 0 24 24"
+                                                                             fill="#4D7FB8"
+                                                                             className="w-5 h-5">
+                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                                                  clipRule="evenodd"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div
+                                                                        onClick={() => setShowCommentEmojiLoadMore(!showCommentEmojiLoadMore)}
+                                                                        className="cursor-pointer">
+                                                                        <svg
+                                                                            className="w-5 h-5 hover:fill-primary transition"
+                                                                            fill="#828D9E"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0
+                                                        6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1
+                                                        1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0
+                                                        1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1
+                                                        1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.01
+                                                        4.019a2.066 2.066 0 0
+                                                        1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946
+                                                        0-1.652-.308-2.126-.63a3.331 3.331 0 0
+                                                        1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0
+                                                        1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0
+                                                        2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* Post Reactions */}
+                                                                {showCommentEmojiLoadMore &&
+                                                                    <div
+                                                                        className="comment_emoji absolute top-[100%] right-0">
+                                                                        <Picker
+                                                                            data={data}
+                                                                            theme="light"
+                                                                            perLine={8}
+                                                                            onClickOutside={handleCommentEmojiClickOutsideLoadMore}
+                                                                            emojiSize={22}
+                                                                            onEmojiSelect={addCommentEmojiLoadMore}
+                                                                            maxFrequentRows={0}
+                                                                            maxEmojiRows={2}
+                                                                        />
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
+
+                                        <div className="box bg-white px-4 pt-2 pb-4 rounded">
+                                            <button onClick={toggleComments} type="button"
+                                                    className="text-[14px] text-primary hover:underline cursor-pointer">
+                                                View more comments
+                                            </button>
+                                        </div>
+
                                     </>
                                 )}
                             </div>
@@ -897,11 +1111,14 @@ export default function Home() {
                                                     <h4 className="text-[14px] font-semibold text-prgcolor">
                                                         Inna K.
                                                     </h4>
-                                                    <span
-                                                        className="text-[12px] text-graycolor font-normal flex items-center gap-1">
-                                                    6d ago.
-                                                    <IoMdGlobe size={13}/>
-                                                </span>
+                                                    <div className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            6d ago
+                                                        </span>
+                                                        <LuDot size={12}/>
+                                                        <IoMdGlobe size={13}/>
+                                                    </div>
                                                 </div>
                                             </Link>
 
@@ -959,8 +1176,14 @@ export default function Home() {
                                         <div
                                             className="flex items-center justify-between rounded rounded-t-none bg-white px-4 py-3 mt-0">
                                             <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                <div className="cursor-pointer"
+                                                     onClick={() => setIsClickedLikePostThree(!isClickedLikePostThree)}>
+                                                    {isClickedLikePostThree ? (
+                                                        <GoHeartFill
+                                                            className="w-4 h-4 text-primary hover:text-primary"/>
+                                                    ) : (
+                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    )}
                                                 </div>
                                                 <div className="count">
                                                     <h4 className="text-[12px] text-prgcolor">112</h4>
@@ -1006,11 +1229,14 @@ export default function Home() {
                                                     <h4 className="text-[14px] font-semibold text-prgcolor">
                                                         Robert Fox
                                                     </h4>
-                                                    <span
-                                                        className="text-[12px] text-graycolor font-normal flex items-center gap-1">
-                                                    1m ago.
-                                                    <IoMdGlobe size={13}/>
-                                                </span>
+                                                    <div className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            1m ago
+                                                        </span>
+                                                        <LuDot size={12}/>
+                                                        <IoMdGlobe size={13}/>
+                                                    </div>
                                                 </div>
                                             </Link>
 
@@ -1061,8 +1287,14 @@ export default function Home() {
                                         <div
                                             className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
                                             <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                <div className="cursor-pointer"
+                                                     onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
+                                                    {isClickedLikePostFour ? (
+                                                        <GoHeartFill
+                                                            className="w-4 h-4 text-primary hover:text-primary"/>
+                                                    ) : (
+                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    )}
                                                 </div>
                                                 <div className="count">
                                                     <h4 className="text-[12px] text-prgcolor">112</h4>
