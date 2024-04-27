@@ -609,9 +609,9 @@ function Header() {
 
                         {/* Mobile/Tab Icons */}
                         <div className="mobile_tab_menu w-full">
-                            <div className="flex lg:hidden items-center gap-8 justify-between">
+                            <div className="flex lg:hidden items-center gap-0 justify-between">
                                 {/* Mobile Logo */}
-                                <Link href='/' className="mobile_logo ml-2 flex items-cente">
+                                <Link href='/' className="mobile_logo ml-0 flex items-cente">
                                     <Image src={LogoImg} className="h-10 w-7" alt="LogoImg"/>
                                 </Link>
 
@@ -731,7 +731,7 @@ function Header() {
                                 {/* Mobile Profile */}
                                 <div onClick={handleAccountMobileClick}
                                      ref={dropdownAccountRefMobile}
-                                     className="last_user_mobile_icon cursor-pointer px-[10px] flex flex-col items-center">
+                                     className="last_user_mobile_icon cursor-pointer px-0 lg:px-[10px] flex flex-col items-center">
                                     <div className="dropdown inline-block relative">
                                         <div
                                             className="text-center cursor-pointer text-prgcolor transition relative">
