@@ -201,8 +201,8 @@ export default function Home() {
                             ) : (
                                 <>
                                     <div className="write_post box py-2 px-4 bg-white rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center whats_new">
+                                        <div className="flex items-center justify-between gap-4">
+                                            <div className="w-full flex items-center whats_new">
                                                 <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 <input
                                                     className="mt-1 rounded w-full py-1 px-1 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
