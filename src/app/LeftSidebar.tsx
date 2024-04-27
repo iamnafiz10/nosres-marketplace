@@ -3,7 +3,7 @@ import 'flowbite';
 import Link from "next/link";
 import {GoBell, GoHomeFill} from "react-icons/go";
 import {IoCartOutline} from "react-icons/io5";
-import {HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "react-icons/hi2";
+import {HiOutlineChatBubbleLeft} from "react-icons/hi2";
 import React, {useState} from "react";
 
 function LeftSidebar() {
@@ -19,15 +19,15 @@ function LeftSidebar() {
             <section id="left-sidebar-section">
                 <div className="container">
                     <div className="grid grid-cols-12">
-                        <div className="col-span-3">
+                        <div className="col-span-2 bg-red-600">
                             <div id="drawer-navigation"
-                                 className={`fixed bg-white lg:bg-transparent top-[47px] lg:w-64 lg:visible z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-64 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
+                                 className={`fixed bg-white lg:bg-transparent top-[47px] lg:w-52 lg:visible z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-64 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
                                  tabIndex={-1} aria-labelledby="drawer-navigation-label">
                                 <div className="py-4 pl-4 sm:pl-0 overflow-y-auto">
-                                    <ul className="space-y-2 font-medium text-[14px]">
+                                    <ul className="space-y-0 font-medium text-[14px]">
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -46,7 +46,7 @@ function LeftSidebar() {
 
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -66,7 +66,7 @@ function LeftSidebar() {
 
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -84,7 +84,7 @@ function LeftSidebar() {
 
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:fill-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -92,13 +92,13 @@ function LeftSidebar() {
                                                     <path
                                                         d="M214.7,209.7a1.89,1.89,0,0,0-.11-.25l-45.48-96.86,20.5-32.18a1.74,1.74,0,0,0,.11-.18,16,16,0,0,0,0-16.46c-.09-.16-.2-.32-.3-.47L168,32.7V8a8,8,0,0,0-16,0V32.42L146.74,39a24,24,0,0,1-37.48,0L104,32.42V8A8,8,0,0,0,88,8V32.7L66.58,63.3c-.1.15-.21.31-.3.47a16,16,0,0,0,0,16.46,1.74,1.74,0,0,0,.11.18l20.5,32.18L41.41,209.45a1.89,1.89,0,0,0-.11.25A16,16,0,0,0,56,232H200a16,16,0,0,0,14.71-22.3ZM80,72,96.43,48.57l.33.42a40,40,0,0,0,62.48,0l.33-.42L176,72l-20.38,32H100.39ZM56,216l45.07-96h53.84L200,216Z"></path>
                                                 </svg>
-                                                <span className="ms-3">Woman’s Fashion</span>
+                                                <span className="ms-3">Women’s Fashion</span>
                                             </Link>
                                         </li>
 
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:fill-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +113,7 @@ function LeftSidebar() {
 
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -133,7 +133,7 @@ function LeftSidebar() {
 
                                         <li>
                                             <Link href="#"
-                                                  className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 hover:bg-opacity-50 group">
+                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -155,7 +155,7 @@ function LeftSidebar() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-5"></div>
+                        <div className="col-span-6 ml-0 lg:ml-10"></div>
                         <div className="col-span-4"></div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@ function LeftSidebar() {
 
             {/* Mobile/Tap Bottom Menu */}
             <div
-                className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-[#e0e0e0] border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
+                className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-white border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
                 {/* Home */}
                 <Link href='/' className="group px-[5px] flex flex-col items-center border-b-2 border-primary">
                     <GoHomeFill className="w-full h-[20px] text-primary"/>
@@ -176,8 +176,21 @@ function LeftSidebar() {
                 <Link onClick={toggleDrawer} href='#'
                       className="group px-[5px] sm:px-[10px] flex flex-col items-center">
                     {/* Main SVG */}
-                    <HiOutlineSquaresPlus
-                        className={`w-full h-[20px] group-hover:text-primary ${isDrawerOpen ? 'text-primary' : 'text-prgcolor'}`}/>
+                    <svg
+                        className={`w-5 h-5 transition duration-75 group-hover:stroke-primary ${isDrawerOpen ? 'stroke-primary' : 'stroke-prgcolor'}`}
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round">
+                        <rect width="7" height="7"
+                              x="3" y="3" rx="1"/>
+                        <rect width="7" height="7" x="14" y="3" rx="1"/>
+                        <rect width="7"
+                              height="7" x="14" y="14" rx="1"/>
+                        <rect width="7" height="7" x="3" y="14"
+                              rx="1"/>
+                    </svg>
+
                     <div
                         className={`group-hover:text-primary transition ${isDrawerOpen ? 'text-primary' : 'text-prgcolor'}`}>
                         Categories
@@ -187,7 +200,7 @@ function LeftSidebar() {
                 {/* Cart */}
                 <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
                     {/* Main SVG */}
-                    <IoCartOutline className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
+                    <IoCartOutline className="w-full h-[23px] text-prgcolor group-hover:text-primary"/>
                     <div className="text-prgcolor group-hover:text-primary transition">
                         Cart
                     </div>

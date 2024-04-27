@@ -23,6 +23,7 @@ const config: Config = {
                 'primary': "#4D7FB8",
                 'prgcolor': "#39393b",
                 'graycolor': "#828D9E",
+                'bordercolor': "#a1a1a1db",
             }
         },
     },
