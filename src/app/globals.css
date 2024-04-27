@@ -28,6 +28,13 @@ p {
     color: #39393B;
 }
 
+.whats_new textarea {
+    outline: none !important;
+    border: none !important;
+    background: transparent !important;
+    color: #39393B;
+}
+
 input {
     outline: none !important;
     background: #fafafa !important;

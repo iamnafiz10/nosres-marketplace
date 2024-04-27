@@ -1,5 +1,5 @@
 "use client";
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import useLoading from "@/app/useLoading";
 import Skeleton from "react-loading-skeleton";
 import useTitle from "@/app/useTitle";
@@ -17,6 +17,8 @@ import {SlideshowLightbox} from 'lightbox.js-react'
 import 'lightbox.js-react/dist/index.css'
 import SliderOneImg from '@/../public/assets/images/slider1.jpg';
 import SliderTwoImg from '@/../public/assets/images/slider2.jpg';
+import {Modal} from "flowbite-react";
+import {FaAngleDown} from "react-icons/fa6";
 
 export default function Home() {
     const loading = useLoading();
@@ -116,7 +118,6 @@ export default function Home() {
         setShowCommentEmojiThree(false);
     };
 
-
     // Comment Reply One
     const [showCommentReplyOne, setShowCommentReplyOne] = useState(false);
     const toggleCommentReplyOne = () => {
@@ -189,6 +190,58 @@ export default function Home() {
     const toggleComments = () => {
         setShowLoadComments(true); // Always show comments when the button is clicked
     };
+
+
+    // Popup Start post Emoji Input
+    const [showStartPostEmoji, setShowStartPostEmoji] = useState(false);
+    const [startPostText, setStartPostText] = useState("");
+    const addStartPostEmoji = (e: { unified: string }) => {
+        const hexCodePoint = e.unified.toLowerCase(); // Convert to lowercase for consistency
+        // Check if hexCodePoint is a valid hexadecimal Unicode code point
+        if (/^[0-9a-f]+$/.test(hexCodePoint)) {
+            const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
+            if (!isNaN(codePoint)) {
+                const emoji = String.fromCodePoint(codePoint);
+                setStartPostText(startPostText + emoji);
+            } else {
+                console.error("Invalid Unicode code point:", e.unified);
+            }
+        } else {
+            console.error("Invalid Unicode code point:", e.unified);
+        }
+    };
+    // Function to handle OutSide Click
+    const modalRef = useRef(null);
+    const emojiPickerRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: { target: any; }) => {
+            if (
+                modalRef.current &&
+                // @ts-ignore
+                !modalRef.current.contains(event.target) &&
+                showStartPostEmoji &&
+                emojiPickerRef.current &&
+                // @ts-ignore
+                !emojiPickerRef.current.contains(event.target)
+            ) {
+                setShowStartPostEmoji(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showStartPostEmoji]);
+
+    //-------------------------- Popup Area ------------------//
+    // Name change popup
+    const [openStartPostModal, setOpenStartPostModal] = useState<boolean>(false);
+    const handleWritePostPopUpClickCancel = () => {
+        setOpenStartPostModal(false)
+        setStartPostText("")
+    }
     return (
         <>
             <section id="home-page-section">
@@ -205,6 +258,8 @@ export default function Home() {
                                             <div className="w-full flex items-center whats_new">
                                                 <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 <input
+                                                    onClick={() => setOpenStartPostModal(true)}
+                                                    readOnly
                                                     className="mt-1 rounded w-full py-1 px-1 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
                                                     type="text"
                                                     placeholder="What’s new, John?"
@@ -1470,6 +1525,94 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+
+                {/*----------------------- Modal Show Area  ---------------*/}
+                {/* Start Post Pop-Up Start */}
+                <Modal size="lg" dismissible show={openStartPostModal}
+                       onClose={() => setOpenStartPostModal(false)}>
+                    <Modal.Header>
+                        <h4 className="text-[16px]">Start a Post</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div ref={modalRef} className="modal_body">
+                            <div className="flex items-center gap-1">
+                                <HiUserCircle size={50} className="text-graycolor"/>
+                                <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
+
+                                <div className="dropdown_menu ml-2">
+                                    <button type='button' className="py-1 px-6 relative text-[14px] bg-gray-100">
+                                        <IoMdGlobe size={15}
+                                                   className="text-primary absolute left-1 top-1/2 transform -translate-y-1/2"/>
+                                        Anyone
+                                        <FaAngleDown size={13}
+                                                     className="text-prgcolor absolute right-1 top-1/2 transform -translate-y-1/2"/>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="mt-4 px-0">
+                                <div className="whats_new">
+                                    <textarea
+                                        rows={2}
+                                        value={startPostText}
+                                        onChange={(e) => setStartPostText(e.target.value)}
+                                        className="rounded w-full py-1 px-0 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                        placeholder="What’s new, John?">
+                                    </textarea>
+                                </div>
+
+                                <div className="flex items-center gap-2 mt-2">
+                                    <div className="cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                             fill="#4D7FB8"
+                                             className="w-6 h-6">
+                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                  clipRule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <div onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
+                                         className="cursor-pointer"
+                                    >
+                                        <GoSmiley
+                                            size={20} className="text-graycolor hover:text-primary"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={handleWritePostPopUpClickCancel}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartPostModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">Save
+                            </button>
+
+                            {/* Start Post Reactions */}
+                            {showStartPostEmoji &&
+                                <div ref={emojiPickerRef}
+                                     className="comment_emoji z-[999] fixed top-[60%] lg:top-1/2 right-4 lg:right-20 transform -translate-y-1/2">
+                                    <Picker
+                                        data={data}
+                                        theme="light"
+                                        perLine={8}
+                                        emojiSize={22}
+                                        onEmojiSelect={addStartPostEmoji}
+                                        maxFrequentRows={0}
+                                        maxEmojiRows={2}
+                                    />
+                                </div>
+                            }
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Post Pop-Up End */}
             </section>
         </>
     );
