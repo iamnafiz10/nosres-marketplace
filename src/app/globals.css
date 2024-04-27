@@ -30,9 +30,6 @@ p {
 
 input {
     outline: none !important;
-}
-
-.search-bar input {
     background: #fafafa !important;
 }
 

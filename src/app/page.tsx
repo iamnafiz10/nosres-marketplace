@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductImg from '@/../public/assets/images/product-1.png';
 import PostImg from '@/../public/assets/images/post-image.jpg';
-import {GoComment, GoHeart, GoHeartFill, GoReply, GoSmiley, GoSync} from "react-icons/go";
+import {GoComment, GoHeart, GoHeartFill, GoHistory, GoPackage, GoReply, GoSmiley, GoSync} from "react-icons/go";
 import {IoMdGlobe} from "react-icons/io";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
@@ -1316,16 +1316,7 @@ export default function Home() {
                             <div className="box bg-white px-4 py-4 rounded">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                        <svg
-                                            className="w-4 h-4"
-                                            fill="#6B7280"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                            <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75
-                                        0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896
-                                        6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1
-                                        .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7
-                                        8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
-                                        </svg>
+                                        <GoHistory className="w-[18px] h-[18px] text-[#6B7280]"/>
                                         <h4 className="text-[14px] font-semibold text-prgcolor">
                                             Recently Viewed Items
                                         </h4>
@@ -1379,13 +1370,7 @@ export default function Home() {
 
                             <div className="box mt-4 bg-white px-4 py-4 rounded">
                                 <div className="flex gap-2 items-center">
-                                    <svg
-                                        className="w-[19px] h-[19px] transition duration-75 group-hover:fill-primary"
-                                        fill="#6B7280"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                        <path
-                                            d="m8.878.392 5.25 3.045c.54.314.872.89.872 1.514v6.098a1.75 1.75 0 0 1-.872 1.514l-5.25 3.045a1.75 1.75 0 0 1-1.756 0l-5.25-3.045A1.75 1.75 0 0 1 1 11.049V4.951c0-.624.332-1.201.872-1.514L7.122.392a1.75 1.75 0 0 1 1.756 0ZM7.875 1.69l-4.63 2.685L8 7.133l4.755-2.758-4.63-2.685a.248.248 0 0 0-.25 0ZM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432Zm6.25 8.271 4.625-2.683a.25.25 0 0 0 .125-.216V5.677L8.75 8.432Z"></path>
-                                    </svg>
+                                    <GoPackage className="w-5 h-5 text-[#6B7280]"/>
                                     <h4 className="relative text-[14px] font-semibold">
                                         Sell on Nosres
                                         <span
