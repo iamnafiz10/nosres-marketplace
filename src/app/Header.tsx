@@ -311,7 +311,7 @@ function Header() {
                         <div className="col-span-6 nav hidden lg:flex items-center justify-end text-[12px] gap-3">
                             {/* Home */}
                             <Link href='/'
-                                  className="group px-[10px] flex flex-col items-center border-b-2 border-primary">
+                                  className="w-[80px] group flex flex-col items-center border-b-2 border-primary">
                                 <GoHomeFill className="w-full h-[22px] text-primary"/>
                                 <div
                                     className="text-primary group-hover:text-primary transition">
@@ -321,7 +321,7 @@ function Header() {
 
                             {/* Cart */}
                             <Link href='#'
-                                  className="group px-[10px] flex flex-col items-center">
+                                  className="w-[80px] group flex flex-col items-center">
                                 {/* Main SVG */}
                                 <IoCartOutline className="w-full h-[24px] text-prgcolor group-hover:text-primary"/>
                                 <div
@@ -332,7 +332,7 @@ function Header() {
 
                             {/* Message */}
                             <Link href='#'
-                                  className="group px-[10px] flex flex-col items-center">
+                                  className="w-[80px] group flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
                                     <HiOutlineChatBubbleLeft
@@ -350,7 +350,7 @@ function Header() {
 
                             {/* Notification */}
                             <Link href='#'
-                                  className="group px-[10px] flex flex-col items-center">
+                                  className="w-[80px] group flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
                                     <GoBell className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
@@ -366,9 +366,9 @@ function Header() {
                             </Link>
 
                             {/* Business Icon */}
-                            <div onClick={handleBusinessClick}
+                            <Link href='#' onClick={handleBusinessClick}
                                  ref={dropdownBusinessRef}
-                                 className="last_business_icon cursor-pointer px-[10px] flex flex-col items-center">
+                                 className="w-[80px] last_business_icon cursor-pointer flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     {/* Main SVG */}
                                     <div className="relative">
@@ -451,12 +451,12 @@ function Header() {
                                     className={`profile_text transition ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}>
                                     For Business
                                 </div>
-                            </div>
+                            </Link>
 
                             {/* User Icon */}
-                            <div onClick={handleAccountClick}
+                            <Link href='#' onClick={handleAccountClick}
                                  ref={dropdownAccountRef}
-                                 className="last_user_icon cursor-pointer px-[10px] flex flex-col items-center">
+                                 className="w-[80px] last_user_icon cursor-pointer flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     <div
                                         className="text-center cursor-pointer text-prgcolor transition relative">
@@ -604,7 +604,7 @@ function Header() {
                                     className={`profile_text transition ${isAccountVisible ? 'text-primary' : 'text-prgcolor'}`}>
                                     Profile
                                 </div>
-                            </div>
+                            </Link>
                         </div>
 
                         {/* Mobile/Tab Icons */}
