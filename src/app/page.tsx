@@ -48,11 +48,34 @@ export default function Home() {
             console.error("Invalid Unicode code point:", e.unified);
         }
     };
+
     // Function to handle OutSide Click
     const handleCommentEmojiClickOutside = () => {
         setShowCommentEmoji(false);
     };
 
+    const [pickerPositionClass, setPickerPositionClass] = useState('');
+    useEffect(() => {
+        if (showCommentEmoji) {
+            updatePickerPosition()
+        }
+    }, [showCommentEmoji])
+    // Function to update picker position based on its position relative to the window inner height
+    const updatePickerPosition = () => {
+        const pickerElement = document.getElementById('comment_emoji_main');
+        if (pickerElement) {
+            const pickerRect = pickerElement.getBoundingClientRect();
+            const pickerCenterY = pickerRect.top + pickerRect.height / 2;
+            const windowHeight = window.innerHeight;
+            if (pickerCenterY < windowHeight / 2) {
+                // If picker is in the upper half of the window
+                setPickerPositionClass('top-[100%]');
+            } else {
+                // If picker is in the lower half of the window
+                setPickerPositionClass('bottom-[100%]');
+            }
+        }
+    };
 
     // Comment Emoji With Display In The Input (One)
     const [showCommentEmojiOne, setShowCommentEmojiOne] = useState(false);
@@ -75,6 +98,29 @@ export default function Home() {
     // Function to handle OutSide Click
     const handleCommentEmojiClickOutsideOne = () => {
         setShowCommentEmojiOne(false);
+    };
+
+    const [pickerPositionClassOne, setPickerPositionClassOne] = useState('');
+    useEffect(() => {
+        if (showCommentEmojiOne) {
+            updatePickerPositionOne()
+        }
+    }, [showCommentEmojiOne])
+    // Function to update picker position based on its position relative to the window inner height
+    const updatePickerPositionOne = () => {
+        const pickerElement = document.getElementById('comment_emoji_one');
+        if (pickerElement) {
+            const pickerRect = pickerElement.getBoundingClientRect();
+            const pickerCenterY = pickerRect.top + pickerRect.height / 2;
+            const windowHeight = window.innerHeight;
+            if (pickerCenterY < windowHeight / 2) {
+                // If picker is in the upper half of the window
+                setPickerPositionClassOne('top-[100%]');
+            } else {
+                // If picker is in the lower half of the window
+                setPickerPositionClassOne('bottom-[100%]');
+            }
+        }
     };
 
     // Comment Emoji With Display In The Input (Two)
@@ -100,6 +146,29 @@ export default function Home() {
         setShowCommentEmojiTwo(false);
     };
 
+    const [pickerPositionClassTwo, setPickerPositionClassTwo] = useState('');
+    useEffect(() => {
+        if (showCommentEmojiTwo) {
+            updatePickerPositionTwo()
+        }
+    }, [showCommentEmojiTwo])
+    // Function to update picker position based on its position relative to the window inner height
+    const updatePickerPositionTwo = () => {
+        const pickerElement = document.getElementById('comment_emoji_two');
+        if (pickerElement) {
+            const pickerRect = pickerElement.getBoundingClientRect();
+            const pickerCenterY = pickerRect.top + pickerRect.height / 2;
+            const windowHeight = window.innerHeight;
+            if (pickerCenterY < windowHeight / 2) {
+                // If picker is in the upper half of the window
+                setPickerPositionClassTwo('top-[100%]');
+            } else {
+                // If picker is in the lower half of the window
+                setPickerPositionClassTwo('bottom-[100%]');
+            }
+        }
+    };
+
     // Comment Emoji With Display In The Input (Three)
     const [showCommentEmojiThree, setShowCommentEmojiThree] = useState(false);
     const [commentTextThree, setCommentTextThree] = useState("");
@@ -121,6 +190,29 @@ export default function Home() {
     // Function to handle OutSide Click
     const handleCommentEmojiClickOutsideThree = () => {
         setShowCommentEmojiThree(false);
+    };
+
+    const [pickerPositionClassThree, setPickerPositionClassThree] = useState('');
+    useEffect(() => {
+        if (showCommentEmojiThree) {
+            updatePickerPositionThree()
+        }
+    }, [showCommentEmojiThree])
+    // Function to update picker position based on its position relative to the window inner height
+    const updatePickerPositionThree = () => {
+        const pickerElement = document.getElementById('comment_emoji_three');
+        if (pickerElement) {
+            const pickerRect = pickerElement.getBoundingClientRect();
+            const pickerCenterY = pickerRect.top + pickerRect.height / 2;
+            const windowHeight = window.innerHeight;
+            if (pickerCenterY < windowHeight / 2) {
+                // If picker is in the upper half of the window
+                setPickerPositionClassThree('top-[100%]');
+            } else {
+                // If picker is in the lower half of the window
+                setPickerPositionClassThree('bottom-[100%]');
+            }
+        }
     };
 
     // Comment Reply One
@@ -585,14 +677,17 @@ export default function Home() {
                                                                       clipRule="evenodd"/>
                                                             </svg>
                                                         </div>
-                                                        <GoSmiley onClick={() => setShowCommentEmoji(!showCommentEmoji)}
+                                                        <GoSmiley onClick={() => {
+                                                            setShowCommentEmoji(!showCommentEmoji)
+                                                        }}
                                                                   size={20}
                                                                   className="cursor-pointer text-graycolor hover:text-primary"/>
                                                     </div>
 
                                                     {/* Post Reactions */}
                                                     {showCommentEmoji &&
-                                                        <div className="comment_emoji absolute top-[100%] right-0">
+                                                        <div id="comment_emoji_main"
+                                                             className={`comment_emoji_main absolute ${pickerPositionClass} right-0`}>
                                                             <Picker
                                                                 data={data}
                                                                 theme="light"
@@ -717,7 +812,8 @@ export default function Home() {
                                                                         {/* Post Reactions */}
                                                                         {showCommentEmojiOne &&
                                                                             <div
-                                                                                className="comment_emoji absolute top-[100%] right-0">
+                                                                                id="comment_emoji_one"
+                                                                                className={`comment_emoji_one absolute ${pickerPositionClassOne} right-0`}>
                                                                                 <Picker
                                                                                     data={data}
                                                                                     theme="light"
@@ -842,7 +938,8 @@ export default function Home() {
                                                                 {/* Post Reactions */}
                                                                 {showCommentEmojiTwo &&
                                                                     <div
-                                                                        className="comment_emoji absolute top-[100%] right-0">
+                                                                        id="comment_emoji_two"
+                                                                        className={`comment_emoji_two absolute ${pickerPositionClassTwo} right-0`}>
                                                                         <Picker
                                                                             data={data}
                                                                             theme="light"
@@ -1026,7 +1123,8 @@ export default function Home() {
                                                                 {/* Post Reactions */}
                                                                 {showCommentEmojiThree &&
                                                                     <div
-                                                                        className="comment_emoji absolute top-[100%] right-0">
+                                                                        id="comment_emoji_three"
+                                                                        className={`comment_emoji_three absolute ${pickerPositionClassThree} right-0`}>
                                                                         <Picker
                                                                             data={data}
                                                                             theme="light"
@@ -1532,30 +1630,30 @@ export default function Home() {
                                 </div>
 
                                 <footer className="mt-4">
-                                    <ul className="flex items-center gap-2 text-gray-500 text-[12px]">
+                                    <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
                                         <li className="hover:text-primary">
                                             <Link href='#'>About Nosres</Link>
                                         </li>
                                         <li className="hover:text-primary">
-                                            <div>.</div>
+                                            <LuDot size={12}/>
                                         </li>
                                         <li className="hover:text-primary">
                                             <Link href='#'>Privacy</Link>
                                         </li>
                                         <li className="hover:text-primary">
-                                            <div>.</div>
+                                            <LuDot size={12}/>
                                         </li>
                                         <li className="hover:text-primary">
                                             <Link href='#'>Terms</Link>
                                         </li>
                                         <li className="hover:text-primary">
-                                            <div>.</div>
+                                            <LuDot size={12}/>
                                         </li>
                                         <li className="hover:text-primary">
                                             <Link href='#'>Careers</Link>
                                         </li>
                                         <li className="hover:text-primary">
-                                            <div>.</div>
+                                            <LuDot size={12}/>
                                         </li>
                                         <li className="hover:text-primary">
                                             <Link href='#'>Support</Link>
@@ -1580,7 +1678,13 @@ export default function Home() {
                        }}
                        className="modal_cntrl"
                        onClose={() => setOpenStartPostModal(false)}>
-                    <Modal.Header>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
                         <h4 className="text-[16px]">Start a Post</h4>
                     </Modal.Header>
                     <Modal.Body>
@@ -1590,9 +1694,10 @@ export default function Home() {
                                 <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
 
                                 <div onClick={() => setOpenStartAudienceModal(true)} className="dropdown_menu ml-2">
-                                    <button type='button' className="py-1 px-6 relative text-[14px] bg-gray-100">
+                                    <button type='button'
+                                            className="py-1 px-6 rounded relative text-[14px] bg-gray-100">
                                         <IoMdGlobe size={15}
-                                                   className="text-primary absolute left-1 top-1/2 transform -translate-y-1/2"/>
+                                                   className="text-graycolor absolute left-1 top-1/2 transform -translate-y-1/2"/>
                                         Anyone
                                         <FaAngleDown size={13}
                                                      className="text-prgcolor absolute right-1 top-1/2 transform -translate-y-1/2"/>
@@ -1637,11 +1742,11 @@ export default function Home() {
                     <Modal.Footer>
                         <div className="relative flex w-full items-center justify-between">
                             <button onClick={handleWritePostPopUpClickCancel}
-                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
                             <button onClick={() => setOpenStartPostModal(false)}
-                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Post
                             </button>
 
@@ -1673,7 +1778,13 @@ export default function Home() {
                        }}
                        className="modal_cntrl"
                 >
-                    <Modal.Header>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
                         <h4 className="text-[16px]">Upload photos</h4>
                     </Modal.Header>
                     <Modal.Body>
@@ -1764,7 +1875,13 @@ export default function Home() {
                        }}
                        className="modal_cntrl"
                        onClose={() => setOpenStartAudienceModal(false)}>
-                    <Modal.Header>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
                         <h4 className="text-[16px]">Select Your Audience</h4>
                     </Modal.Header>
                     <Modal.Body>
