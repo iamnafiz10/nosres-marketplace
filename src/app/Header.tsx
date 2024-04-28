@@ -205,7 +205,7 @@ function Header() {
                             <input
                                 ref={inputRef}
                                 type="text"
-                                className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpanded ? 'w-60 xl:w-80' : 'w-52'}`}
+                                className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpanded ? 'w-60 xl:w-72' : 'w-52'}`}
                                 placeholder="Search Marketplace"
                                 value={searchText}
                                 onChange={handleChange}
@@ -223,7 +223,7 @@ function Header() {
                             <div id="search_dropdown_menu"
                                  className={`search-dropdown-menu ${isSearchExpanded ? 'h-[180px] pt-2 opacity-100' : 'opacity-0 h-0'} overflow-hidden top-6 z-50 absolute text-gray-700 bg-white rounded shadow border`}>
                                 <div className="container p-0">
-                                    <div className="col px-3 pl-[14px] flex items-center pb-2 w-60 xl:w-80">
+                                    <div className="col px-3 pl-[14px] flex items-center pb-2 w-60 xl:w-72">
                                         <div className="flex items-center gap-3 justify-between w-full">
                                             <div className="left flex items-center gap-1">
                                                 <CiClock2 size={20} className="text-primary"/>
@@ -621,7 +621,7 @@ function Header() {
                                     <input
                                         ref={inputRefMobile}
                                         type="text"
-                                        className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpandedMobile ? 'w-52 xl:w-80' : 'w-52'}`}
+                                        className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpandedMobile ? 'w-52 xl:w-72' : 'w-52'}`}
                                         placeholder="Search Marketplace"
                                         value={searchTextMobile}
                                         onChange={handleChangeMobile}
