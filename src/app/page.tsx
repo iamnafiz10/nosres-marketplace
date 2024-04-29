@@ -565,6 +565,22 @@ export default function Home() {
         };
     }, []);
 
+    // 👇️Cross icon click to hide Ad-Post
+    // Post Hide Hidden Box Coming For ("Ad")
+    const [currentAdBox, setCurrentAdBox] = useState('post_box');
+    const toggleAdBoxVisibility = () => {
+        setCurrentAdBox(currentAdBox === 'post_box' ? 'add_hidden_box' : 'post_box');
+    };
+    // Feedback Ad / Report Ad popup
+    const [openFeedbackAdModal, setOpenFeedbackAdModal] = useState<boolean>(false);
+    const [openReportAdModal, setOpenReportAdModal] = useState<boolean>(false);
+    const [openReportAdSubmitModal, setOpenReportAdSubmitModal] = useState<boolean>(false);
+    const handleAdSubmitButtonClick = () => {
+        setOpenReportAdSubmitModal(false);
+        setOpenReportAdModal(false);
+        // Hide the add_hidden_box div and show the remove_success div
+        setCurrentAdBox('remove_success');
+    }
     return (
         <>
             <section id="home-page-section">
@@ -622,201 +638,289 @@ export default function Home() {
                             </div>
 
                             {/* Post Box */}
-                            <div className="post_box_wrap">
-                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
-                                    <div className="flex items-center justify-between">
+                            {currentAdBox === 'post_box' && (
+                                <div className="post_box_wrap">
+                                    <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                        <div className="flex items-center justify-between">
+                                            {loading ? (
+                                                <>
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Link href='#' className="flex items-center gap-1">
+                                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                        <div className="leading-[17px]">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                Sony Inc.
+                                                            </h4>
+                                                            <span
+                                                                className="text-[12px] text-graycolor font-normal">Sponsored</span>
+                                                        </div>
+                                                    </Link>
+
+                                                    <div className="flex items-center justify-end text-end">
+                                                        <div onClick={handleAddDotClick}
+                                                             ref={AddDotDropdownRef}
+                                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClick ? 'bg-gray-100' : ''}`}>
+                                                            <svg
+                                                                className="w-3 h-3"
+                                                                fill="#828D9E"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                            </svg>
+
+                                                            {addDotClick &&
+                                                                <div
+                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                    <div className="container py-2">
+                                                                        <div className="space-y-1 text-[14px]">
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                    <path
+                                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                    <path
+                                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                    <line x1="2" x2="22" y1="2"
+                                                                                          y2="22"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Hide ad
+                                                                                </h4>
+                                                                            </Link>
+
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                    <line x1="4" x2="4" y1="22"
+                                                                                          y2="15"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Report ad
+                                                                                </h4>
+                                                                            </Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+
+                                                        <div onClick={toggleAdBoxVisibility}
+                                                             className="cursor-pointer cross_icon py-2 px-2 rounded-full hover:bg-gray-100">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                fill="#828D9E"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                            0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                            1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                            0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
                                         {loading ? (
                                             <>
-                                                <div className="flex items-center justify-start gap-2 w-full">
-                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
-                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
-                                                </div>
+                                                <Skeleton height={30} count={1}/>
                                             </>
                                         ) : (
                                             <>
-                                                <Link href='#' className="flex items-center gap-1">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                    <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                            Sony Inc.
-                                                        </h4>
-                                                        <span
-                                                            className="text-[12px] text-graycolor font-normal">Sponsored</span>
-                                                    </div>
-                                                </Link>
-
-                                                <div className="flex items-center justify-end text-end">
-                                                    <div onClick={handleAddDotClick}
-                                                         ref={AddDotDropdownRef}
-                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClick ? 'bg-gray-100' : ''}`}>
-                                                        <svg
-                                                            className="w-3 h-3"
-                                                            fill="#828D9E"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                        </svg>
-
-                                                        {addDotClick &&
-                                                            <div
-                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                                <div className="container py-2">
-                                                                    <div className="space-y-1 text-[14px]">
-                                                                        <Link href='#'
-                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path
-                                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                                <path
-                                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                                <path
-                                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                                <line x1="2" x2="22" y1="2" y2="22"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Hide ad
-                                                                            </h4>
-                                                                        </Link>
-
-                                                                        <Link href='#'
-                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                                strokeWidth="1.5" strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                                <line x1="4" x2="4" y1="22" y2="15"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Report ad
-                                                                            </h4>
-                                                                        </Link>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                    </div>
-
-                                                    <div
-                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                        <svg
-                                                            className="w-4 h-4"
-                                                            fill="#828D9E"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
-                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
-                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
-                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                                        </svg>
-                                                    </div>
-                                                </div>
+                                                <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                    The SRS-XB100 speaker provides powerful, clear,
+                                                    expansive sound in a small, portable and durable
+                                                    body. Despite its size... <button type='button'
+                                                                                      className="text-primary">See
+                                                    more</button>
+                                                </h4>
                                             </>
                                         )}
+
                                     </div>
-
-                                    {loading ? (
-                                        <>
-                                            <Skeleton height={30} count={1}/>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <h4 className="mt-3 text-[14px] text-prgcolor">
-                                                The SRS-XB100 speaker provides powerful, clear,
-                                                expansive sound in a small, portable and durable
-                                                body. Despite its size... <button type='button'
-                                                                                  className="text-primary">See
-                                                more</button>
-                                            </h4>
-                                        </>
-                                    )}
-
-                                </div>
-                                <div className="post_image mt-0">
-                                    {loading ? (
-                                        <>
-                                            <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
-                                                <Skeleton height={200} count={1}/>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Image src={PostImg} className="w-full h-56" alt="PostImg"/>
-
-                                            <div
-                                                className="flex items-center justify-between bg-gray-200 bg-opacity-50 px-4 py-2 mt-0">
-                                                <h4 className="text-[14px] text-prgcolor font-[500]">Sony SRS-XB13B</h4>
-                                                <button type="button"
-                                                        className="py-2 px-4 rounded border text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
-                                                    Learn More
-                                                </button>
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
-                                {/* Post Icons */}
-                                <div className="post_icons mt-0">
-                                    <div
-                                        className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
+                                    <div className="post_image mt-0">
                                         {loading ? (
                                             <>
                                                 <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                    <Skeleton height={200} count={1}/>
                                                     <Skeleton height={30} count={1}/>
                                                 </div>
                                             </>
                                         ) : (
                                             <>
-                                                <div className="flex items-center gap-1">
-                                                    <div className="cursor-pointer"
-                                                         onClick={() => setIsClickedLikePostOne(!isClickedLikePostOne)}>
-                                                        {isClickedLikePostOne ? (
-                                                            <GoHeartFill
-                                                                className="w-4 h-4 text-primary hover:text-primary"/>
-                                                        ) : (
-                                                            <GoHeart
-                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                        )}
-                                                    </div>
-                                                    <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
-                                                    </div>
-                                                </div>
+                                                <Image src={PostImg} className="w-full h-56" alt="PostImg"/>
 
-                                                <div className="flex items-center gap-1">
-                                                    <div className="cursor-pointer">
-                                                        <GoComment
-                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                    </div>
-                                                    <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div className="flex items-center gap-1">
-                                                    <div className="cursor-pointer">
-                                                        <GoSync
-                                                            className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
-                                                    </div>
-                                                    <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
-                                                    </div>
+                                                <div
+                                                    className="flex items-center justify-between bg-gray-200 bg-opacity-50 px-4 py-2 mt-0">
+                                                    <h4 className="text-[14px] text-prgcolor font-[500]">Sony
+                                                        SRS-XB13B</h4>
+                                                    <button type="button"
+                                                            className="py-2 px-4 rounded border text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                                        Learn More
+                                                    </button>
                                                 </div>
                                             </>
                                         )}
                                     </div>
+                                    {/* Post Icons */}
+                                    <div className="post_icons mt-0">
+                                        <div
+                                            className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
+                                            {loading ? (
+                                                <>
+                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                        <Skeleton height={30} count={1}/>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => setIsClickedLikePostOne(!isClickedLikePostOne)}>
+                                                            {isClickedLikePostOne ? (
+                                                                <GoHeartFill
+                                                                    className="w-4 h-4 text-primary hover:text-primary"/>
+                                                            ) : (
+                                                                <GoHeart
+                                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                            )}
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer">
+                                                            <GoComment
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer">
+                                                            <GoSync
+                                                                className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
+
+                            {/* Come Ad Hidden Box */}
+                            {currentAdBox === 'add_hidden_box' && (
+                                <div className="add_hidden_box">
+                                    <div className="box mt-4 bg-white px-4 py-4 rounded">
+                                        <div className="flex items-center justify-between pb-3">
+                                            <div className="content">
+                                                <h4 className="text-[16px] text-prgcolor font-[500]">
+                                                    Ad hidden from your feed
+                                                </h4>
+                                                <h4 className="text-[14px] text-graycolor">
+                                                    Share more details so we can personalize your feed.
+                                                </h4>
+                                            </div>
+                                            <div className="button_right">
+                                                <button onClick={toggleAdBoxVisibility} type="button"
+                                                        className="py-2 px-6 rounded text-primary text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
+                                                    Undo
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr/>
+
+                                        <div onClick={() => setOpenFeedbackAdModal(true)}
+                                             className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                    strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path
+                                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                    <path d="M13 8H7"/>
+                                                    <path d="M17 12H7"/>
+                                                </svg>
+                                            </div>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Provide feedback
+                                                </h4>
+                                                <h4 className="text-[14px] text-graycolor">
+                                                    Share more details so we can personalize your feed
+                                                </h4>
+                                            </div>
+                                        </div>
+
+                                        <div onClick={() => setOpenReportAdModal(true)}
+                                             className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                            <div className="icon mt-1">
+                                                <svg
+                                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24
+                                                24" fill="none" stroke="#6B7280"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                    <line x1="4" x2="4" y1="22"
+                                                          y2="15"/>
+                                                </svg>
+                                            </div>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Report ad
+                                                </h4>
+                                                <h4 className="text-[14px] text-graycolor">
+                                                    Share more details so we can personalize your feed.
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* remove_success div */}
+                            {currentAdBox === 'remove_success' && (
+                                <div className="remove_success">
+                                    <h4>You have submitted successfully!</h4>
+                                </div>
+                            )}
 
                             {/* Post Box */}
                             <div className="post_box_wrap">
@@ -2651,6 +2755,452 @@ export default function Home() {
                     </Modal.Footer>
                 </Modal>
                 {/* Start Audience Pop-Up End */}
+
+                {/* Start FeedbackAd Pop-Up Start */}
+                <Modal size="lg"
+                       show={openFeedbackAdModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenFeedbackAdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Share Feedback</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share why you prefer not to see this ad. Your feedbackis valuable
+                                for improving your overall experience.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It’s offensive and inappropriate.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It looks suspicious.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It’s annoying or not interesting
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                I keep seeing the same thing.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It’s not relevant to me.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenFeedbackAdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenFeedbackAdModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start FeedbackAd Pop-Up End */}
+
+
+                {/* Start ReportAdd Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Ad</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this ad. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harassment
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Bullying, verbal abuse, threats, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Hate speech
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Encouraging derogatory remarks targeting a particular group.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harmful behavior
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Spreading false information or conspiracy theories that incite fear.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Violence
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Promoting violence, including self-harm or intending harm to others.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(6)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={6}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Adult content
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Displaying nudity or sexual content.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(7)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={7}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Intellectual property infringement
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Using someone else’s creative work without authorization.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(8)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={8}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Defamation
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Damaging the good reputation of someone.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Next
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Pop-Up End */}
+
+                {/* Start ReportAdd Submit Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Ad</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this ad. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                            <h4 className="text-[14px] text-prgcolor mt-4">
+                                Elaborate on your report (optional)
+                            </h4>
+
+                            <div className="box mt-2 border rounded p-4">
+                                <h4 className="text-[14px] text-graycolor">
+                                    Please provide further details about your report. Your feedback plays a
+                                    crucial role in creating a safer and more trustworthy community for
+                                    everyone
+                                </h4>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdSubmitModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={handleAdSubmitButtonClick}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Submit Pop-Up End */}
             </section>
         </>
     );
