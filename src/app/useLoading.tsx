@@ -7,7 +7,7 @@ const useLoading = () => {
         // Simulate loading
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 0);
+        }, 500);
 
         return () => {
             clearTimeout(timer);
