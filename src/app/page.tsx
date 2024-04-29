@@ -665,23 +665,20 @@ export default function Home() {
                                                                         <Link href='#'
                                                                               className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                             <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:fill-primary"
-                                                                                fill="#6B7280"
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                 xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 16 16">
-                                                                                <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
-                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
-                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
-                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
-                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
-                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
-                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
-                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
-                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
-                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
-                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
-                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
-                                                                                3.5Z"></path>
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                stroke="#6B7280"
+                                                                                strokeWidth="1.5"
+                                                                                strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path
+                                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                <path
+                                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                <path
+                                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                <line x1="2" x2="22" y1="2" y2="22"/>
                                                                             </svg>
                                                                             <h4>
                                                                                 Hide ad
@@ -1079,23 +1076,21 @@ export default function Home() {
                                                                             <Link href='#'
                                                                                   className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
-                                                                                    className="w-4 h-4 transition duration-75 group-hover:fill-primary"
-                                                                                    fill="#6B7280"
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                     xmlns="http://www.w3.org/2000/svg"
-                                                                                    viewBox="0 0 16 16">
-                                                                                    <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
-                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
-                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
-                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
-                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
-                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
-                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
-                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
-                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
-                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
-                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
-                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
-                                                                                3.5Z"></path>
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                    <path
+                                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                    <path
+                                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                    <line x1="2" x2="22" y1="2"
+                                                                                          y2="22"/>
                                                                                 </svg>
                                                                                 <h4>
                                                                                     Hide comment
@@ -1792,23 +1787,20 @@ export default function Home() {
                                                                     <Link href='#'
                                                                           className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                         <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:fill-primary"
-                                                                            fill="#6B7280"
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 16 16">
-                                                                            <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
-                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
-                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
-                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
-                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
-                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
-                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
-                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
-                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
-                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
-                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
-                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
-                                                                                3.5Z"></path>
+                                                                            viewBox="0 0 24 24" fill="none"
+                                                                            stroke="#6B7280"
+                                                                            strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                            <path
+                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                            <path
+                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                            <line x1="2" x2="22" y1="2" y2="22"/>
                                                                         </svg>
                                                                         <h4>
                                                                             Hide post
@@ -2028,23 +2020,20 @@ export default function Home() {
                                                                     <Link href='#'
                                                                           className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                         <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:fill-primary"
-                                                                            fill="#6B7280"
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 16 16">
-                                                                            <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
-                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
-                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
-                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
-                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
-                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
-                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
-                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
-                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
-                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
-                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
-                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
-                                                                                3.5Z"></path>
+                                                                            viewBox="0 0 24 24" fill="none"
+                                                                            stroke="#6B7280"
+                                                                            strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                            <path
+                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                            <path
+                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                            <line x1="2" x2="22" y1="2" y2="22"/>
                                                                         </svg>
                                                                         <h4>
                                                                             Hide ad
@@ -2113,23 +2102,20 @@ export default function Home() {
                                                         <Link href='#'
                                                               className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                             <svg
-                                                                className="w-4 h-4 transition duration-75 group-hover:fill-primary"
-                                                                fill="#6B7280"
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                 xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 16 16">
-                                                                <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
-                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
-                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
-                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
-                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
-                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
-                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
-                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
-                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
-                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
-                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
-                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
-                                                                                3.5Z"></path>
+                                                                viewBox="0 0 24 24" fill="none"
+                                                                stroke="#6B7280"
+                                                                strokeWidth="1.5"
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path
+                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                <path
+                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                <path
+                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                <line x1="2" x2="22" y1="2" y2="22"/>
                                                             </svg>
                                                             <h4>
                                                                 Hide this
@@ -2230,26 +2216,23 @@ export default function Home() {
                                                             <Link href='#'
                                                                   className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                 <svg
-                                                                    className="w-4 h-4 transition duration-75 group-hover:fill-primary"
-                                                                    fill="#6B7280"
+                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                     xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 16 16">
-                                                                    <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
-                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
-                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
-                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
-                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
-                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
-                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
-                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
-                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
-                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
-                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
-                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
-                                                                                3.5Z"></path>
+                                                                    viewBox="0 0 24 24" fill="none"
+                                                                    stroke="#6B7280"
+                                                                    strokeWidth="1.5"
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <path
+                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                    <path
+                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                    <path
+                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                    <line x1="2" x2="22" y1="2" y2="22"/>
                                                                 </svg>
                                                                 <h4>
-                                                                    Hide add
+                                                                    Hide ad
                                                                 </h4>
                                                             </Link>
 
@@ -2435,6 +2418,7 @@ export default function Home() {
                 </Modal>
                 {/* Start Post Pop-Up End */}
 
+                {/* Profile Picture Post Pop-Up Start */}
                 <Modal size="lg" show={openProfileImageModal}
                        onClose={() => setOpenProfileImageModal(false)}
                        style={{
@@ -2516,13 +2500,13 @@ export default function Home() {
                         <div className="flex w-full items-center justify-between">
                             <button
                                 onClick={handleCancelClick}
-                                className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded"
+                                className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded"
                             >
                                 Back
                             </button>
                             <button
                                 onClick={handleSaveClick}
-                                className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded"
+                                className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded"
                             >
                                 Save
                             </button>
@@ -2641,11 +2625,11 @@ export default function Home() {
                     <Modal.Footer>
                         <div className="flex w-full items-center justify-between">
                             <button onClick={() => setOpenStartAudienceModal(false)}
-                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Back
                             </button>
                             <button onClick={() => setOpenStartAudienceModal(false)}
-                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">Save
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">Save
                             </button>
 
                             {/* Start Post Reactions */}
