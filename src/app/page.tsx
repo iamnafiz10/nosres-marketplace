@@ -379,6 +379,192 @@ export default function Home() {
         setValue(newValue);
     };
 
+
+    // 3 DOTS Dropdowns
+    // 👇️ Add 3 dots (Right Side)
+    const [addDotRightSideClick, setAddDotRightSideClick] = useState(false);
+    const AddDotRightSideDropdownRef = useRef(null);
+    const handleAddDotRightSideClick = () => {
+        setAddDotRightSideClick(!addDotRightSideClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (AddDotRightSideDropdownRef.current && !AddDotRightSideDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setAddDotRightSideClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Recent 3 dots (Right Side)
+    const [recentDotRightSideClick, setRecentDotRightSideClick] = useState(false);
+    const RecentDotRightSideDropdownRef = useRef(null);
+    const handleRecentDotRightSideClick = () => {
+        setRecentDotRightSideClick(!recentDotRightSideClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (RecentDotRightSideDropdownRef.current && !RecentDotRightSideDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setRecentDotRightSideClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Add 3 dots
+    const [addDotClick, setAddDotClick] = useState(false);
+    const AddDotDropdownRef = useRef(null);
+    const handleAddDotClick = () => {
+        setAddDotClick(!addDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (AddDotDropdownRef.current && !AddDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setAddDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Post 3 dots (Me)
+    const [postMeDotClick, setPostMeDotClick] = useState(false);
+    const PostMeDotDropdownRef = useRef(null);
+    const handlePostMeDotClick = () => {
+        setPostMeDotClick(!postMeDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (PostMeDotDropdownRef.current && !PostMeDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setPostMeDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Post 3 dots (Other)
+    const [postOtherDotClick, setPostOtherDotClick] = useState(false);
+    const PostOtherDotDropdownRef = useRef(null);
+    const handlePostOtherDotClick = () => {
+        setPostOtherDotClick(!postOtherDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (PostOtherDotDropdownRef.current && !PostOtherDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setPostOtherDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Comment 3 dots (Me)
+    const [commentMeDotClick, setCommentMeDotClick] = useState(false);
+    const CommentMeDotDropdownRef = useRef(null);
+    const handleCommentMeDotClick = () => {
+        setCommentMeDotClick(!commentMeDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (CommentMeDotDropdownRef.current && !CommentMeDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setCommentMeDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Comment 3 dots (Other)
+    const [commentOtherDotClick, setCommentOtherDotClick] = useState(false);
+    const CommentOtherDotDropdownRef = useRef(null);
+    const handleCommentOtherDotClick = () => {
+        setCommentOtherDotClick(!commentOtherDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (CommentOtherDotDropdownRef.current && !CommentOtherDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setCommentOtherDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Share 3 dots/Icon
+    const [shareDotClick, setShareDotClick] = useState(false);
+    const ShareDotDropdownRef = useRef(null);
+    const handleShareDotClick = () => {
+        setShareDotClick(!shareDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (ShareDotDropdownRef.current && !ShareDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setShareDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
     return (
         <>
             <section id="home-page-section">
@@ -386,11 +572,14 @@ export default function Home() {
                     <div className="grid grid-cols-1 lg:grid-cols-12">
                         <div className="col lg:col-span-2"></div>
                         <div className="col ml-0 lg:ml-10 lg:col-span-6">
-                            {loading ? (
-                                <Skeleton height={60} count={1}/>
-                            ) : (
-                                <>
-                                    <div className="write_post box py-2 px-4 bg-white rounded">
+                            <div className="write_post box py-2 px-4 bg-white rounded">
+                                {loading ? (
+                                    <div className="flex items-center justify-start gap-2 w-full">
+                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
                                         <div className="flex items-center justify-between gap-4">
                                             <div className="w-full flex items-center whats_new">
                                                 <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -428,117 +617,209 @@ export default function Home() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </>
-                            )}
+                                    </>
+                                )}
+                            </div>
 
                             {/* Post Box */}
-                            {loading ? (
-                                <>
-                                    <Skeleton height={300} count={1}/>
-                                </>
-                            ) : (
-                                <div className="post_box_wrap">
-                                    <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
-                                        <div className="flex items-center justify-between">
-                                            <Link href='#' className="flex items-center gap-1">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                <div className="leading-[17px]">
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                        Sony Inc.
-                                                    </h4>
-                                                    <span
-                                                        className="text-[12px] text-graycolor font-normal">Sponsored</span>
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        {loading ? (
+                                            <>
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                                 </div>
-                                            </Link>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Link href='#' className="flex items-center gap-1">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <div className="leading-[17px]">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            Sony Inc.
+                                                        </h4>
+                                                        <span
+                                                            className="text-[12px] text-graycolor font-normal">Sponsored</span>
+                                                    </div>
+                                                </Link>
 
-                                            <div className="flex items-center justify-end text-end">
-                                                <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                    <svg
-                                                        className="w-3 h-3"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                    </svg>
-                                                </div>
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div onClick={handleAddDotClick}
+                                                         ref={AddDotDropdownRef}
+                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClick ? 'bg-gray-100' : ''}`}>
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                        </svg>
 
-                                                <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                        {addDotClick &&
+                                                            <div
+                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                <div className="container py-2">
+                                                                    <div className="space-y-1 text-[14px]">
+                                                                        <Link href='#'
+                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                                                fill="#6B7280"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
+                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
+                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
+                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
+                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
+                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
+                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
+                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
+                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
+                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
+                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
+                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
+                                                                                3.5Z"></path>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Hide ad
+                                                                            </h4>
+                                                                        </Link>
+
+                                                                        <Link href='#'
+                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Report ad
+                                                                            </h4>
+                                                                        </Link>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+
+                                                    <div
+                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
                                                     0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
                                                     1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
                                                     0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                                    </svg>
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <h4 className="mt-3 text-[14px] text-prgcolor">
-                                            The SRS-XB100 speaker provides powerful, clear,
-                                            expansive sound in a small, portable and durable
-                                            body. Despite its size... <button type='button' className="text-primary">See
-                                            more</button>
-                                        </h4>
+                                            </>
+                                        )}
                                     </div>
-                                    <div className="post_image mt-0">
-                                        <Image src={PostImg} className="w-full h-56" alt="PostImg"/>
 
-                                        <div
-                                            className="flex items-center justify-between bg-gray-200 bg-opacity-50 px-4 py-2 mt-0">
-                                            <h4 className="text-[14px] text-prgcolor font-[500]">Sony SRS-XB13B</h4>
-                                            <button type="button"
-                                                    className="py-2 px-4 rounded border text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
-                                                Learn More
-                                            </button>
-                                        </div>
-                                    </div>
-                                    {/* Post Icons */}
-                                    <div className="post_icons mt-0">
-                                        <div
-                                            className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer"
-                                                     onClick={() => setIsClickedLikePostOne(!isClickedLikePostOne)}>
-                                                    {isClickedLikePostOne ? (
-                                                        <GoHeartFill
-                                                            className="w-4 h-4 text-primary hover:text-primary"/>
-                                                    ) : (
-                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                    )}
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
-                                                </div>
-                                            </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                The SRS-XB100 speaker provides powerful, clear,
+                                                expansive sound in a small, portable and durable
+                                                body. Despite its size... <button type='button'
+                                                                                  className="text-primary">See
+                                                more</button>
+                                            </h4>
+                                        </>
+                                    )}
 
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
-                                                </div>
+                                </div>
+                                <div className="post_image mt-0">
+                                    {loading ? (
+                                        <>
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                <Skeleton height={200} count={1}/>
+                                                <Skeleton height={30} count={1}/>
                                             </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Image src={PostImg} className="w-full h-56" alt="PostImg"/>
 
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoSync
-                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
-                                                </div>
+                                            <div
+                                                className="flex items-center justify-between bg-gray-200 bg-opacity-50 px-4 py-2 mt-0">
+                                                <h4 className="text-[14px] text-prgcolor font-[500]">Sony SRS-XB13B</h4>
+                                                <button type="button"
+                                                        className="py-2 px-4 rounded border text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                                    Learn More
+                                                </button>
                                             </div>
-                                        </div>
+                                        </>
+                                    )}
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    <div
+                                        className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
+                                        {loading ? (
+                                            <>
+                                                <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                    <Skeleton height={30} count={1}/>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer"
+                                                         onClick={() => setIsClickedLikePostOne(!isClickedLikePostOne)}>
+                                                        {isClickedLikePostOne ? (
+                                                            <GoHeartFill
+                                                                className="w-4 h-4 text-primary hover:text-primary"/>
+                                                        ) : (
+                                                            <GoHeart
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        )}
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoComment
+                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoSync
+                                                            className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
-                            )}
+                            </div>
 
                             {/* Post Box */}
                             <div className="post_box_wrap">
@@ -569,8 +850,9 @@ export default function Home() {
                                             </Link>
 
                                             <div className="flex items-center justify-end text-end">
-                                                <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                <div onClick={handlePostMeDotClick}
+                                                     ref={PostMeDotDropdownRef}
+                                                     className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
                                                     <svg
                                                         className="w-3 h-3"
                                                         fill="#828D9E"
@@ -578,6 +860,55 @@ export default function Home() {
                                                         <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                     0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                     </svg>
+                                                    {postMeDotClick &&
+                                                        <div
+                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                            <div className="container py-2">
+                                                                <div className="space-y-1 text-[14px]">
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M17 3a2.85 2.83 0 1 1
+                                                                            4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                                                            <path d="m15 5 4 4"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Edit post
+                                                                        </h4>
+                                                                    </Link>
+
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M3 6h18"/>
+                                                                            <path
+                                                                                d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                            2 1 2 2v2"/>
+                                                                            <line x1="10" x2="10" y1="11" y2="17"/>
+                                                                            <line x1="14" x2="14" y1="11"
+                                                                                  y2="17"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Delete post
+                                                                        </h4>
+                                                                    </Link>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </div>
 
                                                 <div
@@ -729,15 +1060,96 @@ export default function Home() {
                                                             </h4>
                                                         </div>
 
-                                                        <div
-                                                            className="cursor-pointer py-2 px-2 rounded-full hover:bg-white">
+                                                        <div onClick={handleCommentMeDotClick}
+                                                             ref={CommentMeDotDropdownRef}
+                                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-white ${commentMeDotClick ? 'bg-gray-100' : ''}`}>
                                                             <svg
                                                                 className="w-3 h-3"
                                                                 fill="#828D9E"
                                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                                                                 <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                             </svg>
+
+                                                            {commentMeDotClick &&
+                                                                <div
+                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                    <div className="container py-2">
+                                                                        <div className="space-y-1 text-[14px]">
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                                                    fill="#6B7280"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 16 16">
+                                                                                    <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
+                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
+                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
+                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
+                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
+                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
+                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
+                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
+                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
+                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
+                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
+                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
+                                                                                3.5Z"></path>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Hide comment
+                                                                                </h4>
+                                                                            </Link>
+
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                    24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M3 6h18"/>
+                                                                                    <path
+                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                                    2 1 2 2v2"/>
+                                                                                    <line x1="10" x2="10" y1="11"
+                                                                                          y2="17"/>
+                                                                                    <line x1="14" x2="14" y1="11"
+                                                                                          y2="17"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Delete comment
+                                                                                </h4>
+                                                                            </Link>
+
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                    <line x1="4" x2="4" y1="22"
+                                                                                          y2="15"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Report comment
+                                                                                </h4>
+                                                                            </Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
@@ -853,8 +1265,9 @@ export default function Home() {
                                                             </h4>
                                                         </div>
 
-                                                        <div
-                                                            className="cursor-pointer py-2 px-2 rounded-full hover:bg-white">
+                                                        <div onClick={handleCommentOtherDotClick}
+                                                             ref={CommentOtherDotDropdownRef}
+                                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-white ${commentOtherDotClick ? 'bg-gray-100' : ''}`}>
                                                             <svg
                                                                 className="w-3 h-3"
                                                                 fill="#828D9E"
@@ -862,6 +1275,58 @@ export default function Home() {
                                                                 <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                                 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                             </svg>
+                                                            {commentOtherDotClick &&
+                                                                <div
+                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                    <div className="container py-2">
+                                                                        <div className="space-y-1 text-[14px]">
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                     24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M17 3a2.85 2.83 0 1 1
+                                                                                    4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                                                                    <path d="m15 5 4 4"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Edit comment
+                                                                                </h4>
+                                                                            </Link>
+
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                    24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M3 6h18"/>
+                                                                                    <path
+                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                                    2 1 2 2v2"/>
+                                                                                    <line x1="10" x2="10" y1="11"
+                                                                                          y2="17"/>
+                                                                                    <line x1="14" x2="14" y1="11"
+                                                                                          y2="17"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Delete comment
+                                                                                </h4>
+                                                                            </Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1308,7 +1773,9 @@ export default function Home() {
 
                                             <div className="flex items-center justify-end text-end">
                                                 <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                    onClick={handlePostOtherDotClick}
+                                                    ref={PostOtherDotDropdownRef}
+                                                    className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postOtherDotClick ? 'bg-gray-100' : ''}`}>
                                                     <svg
                                                         className="w-3 h-3"
                                                         fill="#828D9E"
@@ -1316,6 +1783,59 @@ export default function Home() {
                                                         <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                     0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                     </svg>
+
+                                                    {postOtherDotClick &&
+                                                        <div
+                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                            <div className="container py-2">
+                                                                <div className="space-y-1 text-[14px]">
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                                            fill="#6B7280"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
+                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
+                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
+                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
+                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
+                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
+                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
+                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
+                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
+                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
+                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
+                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
+                                                                                3.5Z"></path>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Hide post
+                                                                        </h4>
+                                                                    </Link>
+
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                            <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Report post
+                                                                        </h4>
+                                                                    </Link>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </div>
 
                                                 <div
@@ -1495,9 +2015,63 @@ export default function Home() {
                                             </div>
 
                                             <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
+                                                <div onClick={handleShareDotClick}
+                                                     ref={ShareDotDropdownRef}
+                                                     className="relative cursor-pointer">
                                                     <GoSync
-                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                        className={`w-full h-[14px] text-[#6B7280] hover:text-primary ${shareDotClick ? 'text-primary' : ''}`}/>
+                                                    {shareDotClick &&
+                                                        <div
+                                                            className="dots-dropdown-menu w-[300px] absolute bottom-[27px] right-[4px] bg-white rounded shadow border">
+                                                            <div className="container py-2">
+                                                                <div className="space-y-1 text-[14px]">
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                                            fill="#6B7280"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
+                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
+                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
+                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
+                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
+                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
+                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
+                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
+                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
+                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
+                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
+                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
+                                                                                3.5Z"></path>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Hide ad
+                                                                        </h4>
+                                                                    </Link>
+
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                            <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Report ad
+                                                                        </h4>
+                                                                    </Link>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </div>
                                                 <div className="count">
                                                     <h4 className="text-[12px] text-prgcolor">2k</h4>
@@ -1520,7 +2094,10 @@ export default function Home() {
                                         </h4>
                                     </div>
 
-                                    <div className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                    <div
+                                        onClick={handleRecentDotRightSideClick}
+                                        ref={RecentDotRightSideDropdownRef}
+                                        className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${recentDotRightSideClick ? 'bg-gray-100' : ''}`}>
                                         <svg
                                             className="w-3 h-3"
                                             fill="#6B7280"
@@ -1528,6 +2105,40 @@ export default function Home() {
                                             <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                             0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                         </svg>
+                                        {recentDotRightSideClick &&
+                                            <div
+                                                className="dots-dropdown-menu w-[200px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                <div className="container py-2">
+                                                    <div className="space-y-1 text-[14px]">
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                                fill="#6B7280"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 16 16">
+                                                                <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
+                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
+                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
+                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
+                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
+                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
+                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
+                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
+                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
+                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
+                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
+                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
+                                                                                3.5Z"></path>
+                                                            </svg>
+                                                            <h4>
+                                                                Hide this
+                                                            </h4>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                                 {/* Product Area */}
@@ -1600,8 +2211,9 @@ export default function Home() {
                                             </div>
                                         </div>
 
-
-                                        <div className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                        <div onClick={handleAddDotRightSideClick}
+                                             ref={AddDotRightSideDropdownRef}
+                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
                                             <svg
                                                 className="w-3 h-3"
                                                 fill="#6B7280"
@@ -1609,6 +2221,59 @@ export default function Home() {
                                                 <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                             0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                             </svg>
+
+                                            {addDotRightSideClick &&
+                                                <div
+                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                    <div className="container py-2">
+                                                        <div className="space-y-1 text-[14px]">
+                                                            <Link href='#'
+                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                <svg
+                                                                    className="w-4 h-4 transition duration-75 group-hover:fill-primary"
+                                                                    fill="#6B7280"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path d="M.143 2.31a.75.75 0 0 1 1.047-.167l14.5 10.5a.75.75 0 1
+                                                                                1-.88 1.214l-2.248-1.628C11.346 13.19 9.792 14 8 14c-1.981
+                                                                                0-3.67-.992-4.933-2.078C1.797 10.832.88 9.577.43 8.9a1.619 1.619 0 0 1
+                                                                                0-1.797c.353-.533.995-1.42 1.868-2.305L.31 3.357A.75.75 0 0 1 .143 2.31Zm1.536
+                                                                                5.622A.12.12 0 0 0 1.657 8c0 .021.006.045.022.068.412.621 1.242 1.75 2.366
+                                                                                2.717C5.175 11.758 6.527 12.5 8 12.5c1.195 0 2.31-.488 3.29-1.191L9.063
+                                                                                9.695A2 2 0 0 1 6.058 7.52L3.529 5.688a14.207 14.207 0 0 0-1.85 2.244ZM8
+                                                                                3.5c-.516 0-1.017.09-1.499.251a.75.75 0 1 1-.473-1.423A6.207 6.207 0 0 1 8
+                                                                                2c1.981 0 3.67.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1
+                                                                                0 1.798c-.11.166-.248.365-.41.587a.75.75 0 1
+                                                                                1-1.21-.887c.148-.201.272-.382.371-.53a.119.119 0 0 0
+                                                                                0-.137c-.412-.621-1.242-1.75-2.366-2.717C10.825 4.242 9.473 3.5 8
+                                                                                3.5Z"></path>
+                                                                </svg>
+                                                                <h4>
+                                                                    Hide add
+                                                                </h4>
+                                                            </Link>
+
+                                                            <Link href='#'
+                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                <svg
+                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                    strokeWidth="1.5" strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                    <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                </svg>
+                                                                <h4>
+                                                                    Report ad
+                                                                </h4>
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                     <h4 className="mt-3 text-[12px] text-prgcolor">
