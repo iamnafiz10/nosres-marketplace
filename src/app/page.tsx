@@ -67,11 +67,12 @@ export default function Home() {
             const pickerRect = pickerElement.getBoundingClientRect();
             const pickerCenterY = pickerRect.top + pickerRect.height / 2;
             const windowHeight = window.innerHeight;
-            if (pickerCenterY < windowHeight / 2) {
-                // If picker is in the upper half of the window
+
+            if (pickerCenterY < windowHeight / 3) {
+                // If picker is in the upper third of the window
                 setPickerPositionClass('top-[100%]');
-            } else {
-                // If picker is in the lower half of the window
+            } else if (pickerCenterY > windowHeight * 2 / 3) {
+                // If picker is in the lower third of the window
                 setPickerPositionClass('bottom-[100%]');
             }
         }
@@ -113,11 +114,11 @@ export default function Home() {
             const pickerRect = pickerElement.getBoundingClientRect();
             const pickerCenterY = pickerRect.top + pickerRect.height / 2;
             const windowHeight = window.innerHeight;
-            if (pickerCenterY < windowHeight / 2) {
-                // If picker is in the upper half of the window
+            if (pickerCenterY < windowHeight / 3) {
+                // If picker is in the upper third of the window
                 setPickerPositionClassOne('top-[100%]');
-            } else {
-                // If picker is in the lower half of the window
+            } else if (pickerCenterY > windowHeight * 2 / 3) {
+                // If picker is in the lower third of the window
                 setPickerPositionClassOne('bottom-[100%]');
             }
         }
@@ -159,11 +160,11 @@ export default function Home() {
             const pickerRect = pickerElement.getBoundingClientRect();
             const pickerCenterY = pickerRect.top + pickerRect.height / 2;
             const windowHeight = window.innerHeight;
-            if (pickerCenterY < windowHeight / 2) {
-                // If picker is in the upper half of the window
+            if (pickerCenterY < windowHeight / 3) {
+                // If picker is in the upper third of the window
                 setPickerPositionClassTwo('top-[100%]');
-            } else {
-                // If picker is in the lower half of the window
+            } else if (pickerCenterY > windowHeight * 2 / 3) {
+                // If picker is in the lower third of the window
                 setPickerPositionClassTwo('bottom-[100%]');
             }
         }
@@ -205,11 +206,11 @@ export default function Home() {
             const pickerRect = pickerElement.getBoundingClientRect();
             const pickerCenterY = pickerRect.top + pickerRect.height / 2;
             const windowHeight = window.innerHeight;
-            if (pickerCenterY < windowHeight / 2) {
-                // If picker is in the upper half of the window
+            if (pickerCenterY < windowHeight / 3) {
+                // If picker is in the upper third of the window
                 setPickerPositionClassThree('top-[100%]');
-            } else {
-                // If picker is in the lower half of the window
+            } else if (pickerCenterY > windowHeight * 2 / 3) {
+                // If picker is in the lower third of the window
                 setPickerPositionClassThree('bottom-[100%]');
             }
         }
