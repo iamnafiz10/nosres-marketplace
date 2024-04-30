@@ -380,7 +380,6 @@ export default function Home() {
         setValue(newValue);
     };
 
-
     // 3 DOTS Dropdowns
     // 👇️ Add 3 dots (Right Side)
     const [addDotRightSideClick, setAddDotRightSideClick] = useState(false);
@@ -486,6 +485,29 @@ export default function Home() {
             if (PostOtherDotDropdownRef.current && !PostOtherDotDropdownRef.current.contains(event.target)) {
                 // Click occurred outside of dropdown menu, so close it
                 setPostOtherDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Post 4 dots (Other)
+    const [postFourOtherDotClick, setPostFourOtherDotClick] = useState(false);
+    const PostFourOtherDotDropdownRef = useRef(null);
+    const handlePostFourOtherDotClick = () => {
+        setPostFourOtherDotClick(!postFourOtherDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (PostFourOtherDotDropdownRef.current && !PostFourOtherDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setPostFourOtherDotClick(false);
             }
         };
         // Add event listener to detect clicks out-Side of the dropdown menu
@@ -604,6 +626,51 @@ export default function Home() {
     const [openDeletePostModal, setOpenDeletePostModal] = useState<boolean>(false);
     // Delete Comment Modal
     const [openDeleteCommentModal, setOpenDeleteCommentModal] = useState<boolean>(false);
+    // Comment Hide and Show
+    const [hideComment, setHideComment] = useState(false);
+    const handleToggleCommentHideShow = () => {
+        setHideComment(!hideComment);
+    };
+
+    // Report Comment
+    const [openReportCommentModal, setOpenReportCommentModal] = useState<boolean>(false);
+    const [openReportCommentSubmitModal, setOpenReportCommentSubmitModal] = useState<boolean>(false);
+    const handleReportCommentSubmitButtonClick = () => {
+        setOpenReportCommentSubmitModal(false)
+        setOpenReportCommentModal(false)
+    };
+
+
+    // Right side Ad hide/show
+    const [currentAdBoxRightSide, setCurrentAdBoxRightSide] = useState('post_box_right_side');
+    const toggleAdBoxRightSideVisibility = () => {
+        setCurrentAdBoxRightSide(currentAdBoxRightSide === 'post_box_right_side' ? 'add_hidden_box_right_side' : 'post_box_right_side');
+    };
+
+    // Feedback Ad / Report Ad popup (Right Side)
+    const [openFeedbackAdModalRightSide, setOpenFeedbackAdModalRightSide] = useState<boolean>(false);
+    const [openReportAdModalRightSide, setOpenReportAdModalRightSide] = useState<boolean>(false);
+    const [openReportAdSubmitModalRightSide, setOpenReportAdSubmitModalRightSide] = useState<boolean>(false);
+    const handleAdSubmitButtonClickRightSide = () => {
+        setOpenReportAdSubmitModalRightSide(false);
+        setOpenReportAdModalRightSide(false);
+        // Hide the add_hidden_box div and show the remove_success div
+        setCurrentAdBoxRightSide('remove_success_right_side');
+    }
+
+    const [hideDiv1, setHideDiv1] = useState(false);
+    const [hideDiv2, setHideDiv2] = useState(true); // Initially hideDiv2 is true
+
+    const handleToggleHideDiv1 = () => {
+        setHideDiv1(!hideDiv1);
+        setHideDiv2(!hideDiv2);
+    };
+
+    const handleToggleHideDiv2 = () => {
+        setHideDiv1(!hideDiv1);
+        setHideDiv2(!hideDiv2);
+    };
+
     return (
         <>
             <section id="home-page-section">
@@ -702,8 +769,8 @@ export default function Home() {
                                                                     className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
                                                                     <div className="container py-2">
                                                                         <div className="space-y-1 text-[14px]">
-                                                                            <Link href='#'
-                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <div onClick={toggleAdBoxVisibility}
+                                                                                 className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -724,10 +791,11 @@ export default function Home() {
                                                                                 <h4>
                                                                                     Hide ad
                                                                                 </h4>
-                                                                            </Link>
+                                                                            </div>
 
-                                                                            <Link href='#'
-                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <div
+                                                                                onClick={() => setOpenReportAdModal(true)}
+                                                                                className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -744,7 +812,7 @@ export default function Home() {
                                                                                 <h4>
                                                                                     Report ad
                                                                                 </h4>
-                                                                            </Link>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -902,8 +970,8 @@ export default function Home() {
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Provide feedback
                                                 </h4>
-                                                <h4 className="text-[14px] text-graycolor">
-                                                    Share more details so we can personalize your feed
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    Share more details so we can personalize your feed.
                                                 </h4>
                                             </div>
                                         </div>
@@ -929,7 +997,7 @@ export default function Home() {
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Report ad
                                                 </h4>
-                                                <h4 className="text-[14px] text-graycolor">
+                                                <h4 className="text-[12px] text-graycolor">
                                                     Share more details so we can personalize your feed.
                                                 </h4>
                                             </div>
@@ -960,8 +1028,8 @@ export default function Home() {
                                             <h4 className="text-[14px] text-prgcolor">
                                                 Thank you for your feedback.
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
-                                                You won{`'`}t come across this ad again
+                                            <h4 className="text-[12px] text-graycolor">
+                                                You won{`'`}t come across this ad again.
                                             </h4>
                                         </div>
                                     </div>
@@ -1185,14 +1253,16 @@ export default function Home() {
                                         {/* Post User Comments (One) */}
                                         <div className="post_user_comments">
                                             <div className="box bg-white px-4 py-3 rounded rounded-b-none">
-                                                <div className="flex items-start justify-start gap-1 w-full">
-                                                    <Link href='#' className="flex items-center gap-2">
+                                                <div
+                                                    className="flex items-start justify-start gap-1 w-full">
+                                                    <Link href='#'
+                                                          className={`flex items-center gap-2 ${hideComment ? 'opacity-50' : ''}`}>
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     </Link>
 
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
-                                                        <div className="wrap">
+                                                        <div className={`wrap ${hideComment ? 'opacity-50' : ''}`}>
                                                             <h4 className="text-[12px] font-semibold text-prgcolor">
                                                                 Kathy Erickson
                                                             </h4>
@@ -1220,11 +1290,11 @@ export default function Home() {
 
                                                             {commentMeDotClick &&
                                                                 <div
-                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                    className="dots-dropdown-menu z-50 opacity-100 w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
                                                                     <div className="container py-2">
                                                                         <div className="space-y-1 text-[14px]">
-                                                                            <Link href='#'
-                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <div onClick={handleToggleCommentHideShow}
+                                                                                 className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -1243,9 +1313,9 @@ export default function Home() {
                                                                                           y2="22"/>
                                                                                 </svg>
                                                                                 <h4>
-                                                                                    Hide comment
+                                                                                    {hideComment ? 'Show comment' : 'Hide comment'}
                                                                                 </h4>
-                                                                            </Link>
+                                                                            </div>
 
                                                                             <div
                                                                                 onClick={() => setOpenDeleteCommentModal(true)}
@@ -1273,8 +1343,9 @@ export default function Home() {
                                                                                 </h4>
                                                                             </div>
 
-                                                                            <Link href='#'
-                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <div
+                                                                                onClick={() => setOpenReportCommentModal(true)}
+                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -1291,7 +1362,7 @@ export default function Home() {
                                                                                 <h4>
                                                                                     Report comment
                                                                                 </h4>
-                                                                            </Link>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1299,26 +1370,29 @@ export default function Home() {
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 {/* Comment Icons */}
-                                                <div className="ml-10 box bg-white pt-2 rounded rounded-b-none">
+                                                <div
+                                                    className={`ml-10 box bg-white pt-2 rounded rounded-b-none ${hideComment ? 'opacity-50' : ''}`}>
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
-                                                        <div className="c_icons flex items-center gap-6">
-                                                            <Link href='#'
-                                                                  className="left flex items-center gap-0 group">
+                                                        <div
+                                                            className={`c_icons flex items-center gap-6 ${hideComment ? 'cursor-not-allow' : 'cursor-pointer'}`}>
+                                                            <div
+                                                                className="left flex items-center gap-0 group">
                                                                 <h4 className="group-hover:text-primary">Like</h4>
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
-                                                                         className='cursor-pointer hover:text-primary'/>
+                                                                         className='hover:text-primary'/>
                                                                 <span className="ml-1">3</span>
-                                                            </Link>
+                                                            </div>
                                                             <div
-                                                                className="right cursor-pointer flex items-center gap-0 group">
+                                                                className="right flex items-center gap-0 group">
                                                                 <h4 onClick={toggleCommentReplyOne}
                                                                     className="group-hover:text-primary">Reply</h4>
                                                                 <LuDot size={12}/>
                                                                 <GoReply size={13}
-                                                                         className='cursor-pointer group-hover:text-primary'/>
+                                                                         className='group-hover:text-primary'/>
                                                                 <span className="ml-1">6</span>
                                                             </div>
                                                         </div>
@@ -2085,7 +2159,9 @@ export default function Home() {
 
                                             <div className="flex items-center justify-end text-end">
                                                 <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                    onClick={handlePostFourOtherDotClick}
+                                                    ref={PostFourOtherDotDropdownRef}
+                                                    className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postFourOtherDotClick ? 'bg-gray-100' : ''}`}>
                                                     <svg
                                                         className="w-3 h-3"
                                                         fill="#828D9E"
@@ -2093,6 +2169,56 @@ export default function Home() {
                                                         <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                     0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                     </svg>
+
+                                                    {postFourOtherDotClick &&
+                                                        <div
+                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                            <div className="container py-2">
+                                                                <div className="space-y-1 text-[14px]">
+                                                                    <div onClick={togglePostBoxVisibility}
+                                                                         className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24" fill="none"
+                                                                            stroke="#6B7280"
+                                                                            strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                            <path
+                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                            <path
+                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                            <line x1="2" x2="22" y1="2" y2="22"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Hide post
+                                                                        </h4>
+                                                                    </div>
+
+                                                                    <div onClick={() => setOpenReportPostModal(true)}
+                                                                         className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                            <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Report post
+                                                                        </h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </div>
 
                                                 <div onClick={togglePostBoxVisibility}
@@ -2258,8 +2384,8 @@ export default function Home() {
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Provide feedback
                                                 </h4>
-                                                <h4 className="text-[14px] text-graycolor">
-                                                    Share more details so we can personalize your feed
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    Share more details so we can personalize your feed.
                                                 </h4>
                                             </div>
                                         </div>
@@ -2285,7 +2411,7 @@ export default function Home() {
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Report post
                                                 </h4>
-                                                <h4 className="text-[14px] text-graycolor">
+                                                <h4 className="text-[12px] text-graycolor">
                                                     Share more details so we can personalize your feed.
                                                 </h4>
                                             </div>
@@ -2316,8 +2442,8 @@ export default function Home() {
                                             <h4 className="text-[14px] text-prgcolor">
                                                 Thank you for your feedback.
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
-                                                You won{`'`}t come across this ad again
+                                            <h4 className="text-[12px] text-graycolor">
+                                                You won{`'`}t come across this post again
                                             </h4>
                                         </div>
                                     </div>
@@ -2327,7 +2453,8 @@ export default function Home() {
 
                         {/* Right Sidebar */}
                         <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mr-[22px]">
-                            <div className="box bg-white px-4 py-4 rounded">
+
+                            <div className={`box bg-white px-4 py-4 rounded ${hideDiv1 ? 'hidden' : ''}`}>
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2">
                                         <GoHistory className="w-[18px] h-[18px] text-[#6B7280]"/>
@@ -2352,8 +2479,8 @@ export default function Home() {
                                                 className="dots-dropdown-menu w-[200px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
                                                 <div className="container py-2">
                                                     <div className="space-y-1 text-[14px]">
-                                                        <Link href='#'
-                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                        <div onClick={handleToggleHideDiv1}
+                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                             <svg
                                                                 className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -2373,7 +2500,7 @@ export default function Home() {
                                                             <h4>
                                                                 Hide this
                                                             </h4>
-                                                        </Link>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2416,6 +2543,28 @@ export default function Home() {
                                 </div>
                             </div>
 
+                            {/* Recently Hidden Box */}
+                            <div className={`recently_hidden_box ${hideDiv2 ? 'hidden' : ''}`}>
+                                <div className="box mt-4 bg-white px-4 py-4 rounded">
+                                    <div className="flex items-center justify-between pb-3">
+                                        <div className="content">
+                                            <h4 className="text-[16px] text-prgcolor font-[500]">
+                                                Items hidden
+                                            </h4>
+                                            <h4 className="text-[14px] text-graycolor">
+                                                Those recently viewed items are currently out of sight.
+                                            </h4>
+                                        </div>
+                                        <div className="button_right">
+                                            <button onClick={handleToggleHideDiv2} type="button"
+                                                    className="py-2 px-6 rounded text-primary text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
+                                                Undo
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="box mt-4 bg-white px-4 py-4 rounded">
                                 <div className="flex gap-2 items-center">
                                     <GoPackage className="w-5 h-5 text-[#6B7280]"/>
@@ -2436,99 +2585,208 @@ export default function Home() {
                             </div>
 
                             <div className="mt-6 sticky top-16">
+
                                 {/* Post Box */}
-                                <div className="box mt-4 bg-white px-4 py-4 rounded">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                            <div className="leading-[17px]">
-                                                <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                    Sony Inc.
-                                                </h4>
-                                                <span
-                                                    className="text-[12px] text-graycolor font-normal">Sponsored</span>
+                                {currentAdBoxRightSide === 'post_box_right_side' && (
+                                    <div className="post_box-right_side box mt-4 bg-white px-4 py-4 rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                <div className="leading-[17px]">
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        Sony Inc.
+                                                    </h4>
+                                                    <span
+                                                        className="text-[12px] text-graycolor font-normal">Sponsored</span>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div onClick={handleAddDotRightSideClick}
-                                             ref={AddDotRightSideDropdownRef}
-                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
-                                            <svg
-                                                className="w-3 h-3"
-                                                fill="#6B7280"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                            <div onClick={handleAddDotRightSideClick}
+                                                 ref={AddDotRightSideDropdownRef}
+                                                 className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="#6B7280"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                             0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                            </svg>
+                                                </svg>
 
-                                            {addDotRightSideClick &&
-                                                <div
-                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                    <div className="container py-2">
-                                                        <div className="space-y-1 text-[14px]">
-                                                            <Link href='#'
-                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                <svg
-                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="none"
-                                                                    stroke="#6B7280"
-                                                                    strokeWidth="1.5"
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                    <path
-                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                    <path
-                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                    <line x1="2" x2="22" y1="2" y2="22"/>
-                                                                </svg>
-                                                                <h4>
-                                                                    Hide ad
-                                                                </h4>
-                                                            </Link>
+                                                {addDotRightSideClick &&
+                                                    <div
+                                                        className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                        <div className="container py-2">
+                                                            <div className="space-y-1 text-[14px]">
+                                                                <div onClick={toggleAdBoxRightSideVisibility}
+                                                                     className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                    <svg
+                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#6B7280"
+                                                                        strokeWidth="1.5"
+                                                                        strokeLinecap="round"
+                                                                        strokeLinejoin="round">
+                                                                        <path
+                                                                            d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                        <path
+                                                                            d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                        <path
+                                                                            d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                        <line x1="2" x2="22" y1="2" y2="22"/>
+                                                                    </svg>
+                                                                    <h4>
+                                                                        Hide ad
+                                                                    </h4>
+                                                                </div>
 
-                                                            <Link href='#'
-                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                <svg
-                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24
+                                                                <div onClick={() => setOpenReportAdModalRightSide(true)}
+                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                    <svg
+                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24
                                                                                  24" fill="none" stroke="#6B7280"
-                                                                    strokeWidth="1.5" strokeLinecap="round"
-                                                                    strokeLinejoin="round">
-                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                        strokeWidth="1.5" strokeLinecap="round"
+                                                                        strokeLinejoin="round">
+                                                                        <path d="M4 15s1-1 4-1 5 2 8 2
                                                                                 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                    <line x1="4" x2="4" y1="22" y2="15"/>
-                                                                </svg>
-                                                                <h4>
-                                                                    Report ad
-                                                                </h4>
-                                                            </Link>
+                                                                        <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                    </svg>
+                                                                    <h4>
+                                                                        Report ad
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            }
+                                                }
+                                            </div>
                                         </div>
-                                    </div>
-                                    <h4 className="mt-3 text-[12px] text-prgcolor">
-                                        The SRS-XB100 speaker provides powerful, clear,
-                                        expansive sound in a small, portable and durable
-                                        body. Despite its size...
-                                    </h4>
-                                    <div className="post-image mt-3">
-                                        <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
+                                        <h4 className="mt-3 text-[12px] text-prgcolor">
+                                            The SRS-XB100 speaker provides powerful, clear,
+                                            expansive sound in a small, portable and durable
+                                            body. Despite its size...
+                                        </h4>
+                                        <div className="post-image mt-3">
+                                            <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
 
-                                        <div className="flex items-center justify-between mt-3">
-                                            <h4 className="text-[14px] text-prgcolor font-[500]">Sony SRS-XB13B</h4>
-                                            <button type="button"
-                                                    className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
-                                                Learn More
-                                            </button>
+                                            <div className="flex items-center justify-between mt-3">
+                                                <h4 className="text-[14px] text-prgcolor font-[500]">Sony SRS-XB13B</h4>
+                                                <button type="button"
+                                                        className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                                    Learn More
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                )}
+
+                                {/* Come Ad Hidden Box */}
+                                {currentAdBoxRightSide === 'add_hidden_box_right_side' && (
+                                    <div className="add_hidden_box">
+                                        <div className="box mt-4 bg-white px-4 py-4 rounded">
+                                            <div className="flex items-center justify-between pb-3">
+                                                <div className="content">
+                                                    <h4 className="text-[16px] text-prgcolor font-[500]">
+                                                        Ad hidden from your feed
+                                                    </h4>
+                                                    <h4 className="text-[14px] text-graycolor">
+                                                        Share more details so we can personalize your feed.
+                                                    </h4>
+                                                </div>
+                                                <div className="button_right">
+                                                    <button onClick={toggleAdBoxRightSideVisibility} type="button"
+                                                            className="py-2 px-6 rounded text-primary text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
+                                                        Undo
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr/>
+
+                                            <div onClick={() => setOpenFeedbackAdModalRightSide(true)}
+                                                 className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <path
+                                                            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                        <path d="M13 8H7"/>
+                                                        <path d="M17 12H7"/>
+                                                    </svg>
+                                                </div>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Provide feedback
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor">
+                                                        Share more details so we can personalize your feed
+                                                    </h4>
+                                                </div>
+                                            </div>
+
+                                            <div onClick={() => setOpenReportAdModalRightSide(true)}
+                                                 className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                                <div className="icon mt-1">
+                                                    <svg
+                                                        className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24
+                                                24" fill="none" stroke="#6B7280"
+                                                        strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M4 15s1-1 4-1 5 2 8 2
+                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                        <line x1="4" x2="4" y1="22"
+                                                              y2="15"/>
+                                                    </svg>
+                                                </div>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Report ad
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor">
+                                                        Share more details so we can personalize your feed.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* remove_success div */}
+                                {currentAdBoxRightSide === 'remove_success_right_side' && (
+                                    <div className="mt-4 remove_success rounded box bg-white px-6 py-4">
+                                        <div className="flex items-start gap-2">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-5 h-5"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                    strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                    <path
+                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                    <path
+                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                    <line x1="2" x2="22" y1="2" y2="22"/>
+                                                </svg>
+                                            </div>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Thank you for your feedback.
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    You won{`'`}t come across this ad again
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
 
                                 <footer className="mt-4">
                                     <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
@@ -3089,7 +3347,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Spam, suspicion, or fake
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Selling illegal goods, engaging in monetary scams, etc
                                             </h4>
                                         </div>
@@ -3112,7 +3370,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Harassment
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Bullying, verbal abuse, threats, etc
                                             </h4>
                                         </div>
@@ -3135,7 +3393,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Hate speech
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Encouraging derogatory remarks targeting a particular group.
                                             </h4>
                                         </div>
@@ -3158,7 +3416,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Harmful behavior
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Spreading false information or conspiracy theories that incite fear.
                                             </h4>
                                         </div>
@@ -3181,7 +3439,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Violence
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Promoting violence, including self-harm or intending harm to others.
                                             </h4>
                                         </div>
@@ -3204,7 +3462,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Adult content
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Displaying nudity or sexual content.
                                             </h4>
                                         </div>
@@ -3227,7 +3485,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Intellectual property infringement
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Using someone else’s creative work without authorization.
                                             </h4>
                                         </div>
@@ -3250,7 +3508,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Defamation
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Damaging the good reputation of someone.
                                             </h4>
                                         </div>
@@ -3311,7 +3569,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Spam, suspicion, or fake
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Selling illegal goods, engaging in monetary scams, etc
                                             </h4>
                                         </div>
@@ -3321,14 +3579,14 @@ export default function Home() {
                             <h4 className="text-[14px] text-prgcolor mt-4">
                                 Elaborate on your report (optional)
                             </h4>
-
-                            <div className="box mt-2 border rounded p-4">
-                                <h4 className="text-[14px] text-graycolor">
-                                    Please provide further details about your report. Your feedback plays a
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone
-                                </h4>
-                            </div>
+                                    everyone"
+                            >
+                            </textarea>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
@@ -3368,7 +3626,7 @@ export default function Home() {
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
                                 Please share why you prefer not to see this post. Your feedback is valuable
-                                for improving your overall experience
+                                for improving your overall experience.
                             </h4>
 
                             <div className="mt-4 space-y-3">
@@ -3531,7 +3789,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Spam, suspicion, or fake
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Selling illegal goods, engaging in monetary scams, etc
                                             </h4>
                                         </div>
@@ -3554,7 +3812,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Harassment
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Bullying, verbal abuse, threats, etc
                                             </h4>
                                         </div>
@@ -3577,7 +3835,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Hate speech
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Encouraging derogatory remarks targeting a particular group.
                                             </h4>
                                         </div>
@@ -3600,7 +3858,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Harmful behavior
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Spreading false information or conspiracy theories that incite fear.
                                             </h4>
                                         </div>
@@ -3623,7 +3881,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Violence
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Promoting violence, including self-harm or intending harm to others.
                                             </h4>
                                         </div>
@@ -3646,7 +3904,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Adult content
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Displaying nudity or sexual content.
                                             </h4>
                                         </div>
@@ -3669,7 +3927,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Intellectual property infringement
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Using someone else’s creative work without authorization.
                                             </h4>
                                         </div>
@@ -3692,7 +3950,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Defamation
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Damaging the good reputation of someone.
                                             </h4>
                                         </div>
@@ -3753,7 +4011,7 @@ export default function Home() {
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
                                                 Spam, suspicion, or fake
                                             </h4>
-                                            <h4 className="text-[14px] text-graycolor">
+                                            <h4 className="text-[12px] text-graycolor">
                                                 Selling illegal goods, engaging in monetary scams, etc
                                             </h4>
                                         </div>
@@ -3763,14 +4021,14 @@ export default function Home() {
                             <h4 className="text-[14px] text-prgcolor mt-4">
                                 Elaborate on your report (optional)
                             </h4>
-
-                            <div className="box mt-2 border rounded p-4">
-                                <h4 className="text-[14px] text-graycolor">
-                                    Please provide further details about your report. Your feedback plays a
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone
-                                </h4>
-                            </div>
+                                    everyone"
+                            >
+                            </textarea>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
@@ -3787,7 +4045,6 @@ export default function Home() {
                     </Modal.Footer>
                 </Modal>
                 {/* Start ReportPost Submit Pop-Up End */}
-
 
                 {/* Start Delete Post Pop-Up Start */}
                 <Modal size="lg"
@@ -3868,6 +4125,748 @@ export default function Home() {
                     </Modal.Footer>
                 </Modal>
                 {/* Start Delete Comment Pop-Up End */}
+
+
+                {/* Start Report Comment Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportCommentModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportCommentModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Comment</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this comment. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harassment
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Bullying, verbal abuse, threats, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Hate speech
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Encouraging derogatory remarks targeting a particular group.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harmful behavior
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Spreading false information or conspiracy theories that incite fear.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Violence
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Promoting violence, including self-harm or intending harm to others.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(6)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={6}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Adult content
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Displaying nudity or sexual content.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(7)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={7}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Intellectual property infringement
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Using someone else’s creative work without authorization.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(8)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={8}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Defamation
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Damaging the good reputation of someone.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportCommentModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenReportCommentSubmitModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Next
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Report Comment Pop-Up End */}
+
+                {/* Start Report Comment Submit Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportCommentSubmitModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportCommentSubmitModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Comment</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="mt-0 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                            <h4 className="text-[14px] text-prgcolor mt-4">
+                                Elaborate on your report (optional)
+                            </h4>
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a
+                                    crucial role in creating a safer and more trustworthy community for
+                                    everyone"
+                            >
+                            </textarea>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportCommentSubmitModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={handleReportCommentSubmitButtonClick}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Report Comment Submit Pop-Up End */}
+
+
+                {/* Start FeedbackAd Pop-Up Start (Right Side) */}
+                <Modal size="lg"
+                       show={openFeedbackAdModalRightSide}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenFeedbackAdModalRightSide(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Share Feedback</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share why you prefer not to see this ad. Your feedback is valuable
+                                for improving your overall experience.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It’s offensive and inappropriate.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It looks suspicious.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It’s annoying or not interesting
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                I keep seeing the same thing.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                It’s not relevant to me.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenFeedbackAdModalRightSide(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenFeedbackAdModalRightSide(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start FeedbackAd Pop-Up End (Right Side) */}
+
+
+                {/* Start ReportAdd Pop-Up Start (Right Side) */}
+                <Modal size="lg"
+                       show={openReportAdModalRightSide}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdModalRightSide(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Ad</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this ad. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harassment
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Bullying, verbal abuse, threats, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Hate speech
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Encouraging derogatory remarks targeting a particular group.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harmful behavior
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Spreading false information or conspiracy theories that incite fear.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Violence
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Promoting violence, including self-harm or intending harm to others.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(6)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={6}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Adult content
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Displaying nudity or sexual content.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(7)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={7}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Intellectual property infringement
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Using someone else’s creative work without authorization.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(8)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={8}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Defamation
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Damaging the good reputation of someone.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdModalRightSide(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitModalRightSide(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Next
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Pop-Up End (Right Side) */}
+
+                {/* Start ReportAdd Submit Pop-Up Start (Right Side) */}
+                <Modal size="lg"
+                       show={openReportAdSubmitModalRightSide}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitModalRightSide(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Ad</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="mt-0 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams, etc
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                            <h4 className="text-[14px] text-prgcolor mt-4">
+                                Elaborate on your report (optional)
+                            </h4>
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a
+                                    crucial role in creating a safer and more trustworthy community for
+                                    everyone"
+                            >
+                            </textarea>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdSubmitModalRightSide(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={handleAdSubmitButtonClickRightSide}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Submit Pop-Up End (Right Side) */}
+
             </section>
         </>
     );
