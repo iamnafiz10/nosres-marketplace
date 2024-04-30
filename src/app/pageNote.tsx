@@ -605,6 +605,12 @@ export default function Home() {
         setCurrentAdBox('remove_success');
     }
 
+    const handleFeedbackSubmitButtonClick = () => {
+        setOpenFeedbackAdModal(false);
+        // Hide the add_hidden_box div and show the remove_success div
+        setCurrentAdBox('remove_success');
+    }
+
 
     // Post Hide Hidden Box Coming For ("Post")
     const [currentPostBox, setCurrentPostBox] = useState('post_box_last');
@@ -621,6 +627,13 @@ export default function Home() {
         // Hide the add_hidden_box div and show the remove_success div
         setCurrentPostBox('remove_success');
     }
+
+    const handlePostFeadbackSubmitButtonClick = () => {
+        setOpenFeedbackPostModal(false);
+        // Hide the add_hidden_box div and show the remove_success div
+        setCurrentPostBox('remove_success');
+    }
+
 
     // Delete Post Modal
     const [openDeletePostModal, setOpenDeletePostModal] = useState<boolean>(false);
@@ -654,6 +667,12 @@ export default function Home() {
     const handleAdSubmitButtonClickRightSide = () => {
         setOpenReportAdSubmitModalRightSide(false);
         setOpenReportAdModalRightSide(false);
+        // Hide the add_hidden_box div and show the remove_success div
+        setCurrentAdBoxRightSide('remove_success_right_side');
+    }
+
+    const handleAdFeedbackSubmitButtonClickRightSide = () => {
+        setOpenFeedbackAdModalRightSide(false);
         // Hide the add_hidden_box div and show the remove_success div
         setCurrentAdBoxRightSide('remove_success_right_side');
     }
@@ -936,7 +955,7 @@ export default function Home() {
                                     <div className="box mt-4 bg-white px-4 py-4 rounded">
                                         <div className="flex items-center justify-between pb-3">
                                             <div className="content">
-                                                <h4 className="text-[16px] text-prgcolor font-[500]">
+                                                <h4 className="text-[14px] text-prgcolor font-[500]">
                                                     Ad hidden from your feed
                                                 </h4>
                                                 <h4 className="text-[14px] text-graycolor">
@@ -954,7 +973,7 @@ export default function Home() {
 
                                         <div onClick={() => setOpenFeedbackAdModal(true)}
                                              className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                            <div className="icon">
+                                            <div className="icon mt-1">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -971,7 +990,7 @@ export default function Home() {
                                                     Provide feedback
                                                 </h4>
                                                 <h4 className="text-[12px] text-graycolor">
-                                                    Share more details so we can personalize your feed.
+                                                    Please provide more information to help us customize your feed.
                                                 </h4>
                                             </div>
                                         </div>
@@ -998,7 +1017,7 @@ export default function Home() {
                                                     Report ad
                                                 </h4>
                                                 <h4 className="text-[12px] text-graycolor">
-                                                    Share more details so we can personalize your feed.
+                                                    Please flag if it violates our community guidelines.
                                                 </h4>
                                             </div>
                                         </div>
@@ -1010,18 +1029,16 @@ export default function Home() {
                             {currentAdBox === 'remove_success' && (
                                 <div className="mt-4 remove_success rounded box bg-white px-6 py-4">
                                     <div className="flex items-start gap-2">
-                                        <div className="icon">
+                                        <div className="icon mt-1">
                                             <svg
-                                                className="w-5 h-5"
+                                                className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                strokeLinecap="round" strokeLinejoin="round">
-                                                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                                 <path
-                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                <path
-                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                <line x1="2" x2="22" y1="2" y2="22"/>
+                                                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                <path d="M13 8H7"/>
+                                                <path d="M17 12H7"/>
                                             </svg>
                                         </div>
                                         <div className="content">
@@ -2350,7 +2367,7 @@ export default function Home() {
                                     <div className="box mt-4 bg-white px-4 py-4 rounded">
                                         <div className="flex items-center justify-between pb-3">
                                             <div className="content">
-                                                <h4 className="text-[16px] text-prgcolor font-[500]">
+                                                <h4 className="text-[14px] text-prgcolor font-[500]">
                                                     Post hidden from your feed
                                                 </h4>
                                                 <h4 className="text-[14px] text-graycolor">
@@ -2368,7 +2385,7 @@ export default function Home() {
 
                                         <div onClick={() => setOpenFeedbackPostModal(true)}
                                              className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                            <div className="icon">
+                                            <div className="icon mt-1">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -2385,7 +2402,7 @@ export default function Home() {
                                                     Provide feedback
                                                 </h4>
                                                 <h4 className="text-[12px] text-graycolor">
-                                                    Share more details so we can personalize your feed.
+                                                    Please provide more information to help us customize your feed.
                                                 </h4>
                                             </div>
                                         </div>
@@ -2412,7 +2429,7 @@ export default function Home() {
                                                     Report post
                                                 </h4>
                                                 <h4 className="text-[12px] text-graycolor">
-                                                    Share more details so we can personalize your feed.
+                                                    Please flag if it violates our community guidelines.
                                                 </h4>
                                             </div>
                                         </div>
@@ -2424,18 +2441,16 @@ export default function Home() {
                             {currentPostBox === 'remove_success' && (
                                 <div className="mt-4 remove_success rounded box bg-white px-6 py-4">
                                     <div className="flex items-start gap-2">
-                                        <div className="icon">
+                                        <div className="icon mt-1">
                                             <svg
-                                                className="w-5 h-5"
+                                                className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                strokeLinecap="round" strokeLinejoin="round">
-                                                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                                 <path
-                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                <path
-                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                <line x1="2" x2="22" y1="2" y2="22"/>
+                                                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                <path d="M13 8H7"/>
+                                                <path d="M17 12H7"/>
                                             </svg>
                                         </div>
                                         <div className="content">
@@ -2443,7 +2458,7 @@ export default function Home() {
                                                 Thank you for your feedback.
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                You won{`'`}t come across this post again
+                                                You won{`'`}t come across this post again.
                                             </h4>
                                         </div>
                                     </div>
@@ -2545,15 +2560,31 @@ export default function Home() {
 
                             {/* Recently Hidden Box */}
                             <div className={`recently_hidden_box ${hideDiv2 ? 'hidden' : ''}`}>
-                                <div className="box mt-4 bg-white px-4 py-4 rounded">
-                                    <div className="flex items-center justify-between pb-3">
-                                        <div className="content">
-                                            <h4 className="text-[16px] text-prgcolor font-[500]">
-                                                Items hidden
-                                            </h4>
-                                            <h4 className="text-[14px] text-graycolor">
-                                                Those recently viewed items are currently out of sight.
-                                            </h4>
+                                <div className="box mt-0 bg-white px-4 py-4 rounded">
+                                    <div className="flex items-start justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-5 h-5"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                    strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                    <path
+                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                    <path
+                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                    <line x1="2" x2="22" y1="2" y2="22"/>
+                                                </svg>
+                                            </div>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor font-[500]">
+                                                    Items hidden
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    Those recently viewed items are currently out of sight.
+                                                </h4>
+                                            </div>
                                         </div>
                                         <div className="button_right">
                                             <button onClick={handleToggleHideDiv2} type="button"
@@ -2686,12 +2717,12 @@ export default function Home() {
                                 {currentAdBoxRightSide === 'add_hidden_box_right_side' && (
                                     <div className="add_hidden_box">
                                         <div className="box mt-4 bg-white px-4 py-4 rounded">
-                                            <div className="flex items-center justify-between pb-3">
+                                            <div className="flex items-start justify-between pb-3">
                                                 <div className="content">
-                                                    <h4 className="text-[16px] text-prgcolor font-[500]">
+                                                    <h4 className="text-[14px] text-prgcolor font-[500]">
                                                         Ad hidden from your feed
                                                     </h4>
-                                                    <h4 className="text-[14px] text-graycolor">
+                                                    <h4 className="text-[12px] text-graycolor">
                                                         Share more details so we can personalize your feed.
                                                     </h4>
                                                 </div>
@@ -2706,7 +2737,7 @@ export default function Home() {
 
                                             <div onClick={() => setOpenFeedbackAdModalRightSide(true)}
                                                  className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                                <div className="icon">
+                                                <div className="icon mt-1">
                                                     <svg
                                                         className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -2723,7 +2754,7 @@ export default function Home() {
                                                         Provide feedback
                                                     </h4>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Share more details so we can personalize your feed
+                                                        Please provide more information to help us customize your feed.
                                                     </h4>
                                                 </div>
                                             </div>
@@ -2750,7 +2781,7 @@ export default function Home() {
                                                         Report ad
                                                     </h4>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Share more details so we can personalize your feed.
+                                                        Please flag if it violates our community guidelines.
                                                     </h4>
                                                 </div>
                                             </div>
@@ -2762,18 +2793,16 @@ export default function Home() {
                                 {currentAdBoxRightSide === 'remove_success_right_side' && (
                                     <div className="mt-4 remove_success rounded box bg-white px-6 py-4">
                                         <div className="flex items-start gap-2">
-                                            <div className="icon">
+                                            <div className="icon mt-1">
                                                 <svg
-                                                    className="w-5 h-5"
+                                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                    viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                    strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                                     <path
-                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                    <path
-                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                    <line x1="2" x2="22" y1="2" y2="22"/>
+                                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                    <path d="M13 8H7"/>
+                                                    <path d="M17 12H7"/>
                                                 </svg>
                                             </div>
                                             <div className="content">
@@ -2781,7 +2810,7 @@ export default function Home() {
                                                     Thank you for your feedback.
                                                 </h4>
                                                 <h4 className="text-[12px] text-graycolor">
-                                                    You won{`'`}t come across this ad again
+                                                    You won{`'`}t come across this ad again.
                                                 </h4>
                                             </div>
                                         </div>
@@ -3242,7 +3271,7 @@ export default function Home() {
                                         </div>
                                         <div className="content">
                                             <h4 className="text-[14px] text-prgcolor">
-                                                It’s annoying or not interesting
+                                                It’s annoying or not interesting.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3296,7 +3325,7 @@ export default function Home() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={() => setOpenFeedbackAdModal(false)}
+                            <button onClick={handleFeedbackSubmitButtonClick}
                                     className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Submit
                             </button>
@@ -3348,7 +3377,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3371,7 +3400,7 @@ export default function Home() {
                                                 Harassment
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Bullying, verbal abuse, threats, etc
+                                                Bullying, verbal abuse, threats, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3570,7 +3599,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3581,7 +3610,7 @@ export default function Home() {
                             </h4>
                             <textarea
                                 rows={3}
-                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
                                     everyone"
@@ -3684,7 +3713,7 @@ export default function Home() {
                                         </div>
                                         <div className="content">
                                             <h4 className="text-[14px] text-prgcolor">
-                                                It’s annoying or not interesting
+                                                It’s annoying or not interesting.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3738,7 +3767,7 @@ export default function Home() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={() => setOpenFeedbackPostModal(false)}
+                            <button onClick={handlePostFeadbackSubmitButtonClick}
                                     className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Submit
                             </button>
@@ -3790,7 +3819,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3813,7 +3842,7 @@ export default function Home() {
                                                 Harassment
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Bullying, verbal abuse, threats, etc
+                                                Bullying, verbal abuse, threats, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4012,7 +4041,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4023,7 +4052,7 @@ export default function Home() {
                             </h4>
                             <textarea
                                 rows={3}
-                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
                                     everyone"
@@ -4169,7 +4198,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4192,7 +4221,7 @@ export default function Home() {
                                                 Harassment
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Bullying, verbal abuse, threats, etc
+                                                Bullying, verbal abuse, threats, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4391,7 +4420,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4402,7 +4431,7 @@ export default function Home() {
                             </h4>
                             <textarea
                                 rows={3}
-                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
                                     everyone"
@@ -4505,7 +4534,7 @@ export default function Home() {
                                         </div>
                                         <div className="content">
                                             <h4 className="text-[14px] text-prgcolor">
-                                                It’s annoying or not interesting
+                                                It’s annoying or not interesting.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4559,7 +4588,7 @@ export default function Home() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={() => setOpenFeedbackAdModalRightSide(false)}
+                            <button onClick={handleAdFeedbackSubmitButtonClickRightSide}
                                     className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Submit
                             </button>
@@ -4611,7 +4640,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4634,7 +4663,7 @@ export default function Home() {
                                                 Harassment
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Bullying, verbal abuse, threats, etc
+                                                Bullying, verbal abuse, threats, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4833,7 +4862,7 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc
+                                                Selling illegal goods, engaging in monetary scams, etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4844,7 +4873,7 @@ export default function Home() {
                             </h4>
                             <textarea
                                 rows={3}
-                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
                                     everyone"
