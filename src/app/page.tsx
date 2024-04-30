@@ -690,6 +690,13 @@ export default function Home() {
         setHideDiv2(!hideDiv2);
     };
 
+
+    // Post Share Popup
+    const [openStartPostShareModal, setOpenStartPostShareModal] = useState<boolean>(false);
+    const handleWritePostSharePopUpClickCancel = () => {
+        setOpenStartPostShareModal(false)
+    }
+
     return (
         <>
             <section id="home-page-section">
@@ -869,12 +876,11 @@ export default function Home() {
                                                 </h4>
                                             </>
                                         )}
-
                                     </div>
                                     <div className="post_image mt-0">
                                         {loading ? (
                                             <>
-                                                <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
                                                     <Skeleton height={200} count={1}/>
                                                     <Skeleton height={30} count={1}/>
                                                 </div>
@@ -897,16 +903,14 @@ export default function Home() {
                                     </div>
                                     {/* Post Icons */}
                                     <div className="post_icons mt-0">
-                                        <div
-                                            className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
-                                            {loading ? (
-                                                <>
-                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
-                                                        <Skeleton height={30} count={1}/>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <>
+                                        {loading ? (
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                <Skeleton height={40} count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <div
+                                                    className="flex items-center justify-between bg-white rounded rounded-t-none border-t-2 px-4 py-3 mt-0">
                                                     <div className="flex items-center gap-1">
                                                         <div className="cursor-pointer"
                                                              onClick={() => setIsClickedLikePostOne(!isClickedLikePostOne)}>
@@ -942,9 +946,9 @@ export default function Home() {
                                                             <h4 className="text-[12px] text-prgcolor">2k</h4>
                                                         </div>
                                                     </div>
-                                                </>
-                                            )}
-                                        </div>
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             )}
@@ -1055,124 +1059,138 @@ export default function Home() {
 
                             {/* Post Box */}
                             <div className="post_box_wrap">
-                                {loading ? (
-                                    <>
-                                        <Skeleton height={60} count={1}/>
-                                    </>
-                                ) : (
-                                    <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        {loading ? (
+                                            <>
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Link href='#' className="flex items-center gap-1">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <div className="leading-[17px]">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            John Doe
+                                                        </h4>
 
-                                        <div className="flex items-center justify-between">
-                                            <Link href='#' className="flex items-center gap-1">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                <div className="leading-[17px]">
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                        John Doe
-                                                    </h4>
-
-                                                    <div className="flex items-center text-graycolor font-normal">
+                                                        <div className="flex items-center text-graycolor font-normal">
                                                           <span
                                                               className="text-[12px]">
                                                             2h ago
                                                         </span>
-                                                        <LuDot size={12}/>
-                                                        <IoMdGlobe size={13}/>
+                                                            <LuDot size={12}/>
+                                                            <IoMdGlobe size={13}/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </Link>
+                                                </Link>
 
-                                            <div className="flex items-center justify-end text-end">
-                                                <div onClick={handlePostMeDotClick}
-                                                     ref={PostMeDotDropdownRef}
-                                                     className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
-                                                    <svg
-                                                        className="w-3 h-3"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div onClick={handlePostMeDotClick}
+                                                         ref={PostMeDotDropdownRef}
+                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                     0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                    </svg>
-                                                    {postMeDotClick &&
-                                                        <div
-                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                            <div className="container py-2">
-                                                                <div className="space-y-1 text-[14px]">
-                                                                    <Link href='#'
-                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24
+                                                        </svg>
+                                                        {postMeDotClick &&
+                                                            <div
+                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                <div className="container py-2">
+                                                                    <div className="space-y-1 text-[14px]">
+                                                                        <Link href='#'
+                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
                                                                             24" fill="none" stroke="#6B7280"
-                                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path d="M17 3a2.85 2.83 0 1 1
+                                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M17 3a2.85 2.83 0 1 1
                                                                             4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                                            <path d="m15 5 4 4"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Edit post
-                                                                        </h4>
-                                                                    </Link>
+                                                                                <path d="m15 5 4 4"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Edit post
+                                                                            </h4>
+                                                                        </Link>
 
-                                                                    <div onClick={() => setOpenDeletePostModal(true)}
-                                                                         className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24
+                                                                        <div
+                                                                            onClick={() => setOpenDeletePostModal(true)}
+                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
                                                                             24" fill="none" stroke="#6B7280"
-                                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path d="M3 6h18"/>
-                                                                            <path
-                                                                                d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M3 6h18"/>
+                                                                                <path
+                                                                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0
                                                                             2 1 2 2v2"/>
-                                                                            <line x1="10" x2="10" y1="11" y2="17"/>
-                                                                            <line x1="14" x2="14" y1="11"
-                                                                                  y2="17"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Delete post
-                                                                        </h4>
+                                                                                <line x1="10" x2="10" y1="11" y2="17"/>
+                                                                                <line x1="14" x2="14" y1="11"
+                                                                                      y2="17"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Delete post
+                                                                            </h4>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    }
-                                                </div>
+                                                        }
+                                                    </div>
 
-                                                <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    <div
+                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
                                                     0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
                                                     1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
                                                     0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                                    </svg>
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <h4 className="mt-3 text-[14px] text-prgcolor">
-                                            The SRS-XB100 speaker provides powerful, clear,
-                                            expansive sound in a small, portable and durable
-                                            body. Despite its size...
-                                        </h4>
+                                            </>
+                                        )}
                                     </div>
-                                )}
-                                {loading ? (
-                                    <>
-                                        <Skeleton height={300} count={1}/>
-                                    </>
-                                ) : (
-                                    <>
-                                        {/* Post Icons */}
-                                        <div className="post_icons mt-0">
+
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                The SRS-XB100 speaker provides powerful, clear,
+                                                expansive sound in a small, portable and durable
+                                                body. Despite its size...
+                                            </h4>
+                                        </>
+                                    )}
+                                </div>
+
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    {loading ? (
+                                        <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                            <Skeleton height={40} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
                                             <div
                                                 className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
                                                 <div className="flex items-center gap-1">
@@ -1211,10 +1229,18 @@ export default function Home() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </>
+                                    )}
+                                </div>
 
-                                        {/* Post Write Comment */}
-                                        <div className="post_write_comment mt-0">
+                                {/* Post Write Comment */}
+                                <div className="post_write_comment mt-0">
+                                    {loading ? (
+                                        <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                            <Skeleton height={40} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
                                             <div
                                                 className="flex items-center justify-between box bg-white px-4 py-2 rounded rounded-b-none">
                                                 <div className="relative w-full flex items-center gap-1">
@@ -1265,13 +1291,22 @@ export default function Home() {
                                                     }
                                                 </div>
                                             </div>
-                                        </div>
+                                        </>
+                                    )}
+                                </div>
 
-                                        {/* Post User Comments (One) */}
-                                        <div className="post_user_comments">
-                                            <div className="box bg-white px-4 py-3 rounded rounded-b-none">
-                                                <div
-                                                    className="flex items-start justify-start gap-1 w-full">
+                                {/* Post User Comments (One) */}
+                                <div className="post_user_comments">
+
+                                    <div className="box bg-white px-4 py-3 rounded rounded-b-none">
+                                        <div className="flex items-start justify-start gap-1 w-full">
+                                            {loading ? (
+                                                <div className="flex items-center justify-start pb-0 gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
                                                     <Link href='#'
                                                           className={`flex items-center gap-2 ${hideComment ? 'opacity-50' : ''}`}>
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -1386,11 +1421,19 @@ export default function Home() {
                                                             }
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </>
+                                            )}
+                                        </div>
 
-                                                {/* Comment Icons */}
-                                                <div
-                                                    className={`ml-10 box bg-white pt-2 rounded rounded-b-none ${hideComment ? 'opacity-50' : ''}`}>
+                                        {/* Comment Icons */}
+                                        <div
+                                            className={`ml-10 box bg-white pt-2 rounded rounded-b-none ${hideComment ? 'opacity-50' : ''}`}>
+                                            {loading ? (
+                                                <div className="ml-4 pt-0 pb-0 mt-0">
+                                                    <Skeleton height={10} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
                                                         <div
@@ -1480,16 +1523,24 @@ export default function Home() {
                                                             </div>
                                                         </div>
                                                     )}
-                                                </div>
-                                            </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
 
-                                            {/* Comment Replay */}
-                                            <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
-                                                <div className="ml-9 flex items-start justify-start gap-1">
+                                    {/* Comment Replay */}
+                                    <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                        <div className="ml-9 flex items-start justify-start gap-1">
+                                            {loading ? (
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
                                                     <Link href='#' className="flex items-center gap-">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     </Link>
-
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
@@ -1566,9 +1617,17 @@ export default function Home() {
                                                             }
                                                         </div>
                                                     </div>
+                                                </>
+                                            )}
+                                        </div>
+                                        {/* Comment Icons */}
+                                        <div className="ml-[76px] box bg-white pt-2 rounded rounded-b-none">
+                                            {loading ? (
+                                                <div className="ml-4 pt-0 pb-0 mt-0">
+                                                    <Skeleton height={10} count={1}/>
                                                 </div>
-                                                {/* Comment Icons */}
-                                                <div className="ml-[76px] box bg-white pt-2 rounded rounded-b-none">
+                                            ) : (
+                                                <>
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
                                                         <div className="c_icons flex items-center gap-6">
@@ -1592,77 +1651,86 @@ export default function Home() {
                                                         </div>
                                                         <div className="c_time">1d</div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
 
-                                            {/* Comment Replay */}
-                                            {showCommentReplyTwo && (
-                                                <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
-                                                    <div className="ml-[70px] flex items-start justify-start gap-1">
-                                                        <Link href='#' className="flex items-center gap-">
-                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                        </Link>
+                                    {/* Comment Replay */}
+                                    {showCommentReplyTwo && (
+                                        <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                            <div className="ml-[70px] flex items-start justify-start gap-1">
+                                                <Link href='#' className="flex items-center gap-">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                </Link>
+
+                                                <div
+                                                    className="write_comment_text rounded flex items-start justify-between w-full">
+                                                    <div className="relative w-full flex items-center gap-1">
+                                                        <input
+                                                            className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                            value={commentTextTwo}
+                                                            onChange={(e) => setCommentTextTwo(e.target.value)}
+                                                            type="text"
+                                                            placeholder="Write a reply..."
+                                                        />
 
                                                         <div
-                                                            className="write_comment_text rounded flex items-start justify-between w-full">
-                                                            <div className="relative w-full flex items-center gap-1">
-                                                                <input
-                                                                    className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
-                                                                    value={commentTextTwo}
-                                                                    onChange={(e) => setCommentTextTwo(e.target.value)}
-                                                                    type="text"
-                                                                    placeholder="Write a reply..."
-                                                                />
-
-                                                                <div
-                                                                    className="absolute inset-y-0 right-2 flex items-center gap-4">
-                                                                    <div className="cursor-pointer">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             viewBox="0 0 24 24"
-                                                                             fill="#4D7FB8"
-                                                                             className="w-5 h-5">
-                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                            className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                            <div className="cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24"
+                                                                     fill="#4D7FB8"
+                                                                     className="w-5 h-5">
+                                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
                                                         1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
                                                         16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
                                                         0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
                                                         16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                                                  clipRule="evenodd"/>
-                                                                        </svg>
-                                                                    </div>
-                                                                    <div className="cursor-pointer">
-                                                                        <GoSmiley
-                                                                            onClick={() => setShowCommentEmojiTwo(!showCommentEmojiTwo)}
-                                                                            size={20}
-                                                                            className="cursor-pointer text-graycolor hover:text-primary"/>
-                                                                    </div>
-                                                                </div>
-
-                                                                {/* Post Reactions */}
-                                                                {showCommentEmojiTwo &&
-                                                                    <div
-                                                                        id="comment_emoji_two"
-                                                                        className={`comment_emoji_two absolute ${pickerPositionClassTwo} right-0`}>
-                                                                        <Picker
-                                                                            data={data}
-                                                                            theme="light"
-                                                                            perLine={8}
-                                                                            onClickOutside={handleCommentEmojiClickOutsideTwo}
-                                                                            emojiSize={22}
-                                                                            onEmojiSelect={addCommentEmojiTwo}
-                                                                            maxFrequentRows={0}
-                                                                            maxEmojiRows={2}
-                                                                        />
-                                                                    </div>
-                                                                }
+                                                                          clipRule="evenodd"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div className="cursor-pointer">
+                                                                <GoSmiley
+                                                                    onClick={() => setShowCommentEmojiTwo(!showCommentEmojiTwo)}
+                                                                    size={20}
+                                                                    className="cursor-pointer text-graycolor hover:text-primary"/>
                                                             </div>
                                                         </div>
+
+                                                        {/* Post Reactions */}
+                                                        {showCommentEmojiTwo &&
+                                                            <div
+                                                                id="comment_emoji_two"
+                                                                className={`comment_emoji_two absolute ${pickerPositionClassTwo} right-0`}>
+                                                                <Picker
+                                                                    data={data}
+                                                                    theme="light"
+                                                                    perLine={8}
+                                                                    onClickOutside={handleCommentEmojiClickOutsideTwo}
+                                                                    emojiSize={22}
+                                                                    onEmojiSelect={addCommentEmojiTwo}
+                                                                    maxFrequentRows={0}
+                                                                    maxEmojiRows={2}
+                                                                />
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </div>
-                                            )}
+                                            </div>
+                                        </div>
+                                    )}
 
-                                            {/* Sub Comment Replay */}
-                                            <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
-                                                <div className="ml-[70px] flex items-start justify-start gap-1">
+                                    {/* Sub Comment Replay */}
+                                    <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                        <div className="ml-[70px] flex items-start justify-start gap-1">
+                                            {loading ? (
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
                                                     <Link href='#' className="flex items-center gap-">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     </Link>
@@ -1690,9 +1758,17 @@ export default function Home() {
                                                             </svg>
                                                         </div>
                                                     </div>
+                                                </>
+                                            )}
+                                        </div>
+                                        {/* Comment Icons */}
+                                        <div className="ml-[110px] box bg-white pt-2 rounded rounded-b-none">
+                                            {loading ? (
+                                                <div className="ml-4 pt-0 pb-0 mt-0">
+                                                    <Skeleton height={10} count={1}/>
                                                 </div>
-                                                {/* Comment Icons */}
-                                                <div className="ml-[110px] box bg-white pt-2 rounded rounded-b-none">
+                                            ) : (
+                                                <>
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
                                                         <div className="c_icons flex items-center gap-6">
@@ -1716,14 +1792,24 @@ export default function Home() {
                                                         </div>
                                                         <div className="c_time">1d</div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </>
+                                            )}
                                         </div>
+                                    </div>
 
-                                        {/* Post User Comments (Two) */}
-                                        <div className="post_user_comments">
-                                            <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
-                                                <div className="flex items-start justify-start gap-1 w-full">
+                                </div>
+
+                                {/* Post User Comments (Two) */}
+                                <div className="post_user_comments">
+                                    <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                        <div className="flex items-start justify-start gap-1 w-full">
+                                            {loading ? (
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
                                                     <Link href='#' className="flex items-center gap-2">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     </Link>
@@ -1751,9 +1837,17 @@ export default function Home() {
                                                             </svg>
                                                         </div>
                                                     </div>
+                                                </>
+                                            )}
+                                        </div>
+                                        {/* Comment Icons */}
+                                        <div className="ml-10 box bg-white pt-2 rounded rounded-b-none">
+                                            {loading ? (
+                                                <div className="ml-4 pt-0 pb-0 mt-0">
+                                                    <Skeleton height={10} count={1}/>
                                                 </div>
-                                                {/* Comment Icons */}
-                                                <div className="ml-10 box bg-white pt-2 rounded rounded-b-none">
+                                            ) : (
+                                                <>
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
                                                         <div className="c_icons flex items-center gap-6">
@@ -1777,80 +1871,89 @@ export default function Home() {
                                                         </div>
                                                         <div className="c_time">1d</div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
 
-                                            {/* Comment Replay */}
-                                            {showCommentReplyThree && (
-                                                <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
-                                                    <div className="ml-9 flex items-start justify-start gap-1">
-                                                        <Link href='#' className="flex items-center gap-">
-                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                        </Link>
+                                    {/* Comment Replay */}
+                                    {showCommentReplyThree && (
+                                        <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                            <div className="ml-9 flex items-start justify-start gap-1">
+                                                <Link href='#' className="flex items-center gap-">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                </Link>
+
+                                                <div
+                                                    className="write_comment_text rounded flex items-start justify-between w-full">
+                                                    <div className="relative w-full flex items-center gap-1">
+                                                        <input
+                                                            className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                            value={commentTextThree}
+                                                            onChange={(e) => setCommentTextThree(e.target.value)}
+                                                            type="text"
+                                                            placeholder="Write a reply..."
+                                                        />
 
                                                         <div
-                                                            className="write_comment_text rounded flex items-start justify-between w-full">
-                                                            <div className="relative w-full flex items-center gap-1">
-                                                                <input
-                                                                    className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
-                                                                    value={commentTextThree}
-                                                                    onChange={(e) => setCommentTextThree(e.target.value)}
-                                                                    type="text"
-                                                                    placeholder="Write a reply..."
-                                                                />
-
-                                                                <div
-                                                                    className="absolute inset-y-0 right-2 flex items-center gap-4">
-                                                                    <div className="cursor-pointer">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             viewBox="0 0 24 24"
-                                                                             fill="#4D7FB8"
-                                                                             className="w-5 h-5">
-                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                            className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                            <div className="cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24"
+                                                                     fill="#4D7FB8"
+                                                                     className="w-5 h-5">
+                                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
                                                         1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
                                                         16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
                                                         0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
                                                         16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                                                  clipRule="evenodd"/>
-                                                                        </svg>
-                                                                    </div>
-                                                                    <div className="cursor-pointer">
-                                                                        <GoSmiley
-                                                                            onClick={() => setShowCommentEmojiThree(!showCommentEmojiThree)}
-                                                                            size={20}
-                                                                            className="cursor-pointer text-graycolor hover:text-primary"/>
-                                                                    </div>
-                                                                </div>
-
-                                                                {/* Post Reactions */}
-                                                                {showCommentEmojiThree &&
-                                                                    <div
-                                                                        id="comment_emoji_three"
-                                                                        className={`comment_emoji_three absolute ${pickerPositionClassThree} right-0`}>
-                                                                        <Picker
-                                                                            data={data}
-                                                                            theme="light"
-                                                                            perLine={8}
-                                                                            onClickOutside={handleCommentEmojiClickOutsideThree}
-                                                                            emojiSize={22}
-                                                                            onEmojiSelect={addCommentEmojiThree}
-                                                                            maxFrequentRows={0}
-                                                                            maxEmojiRows={2}
-                                                                        />
-                                                                    </div>
-                                                                }
+                                                                          clipRule="evenodd"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div className="cursor-pointer">
+                                                                <GoSmiley
+                                                                    onClick={() => setShowCommentEmojiThree(!showCommentEmojiThree)}
+                                                                    size={20}
+                                                                    className="cursor-pointer text-graycolor hover:text-primary"/>
                                                             </div>
                                                         </div>
+
+                                                        {/* Post Reactions */}
+                                                        {showCommentEmojiThree &&
+                                                            <div
+                                                                id="comment_emoji_three"
+                                                                className={`comment_emoji_three absolute ${pickerPositionClassThree} right-0`}>
+                                                                <Picker
+                                                                    data={data}
+                                                                    theme="light"
+                                                                    perLine={8}
+                                                                    onClickOutside={handleCommentEmojiClickOutsideThree}
+                                                                    emojiSize={22}
+                                                                    onEmojiSelect={addCommentEmojiThree}
+                                                                    maxFrequentRows={0}
+                                                                    maxEmojiRows={2}
+                                                                />
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </div>
-                                            )}
+                                            </div>
                                         </div>
+                                    )}
+                                </div>
 
-                                        {/* Post User Comments (Load more) */}
-                                        <div className="post_user_comments"
-                                             style={{display: showLoadComments ? 'block' : 'none'}}>
-                                            <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
-                                                <div className="flex items-start justify-start gap-1 w-full">
+                                {/* Post User Comments (Load more) */}
+                                <div className="post_user_comments"
+                                     style={{display: showLoadComments ? 'block' : 'none'}}>
+                                    <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                        <div className="flex items-start justify-start gap-1 w-full">
+                                            {loading ? (
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
                                                     <Link href='#' className="flex items-center gap-2">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     </Link>
@@ -1877,9 +1980,17 @@ export default function Home() {
                                                             </svg>
                                                         </div>
                                                     </div>
+                                                </>
+                                            )}
+                                        </div>
+                                        {/* Comment Icons */}
+                                        <div className="ml-10 box bg-white pt-2 rounded rounded-b-none">
+                                            {loading ? (
+                                                <div className="ml-4 pt-0 pb-0 mt-0">
+                                                    <Skeleton height={10} count={1}/>
                                                 </div>
-                                                {/* Comment Icons */}
-                                                <div className="ml-10 box bg-white pt-2 rounded rounded-b-none">
+                                            ) : (
+                                                <>
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
                                                         <div className="c_icons flex items-center gap-6">
@@ -1903,460 +2014,546 @@ export default function Home() {
                                                         </div>
                                                         <div className="c_time">1d</div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
 
-                                            {/* Comment Replay */}
-                                            {showCommentReplyLoadMore && (
-                                                <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
-                                                    <div className="ml-9 flex items-start justify-start gap-1">
-                                                        <Link href='#' className="flex items-center gap-">
-                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                        </Link>
+                                    {/* Comment Replay */}
+                                    {showCommentReplyLoadMore && (
+                                        <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                            <div className="ml-9 flex items-start justify-start gap-1">
+                                                <Link href='#' className="flex items-center gap-">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                </Link>
+
+                                                <div
+                                                    className="write_comment_text rounded flex items-start justify-between w-full">
+                                                    <div className="relative w-full flex items-center gap-1">
+                                                        <input
+                                                            className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                            value={commentTextLoadMore}
+                                                            onChange={(e) => setCommentTextLoadMore(e.target.value)}
+                                                            type="text"
+                                                            placeholder="Write a reply..."
+                                                        />
 
                                                         <div
-                                                            className="write_comment_text rounded flex items-start justify-between w-full">
-                                                            <div className="relative w-full flex items-center gap-1">
-                                                                <input
-                                                                    className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
-                                                                    value={commentTextLoadMore}
-                                                                    onChange={(e) => setCommentTextLoadMore(e.target.value)}
-                                                                    type="text"
-                                                                    placeholder="Write a reply..."
-                                                                />
-
-                                                                <div
-                                                                    className="absolute inset-y-0 right-2 flex items-center gap-4">
-                                                                    <div className="cursor-pointer">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             viewBox="0 0 24 24"
-                                                                             fill="#4D7FB8"
-                                                                             className="w-5 h-5">
-                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                            className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                            <div className="cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24"
+                                                                     fill="#4D7FB8"
+                                                                     className="w-5 h-5">
+                                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
                                                         1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
                                                         16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
                                                         0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
                                                         16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                                                  clipRule="evenodd"/>
-                                                                        </svg>
-                                                                    </div>
-                                                                    <div className="cursor-pointer">
-                                                                        <GoSmiley
-                                                                            onClick={() => setShowCommentEmojiLoadMore(!showCommentEmojiLoadMore)}
-                                                                            size={20}
-                                                                            className="cursor-pointer text-graycolor hover:text-primary"/>
-                                                                    </div>
-                                                                </div>
-
-                                                                {/* Post Reactions */}
-                                                                {showCommentEmojiLoadMore &&
-                                                                    <div
-                                                                        className="comment_emoji absolute top-[100%] right-0">
-                                                                        <Picker
-                                                                            data={data}
-                                                                            theme="light"
-                                                                            perLine={8}
-                                                                            onClickOutside={handleCommentEmojiClickOutsideLoadMore}
-                                                                            emojiSize={22}
-                                                                            onEmojiSelect={addCommentEmojiLoadMore}
-                                                                            maxFrequentRows={0}
-                                                                            maxEmojiRows={2}
-                                                                        />
-                                                                    </div>
-                                                                }
+                                                                          clipRule="evenodd"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div className="cursor-pointer">
+                                                                <GoSmiley
+                                                                    onClick={() => setShowCommentEmojiLoadMore(!showCommentEmojiLoadMore)}
+                                                                    size={20}
+                                                                    className="cursor-pointer text-graycolor hover:text-primary"/>
                                                             </div>
                                                         </div>
+
+                                                        {/* Post Reactions */}
+                                                        {showCommentEmojiLoadMore &&
+                                                            <div
+                                                                className="comment_emoji absolute top-[100%] right-0">
+                                                                <Picker
+                                                                    data={data}
+                                                                    theme="light"
+                                                                    perLine={8}
+                                                                    onClickOutside={handleCommentEmojiClickOutsideLoadMore}
+                                                                    emojiSize={22}
+                                                                    onEmojiSelect={addCommentEmojiLoadMore}
+                                                                    maxFrequentRows={0}
+                                                                    maxEmojiRows={2}
+                                                                />
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </div>
-                                            )}
+                                            </div>
                                         </div>
+                                    )}
+                                </div>
 
-                                        <div className="box bg-white px-4 pt-2 pb-4 rounded">
+                                <div className="box bg-white px-4 pt-2 pb-4 rounded">
+                                    {loading ? (
+                                        <div>
+                                            <Skeleton height={10} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
                                             <button onClick={toggleComments} type="button"
                                                     className="text-[14px] text-primary hover:underline cursor-pointer">
                                                 View more comments
                                             </button>
-                                        </div>
-
-                                    </>
-                                )}
+                                        </>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Post Box */}
-                            {loading ? (
-                                <>
-                                    <Skeleton height={300} count={1}/>
-                                </>
-                            ) : (
-                                <div className="post_box_wrap">
-                                    <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
-                                        <div className="flex items-center justify-between">
-                                            <Link href='#' className="flex items-center gap-1">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                <div className="leading-[17px]">
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                        Inna K.
-                                                    </h4>
-                                                    <div className="flex items-center text-graycolor font-normal">
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        {loading ? (
+                                            <div className="flex items-center justify-start gap-2 w-full">
+                                                <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <Link href='#' className="flex items-center gap-1">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <div className="leading-[17px]">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            Inna K.
+                                                        </h4>
+                                                        <div className="flex items-center text-graycolor font-normal">
                                                           <span
                                                               className="text-[12px]">
                                                             6d ago
                                                         </span>
-                                                        <LuDot size={12}/>
-                                                        <IoMdGlobe size={13}/>
+                                                            <LuDot size={12}/>
+                                                            <IoMdGlobe size={13}/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </Link>
+                                                </Link>
 
-                                            <div className="flex items-center justify-end text-end">
-                                                <div
-                                                    onClick={handlePostOtherDotClick}
-                                                    ref={PostOtherDotDropdownRef}
-                                                    className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postOtherDotClick ? 'bg-gray-100' : ''}`}>
-                                                    <svg
-                                                        className="w-3 h-3"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div
+                                                        onClick={handlePostOtherDotClick}
+                                                        ref={PostOtherDotDropdownRef}
+                                                        className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postOtherDotClick ? 'bg-gray-100' : ''}`}>
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                     0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                    </svg>
+                                                        </svg>
 
-                                                    {postOtherDotClick &&
-                                                        <div
-                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                            <div className="container py-2">
-                                                                <div className="space-y-1 text-[14px]">
-                                                                    <Link href='#'
-                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            stroke="#6B7280"
-                                                                            strokeWidth="1.5"
-                                                                            strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path
-                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                            <path
-                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                            <path
-                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                            <line x1="2" x2="22" y1="2" y2="22"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Hide post
-                                                                        </h4>
-                                                                    </Link>
+                                                        {postOtherDotClick &&
+                                                            <div
+                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                <div className="container py-2">
+                                                                    <div className="space-y-1 text-[14px]">
+                                                                        <Link href='#'
+                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                stroke="#6B7280"
+                                                                                strokeWidth="1.5"
+                                                                                strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path
+                                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                <path
+                                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                <path
+                                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                <line x1="2" x2="22" y1="2" y2="22"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Hide post
+                                                                            </h4>
+                                                                        </Link>
 
-                                                                    <Link href='#'
-                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24
+                                                                        <Link href='#'
+                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
                                                                                  24" fill="none" stroke="#6B7280"
-                                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M4 15s1-1 4-1 5 2 8 2
                                                                                 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                            <line x1="4" x2="4" y1="22" y2="15"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Report post
-                                                                        </h4>
-                                                                    </Link>
+                                                                                <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Report post
+                                                                            </h4>
+                                                                        </Link>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    }
-                                                </div>
+                                                        }
+                                                    </div>
 
-                                                <div
-                                                    className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    <div
+                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
                                                     0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
                                                     1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
                                                     0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                                    </svg>
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <h4 className="mt-3 text-[14px] text-prgcolor">
-                                            Could anyone please tell me where to find a good deal on the iPhone 15?
-                                        </h4>
+                                            </>
+                                        )}
                                     </div>
-                                    <div className="post_image mt-0">
-                                        <SlideshowLightbox className="flex w-full" lightboxIdentifier="l2"
-                                                           framework="next"
-                                                           images={images}>
-                                            {images.slice(0, 2).map((image, index) => (
-                                                <Image
-                                                    key={index}
-                                                    src={image.src}
-                                                    alt={image.alt}
-                                                    height={100}
-                                                    width={100}
-                                                    className="w-1/2"
-                                                    data-lightboxjs="l2"
-                                                    quality={80}
-                                                />
-                                            ))}
-                                        </SlideshowLightbox>
-                                    </div>
-                                    {/* Post Icons */}
-                                    <div className="post_icons mt-0">
-                                        <div
-                                            className="flex items-center justify-between rounded rounded-t-none bg-white px-4 py-3 mt-0">
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer"
-                                                     onClick={() => setIsClickedLikePostThree(!isClickedLikePostThree)}>
-                                                    {isClickedLikePostThree ? (
-                                                        <GoHeartFill
-                                                            className="w-4 h-4 text-primary hover:text-primary"/>
-                                                    ) : (
-                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                    )}
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoSync
-                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                Could anyone please tell me where to find a good deal on the iPhone 15?
+                                            </h4>
+                                        </>
+                                    )}
                                 </div>
-                            )}
+                                <div className="post_image mt-0">
+                                    {loading ? (
+                                        <>
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                <Skeleton height={200} count={1}/>
+                                                <Skeleton height={30} count={1}/>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <SlideshowLightbox className="flex w-full" lightboxIdentifier="l2"
+                                                               framework="next"
+                                                               images={images}>
+                                                {images.slice(0, 2).map((image, index) => (
+                                                    <Image
+                                                        key={index}
+                                                        src={image.src}
+                                                        alt={image.alt}
+                                                        height={100}
+                                                        width={100}
+                                                        className="w-1/2"
+                                                        data-lightboxjs="l2"
+                                                        quality={80}
+                                                    />
+                                                ))}
+                                            </SlideshowLightbox>
+                                        </>
+                                    )}
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    {loading ? (
+                                        <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                            <Skeleton height={40} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="flex items-center justify-between rounded rounded-t-none bg-white px-4 py-3 mt-0">
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer"
+                                                         onClick={() => setIsClickedLikePostThree(!isClickedLikePostThree)}>
+                                                        {isClickedLikePostThree ? (
+                                                            <GoHeartFill
+                                                                className="w-4 h-4 text-primary hover:text-primary"/>
+                                                        ) : (
+                                                            <GoHeart
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        )}
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                    </div>
+                                                </div>
 
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoComment
+                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoSync
+                                                            className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
 
                             {/* Post Box Last */}
                             {currentPostBox === 'post_box_last' && (
                                 <div className="post_box_wrap">
                                     <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
                                         <div className="flex items-center justify-between">
-                                            <Link href='#' className="flex items-center gap-1">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                <div className="leading-[17px]">
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                        Robert Fox
-                                                    </h4>
-                                                    <div className="flex items-center text-graycolor font-normal">
+                                            {loading ? (
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    <Link href='#' className="flex items-center gap-1">
+                                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                        <div className="leading-[17px]">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                Robert Fox
+                                                            </h4>
+                                                            <div
+                                                                className="flex items-center text-graycolor font-normal">
                                                           <span
                                                               className="text-[12px]">
                                                             1m ago
                                                         </span>
-                                                        <LuDot size={12}/>
-                                                        <IoMdGlobe size={13}/>
-                                                    </div>
-                                                </div>
-                                            </Link>
-
-                                            <div className="flex items-center justify-end text-end">
-                                                <div
-                                                    onClick={handlePostFourOtherDotClick}
-                                                    ref={PostFourOtherDotDropdownRef}
-                                                    className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postFourOtherDotClick ? 'bg-gray-100' : ''}`}>
-                                                    <svg
-                                                        className="w-3 h-3"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                    </svg>
-
-                                                    {postFourOtherDotClick &&
-                                                        <div
-                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                            <div className="container py-2">
-                                                                <div className="space-y-1 text-[14px]">
-                                                                    <div onClick={togglePostBoxVisibility}
-                                                                         className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            stroke="#6B7280"
-                                                                            strokeWidth="1.5"
-                                                                            strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path
-                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                            <path
-                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                            <path
-                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                            <line x1="2" x2="22" y1="2" y2="22"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Hide post
-                                                                        </h4>
-                                                                    </div>
-
-                                                                    <div onClick={() => setOpenReportPostModal(true)}
-                                                                         className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                            <line x1="4" x2="4" y1="22" y2="15"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Report post
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
+                                                                <LuDot size={12}/>
+                                                                <IoMdGlobe size={13}/>
                                                             </div>
                                                         </div>
-                                                    }
-                                                </div>
+                                                    </Link>
 
-                                                <div onClick={togglePostBoxVisibility}
-                                                     className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        fill="#828D9E"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    <div className="flex items-center justify-end text-end">
+                                                        <div
+                                                            onClick={handlePostFourOtherDotClick}
+                                                            ref={PostFourOtherDotDropdownRef}
+                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postFourOtherDotClick ? 'bg-gray-100' : ''}`}>
+                                                            <svg
+                                                                className="w-3 h-3"
+                                                                fill="#828D9E"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                            </svg>
+
+                                                            {postFourOtherDotClick &&
+                                                                <div
+                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                    <div className="container py-2">
+                                                                        <div className="space-y-1 text-[14px]">
+                                                                            <div onClick={togglePostBoxVisibility}
+                                                                                 className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                    <path
+                                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                    <path
+                                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                    <line x1="2" x2="22" y1="2"
+                                                                                          y2="22"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Hide post
+                                                                                </h4>
+                                                                            </div>
+
+                                                                            <div
+                                                                                onClick={() => setOpenReportPostModal(true)}
+                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                    <line x1="4" x2="4" y1="22"
+                                                                                          y2="15"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Report post
+                                                                                </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+
+                                                        <div onClick={togglePostBoxVisibility}
+                                                             className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                fill="#828D9E"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
                                                     0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
                                                     1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
                                                     0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
 
-                                        <h4 className="mt-3 text-[14px] text-prgcolor">
-                                            The HTCU23 Pro 5G stands as the pinnacle of smartphone innovation, offering
-                                            unparalleled performance, connectivity, and functionality. Its sleek design
-                                            houses a
-                                            powerhouse of cutting-edge technology, delivering lightning-fast 5G
-                                            connectivity
-                                            and an immersive multimedia experience. With its advanced features and
-                                            premium
-                                            build quality, the HTCU23 Pro 5G redefines what a flagship smartphone can
-                                            achieve
-                                        </h4>
+                                        {loading ? (
+                                            <>
+                                                <Skeleton height={30} count={1}/>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                    The HTCU23 Pro 5G stands as the pinnacle of smartphone innovation,
+                                                    offering
+                                                    unparalleled performance, connectivity, and functionality. Its sleek
+                                                    design
+                                                    houses a
+                                                    powerhouse of cutting-edge technology, delivering lightning-fast 5G
+                                                    connectivity
+                                                    and an immersive multimedia experience. With its advanced features
+                                                    and
+                                                    premium
+                                                    build quality, the HTCU23 Pro 5G redefines what a flagship
+                                                    smartphone can
+                                                    achieve
+                                                </h4>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="post_image mt-0">
-                                        <Image src={SliderOneImg} className="w-full h-56" alt="PostImg"/>
+                                        {loading ? (
+                                            <>
+                                                <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                    <Skeleton height={200} count={1}/>
+                                                    <Skeleton height={30} count={1}/>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Image src={SliderOneImg} className="w-full h-56" alt="PostImg"/>
+                                            </>
+                                        )}
                                     </div>
                                     {/* Post Icons */}
                                     <div className="post_icons mt-0">
-                                        <div
-                                            className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer"
-                                                     onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
-                                                    {isClickedLikePostFour ? (
-                                                        <GoHeartFill
-                                                            className="w-4 h-4 text-primary hover:text-primary"/>
-                                                    ) : (
-                                                        <GoHeart className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                    )}
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
-                                                </div>
+                                        {loading ? (
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                <Skeleton height={40} count={1}/>
                                             </div>
-
-                                            <div className="flex items-center gap-1">
-                                                <div className="cursor-pointer">
-                                                    <GoComment className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center gap-1">
-                                                <div onClick={handleShareDotClick}
-                                                     ref={ShareDotDropdownRef}
-                                                     className="relative cursor-pointer">
-                                                    <GoSync
-                                                        className={`w-full h-[14px] text-[#6B7280] hover:text-primary ${shareDotClick ? 'text-primary' : ''}`}/>
-                                                    {shareDotClick &&
-                                                        <div
-                                                            className="dots-dropdown-menu w-[300px] absolute bottom-[27px] right-[4px] bg-white rounded shadow border">
-                                                            <div className="container py-2">
-                                                                <div className="space-y-1 text-[14px]">
-                                                                    <Link href='#'
-                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            stroke="#6B7280"
-                                                                            strokeWidth="1.5"
-                                                                            strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path
-                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                            <path
-                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                            <path
-                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                            <line x1="2" x2="22" y1="2" y2="22"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Hide ad
-                                                                        </h4>
-                                                                    </Link>
-
-                                                                    <Link href='#'
-                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                            <line x1="4" x2="4" y1="22" y2="15"/>
-                                                                        </svg>
-                                                                        <h4>
-                                                                            Report ad
-                                                                        </h4>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
+                                        ) : (
+                                            <>
+                                                <div
+                                                    className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
+                                                            {isClickedLikePostFour ? (
+                                                                <GoHeartFill
+                                                                    className="w-4 h-4 text-primary hover:text-primary"/>
+                                                            ) : (
+                                                                <GoHeart
+                                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                            )}
                                                         </div>
-                                                    }
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer">
+                                                            <GoComment
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1">
+                                                        <div onClick={handleShareDotClick}
+                                                             ref={ShareDotDropdownRef}
+                                                             className="relative cursor-pointer">
+                                                            <GoSync
+                                                                className={`w-full h-[14px] text-[#6B7280] hover:text-primary ${shareDotClick ? 'text-primary' : ''}`}/>
+                                                            {shareDotClick &&
+                                                                <div
+                                                                    className="dots-dropdown-menu w-[300px] absolute bottom-[27px] right-[4px] bg-white rounded shadow border">
+                                                                    <div className="container py-2">
+                                                                        <div className="space-y-1 text-[14px]">
+                                                                            <div
+                                                                                onClick={() => setOpenStartPostShareModal(true)}
+                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    stroke="#6B7280"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+                                                                                    <path d="M18 14h-8"/>
+                                                                                    <path d="M15 18h-5"/>
+                                                                                    <path d="M10 6h8v4h-8V6Z"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Share to newsfeed
+                                                                                </h4>
+                                                                            </div>
+
+                                                                            <Link href='#'
+                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                                                    <path d="M8 10h.01"/>
+                                                                                    <path d="M12 10h.01"/>
+                                                                                    <path d="M16 10h.01"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Direct message
+                                                                                </h4>
+                                                                            </Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div className="count">
-                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             )}
@@ -2470,91 +2667,127 @@ export default function Home() {
                         <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mr-[22px]">
 
                             <div className={`box bg-white px-4 py-4 rounded ${hideDiv1 ? 'hidden' : ''}`}>
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <GoHistory className="w-[18px] h-[18px] text-[#6B7280]"/>
-                                        <h4 className="text-[14px] font-semibold text-prgcolor">
-                                            Recently Viewed Items
-                                        </h4>
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={20} count={1}/>
                                     </div>
-
-                                    <div
-                                        onClick={handleRecentDotRightSideClick}
-                                        ref={RecentDotRightSideDropdownRef}
-                                        className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${recentDotRightSideClick ? 'bg-gray-100' : ''}`}>
-                                        <svg
-                                            className="w-3 h-3"
-                                            fill="#6B7280"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                        </svg>
-                                        {recentDotRightSideClick &&
+                                ) : (
+                                    <>
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <GoHistory className="w-[18px] h-[18px] text-[#6B7280]"/>
+                                                <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                    Recently Viewed Items
+                                                </h4>
+                                            </div>
                                             <div
-                                                className="dots-dropdown-menu w-[200px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                <div className="container py-2">
-                                                    <div className="space-y-1 text-[14px]">
-                                                        <div onClick={handleToggleHideDiv1}
-                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                            <svg
-                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 24 24" fill="none"
-                                                                stroke="#6B7280"
-                                                                strokeWidth="1.5"
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round">
-                                                                <path
-                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                <path
-                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                <path
-                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                <line x1="2" x2="22" y1="2" y2="22"/>
-                                                            </svg>
-                                                            <h4>
-                                                                Hide this
-                                                            </h4>
+                                                onClick={handleRecentDotRightSideClick}
+                                                ref={RecentDotRightSideDropdownRef}
+                                                className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${recentDotRightSideClick ? 'bg-gray-100' : ''}`}>
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="#6B7280"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                </svg>
+                                                {recentDotRightSideClick &&
+                                                    <div
+                                                        className="dots-dropdown-menu w-[200px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                        <div className="container py-2">
+                                                            <div className="space-y-1 text-[14px]">
+                                                                <div onClick={handleToggleHideDiv1}
+                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                    <svg
+                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#6B7280"
+                                                                        strokeWidth="1.5"
+                                                                        strokeLinecap="round"
+                                                                        strokeLinejoin="round">
+                                                                        <path
+                                                                            d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                        <path
+                                                                            d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                        <path
+                                                                            d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                        <line x1="2" x2="22" y1="2" y2="22"/>
+                                                                    </svg>
+                                                                    <h4>
+                                                                        Hide this
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                }
                                             </div>
-                                        }
-                                    </div>
-                                </div>
+                                        </div>
+                                    </>
+                                )}
+
                                 {/* Product Area */}
                                 <div className="product_wrap space-y-3">
-                                    <Link href='#' className="show_product group mt-2 flex items-start gap-4">
-                                        <div className="p-1 border rounded">
-                                            <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                    {loading ? (
+                                        <div className="flex items-center justify-start gap-2 w-full">
+                                            <Skeleton width={80} height={60} borderRadius="10%" count={1}/>
+                                            <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
-                                        <div className="product_content">
-                                            <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple
-                                                iPhone XS</h4>
-                                            <h4 className="text-[12px] text-graycolor">$860.00</h4>
-                                        </div>
-                                    </Link>
+                                    ) : (
+                                        <>
+                                            <Link href='#' className="show_product group mt-2 flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple
+                                                        iPhone XS</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$860.00</h4>
+                                                </div>
+                                            </Link>
+                                        </>
+                                    )}
 
-                                    <Link href='#' className="show_product group mt-2 flex items-start gap-4">
-                                        <div className="p-1 border rounded">
-                                            <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                    {loading ? (
+                                        <div className="flex items-center justify-start gap-2 w-full">
+                                            <Skeleton width={80} height={60} borderRadius="10%" count={1}/>
+                                            <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
-                                        <div className="product_content">
-                                            <h4 className="text-[14px] group-hover:text-primary text-prgcolor">T-Shirt</h4>
-                                            <h4 className="text-[12px] text-graycolor">$450.00</h4>
-                                        </div>
-                                    </Link>
+                                    ) : (
+                                        <>
 
-                                    <Link href='#' className="show_product group mt-2 flex items-start gap-4">
-                                        <div className="p-1 border rounded">
-                                            <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                            <Link href='#' className="show_product group mt-2 flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] group-hover:text-primary text-prgcolor">T-Shirt</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$450.00</h4>
+                                                </div>
+                                            </Link>
+                                        </>
+                                    )}
+
+                                    {loading ? (
+                                        <div className="flex items-center justify-start gap-2 w-full">
+                                            <Skeleton width={80} height={60} borderRadius="10%" count={1}/>
+                                            <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
-                                        <div className="product_content">
-                                            <h4 className="text-[14px] group-hover:text-primary text-prgcolor">Polo
-                                                Shirt</h4>
-                                            <h4 className="text-[12px] text-graycolor">$320.00</h4>
-                                        </div>
-                                    </Link>
+                                    ) : (
+                                        <>
+                                            <Link href='#' className="show_product group mt-2 flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] group-hover:text-primary text-prgcolor">Polo
+                                                        Shirt</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$320.00</h4>
+                                                </div>
+                                            </Link>
+                                        </>
+                                    )}
                                 </div>
                             </div>
 
@@ -2597,118 +2830,171 @@ export default function Home() {
                             </div>
 
                             <div className="box mt-4 bg-white px-4 py-4 rounded">
-                                <div className="flex gap-2 items-center">
-                                    <GoPackage className="w-5 h-5 text-[#6B7280]"/>
-                                    <h4 className="relative text-[14px] font-semibold">
-                                        Sell on Nosres
-                                        <span
-                                            className="absolute -right-8 -top-1 text-[12px] font-normal text-primary">BETA</span>
-                                    </h4>
-                                </div>
-                                <h4 className="text-graycolor mt-3 text-[12px]">
-                                    Promote your products by sharing them on
-                                    your page, receive orders, receive notification, discuss with customers.
-                                </h4>
-                                <button type="button"
-                                        className="mt-3 py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
-                                    Learn More
-                                </button>
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={20} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="flex gap-2 items-center">
+                                            <GoPackage className="w-5 h-5 text-[#6B7280]"/>
+                                            <h4 className="relative text-[14px] font-semibold">
+                                                Sell on Nosres
+                                                <span
+                                                    className="absolute -right-8 -top-1 text-[12px] font-normal text-primary">BETA</span>
+                                            </h4>
+                                        </div>
+                                    </>
+                                )}
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={20} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <h4 className="text-graycolor mt-3 text-[12px]">
+                                            Promote your products by sharing them on
+                                            your page, receive orders, receive notification, discuss with customers.
+                                        </h4>
+                                    </>
+                                )}
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={30} width={120} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <button type="button"
+                                                className="mt-3 py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                            Learn More
+                                        </button>
+                                    </>
+                                )}
                             </div>
 
                             <div className="mt-6 sticky top-16">
-
                                 {/* Post Box */}
                                 {currentAdBoxRightSide === 'post_box_right_side' && (
                                     <div className="post_box-right_side box mt-4 bg-white px-4 py-4 rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                <div className="leading-[17px]">
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                        Sony Inc.
-                                                    </h4>
-                                                    <span
-                                                        className="text-[12px] text-graycolor font-normal">Sponsored</span>
-                                                </div>
+                                        {loading ? (
+                                            <div className="flex items-center justify-start gap-2 w-full">
+                                                <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                             </div>
-
-                                            <div onClick={handleAddDotRightSideClick}
-                                                 ref={AddDotRightSideDropdownRef}
-                                                 className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
-                                                <svg
-                                                    className="w-3 h-3"
-                                                    fill="#6B7280"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                </svg>
-
-                                                {addDotRightSideClick &&
-                                                    <div
-                                                        className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                        <div className="container py-2">
-                                                            <div className="space-y-1 text-[14px]">
-                                                                <div onClick={toggleAdBoxRightSideVisibility}
-                                                                     className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                    <svg
-                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 24 24" fill="none"
-                                                                        stroke="#6B7280"
-                                                                        strokeWidth="1.5"
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round">
-                                                                        <path
-                                                                            d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                        <path
-                                                                            d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                        <path
-                                                                            d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                        <line x1="2" x2="22" y1="2" y2="22"/>
-                                                                    </svg>
-                                                                    <h4>
-                                                                        Hide ad
-                                                                    </h4>
-                                                                </div>
-
-                                                                <div onClick={() => setOpenReportAdModalRightSide(true)}
-                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                    <svg
-                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                        strokeWidth="1.5" strokeLinecap="round"
-                                                                        strokeLinejoin="round">
-                                                                        <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                        <line x1="4" x2="4" y1="22" y2="15"/>
-                                                                    </svg>
-                                                                    <h4>
-                                                                        Report ad
-                                                                    </h4>
-                                                                </div>
-                                                            </div>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                        <div className="leading-[17px]">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                Sony Inc.
+                                                            </h4>
+                                                            <span
+                                                                className="text-[12px] text-graycolor font-normal">Sponsored</span>
                                                         </div>
                                                     </div>
-                                                }
-                                            </div>
-                                        </div>
-                                        <h4 className="mt-3 text-[12px] text-prgcolor">
-                                            The SRS-XB100 speaker provides powerful, clear,
-                                            expansive sound in a small, portable and durable
-                                            body. Despite its size...
-                                        </h4>
-                                        <div className="post-image mt-3">
-                                            <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
 
-                                            <div className="flex items-center justify-between mt-3">
-                                                <h4 className="text-[14px] text-prgcolor font-[500]">Sony SRS-XB13B</h4>
-                                                <button type="button"
-                                                        className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
-                                                    Learn More
-                                                </button>
+                                                    <div onClick={handleAddDotRightSideClick}
+                                                         ref={AddDotRightSideDropdownRef}
+                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#6B7280"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                        </svg>
+
+                                                        {addDotRightSideClick &&
+                                                            <div
+                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                <div className="container py-2">
+                                                                    <div className="space-y-1 text-[14px]">
+                                                                        <div onClick={toggleAdBoxRightSideVisibility}
+                                                                             className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                stroke="#6B7280"
+                                                                                strokeWidth="1.5"
+                                                                                strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path
+                                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                <path
+                                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                <path
+                                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                <line x1="2" x2="22" y1="2" y2="22"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Hide ad
+                                                                            </h4>
+                                                                        </div>
+
+                                                                        <div
+                                                                            onClick={() => setOpenReportAdModalRightSide(true)}
+                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Report ad
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
+                                        {loading ? (
+                                            <div>
+                                                <Skeleton height={20} count={1}/>
                                             </div>
+                                        ) : (
+                                            <>
+                                                <h4 className="mt-3 text-[12px] text-prgcolor">
+                                                    The SRS-XB100 speaker provides powerful, clear,
+                                                    expansive sound in a small, portable and durable
+                                                    body. Despite its size...
+                                                </h4>
+                                            </>
+                                        )}
+                                        <div className="post-image mt-3">
+                                            {loading ? (
+                                                <>
+                                                    <div className="box mt-0 bg-white px-0 pt-0 pb-0 rounded">
+                                                        <Skeleton height={200} count={1}/>
+                                                        <Skeleton height={30} count={1}/>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
+
+                                                    <div className="flex items-center justify-between mt-3">
+                                                        <h4 className="text-[14px] text-prgcolor font-[500]">Sony
+                                                            SRS-XB13B</h4>
+                                                        <button type="button"
+                                                                className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                                            Learn More
+                                                        </button>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                 )}
@@ -2818,39 +3104,56 @@ export default function Home() {
                                 )}
 
                                 <footer className="mt-4">
-                                    <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
-                                        <li className="hover:text-primary">
-                                            <Link href='#'>About Nosres</Link>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <LuDot size={12}/>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <Link href='#'>Privacy</Link>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <LuDot size={12}/>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <Link href='#'>Terms</Link>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <LuDot size={12}/>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <Link href='#'>Careers</Link>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <LuDot size={12}/>
-                                        </li>
-                                        <li className="hover:text-primary">
-                                            <Link href='#'>Support</Link>
-                                        </li>
-                                    </ul>
-                                    <h4 className="mt-[8px] text-graycolor text-[12px]">© {currentYear} Nosres
-                                        Inc. All
-                                        rights
-                                        reserved.</h4>
+                                    {loading ? (
+                                        <div>
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>About Nosres</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Privacy</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Terms</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Careers</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Support</Link>
+                                                </li>
+                                            </ul>
+                                        </>
+                                    )}
+
+                                    {loading ? (
+                                        <div>
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <h4 className="mt-[8px] text-graycolor text-[12px]">© {currentYear} Nosres
+                                                Inc. All
+                                                rights
+                                                reserved.</h4>
+                                        </>
+                                    )}
                                 </footer>
                             </div>
                         </div>
@@ -2881,7 +3184,8 @@ export default function Home() {
                                 <HiUserCircle size={50} className="text-graycolor"/>
                                 <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
 
-                                <div onClick={() => setOpenStartAudienceModal(true)} className="dropdown_menu ml-2">
+                                <div onClick={() => setOpenStartAudienceModal(true)}
+                                     className="dropdown_menu ml-2">
                                     <button type='button'
                                             className="py-1 px-6 rounded relative text-[14px] bg-gray-100">
                                         <IoMdGlobe size={15}
@@ -2905,7 +3209,8 @@ export default function Home() {
                                 </div>
 
                                 <div className="flex items-center gap-2 mt-2">
-                                    <div onClick={() => setOpenProfileImageModal(true)} className="cursor-pointer">
+                                    <div onClick={() => setOpenProfileImageModal(true)}
+                                         className="cursor-pointer">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                              fill="#4D7FB8"
                                              className="w-6 h-6">
@@ -2917,11 +3222,13 @@ export default function Home() {
                                                   clipRule="evenodd"/>
                                         </svg>
                                     </div>
+
                                     <div onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
                                          className="cursor-pointer"
                                     >
                                         <GoSmiley
-                                            size={20} className="text-graycolor hover:text-primary"/>
+                                            size={20}
+                                            className="text-graycolor hover:text-primary"/>
                                     </div>
                                 </div>
                             </div>
@@ -2941,7 +3248,7 @@ export default function Home() {
                             {/* Start Post Reactions */}
                             {showStartPostEmoji &&
                                 <div ref={emojiPickerRef}
-                                     className="comment_emoji z-[999] absolute top-0 right-0">
+                                     className="comment_emoji z-[999] absolute -top-[70px] right-0">
                                     <Picker
                                         data={data}
                                         theme="light"
@@ -3013,11 +3320,14 @@ export default function Home() {
                                         htmlFor="dropzone-file"
                                         className="flex flex-col items-center justify-center w-full h-28 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100"
                                     >
-                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <div
+                                            className="flex flex-col items-center justify-center pt-5 pb-6">
                                             <HiOutlineCloudArrowUp
                                                 className="w-8 h-8 mb-4 text-gray-500"/>
                                             <p className="mb-2 text-sm text-gray-500">
-                                                <span className="font-semibold">Click to upload</span> or drag and drop
+                                                                    <span
+                                                                        className="font-semibold">Click to upload</span> or
+                                                drag and drop
                                             </p>
                                             <p className="text-xs text-gray-500">
                                                 SVG, PNG, JPG or GIF (MAX. 800x400px)
@@ -3076,7 +3386,8 @@ export default function Home() {
                     <Modal.Body>
                         <div ref={modalRef} className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Choose who can see your post. Your posy will appear on the feed, your profile,
+                                Choose who can see your post. Your posy will appear on the feed,
+                                your profile,
                                 and in search results.
                             </h4>
 
@@ -3091,7 +3402,8 @@ export default function Home() {
                                         value={value}
                                         className="flex items-center justify-between">
                                         <div className="flex items-start gap-2">
-                                            <IoMdGlobe className="w-[17px] h-[17px] text-graycolor mt-1"/>
+                                            <IoMdGlobe
+                                                className="w-[17px] h-[17px] text-graycolor mt-1"/>
                                             <div className="content">
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Anyone
@@ -3117,7 +3429,8 @@ export default function Home() {
                                         value={value}
                                         className="flex items-center justify-between">
                                         <div className="flex items-start gap-2">
-                                            <FaUsers className="w-[16px] h-[17px] text-graycolor mt-1"/>
+                                            <FaUsers
+                                                className="w-[16px] h-[17px] text-graycolor mt-1"/>
                                             <div className="content">
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Followers only
@@ -3144,7 +3457,8 @@ export default function Home() {
                                         value={value}
                                         className="flex items-center justify-between">
                                         <div className="flex items-start gap-2">
-                                            <IoLockClosed className="w-[17px] h-[17px] text-graycolor mt-1"/>
+                                            <IoLockClosed
+                                                className="w-[17px] h-[17px] text-graycolor mt-1"/>
                                             <div className="content">
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     No one
@@ -3212,7 +3526,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share why you prefer not to see this ad. Your feedback is valuable
+                                Please share why you prefer not to see this ad. Your feedback is
+                                valuable
                                 for improving your overall experience.
                             </h4>
 
@@ -3355,7 +3670,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share your reasons for reporting this ad. Your feedback is crucial
+                                Please share your reasons for reporting this ad. Your feedback is
+                                crucial
                                 for maintaining a safer and more trustworthy environment for all.
                             </h4>
 
@@ -3377,7 +3693,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3423,7 +3740,8 @@ export default function Home() {
                                                 Hate speech
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Encouraging derogatory remarks targeting a particular group.
+                                                Encouraging derogatory remarks targeting a
+                                                particular group.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3446,7 +3764,8 @@ export default function Home() {
                                                 Harmful behavior
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Spreading false information or conspiracy theories that incite fear.
+                                                Spreading false information or conspiracy theories
+                                                that incite fear.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3469,7 +3788,8 @@ export default function Home() {
                                                 Violence
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Promoting violence, including self-harm or intending harm to others.
+                                                Promoting violence, including self-harm or intending
+                                                harm to others.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3515,7 +3835,8 @@ export default function Home() {
                                                 Intellectual property infringement
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Using someone else’s creative work without authorization.
+                                                Using someone else’s creative work without
+                                                authorization.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3599,7 +3920,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3654,7 +3976,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share why you prefer not to see this post. Your feedback is valuable
+                                Please share why you prefer not to see this post. Your feedback is
+                                valuable
                                 for improving your overall experience.
                             </h4>
 
@@ -3797,7 +4120,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share your reasons for reporting this post. Your feedback is crucial
+                                Please share your reasons for reporting this post. Your feedback is
+                                crucial
                                 for maintaining a safer and more trustworthy environment for all.
                             </h4>
 
@@ -3819,7 +4143,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3865,7 +4190,8 @@ export default function Home() {
                                                 Hate speech
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Encouraging derogatory remarks targeting a particular group.
+                                                Encouraging derogatory remarks targeting a
+                                                particular group.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3888,7 +4214,8 @@ export default function Home() {
                                                 Harmful behavior
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Spreading false information or conspiracy theories that incite fear.
+                                                Spreading false information or conspiracy theories
+                                                that incite fear.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3911,7 +4238,8 @@ export default function Home() {
                                                 Violence
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Promoting violence, including self-harm or intending harm to others.
+                                                Promoting violence, including self-harm or intending
+                                                harm to others.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -3957,7 +4285,8 @@ export default function Home() {
                                                 Intellectual property infringement
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Using someone else’s creative work without authorization.
+                                                Using someone else’s creative work without
+                                                authorization.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4041,7 +4370,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4095,7 +4425,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-[14px] text-graycolor">
-                                This action is irreversible and will result in its removal from your profile,
+                                This action is irreversible and will result in its removal from your
+                                profile,
                                 the timelines of your followers’ accounts, and search results.
                             </h4>
                         </div>
@@ -4135,7 +4466,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-[14px] text-graycolor">
-                                This action is irreversible and will result in its removal from your profile,
+                                This action is irreversible and will result in its removal from your
+                                profile,
                                 the timelines of your followers’ accounts, and search results.
                             </h4>
                         </div>
@@ -4176,7 +4508,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share your reasons for reporting this comment. Your feedback is crucial
+                                Please share your reasons for reporting this comment. Your feedback
+                                is crucial
                                 for maintaining a safer and more trustworthy environment for all.
                             </h4>
 
@@ -4198,7 +4531,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4244,7 +4578,8 @@ export default function Home() {
                                                 Hate speech
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Encouraging derogatory remarks targeting a particular group.
+                                                Encouraging derogatory remarks targeting a
+                                                particular group.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4267,7 +4602,8 @@ export default function Home() {
                                                 Harmful behavior
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Spreading false information or conspiracy theories that incite fear.
+                                                Spreading false information or conspiracy theories
+                                                that incite fear.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4290,7 +4626,8 @@ export default function Home() {
                                                 Violence
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Promoting violence, including self-harm or intending harm to others.
+                                                Promoting violence, including self-harm or intending
+                                                harm to others.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4336,7 +4673,8 @@ export default function Home() {
                                                 Intellectual property infringement
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Using someone else’s creative work without authorization.
+                                                Using someone else’s creative work without
+                                                authorization.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4420,7 +4758,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4475,7 +4814,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share why you prefer not to see this ad. Your feedback is valuable
+                                Please share why you prefer not to see this ad. Your feedback is
+                                valuable
                                 for improving your overall experience.
                             </h4>
 
@@ -4618,7 +4958,8 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please share your reasons for reporting this ad. Your feedback is crucial
+                                Please share your reasons for reporting this ad. Your feedback is
+                                crucial
                                 for maintaining a safer and more trustworthy environment for all.
                             </h4>
 
@@ -4640,7 +4981,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4686,7 +5028,8 @@ export default function Home() {
                                                 Hate speech
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Encouraging derogatory remarks targeting a particular group.
+                                                Encouraging derogatory remarks targeting a
+                                                particular group.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4709,7 +5052,8 @@ export default function Home() {
                                                 Harmful behavior
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Spreading false information or conspiracy theories that incite fear.
+                                                Spreading false information or conspiracy theories
+                                                that incite fear.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4732,7 +5076,8 @@ export default function Home() {
                                                 Violence
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Promoting violence, including self-harm or intending harm to others.
+                                                Promoting violence, including self-harm or intending
+                                                harm to others.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4778,7 +5123,8 @@ export default function Home() {
                                                 Intellectual property infringement
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Using someone else’s creative work without authorization.
+                                                Using someone else’s creative work without
+                                                authorization.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4862,7 +5208,8 @@ export default function Home() {
                                                 Spam, suspicion, or fake
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Selling illegal goods, engaging in monetary scams, etc.
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -4895,6 +5242,142 @@ export default function Home() {
                     </Modal.Footer>
                 </Modal>
                 {/* Start ReportAdd Submit Pop-Up End (Right Side) */}
+
+
+                {/* Start Share Post Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartPostShareModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartPostShareModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Share to Newsfeed</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex items-center gap-1">
+                                <HiUserCircle size={50} className="text-graycolor"/>
+                                <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
+
+                                <div onClick={() => setOpenStartAudienceModal(true)}
+                                     className="dropdown_menu ml-2">
+                                    <button type='button'
+                                            className="py-1 px-6 rounded relative text-[14px] bg-gray-100">
+                                        <IoMdGlobe size={15}
+                                                   className="text-graycolor absolute left-1 top-1/2 transform -translate-y-1/2"/>
+                                        Anyone
+                                        <FaAngleDown size={13}
+                                                     className="text-prgcolor absolute right-1 top-1/2 transform -translate-y-1/2"/>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div ref={modalRef} className="mt-4 px-0">
+                                <div className="whats_new">
+                                    <textarea
+                                        rows={2}
+                                        value={startPostText}
+                                        onChange={(e) => setStartPostText(e.target.value)}
+                                        className="rounded w-full py-1 px-0 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                        placeholder="What’s new, John?">
+                                    </textarea>
+                                </div>
+
+                                <div className="relative flex items-center gap-2 mt-2">
+                                    <div onClick={() => setOpenProfileImageModal(true)}
+                                         className="cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                             fill="#4D7FB8"
+                                             className="w-6 h-6">
+                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                  clipRule="evenodd"/>
+                                        </svg>
+                                    </div>
+
+                                    <div onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
+                                         className="cursor-pointer"
+                                    >
+                                        <GoSmiley
+                                            size={20}
+                                            className="text-graycolor hover:text-primary"/>
+                                    </div>
+
+                                    {/* Start Post Reactions */}
+                                    {showStartPostEmoji &&
+                                        <div ref={emojiPickerRef}
+                                             className="comment_emoji z-[999] absolute top-0 right-0">
+                                            <Picker
+                                                data={data}
+                                                theme="light"
+                                                perLine={8}
+                                                emojiSize={22}
+                                                onEmojiSelect={addStartPostEmoji}
+                                                maxFrequentRows={0}
+                                                maxEmojiRows={2}
+                                            />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div className="post_box_wrap">
+                                <div className="box border mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex items-center justify-between">
+                                        <Link href='#' className="flex items-center gap-1">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="leading-[17px]">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                    Robert Fox
+                                                </h4>
+                                                <div
+                                                    className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            1m ago
+                                                        </span>
+                                                    <LuDot size={12}/>
+                                                    <IoMdGlobe size={13}/>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <h4 className="mt-3 text-[14px] text-prgcolor">
+                                        The HTCU23 Pro 5G stands as the pinnacle of smartphone innovation,
+                                        offering... <Link href='#' className="text-[14px] text-primary">See more</Link>
+                                    </h4>
+                                </div>
+                                <div className="post_image mt-0">
+                                    <Image src={SliderOneImg} className="w-full h-56" alt="PostImg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="relative flex w-full items-center justify-between">
+                            <button onClick={handleWritePostSharePopUpClickCancel}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartPostShareModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Share
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Share Post Pop-Up End */}
 
             </section>
         </>
