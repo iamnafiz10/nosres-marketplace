@@ -954,7 +954,7 @@ export default function Home() {
 
                                         <div onClick={() => setOpenFeedbackAdModal(true)}
                                              className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                            <div className="icon">
+                                            <div className="icon mt-1">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -2368,7 +2368,7 @@ export default function Home() {
 
                                         <div onClick={() => setOpenFeedbackPostModal(true)}
                                              className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                            <div className="icon">
+                                            <div className="icon mt-1">
                                                 <svg
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -2706,7 +2706,7 @@ export default function Home() {
 
                                             <div onClick={() => setOpenFeedbackAdModalRightSide(true)}
                                                  className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                                <div className="icon">
+                                                <div className="icon mt-1">
                                                     <svg
                                                         className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                         xmlns="http://www.w3.org/2000/svg"
