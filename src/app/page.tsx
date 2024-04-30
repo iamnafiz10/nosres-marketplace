@@ -2545,7 +2545,7 @@ export default function Home() {
 
                             {/* Recently Hidden Box */}
                             <div className={`recently_hidden_box ${hideDiv2 ? 'hidden' : ''}`}>
-                                <div className="box mt-4 bg-white px-4 py-4 rounded">
+                                <div className="box mt-0 bg-white px-4 py-4 rounded">
                                     <div className="flex items-center justify-between pb-3">
                                         <div className="content">
                                             <h4 className="text-[16px] text-prgcolor font-[500]">
