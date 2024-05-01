@@ -2681,6 +2681,189 @@ export default function Home() {
                                     </div>
                                 </div>
                             )}
+
+
+                            {/* Post Box Extra */}
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+
+                                    <div className="flex pb-4 items-center justify-between">
+                                        {loading ? (
+                                            <div className="flex items-center justify-start gap-2 w-full">
+                                                <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <Link href='#' className="flex items-center gap-1">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <div className="flex items-center gap-1">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            Inna K.
+                                                        </h4>
+                                                        <h4 className="text-graycolor text-[14px] flex items-end gap-0">
+                                                            shared this
+                                                            <LuDot size={12}/>
+                                                        </h4>
+
+                                                        <h4 className="text-graycolor text-[14px] flex items-center gap-0">
+                                                            2h ago
+                                                            <LuDot size={12}/>
+                                                            <IoMdGlobe size={13}/>
+                                                        </h4>
+                                                    </div>
+                                                </Link>
+
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div
+                                                        className="relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div
+                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    <hr/>
+
+                                    <div className="flex pt-4 items-center justify-between">
+                                        {loading ? (
+                                            <div className="flex items-center justify-start gap-2 w-full">
+                                                <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                <Skeleton containerClassName="flex-1" width={200} height={50}
+                                                          count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <Link href='#' className="flex items-center gap-1">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <div className="leading-[17px]">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            Robert Fox
+                                                        </h4>
+                                                        <div
+                                                            className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            1m ago
+                                                        </span>
+                                                            <LuDot size={12}/>
+                                                            <IoMdGlobe size={13}/>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                The HTCU23 Pro 5G stands as the pinnacle of smartphone innovation,
+                                                offering
+                                                unparalleled performance, connectivity, and functionality. Its sleek
+                                                design
+                                                houses a
+                                                powerhouse of cutting-edge technology, delivering lightning-fast 5G
+                                                connectivity
+                                                and an immersive multimedia experience. With its advanced features
+                                                and
+                                                premium
+                                                build quality, the HTCU23 Pro 5G redefines what a flagship
+                                                smartphone can
+                                                achieve
+                                            </h4>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="post_image mt-0">
+                                    {loading ? (
+                                        <>
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                <Skeleton height={200} count={1}/>
+                                                <Skeleton height={30} count={1}/>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Image src={SliderOneImg} className="w-full h-56" alt="PostImg"/>
+                                        </>
+                                    )}
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    {loading ? (
+                                        <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                            <Skeleton height={40} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer"
+                                                         onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
+                                                        {isClickedLikePostFour ? (
+                                                            <GoHeartFill
+                                                                className="w-4 h-4 text-primary hover:text-primary"/>
+                                                        ) : (
+                                                            <GoHeart
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        )}
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoComment
+                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div
+                                                        className="relative cursor-pointer">
+                                                        <GoSync
+                                                            className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] text-prgcolor">36</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
                         </div>
 
                         {/* Right Sidebar */}
@@ -3955,7 +4138,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
@@ -4405,7 +4588,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
@@ -4793,7 +4976,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
@@ -5243,7 +5426,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>

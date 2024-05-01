@@ -3955,7 +3955,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
@@ -4405,7 +4405,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
@@ -4793,7 +4793,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
@@ -5243,7 +5243,7 @@ export default function Home() {
                                 className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                 placeholder="Please provide further details about your report. Your feedback plays a
                                     crucial role in creating a safer and more trustworthy community for
-                                    everyone"
+                                    everyone."
                             >
                             </textarea>
                         </div>
