@@ -21,9 +21,12 @@ import {Modal} from "flowbite-react";
 import {FaAngleDown, FaUsers} from "react-icons/fa6";
 import {HiOutlineCloudArrowUp} from "react-icons/hi2";
 import {RxCross1} from "react-icons/rx";
-import type {RadioChangeEvent} from 'antd';
+import {Checkbox, RadioChangeEvent} from 'antd';
 import {Radio} from 'antd';
-import {IoLockClosed} from "react-icons/io5";
+import {IoLockClosed, IoSearchOutline} from "react-icons/io5";
+import {MdPostAdd} from "react-icons/md";
+import {CiClock2} from "react-icons/ci";
+import ProductOneImg from "../../public/assets/images/product-1.png";
 
 export default function Home() {
     const loading = useLoading();
@@ -697,6 +700,22 @@ export default function Home() {
         setOpenStartPostShareModal(false)
     }
 
+    // Post Message Popup
+    const [openStartPostMessageModal, setOpenStartPostMessageModal] = useState<boolean>(false);
+
+    const [checkedItems, setCheckedItems] = useState<CheckedItems>({});
+
+    interface CheckedItems {
+        [key: string]: boolean;
+    }
+
+    const handleBoxClick = (itemName: string) => {
+        setCheckedItems((prevState: CheckedItems) => {
+            const updatedState: CheckedItems = {...prevState};
+            updatedState[itemName] = !prevState[itemName];
+            return updatedState;
+        });
+    };
     return (
         <>
             <section id="home-page-section">
@@ -2522,8 +2541,9 @@ export default function Home() {
                                                                                 </h4>
                                                                             </div>
 
-                                                                            <Link href='#'
-                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <div
+                                                                                onClick={() => setOpenStartPostMessageModal(true)}
+                                                                                className="cursor-pointer flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -2541,7 +2561,7 @@ export default function Home() {
                                                                                 <h4>
                                                                                     Direct message
                                                                                 </h4>
-                                                                            </Link>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -5379,7 +5399,187 @@ export default function Home() {
                 </Modal>
                 {/* Start Share Post Pop-Up End */}
 
+
+                {/* Start Post Message Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartPostMessageModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartPostMessageModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Direct Message</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div ref={modalRef} className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[25px] bg-white">
+                                <div className="w-full px-2 flex items-center whats_new">
+                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                    <input
+                                        className="mt-1 rounded w-full py-1 px-1 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                        type="text"
+                                        placeholder="Write a message..."
+                                    />
+                                </div>
+
+                                <div className="px-2 py-2 mt-4 flex items-center gap-4 bg-gray-100 rounded">
+                                    <div className="flex items-center gap-1">
+                                        <MdPostAdd size={30} className="text-graycolor"/>
+                                        <h4 className="text-[14px] text-prgcolor">Post by</h4>
+                                    </div>
+
+                                    <div className="flex items-center gap-1">
+                                        <HiUserCircle size={30} className="text-[#6B7280]"/>
+                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                            Robert Fox
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div className="px-0 mt-4">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search Marketplace"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="scroll_content mt-4">
+                                <label onClick={() => handleBoxClick('item1')}>
+                                    <div
+                                        className={`box cursor-pointer py-2 px-2 border rounded${checkedItems['item1'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item1'] ? ['1'] : []}
+                                            onChange={(values) => handleBoxClick('item1')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="1"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item2')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item2'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item2'] ? ['2'] : []}
+                                            onChange={(values) => handleBoxClick('item2')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="2"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item3')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item3'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item3'] ? ['3'] : []}
+                                            onChange={(values) => handleBoxClick('item3')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Cindy Summerfield</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="3"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item4')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item4'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item4'] ? ['4'] : []}
+                                            onChange={(values) => handleBoxClick('item4')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Cindy Summerfield</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="4"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item5')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item5'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item5'] ? ['5'] : []}
+                                            onChange={(values) => handleBoxClick('item5')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Cindy Summerfield</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="5"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartPostMessageModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartPostMessageModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Send
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Post Message Pop-Up End */
+                }
             </section>
         </>
-    );
+    )
+        ;
 }

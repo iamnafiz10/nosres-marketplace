@@ -286,7 +286,7 @@ function Header() {
                             </div>
 
                             <div
-                                className={`set_input_under_right absolute right-0 inset-y-0 flex items-center cursor-pointer ${searchText.length > 0 ? 'opacity-100' : 'opacity-0'}`}
+                                className={`set_input_under_right absolute right-0 xl:right-[32px] inset-y-0 flex items-center cursor-pointer ${searchText.length > 0 ? 'opacity-100' : 'opacity-0'}`}
                                 onClick={handleClearText}
                             >
                                 <svg
@@ -367,8 +367,8 @@ function Header() {
 
                             {/* Business Icon */}
                             <Link href='#' onClick={handleBusinessClick}
-                                 ref={dropdownBusinessRef}
-                                 className="w-[80px] last_business_icon cursor-pointer flex flex-col items-center">
+                                  ref={dropdownBusinessRef}
+                                  className="w-[80px] last_business_icon cursor-pointer flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     {/* Main SVG */}
                                     <div className="relative">
@@ -455,8 +455,8 @@ function Header() {
 
                             {/* User Icon */}
                             <Link href='#' onClick={handleAccountClick}
-                                 ref={dropdownAccountRef}
-                                 className="w-[80px] last_user_icon cursor-pointer flex flex-col items-center">
+                                  ref={dropdownAccountRef}
+                                  className="w-[80px] last_user_icon cursor-pointer flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     <div
                                         className="text-center cursor-pointer text-prgcolor transition relative">
