@@ -5626,12 +5626,12 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <div className="px-0 mt-4">
+                                <div className="px-0 pb-2 bg-white mt-4">
                                     <div className="relative w-full">
                                         <input
                                             type="text"
                                             className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                            placeholder="Search Marketplace"
+                                            placeholder="Search name"
                                         />
 
                                         <div className="absolute left-0 inset-y-0 flex items-center justify-between">
