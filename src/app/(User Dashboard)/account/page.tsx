@@ -1,214 +1,201 @@
 "use client";
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import useTitle from "@/app/useTitle";
-import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
-import useLoading from "@/app/useLoading";
+import {HiOutlineMenuAlt3, HiUserCircle} from "react-icons/hi";
+import {TfiMenuAlt} from "react-icons/tfi";
+import {HiOutlineSquaresPlus} from "react-icons/hi2";
 
 function Page() {
     useTitle("Account")
-    const loading = useLoading();
-    // Define a state to manage the visibility of the drawer navigation
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    // 👇️ Toggle class on click Show And Hide Mobile Menu Dropdown (Icon)
+    const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
+    const dropdownMobileMenuRef = useRef(null);
+    const handleMobileMenuClick = () => {
+        setMobileMenuVisible(!isMobileMenuVisible);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (dropdownMobileMenuRef.current && !dropdownMobileMenuRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setMobileMenuVisible(false);
+            }
+        };
+
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
     return (
         <>
-            <section id="account-section">
-                <div className="container">
-                    <div className="grid grid-cols-12">
-                        <div className="col-span-2 bg-red-600">
-                            <div id="drawer-navigation"
-                                 className={`fixed bg-white lg:bg-transparent top-[47px] lg:w-52 lg:visible z-40 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-64 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
-                                 tabIndex={-1} aria-labelledby="drawer-navigation-label">
-                                <div className="py-4 pl-4 sm:pl-0 overflow-y-auto">
-                                    <ul className="space-y-0 font-medium text-[14px]">
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#6B7280" strokeWidth="1.8"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <line x1="21" x2="3" y1="6"
-                                                                  y2="6"/>
-                                                            <line x1="15" x2="3" y1="12" y2="12"/>
-                                                            <line x1="17" x2="3" y1="18"
-                                                                  y2="18"/>
-                                                        </svg>
-                                                        <span className="ms-3">Categories</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
+            <section id="account-page-section">
+                <div className="container py-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12">
+                        {/* Left Sidebar */}
+                        <div className="col lg:col-span-2"></div>
 
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M3.85 8.62a4
-                                                    4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77
-                                                    4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
-                                                            <path d="m15 9-6 6"/>
-                                                            <path d="M9 9h.01"/>
-                                                            <path d="M15 15h.01"/>
-                                                        </svg>
-                                                        <span className="ms-3">Special Offers</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
+                        {/* Body Content */}
+                        <div className="col lg:col-span-6 ml-0 lg:ml-10 mt-1">
+                            {/* Mobile Header Start*/}
+                            <div
+                                className="mobile_header pb-2 flex lg:hidden items-center text-[18px] font-[500] text-prgcolor rounded-lg">
+                                <svg
+                                    className="w-5 h-5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24
+                                                             24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round">
+                                    <path d="M12.22 2h-.44a2 2 0
+                                                            0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0
+                                                            0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1
+                                                            1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2
+                                                            0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1
+                                                            1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0
+                                                            0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0
+                                                            .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0
+                                                            1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                <span className="ms-3">Setting</span>
+                            </div>
 
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                24" fill="none" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <rect width="10"
-                                                                  height="14" x="3" y="8" rx="2"/>
-                                                            <path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2
-                                                    2 0 0 1-2 2h-2.4"/>
-                                                            <path d="M8 18h.01"/>
-                                                        </svg>
-                                                        <span className="ms-3">Electronics</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
+                            <div className="mt-4 flex lg:hidden items-center justify-between">
+                                <div className="flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
+                                    <HiUserCircle
+                                        className="w-[22px] h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary"/>
+                                    <span className="ms-2">Account</span>
+                                </div>
 
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:fill-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            fill="#6B7280" viewBox="0 0 256 256">
-                                                            <path
-                                                                d="M214.7,209.7a1.89,1.89,0,0,0-.11-.25l-45.48-96.86,20.5-32.18a1.74,1.74,0,0,0,.11-.18,16,16,0,0,0,0-16.46c-.09-.16-.2-.32-.3-.47L168,32.7V8a8,8,0,0,0-16,0V32.42L146.74,39a24,24,0,0,1-37.48,0L104,32.42V8A8,8,0,0,0,88,8V32.7L66.58,63.3c-.1.15-.21.31-.3.47a16,16,0,0,0,0,16.46,1.74,1.74,0,0,0,.11.18l20.5,32.18L41.41,209.45a1.89,1.89,0,0,0-.11.25A16,16,0,0,0,56,232H200a16,16,0,0,0,14.71-22.3ZM80,72,96.43,48.57l.33.42a40,40,0,0,0,62.48,0l.33-.42L176,72l-20.38,32H100.39ZM56,216l45.07-96h53.84L200,216Z"></path>
-                                                        </svg>
-                                                        <span className="ms-3">Women’s Fashion</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
+                                <div className="dropdown inline-block relative">
+                                    <div className="dropdown inline-block relative">
+                                        <div onClick={handleMobileMenuClick}
+                                             ref={dropdownMobileMenuRef}
+                                             className="drop_icon relative cursor-pointer group">
+                                            <HiOutlineMenuAlt3
+                                                size={22}
+                                                className={`group-hover:text-primary ${isMobileMenuVisible ? 'text-primary' : 'text-graycolor'}`}/>
+                                        </div>
+                                        {isMobileMenuVisible &&
+                                            <div
+                                                id="mobile_dropdown_menu_user_dashboard"
+                                                className="business-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
+                                                <div className="container">
+                                                    <ul className="mt-3 space-y-0 text-[14px]">
+                                                        <li>
+                                                            <Link href="#"
+                                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                                <HiUserCircle
+                                                                    className="w-[22px] h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary"/>
+                                                                <span className="ms-3">Account</span>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href="#"
+                                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                                <svg
+                                                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24
+                                                             24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <path d="M6 8a6 6 0 0 1 12 0c0 7
+                                                            3 9 3 9H3s3-2 3-9"/>
+                                                                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                                                                </svg>
+                                                                <span className="ms-3">Notifications</span>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href="#"
+                                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                                     viewBox="0 0 24
+                                                             24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                                     strokeLinecap="round"
+                                                                     strokeLinejoin="round">
+                                                                    <path d="M20 13c0 5-3.5
+                                                            7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2
+                                                            6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                                                                </svg>
+                                                                <span className="ms-3">Privacy</span>
+                                                            </Link>
+                                                        </li>
 
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
+                                                        <li>
+                                                            <Link href="#"
+                                                                  className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                                <svg
+                                                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24
+                                                             24" fill="none" stroke="#6B7280" strokeWidth="1.5"
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <circle cx="12" cy="12"
+                                                                            r="10"/>
+                                                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                                    <path d="M12
+                                                            17h.01"/>
+                                                                </svg>
+                                                                <span className="ms-3">Marketplace Support</span>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:fill-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            fill="#6B7280" viewBox="0 0 256 256">
-                                                            <path
-                                                                d="M200,40H179.31L165.66,26.34h0A8,8,0,0,0,160,24H96a8,8,0,0,0-5.66,2.34h0L76.69,40H56A16,16,0,0,0,40,56V208a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40ZM128,65.58,111,40h34.1Zm33.24-21L168,51.31V104L138.57,78.56ZM88,51.31l6.76-6.75,22.67,34L88,104ZM56,56H72v48a15.85,15.85,0,0,0,9.21,14.49A16.1,16.1,0,0,0,88,120a15.89,15.89,0,0,0,10.2-3.73.52.52,0,0,0,.11-.1L120,97.48V208H56ZM200,208H136V97.48l21.65,18.7a.52.52,0,0,0,.11.1A15.89,15.89,0,0,0,168,120a16.1,16.1,0,0,0,6.83-1.54A15.85,15.85,0,0,0,184,104V56h16Z"></path>
-                                                        </svg>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Mobile Header Start*/}
 
-                                                        <span className="ms-3">Men’s Fashion</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
+                            {/* Page Header */}
+                            <div
+                                className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
+                                <HiUserCircle
+                                    className="w-[22px] h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary"/>
+                                <span className="ms-2">Account</span>
+                            </div>
 
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M36h3"/>
-                                                            <path d="M17 6h.01"/>
-                                                            <rect width="18" height="20" x="3" y="2"
-                                                                  rx="2"/>
-                                                            <circle cx="12" cy="13" r="5"/>
-                                                            <path d="M12 18a2.5 2.5 0 0 0 0-5 2.5 2.5 05"/>
-                                                        </svg>
-                                                        <span className="ms-3">Home Appliances</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
+                            <div className="py-1 lg:py-4">
+                                <hr/>
+                            </div>
 
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={30} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <li>
-                                                    <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
-                                                        <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <rect width="7" height="7"
-                                                                  x="3" y="3" rx="1"/>
-                                                            <rect width="7" height="7" x="14" y="3" rx="1"/>
-                                                            <rect width="7"
-                                                                  height="7" x="14" y="14" rx="1"/>
-                                                            <rect width="7" height="7" x="3" y="14"
-                                                                  rx="1"/>
-                                                        </svg>
-                                                        <span className="ms-3">All Categories</span>
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )}
-                                    </ul>
+                            <div className="content_wrapper text-center mt-2 lg:mt-0">
+                                <div
+                                    className="box px-4 py-6 bg-white rounded flex flex-col items-center justify-center">
+                                    <div className="icon_box flex flex-col items-center justify-center text-center">
+                                        <HiUserCircle size={50} className="text-primary"/>
+                                        <h4 className="text-prgcolor font-semibold mt-1 text-[16px]">
+                                            Account
+                                        </h4>
+                                    </div>
+                                    <p className="mt-2 text-graycolor text-[14px]">
+                                        You’re logging into Nosres Marketplace with your Nosres Account. If
+                                        you need to adjust certain settings, please navigate to your Nosres
+                                        Account.
+                                    </p>
+                                    <button type="button"
+                                            className="mt-4 py-2 px-8 text-[14px] bg-gray-100 text-primary hover:bg-primary hover:text-white rounded">
+                                        Nosres Account Setting
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-6 ml-0 lg:ml-10"></div>
-                        <div className="col-span-4"></div>
+
+                        {/* Right Sidebar */}
+                        <div className="col lg:col-span-4 hidden lg:block ml-7 mr-[22px]">
+
+                        </div>
                     </div>
                 </div>
             </section>

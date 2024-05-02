@@ -91,6 +91,16 @@ textarea {
     overflow: hidden;
 }
 
+/*------------------- User Dashboard Mobile Menu -------------------*/
+#mobile_dropdown_menu_user_dashboard {
+    top: 32px;
+    right: 0;
+    width: 315px;
+    height: 185px;
+    overflow: hidden;
+}
+
+
 .last_business_icon:hover .profile_text {
     color: #4D7FB8;
 }
