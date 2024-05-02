@@ -323,7 +323,13 @@ function Header() {
                             <Link href='#'
                                   className="w-[80px] group flex flex-col items-center">
                                 {/* Main SVG */}
-                                <IoCartOutline className="w-full h-[24px] text-prgcolor group-hover:text-primary"/>
+                                <div className="relative">
+                                    <IoCartOutline className="w-full h-[24px] text-prgcolor group-hover:text-primary"/>
+                                    <div
+                                        className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                        4
+                                    </div>
+                                </div>
                                 <div
                                     className="text-prgcolor group-hover:text-primary transition">
                                     Cart
@@ -338,7 +344,7 @@ function Header() {
                                     <HiOutlineChatBubbleLeft
                                         className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
-                                        className="flex absolute top-[-1px] -right-[10px] bg-[#E5080A] rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                        className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         3
                                     </div>
                                 </div>
@@ -355,8 +361,8 @@ function Header() {
                                 <div className="relative">
                                     <GoBell className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
-                                        className="flex absolute top-[-1px] -right-[10px] bg-[#E5080A] rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                        12
+                                        className="flex absolute top-[-1px] -right-[10px] text-center bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                        8
                                     </div>
                                 </div>
                                 <div

@@ -6,8 +6,8 @@ import useTitle from "@/app/useTitle";
 import {HiUserCircle} from "react-icons/hi";
 import Link from "next/link";
 import Image from "next/image";
-import ProductImg from '@/../public/assets/images/product-1.png';
-import PostImg from '@/../public/assets/images/post-image.jpg';
+import ProductImg from '../../../../public/assets/images/product-1.png';
+import PostImg from '../../../../public/assets/images/post-image.jpg';
 import {GoComment, GoHeart, GoHeartFill, GoHistory, GoPackage, GoReply, GoSmiley, GoSync} from "react-icons/go";
 import {IoMdGlobe} from "react-icons/io";
 import data from '@emoji-mart/data'
@@ -15,8 +15,8 @@ import Picker from '@emoji-mart/react'
 import {LuDot} from "react-icons/lu";
 import {SlideshowLightbox} from 'lightbox.js-react'
 import 'lightbox.js-react/dist/index.css'
-import SliderOneImg from '@/../public/assets/images/slider1.jpg';
-import SliderTwoImg from '@/../public/assets/images/slider2.jpg';
+import SliderOneImg from '../../../../public/assets/images/slider1.jpg';
+import SliderTwoImg from '../../../../public/assets/images/slider2.jpg';
 import {Modal} from "flowbite-react";
 import {FaAngleDown, FaUsers} from "react-icons/fa6";
 import {HiOutlineCloudArrowUp} from "react-icons/hi2";
@@ -25,8 +25,6 @@ import {Checkbox, RadioChangeEvent} from 'antd';
 import {Radio} from 'antd';
 import {IoLockClosed, IoSearchOutline} from "react-icons/io5";
 import {MdPostAdd} from "react-icons/md";
-import {CiClock2} from "react-icons/ci";
-import ProductOneImg from "../../public/assets/images/product-1.png";
 
 export default function Home() {
     const loading = useLoading();

@@ -1,9 +1,9 @@
-import "./globals.css";
+import "../globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import Header from "@/app/Header";
 import "react-loading-skeleton/dist/skeleton.css";
-import LeftSidebar from "@/app/LeftSidebar";
+import LeftSidebar from "@/app/(Frontend)/LeftSidebar";
 
 const inter = Inter({subsets: ["latin"]});
 

@@ -1,25 +1,18 @@
 "use client";
-import 'flowbite';
-import Link from "next/link";
-import {GoBell, GoHomeFill} from "react-icons/go";
-import {IoCartOutline} from "react-icons/io5";
-import {HiOutlineChatBubbleLeft} from "react-icons/hi2";
-import React, {useState} from "react";
-import useLoading from "@/app/useLoading";
+import React, {useState} from 'react';
+import useTitle from "@/app/useTitle";
 import Skeleton from "react-loading-skeleton";
+import Link from "next/link";
+import useLoading from "@/app/useLoading";
 
-function LeftSidebar() {
+function Page() {
+    useTitle("Account")
     const loading = useLoading();
-// Define a state to manage the visibility of the drawer navigation
+    // Define a state to manage the visibility of the drawer navigation
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-// Create a function to toggle the visibility of the drawer navigation
-    const toggleDrawer = () => {
-        setIsDrawerOpen(!isDrawerOpen);
-    };
     return (
         <>
-            <section id="left-sidebar-section">
+            <section id="account-section">
                 <div className="container">
                     <div className="grid grid-cols-12">
                         <div className="col-span-2 bg-red-600">
@@ -219,84 +212,8 @@ function LeftSidebar() {
                     </div>
                 </div>
             </section>
-
-            {/* Mobile/Tap Bottom Menu */}
-            <div
-                className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-white border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
-                {/* Home */}
-                <Link href='/' className="group px-[5px] flex flex-col items-center border-b-2 border-primary">
-                    <GoHomeFill className="w-full h-[20px] text-primary"/>
-                    <div className="text-primary group-hover:text-primary transition">
-                        Home
-                    </div>
-                </Link>
-
-                {/* Category */}
-                <Link onClick={toggleDrawer} href='#'
-                      className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {/* Main SVG */}
-                    <svg
-                        className={`w-5 h-5 transition duration-75 group-hover:stroke-primary ${isDrawerOpen ? 'stroke-primary' : 'stroke-prgcolor'}`}
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round">
-                        <rect width="7" height="7"
-                              x="3" y="3" rx="1"/>
-                        <rect width="7" height="7" x="14" y="3" rx="1"/>
-                        <rect width="7"
-                              height="7" x="14" y="14" rx="1"/>
-                        <rect width="7" height="7" x="3" y="14"
-                              rx="1"/>
-                    </svg>
-
-                    <div
-                        className={`group-hover:text-primary transition ${isDrawerOpen ? 'text-primary' : 'text-prgcolor'}`}>
-                        Categories
-                    </div>
-                </Link>
-
-                {/* Cart */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {/* Main SVG */}
-                    <IoCartOutline className="w-full h-[23px] text-prgcolor group-hover:text-primary"/>
-                    <div className="text-prgcolor group-hover:text-primary transition">
-                        Cart
-                    </div>
-                </Link>
-
-                {/* Message */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {/* Main SVG */}
-                    <div className="relative">
-                        <HiOutlineChatBubbleLeft className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
-                        <div
-                            className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                            3
-                        </div>
-                    </div>
-                    <div className="text-prgcolor group-hover:text-primary transition">
-                        Messages
-                    </div>
-                </Link>
-
-                {/* Notification */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {/* Main SVG */}
-                    <div className="relative">
-                        <GoBell className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
-                        <div
-                            className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                            12
-                        </div>
-                    </div>
-                    <div className="text-prgcolor group-hover:text-primary transition">
-                        Notification
-                    </div>
-                </Link>
-            </div>
         </>
     );
 }
 
-export default LeftSidebar;
+export default Page;
