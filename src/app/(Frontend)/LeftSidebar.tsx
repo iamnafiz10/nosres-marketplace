@@ -297,7 +297,7 @@ function LeftSidebar() {
                         </div>
                     </div>
                     <div className="text-prgcolor group-hover:text-primary transition">
-                        Notification
+                        Notifications
                     </div>
                 </Link>
             </div>
