@@ -2695,8 +2695,8 @@ export default function Home() {
                                             <>
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                    <div className="flex items-center gap-1">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                    <div className="flex items-center gap-0">
+                                                        <h4 className="text-[14px] mr-1 font-semibold text-prgcolor">
                                                             Inna K.
                                                         </h4>
                                                         <h4 className="text-graycolor text-[14px] flex items-end gap-0">

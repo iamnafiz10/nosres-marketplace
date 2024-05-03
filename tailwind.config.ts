@@ -8,7 +8,7 @@ const config: Config = {
         "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/**/*.{js,ts,jsx,tsx,mdx}",
         './node_modules/flowbite/**/*.js',
-        'node_modules/flowbite-react/lib/esm/**/*.js',
+        './node_modules/flowbite-react/lib/esm/**/*.js',
         flowbite.content(),
     ],
     theme: {
@@ -32,7 +32,7 @@ const config: Config = {
         },
     },
     plugins: [
-        require('flowbite/plugin')
+        require('flowbite/plugin'),
     ],
 };
 export default config;

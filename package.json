@@ -17,6 +17,7 @@
     "flowbite-react": "^0.9.0",
     "lightbox.js-react": "^1.0.7",
     "next": "14.2.2",
+    "phosphor-react": "^1.4.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.1.0",

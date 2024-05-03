@@ -3,8 +3,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import useTitle from "@/app/useTitle";
 import Link from "next/link";
 import {HiOutlineMenuAlt3, HiUserCircle} from "react-icons/hi";
-import {TfiMenuAlt} from "react-icons/tfi";
-import {HiOutlineSquaresPlus} from "react-icons/hi2";
 
 function Page() {
     useTitle("Account")
@@ -41,7 +39,7 @@ function Page() {
                         <div className="col lg:col-span-2"></div>
 
                         {/* Body Content */}
-                        <div className="col lg:col-span-6 ml-0 lg:ml-10 mt-1">
+                        <div className="col lg:col-span-7 ml-0 lg:ml-10 mt-1">
                             {/* Mobile Header Start*/}
                             <div
                                 className="mobile_header pb-2 flex lg:hidden items-center text-[18px] font-[500] text-prgcolor rounded-lg">
@@ -156,7 +154,7 @@ function Page() {
                                     </div>
                                 </div>
                             </div>
-                            {/* Mobile Header Start*/}
+                            {/* Mobile Header End*/}
 
                             {/* Page Header */}
                             <div
@@ -174,7 +172,7 @@ function Page() {
                                 <div
                                     className="box px-4 py-6 bg-white rounded flex flex-col items-center justify-center">
                                     <div className="icon_box flex flex-col items-center justify-center text-center">
-                                        <HiUserCircle size={50} className="text-primary"/>
+                                        <HiUserCircle size={70} className="text-primary"/>
                                         <h4 className="text-prgcolor font-semibold mt-1 text-[16px]">
                                             Account
                                         </h4>
@@ -193,7 +191,7 @@ function Page() {
                         </div>
 
                         {/* Right Sidebar */}
-                        <div className="col lg:col-span-4 hidden lg:block ml-7 mr-[22px]">
+                        <div className="col lg:col-span-3 hidden lg:block ml-7 mr-[22px]">
 
                         </div>
                     </div>

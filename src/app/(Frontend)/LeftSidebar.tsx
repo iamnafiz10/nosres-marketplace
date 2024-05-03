@@ -259,7 +259,13 @@ function LeftSidebar() {
                 {/* Cart */}
                 <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
                     {/* Main SVG */}
-                    <IoCartOutline className="w-full h-[23px] text-prgcolor group-hover:text-primary"/>
+                    <div className="relative">
+                        <IoCartOutline className="w-full h-[23px] text-prgcolor group-hover:text-primary"/>
+                        <div
+                            className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                            2
+                        </div>
+                    </div>
                     <div className="text-prgcolor group-hover:text-primary transition">
                         Cart
                     </div>
@@ -271,7 +277,7 @@ function LeftSidebar() {
                     <div className="relative">
                         <HiOutlineChatBubbleLeft className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
                         <div
-                            className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                            className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                             3
                         </div>
                     </div>
@@ -286,7 +292,7 @@ function LeftSidebar() {
                     <div className="relative">
                         <GoBell className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
                         <div
-                            className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                            className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                             12
                         </div>
                     </div>

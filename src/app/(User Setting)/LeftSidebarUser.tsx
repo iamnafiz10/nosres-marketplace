@@ -72,7 +72,7 @@ function LeftSidebar() {
                                         ) : (
                                             <>
                                                 <li>
-                                                    <Link href="#"
+                                                    <Link href="/account"
                                                           className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <HiUserCircle
                                                             className="w-[22px] h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary"/>
@@ -89,7 +89,7 @@ function LeftSidebar() {
                                         ) : (
                                             <>
                                                 <li>
-                                                    <Link href="#"
+                                                    <Link href="/notification"
                                                           className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
@@ -115,7 +115,7 @@ function LeftSidebar() {
                                         ) : (
                                             <>
                                                 <li>
-                                                    <Link href="#"
+                                                    <Link href="/privacy"
                                                           className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                              className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
@@ -164,8 +164,8 @@ function LeftSidebar() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-6 ml-0 lg:ml-10"></div>
-                        <div className="col-span-4"></div>
+                        <div className="col-span-7 ml-0 lg:ml-10"></div>
+                        <div className="col-span-3"></div>
                     </div>
                 </div>
             </section>
