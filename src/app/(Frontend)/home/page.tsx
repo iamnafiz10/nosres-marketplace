@@ -2699,7 +2699,7 @@ export default function Home() {
                                                         <h4 className="text-[14px] mr-1 font-semibold text-prgcolor">
                                                             Inna K.
                                                         </h4>
-                                                        <h4 className="text-graycolor text-[14px] flex items-end gap-0">
+                                                        <h4 className="text-graycolor text-[14px] flex items-center gap-0">
                                                             shared this
                                                             <LuDot size={12}/>
                                                         </h4>

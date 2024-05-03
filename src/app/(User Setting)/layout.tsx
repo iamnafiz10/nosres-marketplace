@@ -20,7 +20,7 @@ export default function RootLayout({
         <body>
         <Header/>
         <LeftSidebarUser/>
-        {children}
+        {/*{children}*/}
         <ToastContainer
             bodyClassName="toastBody"
         />
