@@ -99,7 +99,7 @@ function Page() {
     };
 
     const notify = () => {
-        toast.warn('Your Nosres Account has been deactivated successfully.', {
+        toast.success('Your Nosres Account has been deactivated successfully.', {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
