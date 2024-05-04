@@ -158,7 +158,7 @@ function Page() {
     };
 
     const notifyDelete = () => {
-        toast.error('Your Nosres Account has been deleted successfully.', {
+        toast.success('Your Nosres Account has been deleted successfully.', {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -400,7 +400,7 @@ function Page() {
                                                         Username
                                                     </h4>
                                                     <h4 className="text-[12px] text-graycolor mt-1">
-                                                        Allow other people to discover your profile using your username
+                                                        Allow other people to discover your profile using your username.
                                                     </h4>
                                                 </div>
 
@@ -661,7 +661,7 @@ function Page() {
                                                 className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
                                                 <div className="content_wrap">
                                                     <h4 className="text-[14px] text-prgcolor">
-                                                        Following
+                                                        Followees
                                                     </h4>
                                                     <h4 className="text-[12px] text-graycolor mt-1">
                                                         Choose who can see the list of the people and stores you follow.
@@ -891,7 +891,7 @@ function Page() {
                         }}
                     >
                         <h4 className="text-[16px]">
-                            Who message you.
+                            Direct Messages
                         </h4>
                     </Modal.Header>
                     <Modal.Body>
@@ -1395,7 +1395,7 @@ function Page() {
                         }}
                     >
                         <h4 className="text-[16px]">
-                            Following
+                            Followees
                         </h4>
                     </Modal.Header>
                     <Modal.Body>
@@ -1526,7 +1526,7 @@ function Page() {
                             <div className="top_content sticky z-[999] -top-[25px] bg-white">
                                 <h4 className="text-[14px] text-graycolor">
                                     You’re currently blocking 6 user (s) from contacting you or engaging with
-                                    you in any way
+                                    you in any way.
                                 </h4>
 
                                 <div className="px-0 pb-2 bg-white mt-4">
@@ -1697,7 +1697,7 @@ function Page() {
                             </button>
                             <button onClick={() => setOpenStartWhoBlockingModal(false)}
                                     className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
-                                Send
+                                Save
                             </button>
                         </div>
                     </Modal.Footer>
@@ -1731,7 +1731,7 @@ function Page() {
                                     <br/>
                                     <br/>
                                     Robert Johnson may be able to view your posts on your timeline, tag
-                                    you, initiate a conversation with you, or re-follow you
+                                    you, initiate a conversation with you, or re-follow you.
                                 </h4>
                             </div>
                         </div>

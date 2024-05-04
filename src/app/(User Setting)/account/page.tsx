@@ -202,7 +202,7 @@ function Page() {
                                             </p>
                                             <button type="button"
                                                     className="mt-4 py-2 px-8 text-[14px] bg-gray-100 text-primary hover:bg-primary hover:text-white rounded">
-                                                Nosres Account Setting
+                                                Nosres Account Settings
                                             </button>
                                         </div>
                                     </>
