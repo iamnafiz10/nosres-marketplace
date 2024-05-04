@@ -3,9 +3,12 @@ import React, {useEffect, useRef, useState} from 'react';
 import useTitle from "@/app/useTitle";
 import Link from "next/link";
 import {HiOutlineMenuAlt3, HiUserCircle} from "react-icons/hi";
+import Skeleton from "react-loading-skeleton";
+import useLoading from "@/app/useLoading";
 
 function Page() {
     useTitle("Account")
+    const loading = useLoading();
 
     // 👇️ Toggle class on click Show And Hide Mobile Menu Dropdown (Icon)
     const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -157,36 +160,53 @@ function Page() {
                             {/* Mobile Header End*/}
 
                             {/* Page Header */}
-                            <div
-                                className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
-                                <HiUserCircle
-                                    className="w-[22px] h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary"/>
-                                <span className="ms-2">Account</span>
-                            </div>
-
+                            {loading ? (
+                                <>
+                                    <Skeleton height={30} count={1}/>
+                                </>
+                            ) : (
+                                <>
+                                    <div
+                                        className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
+                                        <HiUserCircle
+                                            className="w-[22px] h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary"/>
+                                        <span className="ms-2">Account</span>
+                                    </div>
+                                </>
+                            )}
                             <div className="py-1 lg:py-4">
                                 <hr/>
                             </div>
 
                             <div className="content_wrapper text-center mt-2 lg:mt-0">
-                                <div
-                                    className="box px-4 py-6 bg-white rounded flex flex-col items-center justify-center">
-                                    <div className="icon_box flex flex-col items-center justify-center text-center">
-                                        <HiUserCircle size={70} className="text-primary"/>
-                                        <h4 className="text-prgcolor font-semibold mt-1 text-[16px]">
-                                            Account
-                                        </h4>
-                                    </div>
-                                    <p className="mt-2 text-graycolor text-[14px]">
-                                        You’re logging into Nosres Marketplace with your Nosres Account. If
-                                        you need to adjust certain settings, please navigate to your Nosres
-                                        Account.
-                                    </p>
-                                    <button type="button"
-                                            className="mt-4 py-2 px-8 text-[14px] bg-gray-100 text-primary hover:bg-primary hover:text-white rounded">
-                                        Nosres Account Setting
-                                    </button>
-                                </div>
+                                {loading ? (
+                                    <>
+                                        <Skeleton height={200} count={1}/>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div
+                                            className="box px-4 py-6 bg-white rounded flex flex-col items-center justify-center">
+
+                                            <div
+                                                className="icon_box flex flex-col items-center justify-center text-center">
+                                                <HiUserCircle size={70} className="text-primary"/>
+                                                <h4 className="text-prgcolor font-semibold mt-1 text-[16px]">
+                                                    Account
+                                                </h4>
+                                            </div>
+                                            <p className="mt-2 text-graycolor text-[14px]">
+                                                You’re logging into Nosres Marketplace with your Nosres Account. If
+                                                you need to adjust certain settings, please navigate to your Nosres
+                                                Account.
+                                            </p>
+                                            <button type="button"
+                                                    className="mt-4 py-2 px-8 text-[14px] bg-gray-100 text-primary hover:bg-primary hover:text-white rounded">
+                                                Nosres Account Setting
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
 

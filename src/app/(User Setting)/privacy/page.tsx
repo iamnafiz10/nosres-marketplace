@@ -10,9 +10,12 @@ import {FaUsers} from "react-icons/fa6";
 import {IoLockClosed, IoSearchOutline} from "react-icons/io5";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Skeleton from "react-loading-skeleton";
+import useLoading from "@/app/useLoading";
 
 function Page() {
     useTitle("Privacy")
+    const loading = useLoading();
 
     // 👇️ Toggle class on click Show And Hide Mobile Menu Dropdown (Icon)
     const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -307,21 +310,28 @@ function Page() {
                             {/* Mobile Header End*/}
 
                             {/* Page Header */}
-                            <div
-                                className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                     viewBox="0 0 24
+                            {loading ? (
+                                <>
+                                    <Skeleton height={30} count={1}/>
+                                </>
+                            ) : (
+                                <>
+                                    <div
+                                        className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                             viewBox="0 0 24
                                      24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                     strokeLinecap="round"
-                                     strokeLinejoin="round">
-                                    <path d="M20 13c0 5-3.5
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round">
+                                            <path d="M20 13c0 5-3.5
                                     7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2
                                     6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-                                </svg>
-                                <span className="ms-1">Privacy</span>
-                            </div>
-
+                                        </svg>
+                                        <span className="ms-1">Privacy</span>
+                                    </div>
+                                </>
+                            )}
                             <div className="py-1 lg:py-4">
                                 <hr/>
                             </div>
@@ -329,26 +339,41 @@ function Page() {
                             <div className="content_wrapper mt-2 lg:mt-0">
                                 {/* Main Box */}
                                 <div className="box px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">How People Find You on Nosres
-                                            Marketplace</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">How People Find You on Nosres
+                                                    Marketplace</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Search Engine
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Allow other search engines to link to your profile in their results.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Search Engine
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Allow other search engines to link to your profile in their
+                                                        results.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle1p"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle1p"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle1p" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -356,24 +381,32 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Username
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Allow other people to discover your profile using your username
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Username
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Allow other people to discover your profile using your username
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle2p"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle2p"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle2p" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -381,24 +414,33 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Email Address
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Allow other people to discover your profile using your email address.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Email Address
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Allow other people to discover your profile using your email
+                                                        address.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle3p"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle3p"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle3p" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -406,31 +448,48 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Who Can Reach You</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Who Can Reach You</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Followers
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Allow people to follow you.
-                                            </h4>
-                                        </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle4p"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Followers
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Allow people to follow you.
+                                                    </h4>
+                                                </div>
+
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle4p"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle4p" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -438,261 +497,371 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Choose who can direct message you
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Choose who can direct message you.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Choose who can direct message you
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Choose who can direct message you.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenStartWhoMessageModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <IoMdGlobe
-                                                className="w-[17px] h-[17px] text-graycolor"/>
-                                            <h4 className="text-[14px] text-primary">
-                                                Anyone
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                <div onClick={() => setOpenStartWhoMessageModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <IoMdGlobe
+                                                        className="w-[17px] h-[17px] text-graycolor"/>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Anyone
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Comments and Tags</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Comments and Tags</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Comments
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Choose who can comment on your posts.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Comments
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Choose who can comment on your posts.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenStartWhoCommentModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <IoMdGlobe
-                                                className="w-[17px] h-[17px] text-graycolor"/>
-                                            <h4 className="text-[14px] text-primary">
-                                                Anyone
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                <div onClick={() => setOpenStartWhoCommentModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <IoMdGlobe
+                                                        className="w-[17px] h-[17px] text-graycolor"/>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Anyone
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Tags
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Choose who can mention or tag you in their posts or comments.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Tags
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Choose who can mention or tag you in their posts or comments.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenStartWhoTagModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <IoMdGlobe
-                                                className="w-[17px] h-[17px] text-graycolor"/>
-                                            <h4 className="text-[14px] text-primary">
-                                                Anyone
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                <div onClick={() => setOpenStartWhoTagModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <IoMdGlobe
+                                                        className="w-[17px] h-[17px] text-graycolor"/>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Anyone
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Your Network</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Your Network</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Followers
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Choose who can see your followers list.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Followers
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Choose who can see your followers list.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenStartWhoFollowersModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <IoMdGlobe
-                                                className="w-[17px] h-[17px] text-graycolor"/>
-                                            <h4 className="text-[14px] text-primary">
-                                                Anyone
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                <div onClick={() => setOpenStartWhoFollowersModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <IoMdGlobe
+                                                        className="w-[17px] h-[17px] text-graycolor"/>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Anyone
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Following
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Choose who can see the list of the people and stores you follow.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Following
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Choose who can see the list of the people and stores you follow.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenStartWhoFollowingModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <IoMdGlobe
-                                                className="w-[17px] h-[17px] text-graycolor"/>
-                                            <h4 className="text-[14px] text-primary">
-                                                Anyone
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                <div onClick={() => setOpenStartWhoFollowingModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <IoMdGlobe
+                                                        className="w-[17px] h-[17px] text-graycolor"/>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Anyone
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Blocking</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Blocking</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Blocked Users
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Blocking someone removes that person’s ability to view your posts on
-                                                your timeline, tag you,
-                                                initiate a conversation with you, or follow you.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Blocked Users
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Blocking someone removes that person’s ability to view your
+                                                        posts on
+                                                        your timeline, tag you,
+                                                        initiate a conversation with you, or follow you.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenStartWhoBlockingModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <svg
-                                                className="w-[17px] h-[17px] text-graycolor"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                <div onClick={() => setOpenStartWhoBlockingModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <svg
+                                                        className="w-[17px] h-[17px] text-graycolor"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                  24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <path d="M17 3a2.85 2.83 0 1 1
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M17 3a2.85 2.83 0 1 1
                                                 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                <path d="m15 5 4 4"/>
-                                            </svg>
-                                            <h4 className="text-[14px] text-primary">
-                                                Edit
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                        <path d="m15 5 4 4"/>
+                                                    </svg>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Edit
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Advanced Settings</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Advanced Settings</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Marketplace ID
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                We use the Marketplace ID to identify the person responsible for the
-                                                activities associated with this
-                                                Nosres Marketplace profile.
-                                            </h4>
-                                            <h4 className="text-[14px] text-prgcolor mt-2">
-                                                391990162298
-                                            </h4>
-                                        </div>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Marketplace ID
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        We use the Marketplace ID to identify the person responsible for
+                                                        the
+                                                        activities associated with this
+                                                        Nosres Marketplace profile.
+                                                    </h4>
+                                                    <h4 className="text-[14px] text-prgcolor mt-2">
+                                                        391990162298
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Deactivate Marketplace Profile
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Deactivating your Marketplace profile won’t deactivate your Nosres
-                                                Account.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Deactivate Marketplace Profile
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Deactivating your Marketplace profile won’t deactivate your
+                                                        Nosres
+                                                        Account.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenAccountDeactivateModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <svg
-                                                className="w-[17px] h-[17px] text-graycolor"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                <div onClick={() => setOpenAccountDeactivateModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <svg
+                                                        className="w-[17px] h-[17px] text-graycolor"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                             24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <path d="M16 21v-2a4 4 0 0
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
                                                 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                <circle cx="9" cy="7" r="4"/>
-                                                <line x1="17" x2="22" y1="8"
-                                                      y2="13"/>
-                                                <line x1="22" x2="17" y1="8" y2="13"/>
-                                            </svg>
-                                            <h4 className="text-[14px] text-primary">
-                                                Deactivate
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="17" x2="22" y1="8"
+                                                              y2="13"/>
+                                                        <line x1="22" x2="17" y1="8" y2="13"/>
+                                                    </svg>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Deactivate
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Delete Marketplace Profile
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Deleting your Marketplace profile won’t close your Nosres Account.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Delete Marketplace Profile
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Deleting your Marketplace profile won’t close your Nosres
+                                                        Account.
+                                                    </h4>
+                                                </div>
 
-                                        <div onClick={() => setOpenAccountDeleteModal(true)}
-                                             className="who_wrap cursor-pointer flex items-center gap-1">
-                                            <svg
-                                                className="w-[17px] h-[17px] text-graycolor"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                <div onClick={() => setOpenAccountDeleteModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <svg
+                                                        className="w-[17px] h-[17px] text-graycolor"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                  24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <path d="M3 6h18"/>
-                                                <path
-                                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M3 6h18"/>
+                                                        <path
+                                                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0
                                                 2 1 2 2v2"/>
-                                                <line x1="10" x2="10" y1="11" y2="17"/>
-                                                <line x1="14" x2="14" y1="11"
-                                                      y2="17"/>
-                                            </svg>
-                                            <h4 className="text-[14px] text-primary">
-                                                Delete
-                                            </h4>
-                                        </div>
-                                    </div>
+                                                        <line x1="10" x2="10" y1="11" y2="17"/>
+                                                        <line x1="14" x2="14" y1="11"
+                                                              y2="17"/>
+                                                    </svg>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Delete
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>

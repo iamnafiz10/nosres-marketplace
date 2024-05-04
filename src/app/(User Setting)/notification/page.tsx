@@ -3,9 +3,12 @@ import React, {useEffect, useRef, useState} from 'react';
 import useTitle from "@/app/useTitle";
 import Link from "next/link";
 import {HiOutlineMenuAlt3, HiUserCircle} from "react-icons/hi";
+import Skeleton from "react-loading-skeleton";
+import useLoading from "@/app/useLoading";
 
 function Page() {
     useTitle("Notifications")
+    const loading = useLoading();
 
     // 👇️ Toggle class on click Show And Hide Mobile Menu Dropdown (Icon)
     const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -167,22 +170,29 @@ function Page() {
                             {/* Mobile Header End*/}
 
                             {/* Page Header */}
-                            <div
-                                className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
-                                <svg
-                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24
+                            {loading ? (
+                                <>
+                                    <Skeleton height={30} count={1}/>
+                                </>
+                            ) : (
+                                <>
+                                    <div
+                                        className="page_header hidden lg:flex items-center text-[16px] text-prgcolor font-normal rounded-lg">
+                                        <svg
+                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24
                                     24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round">
-                                    <path d="M6 8a6 6 0 0 1 12 0c0 7
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round">
+                                            <path d="M6 8a6 6 0 0 1 12 0c0 7
                                                             3 9 3 9H3s3-2 3-9"/>
-                                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
-                                </svg>
-                                <span className="ms-1">Notifications</span>
-                            </div>
-
+                                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                                        </svg>
+                                        <span className="ms-1">Notifications</span>
+                                    </div>
+                                </>
+                            )}
                             <div className="py-1 lg:py-4">
                                 <hr/>
                             </div>
@@ -190,25 +200,40 @@ function Page() {
                             <div className="content_wrapper mt-2 lg:mt-0">
                                 {/* Main Box */}
                                 <div className="box px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Messages and Mentions</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Messages and Mentions</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Direct Messages
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive when someone sends you a direct message.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Direct Messages
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive when someone sends you a direct
+                                                        message.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle1"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle1"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle1" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -216,58 +241,83 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Mantions
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive when someone mentions or tags you in a post or
-                                                comment.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Mantions
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive when someone mentions or tags you in a
+                                                        post or
+                                                        comment.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle2"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
-                                                <span className="relative">
-                                                <input id="Toggle2" type="checkbox" className="hidden peer"/>
-                                                <div
-                                                    className="w-12 h-6 rounded-full shadow-inner bg-gray-200 peer-checked:bg-primary"></div>
-                                                <div
-                                                    className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle2"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
+                                        <span className="relative">
+                                        <input id="Toggle2" type="checkbox" className="hidden peer"/>
+                                        <div
+                                            className="w-12 h-6 rounded-full shadow-inner bg-gray-200 peer-checked:bg-primary"></div>
+                                        <div
+                                            className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
+                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Engagement on Your Posts</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Engagement on Your Posts</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Likes
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive when someone likes my posts.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Likes
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive when someone likes my posts.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle3"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle3"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle3" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -275,25 +325,34 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Comments and Replies
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive when someone comments on your content and
-                                                replies to your comments.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Comments and Replies
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive when someone comments on your content
+                                                        and
+                                                        replies to your comments.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle4"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle4"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle4" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -301,24 +360,31 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Shares
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive when someone shares any of your posts.
+                                                    </h4>
+                                                </div>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Shares
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive when someone shares any of your posts.
-                                            </h4>
-                                        </div>
-
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle5"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle5"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle5" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -326,32 +392,48 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
-                                    <div className="box_header pb-2">
-                                        <h4 className="text-[16px] text-prgcolor">Your Network</h4>
-                                    </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">Your Network</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                New Followers
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive when someone starts following me.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        New Followers
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive when someone starts following me.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle6"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle6"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle6" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -359,24 +441,32 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Updates from Your Network
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive about updates in your network.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Updates from Your Network
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive about updates in your network.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle7"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle7"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle7" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -384,25 +474,34 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
-                                    <div
-                                        className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
-                                        <div className="content_wrap">
-                                            <h4 className="text-[14px] text-prgcolor">
-                                                Recommendations
-                                            </h4>
-                                            <h4 className="text-[12px] text-graycolor mt-1">
-                                                Notifications you receive about accounts you might like based on what
-                                                you follow.
-                                            </h4>
-                                        </div>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Recommendations
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Notifications you receive about accounts you might like based on
+                                                        what
+                                                        you follow.
+                                                    </h4>
+                                                </div>
 
-                                        <div className="toggle_wrap">
-                                            <label htmlFor="Toggle8"
-                                                   className="inline-flex items-center space-x-4 cursor-pointer">
+                                                <div className="toggle_wrap">
+                                                    <label htmlFor="Toggle8"
+                                                           className="inline-flex items-center space-x-4 cursor-pointer">
                                                 <span className="relative">
                                                 <input id="Toggle8" type="checkbox" className="hidden peer"/>
                                                 <div
@@ -410,9 +509,11 @@ function Page() {
                                                 <div
                                                     className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-white peer-checked:bg-white"></div>
                                                 </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
