@@ -48,6 +48,10 @@ textarea {
     background: rgba(250, 250, 250, 0.73);
 }
 
+.modal_cntrl .max-w-lg {
+    border-radius: 10px !important;
+}
+
 .modal_header button {
     outline: none !important;
 }
@@ -104,7 +108,6 @@ textarea {
     overflow: hidden;
 }
 
-
 .last_business_icon:hover .profile_text {
     color: #4D7FB8;
 }
@@ -119,4 +122,133 @@ em-emoji-picker {
     max-height: 300px;
     position: relative;
     z-index: 9999;
+}
+
+/*------------ Modal Dropdown Design --------------------*/
+.select-option {
+    position: relative;
+}
+
+.info-content {
+    position: absolute;
+    width: 90%;
+    background-color: white;
+    border: 1px solid lightgray;
+    color: black;
+    border-radius: 5px;
+    margin-top: 5px;
+    z-index: 999;
+    padding: 10px 0;
+}
+
+.modal_body input {
+    outline: none !important;
+    border: 1px solid #a1a1a1db;
+    background: #fafafaba;
+    color: #39393b !important;
+}
+
+.options {
+    max-height: 100px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.options li {
+    padding: 3px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.options li:hover {
+    background: #4D7FB8;
+    color: white;
+}
+
+.select-option input {
+    width: 100%;
+    background-color: rgba(250, 250, 250, 0.73);
+    border: 1px solid lightgray;
+    color: #000;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 15px;
+    outline: 0 !important;
+}
+
+.select-option:after {
+    content: "";
+    border-top: 8px solid #808080FF;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -4px;
+}
+
+/*--------------- Toastify Message Design ------------------*/
+.toastBody {
+    font-size: 14px;
+}
+
+/* Success */
+.Toastify__toast-theme--colored.Toastify__toast--success {
+    background: #D9EDE1 !important;
+    color: rgba(71, 174, 116, 0.74) !important;
+    border: 1.5px solid #47AE74 !important;
+}
+
+.Toastify__toast--success .Toastify__close-button > svg {
+    color: #47AE74 !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success {
+    background: rgb(71 174 116 / 17%) !important;
+}
+
+/* Warning */
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+    background: rgb(253, 246, 178) !important;
+    color: #C27839 !important;
+    border: 1.5px solid #C27839 !important;
+}
+
+.Toastify__toast--warning .Toastify__close-button > svg {
+    color: #C27839 !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning {
+    background: rgba(194, 120, 57, 0.36) !important;
+}
+
+/* Info */
+.Toastify__toast-theme--colored.Toastify__toast--error {
+    background: #ff9999 !important;
+    color: #b22020 !important;
+    border: 1.5px solid #b22020 !important;
+}
+
+.Toastify__toast--error .Toastify__close-button > svg {
+    color: darkred !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+    background: rgba(139, 0, 0, 0.19) !important;
+}
+
+/* Info */
+.Toastify__toast-theme--colored.Toastify__toast--info {
+    background: #E1E7EF !important;
+    color: #006FBE !important;
+    border: 1.5px solid rgba(0, 111, 190, 0.5) !important;
+}
+
+.Toastify__toast--info .Toastify__close-button > svg {
+    color: #006FBE !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info {
+    background: rgba(77, 127, 184, 0.61) !important;
 }

@@ -7,9 +7,9 @@ import {IoMdGlobe} from "react-icons/io";
 import {Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
 import {FaUsers} from "react-icons/fa6";
-import {IoLockClosed} from "react-icons/io5";
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
+import {IoLockClosed, IoSearchOutline} from "react-icons/io5";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Page() {
     useTitle("Privacy")
@@ -50,7 +50,127 @@ function Page() {
     const [openStartWhoTagModal, setOpenStartWhoTagModal] = useState<boolean>(false);
     const [openStartWhoFollowersModal, setOpenStartWhoFollowersModal] = useState<boolean>(false);
     const [openStartWhoFollowingModal, setOpenStartWhoFollowingModal] = useState<boolean>(false);
+    const [openStartWhoBlockingModal, setOpenStartWhoBlockingModal] = useState<boolean>(false);
+    const [openStartUnblockConfirmModal, setOpenStartUnblockConfirmModal] = useState<boolean>(false);
 
+    // Account Deactivate popups
+    const [showPassword, setShowPassword] = useState(false);
+    const [OpenAccountDeactivateModal, setOpenAccountDeactivateModal] = useState<boolean>(false);
+    const [isOptionsVisibleAccDtv, setIsOptionsVisibleAccDtv] = useState<boolean>(false);
+    const [selectedOptionAccDtv, setSelectedOptionAccDtv] = useState<string>('');
+    const selectBoxRefAccDtv = useRef<HTMLDivElement>(null);
+
+    const handleOptionClickAccDtv = (option: string) => {
+        setSelectedOptionAccDtv(option);
+        toggleOptionsVisibilityAccDtv();
+    };
+
+    const toggleOptionsVisibilityAccDtv = () => {
+        setIsOptionsVisibleAccDtv(!isOptionsVisibleAccDtv);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefAccDtv.current && !selectBoxRefAccDtv.current.contains(event.target as Node)) {
+                setIsOptionsVisibleAccDtv(false);
+            }
+        };
+
+        document.addEventListener('click', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
+
+    const [otherReason, setOtherReason] = useState<string>('');
+    const handleReasonChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setOtherReason(event.target.value);
+    };
+
+    // Deactivate confirm modal
+    const [OpenDeactivateConfirmModal, setOpenDeactivateConfirmModal] = useState<boolean>(false);
+    const handleCloseAllPopups = () => {
+        setShowPassword(false);
+        setOpenDeactivateConfirmModal(false);
+        setOpenAccountDeactivateModal(false);
+    };
+
+    const notify = () => {
+        toast.warn('Your Nosres Account has been deactivated successfully.', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    };
+
+    const handleDeactivateButtonClick = () => {
+        notify();
+        handleCloseAllPopups();
+    };
+
+    // Account Delete popup
+    const [OpenAccountDeleteModal, setOpenAccountDeleteModal] = useState<boolean>(false);
+    const [isOptionsVisibleAccDlt, setIsOptionsVisibleAccDlt] = useState<boolean>(false);
+    const [selectedOptionAccDlt, setSelectedOptionAccDlt] = useState<string>('');
+    const selectBoxRefAccDlt = useRef<HTMLDivElement>(null);
+
+    const handleOptionClickAccDlt = (option: string) => {
+        setSelectedOptionAccDlt(option);
+        toggleOptionsVisibilityAccDlt();
+    };
+
+    const toggleOptionsVisibilityAccDlt = () => {
+        setIsOptionsVisibleAccDlt(!isOptionsVisibleAccDlt);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefAccDlt.current && !selectBoxRefAccDlt.current.contains(event.target as Node)) {
+                setIsOptionsVisibleAccDlt(false);
+            }
+        };
+
+        document.addEventListener('click', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
+
+    const [otherReasonDlt, setOtherReasonDlt] = useState<string>('');
+    const handleReasonChangeDlt = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setOtherReasonDlt(event.target.value);
+    };
+
+    // Delete confirm modal
+    const [OpenDeleteConfirmModal, setOpenDeleteConfirmModal] = useState<boolean>(false);
+    const handleCloseAllPopupsDelete = () => {
+        setShowPassword(false);
+        setOpenDeleteConfirmModal(false);
+        setOpenAccountDeleteModal(false);
+    };
+
+    const notifyDelete = () => {
+        toast.error('Your Nosres Account has been deleted successfully.', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    };
+
+    const handleDeleteButtonClick = () => {
+        notifyDelete();
+        handleCloseAllPopupsDelete();
+    };
     return (
         <>
             <section id="privacy-page-section">
@@ -444,7 +564,6 @@ function Page() {
                                     </div>
                                 </div>
 
-
                                 {/* Main Box */}
                                 <div className="box mt-4 px-6 py-4 bg-white rounded">
                                     <div className="box_header pb-2">
@@ -465,7 +584,8 @@ function Page() {
                                             </h4>
                                         </div>
 
-                                        <div className="who_wrap cursor-pointer flex items-center gap-1">
+                                        <div onClick={() => setOpenStartWhoBlockingModal(true)}
+                                             className="who_wrap cursor-pointer flex items-center gap-1">
                                             <svg
                                                 className="w-[17px] h-[17px] text-graycolor"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -519,7 +639,8 @@ function Page() {
                                             </h4>
                                         </div>
 
-                                        <div className="who_wrap cursor-pointer flex items-center gap-1">
+                                        <div onClick={() => setOpenAccountDeactivateModal(true)}
+                                             className="who_wrap cursor-pointer flex items-center gap-1">
                                             <svg
                                                 className="w-[17px] h-[17px] text-graycolor"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -550,7 +671,8 @@ function Page() {
                                             </h4>
                                         </div>
 
-                                        <div className="who_wrap cursor-pointer flex items-center gap-1">
+                                        <div onClick={() => setOpenAccountDeleteModal(true)}
+                                             className="who_wrap cursor-pointer flex items-center gap-1">
                                             <svg
                                                 className="w-[17px] h-[17px] text-graycolor"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -1211,6 +1333,549 @@ function Page() {
                     </Modal.Footer>
                 </Modal>
                 {/* WhoFollowing Pop-Up End */}
+
+                {/* Start WhoBlocking Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartWhoBlockingModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartWhoBlockingModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        className="modal_header"
+                    >
+                        <h4 className="text-[16px]">Blocked Users</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[25px] bg-white">
+                                <h4 className="text-[14px] text-graycolor">
+                                    You’re currently blocking 6 user (s) from contacting you or engaging with
+                                    you in any way
+                                </h4>
+
+                                <div className="px-0 pb-2 bg-white mt-4">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search name"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="scroll_content mt-4">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div onClick={() => setOpenStartUnblockConfirmModal(true)}
+                                             className="icon_box flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#828D9E" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <circle cx="12" cy="12"
+                                                            r="10"/>
+                                                    <path d="m4.9 4.9 14.2 14.2"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Unblock
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div onClick={() => setOpenStartUnblockConfirmModal(true)}
+                                             className="icon_box flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#828D9E" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <circle cx="12" cy="12"
+                                                            r="10"/>
+                                                    <path d="m4.9 4.9 14.2 14.2"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Unblock
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div onClick={() => setOpenStartUnblockConfirmModal(true)}
+                                             className="icon_box flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#828D9E" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <circle cx="12" cy="12"
+                                                            r="10"/>
+                                                    <path d="m4.9 4.9 14.2 14.2"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Unblock
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div onClick={() => setOpenStartUnblockConfirmModal(true)}
+                                             className="icon_box flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#828D9E" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <circle cx="12" cy="12"
+                                                            r="10"/>
+                                                    <path d="m4.9 4.9 14.2 14.2"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Unblock
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div onClick={() => setOpenStartUnblockConfirmModal(true)}
+                                             className="icon_box flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#828D9E" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <circle cx="12" cy="12"
+                                                            r="10"/>
+                                                    <path d="m4.9 4.9 14.2 14.2"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Unblock
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartWhoBlockingModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartWhoBlockingModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Send
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* WhoBlocking Pop-Up End */}
+
+                {/* Start UnblockConfirm Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartUnblockConfirmModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 20%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartUnblockConfirmModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        className="modal_header"
+                    >
+                        <h4 className="text-[16px]">Unblock Robert Johnson</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[25px] bg-white">
+                                <h4 className="text-[14px] text-graycolor">
+                                    Are you sure you want to unblock Robert Johnson?
+                                    <br/>
+                                    <br/>
+                                    Robert Johnson may be able to view your posts on your timeline, tag
+                                    you, initiate a conversation with you, or re-follow you
+                                </h4>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartUnblockConfirmModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenStartUnblockConfirmModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Unblock
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* UnblockConfirm Pop-Up End */}
+
+                {/* Account deactivate Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible={!OpenDeactivateConfirmModal}
+                       show={OpenAccountDeactivateModal}
+                       onClose={() => setOpenAccountDeactivateModal(false)}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 20%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                >
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        className="modal_header"
+                    >
+                        <h4 className="text-[16px]">Deactivate Marketplace Profile</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body box">
+                            <p>
+                                You can temporarily deactivate your account at any time or for any
+                                reason. You can reactivate your account at any time.
+                                <br/>
+                                <br/>
+                                To help us improve our services, please tell us the reason why you
+                                want to deactivate your Marketplace profile.
+                            </p>
+                            <h4 className="text-[14px] mt-3">Select Reason</h4>
+                            <div className="select-box mt-2" ref={selectBoxRefAccDtv}>
+                                <div className="select-option flex"
+                                     onClick={toggleOptionsVisibilityAccDtv}>
+                                    <input type="text" placeholder="Select"
+                                           readOnly
+                                           value={selectedOptionAccDtv}
+                                           className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300 "/>
+                                </div>
+                                {isOptionsVisibleAccDtv && (
+                                    <div className="info-content">
+                                        <ul className="options">
+                                            <li onClick={() => handleOptionClickAccDtv("I’d prefer not to be searchable.")}>
+                                                I’d prefer not to be searchable.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("I’m currently resolving technical issues with my account.")}>
+                                                I’m currently resolving technical issues with my account.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("I want to limit my exposure on Nosres Marketplace for a while.")}>
+                                                I want to limit my exposure on Nosres Marketplace for a while.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("I prefer not to say.")}>
+                                                I prefer not to say.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Other (please specify)")}>Other
+                                                (please specify)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+
+                            {selectedOptionAccDtv === "Other (please specify)" && (
+                                <div className="others-input py-2">
+                                                <textarea cols={30} rows={3}
+                                                          className="mt-1 rounded w-full py-1 px-3 focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                                          value={otherReason}
+                                                          onChange={handleReasonChange}
+                                                          placeholder="Please inform us of your reason for temporarily deactivating your profile, as your feedback will help us enhance our services."
+                                                >
+                                                </textarea>
+                                </div>
+                            )}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenAccountDeactivateModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">Cancel
+                            </button>
+                            <button onClick={() => setOpenDeactivateConfirmModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Continue
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Account deactivate Pop-Up End */}
+
+                {/* Start Deactivate confirm modal */}
+                <Modal size="lg"
+                       show={OpenDeactivateConfirmModal}
+                       onClose={() => setOpenDeactivateConfirmModal(false)}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 20%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                >
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        className="modal_header"
+                    >
+                        <h4 className="text-[16px]">
+                            Enter Password
+                        </h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body box">
+                            <p className="pb-4">
+                                To ensure security, please enter your password to verify that this
+                                request is authorized by you.
+                            </p>
+                            <h4 className="text-[14px]">
+                                Enter Password
+                            </h4>
+                            <input
+                                className="mt-1 rounded w-full py-1 px-3 focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
+                                type="text"
+                                placeholder="******"
+                            />
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenDeactivateConfirmModal(false)}
+                                    className="px-12 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={handleDeactivateButtonClick}
+                                    className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Deactivate
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Deactivate confirm modal End*/}
+
+
+                {/* Account Delete Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible={!OpenDeleteConfirmModal}
+                       show={OpenAccountDeleteModal}
+                       onClose={() => setOpenAccountDeleteModal(false)}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 20%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                >
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        className="modal_header"
+                    >
+                        <h4 className="text-[16px]">Delete Marketplace Profile</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body box">
+                            <p>
+                                You are in the process of permanently deleting your Marketplace
+                                profile. Once deleted, this account will no longer be available. This
+                                action cannot be reversed.
+                                <br/>
+                                <br/>
+                                To help us improve our services, please tell us the reason why you
+                                want to delete your Marketplace profile.
+                            </p>
+                            <h4 className="text-[14px] mt-3">Select Reason</h4>
+                            <div className="select-box mt-2" ref={selectBoxRefAccDlt}>
+                                <div className="select-option flex"
+                                     onClick={toggleOptionsVisibilityAccDlt}>
+                                    <input type="text" placeholder="Select"
+                                           readOnly
+                                           value={selectedOptionAccDlt}
+                                           className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300 "/>
+                                </div>
+                                {isOptionsVisibleAccDlt && (
+                                    <div className="info-content gender_content">
+                                        <ul className="options">
+                                            <li onClick={() => handleOptionClickAccDlt("I have another Marketplace profile.")}>
+                                                I have another Marketplace profile.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDlt("I have concerns about my privacy and data.")}>
+                                                I have concerns about my privacy and data.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDlt("I have encountered unsatisfactory experiences with the website’s functionality and/or content.")}>
+                                                I have encountered unsatisfactory experiences with the website’s
+                                                functionality and/or content.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDlt("I no longer find the website valuable or relevant to my needs.")}>
+                                                I no longer find the website valuable or relevant to my needs.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDlt("I find that the services do not align with my preferences and/or values.")}>
+                                                I find that the services do not align with my preferences and/or values.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDlt("I prefer not to say.")}>
+                                                I prefer not to say.
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDlt("Other (please specify)")}>Other
+                                                (please specify)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+
+                            {selectedOptionAccDlt === "Other (please specify)" && (
+                                <div className="others-input py-2">
+                                                <textarea cols={30} rows={3}
+                                                          className="mt-1 rounded w-full py-1 px-3 focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                                          value={otherReasonDlt}
+                                                          onChange={handleReasonChangeDlt}
+                                                          placeholder="Please inform us of your reason for permanently deleting your profile, as your feedback will help us enhance our services."
+                                                >
+                                                </textarea>
+                                </div>
+                            )}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenAccountDeleteModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">Cancel
+                            </button>
+                            <button onClick={() => setOpenDeleteConfirmModal(true)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Continue
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Account Delete Pop-Up End */}
+
+                {/* Start Delete confirm modal */}
+                <Modal size="lg"
+                       show={OpenDeleteConfirmModal}
+                       onClose={() => setOpenDeleteConfirmModal(false)}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 20%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                >
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        className="modal_header"
+                    >
+                        <h4 className="text-[16px]">
+                            Enter Password
+                        </h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body box">
+                            <p className="pb-4">
+                                To ensure security, please enter your password to verify that this
+                                request is authorized by you.
+                            </p>
+                            <h4 className="text-[14px]">
+                                Enter Password
+                            </h4>
+                            <input
+                                className="mt-1 rounded w-full py-1 px-3 focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                type="text"
+                                placeholder="******"
+                            />
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenDeleteConfirmModal(false)}
+                                    className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Back
+                            </button>
+                            <button onClick={handleDeleteButtonClick}
+                                    className="px-8 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Delete
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Delete confirm modal End*/}
             </section>
         </>
     );

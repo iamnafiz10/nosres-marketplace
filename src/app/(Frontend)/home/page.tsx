@@ -5757,8 +5757,7 @@ export default function Home() {
                         </div>
                     </Modal.Footer>
                 </Modal>
-                {/* Start Post Message Pop-Up End */
-                }
+                {/* Start Post Message Pop-Up End */}
             </section>
         </>
     )
