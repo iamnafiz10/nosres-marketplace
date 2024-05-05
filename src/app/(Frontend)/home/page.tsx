@@ -720,9 +720,14 @@ export default function Home() {
     // One
     const [postPopEmojiOne, setPostPopEmojiOne] = useState(false);
     const popEmojiRefOne = useRef(null);
-    const handlePostPopEmojiOneOutside = (event: MouseEvent) => {
-        if (popEmojiRefOne.current && !popEmojiRefOne.current.contains(event.target as Node)) {
-            setPostPopEmojiOne(false);
+    const handlePostPopEmojiOneOutside = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        // Check if popEmojiRefOne.current is not null and if event.target exists
+        if (popEmojiRefOne.current && event.target) {
+            // Cast popEmojiRefOne.current to HTMLElement and use contains method
+            if (!popEmojiRefOne.current.contains(event.target as HTMLElement)) {
+                // If event target is outside the emoji picker, close it
+                setPostPopEmojiOne(false);
+            }
         }
     };
     useEffect(() => {
