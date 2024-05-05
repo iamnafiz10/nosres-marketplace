@@ -5846,14 +5846,14 @@ export default function Home() {
                                 <div className="col md:col-span-8">
                                     <div
                                         className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
-                                        <Carousel slide={false} indicators={false}>
-                                            <Image src={SliderOneImg} className="slider_image rounded"
-                                                   alt="SliderOneImg"/>
-                                            <Image src={SliderTwoImg} className="slider_image rounded"
-                                                   alt="SliderTwoImg"/>
-                                            <Image src={SliderThreeImg} className="slider_image rounded"
-                                                   alt="SliderThreeImg"/>
-                                        </Carousel>
+                                        {/*<Carousel slide={false} indicators={false}>*/}
+                                        {/*    <Image src={SliderOneImg} className="slider_image rounded"*/}
+                                        {/*           alt="SliderOneImg"/>*/}
+                                        {/*    <Image src={SliderTwoImg} className="slider_image rounded"*/}
+                                        {/*           alt="SliderTwoImg"/>*/}
+                                        {/*    <Image src={SliderThreeImg} className="slider_image rounded"*/}
+                                        {/*           alt="SliderThreeImg"/>*/}
+                                        {/*</Carousel>*/}
                                     </div>
                                 </div>
                                 <div className="col md:col-span-4">
