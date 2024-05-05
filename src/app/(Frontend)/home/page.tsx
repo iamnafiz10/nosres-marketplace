@@ -720,7 +720,7 @@ export default function Home() {
     // One
     const [postPopEmojiOne, setPostPopEmojiOne] = useState(false);
     const popEmojiRefOne = useRef(null);
-    const handlePostPopEmojiOneOutside = (event) => {
+    const handlePostPopEmojiOneOutside = (event: any) => {
         if (popEmojiRefOne.current && !popEmojiRefOne.current.contains(event.target)) {
             setPostPopEmojiOne(false);
         }
