@@ -194,6 +194,7 @@ em-emoji-picker {
 }
 
 .slider_image {
+    width: -moz-available; /* For Firefox */
     width: -webkit-fill-available !important;
 }
 
