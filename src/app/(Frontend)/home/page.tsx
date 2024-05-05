@@ -720,8 +720,8 @@ export default function Home() {
     // One
     const [postPopEmojiOne, setPostPopEmojiOne] = useState(false);
     const popEmojiRefOne = useRef(null);
-    const handlePostPopEmojiOneOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (popEmojiRefOne.current && !popEmojiRefOne.current.contains(event.target as Node)) {
+    const handlePostPopEmojiOneOutside = (event: { target: any; }) => {
+        if (popEmojiRefOne.current && !popEmojiRefOne.current.contains(event.target)) {
             setPostPopEmojiOne(false);
         }
     };
@@ -735,8 +735,8 @@ export default function Home() {
     // Two
     const [postPopEmojiTwo, setPostPopEmojiTwo] = useState(false);
     const popEmojiRefTwo = useRef(null);
-    const handlePostPopEmojiTwoOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (popEmojiRefTwo.current && !popEmojiRefTwo.current.contains(event.target as Node)) {
+    const handlePostPopEmojiTwoOutside = (event: { target: any; }) => {
+        if (popEmojiRefTwo.current && !popEmojiRefTwo.current.contains(event.target)) {
             setPostPopEmojiTwo(false);
         }
     };
@@ -750,8 +750,8 @@ export default function Home() {
     // Three
     const [postPopEmojiThree, setPostPopEmojiThree] = useState(false);
     const popEmojiRefThree = useRef(null);
-    const handlePostPopEmojiThreeOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (popEmojiRefThree.current && !popEmojiRefThree.current.contains(event.target as Node)) {
+    const handlePostPopEmojiThreeOutside = (event: { target: any; }) => {
+        if (popEmojiRefThree.current && !popEmojiRefThree.current.contains(event.target)) {
             setPostPopEmojiThree(false);
         }
     };
@@ -766,8 +766,8 @@ export default function Home() {
     // Four
     const [postPopEmojiFour, setPostPopEmojiFour] = useState(false);
     const popEmojiRefFour = useRef(null);
-    const handlePostPopEmojiFourOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (popEmojiRefFour.current && !popEmojiRefFour.current.contains(event.target as Node)) {
+    const handlePostPopEmojiFourOutside = (event: { target: any; }) => {
+        if (popEmojiRefFour.current && !popEmojiRefFour.current.contains(event.target)) {
             setPostPopEmojiFour(false);
         }
     };
@@ -782,8 +782,8 @@ export default function Home() {
     // Five
     const [postPopEmojiFive, setPostPopEmojiFive] = useState(false);
     const popEmojiRefFive = useRef(null);
-    const handlePostPopEmojiFiveOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (popEmojiRefFive.current && !popEmojiRefFive.current.contains(event.target as Node)) {
+    const handlePostPopEmojiFiveOutside = (event: { target: any; }) => {
+        if (popEmojiRefFive.current && !popEmojiRefFive.current.contains(event.target)) {
             setPostPopEmojiFive(false);
         }
     };
