@@ -15,6 +15,7 @@ import Picker from '@emoji-mart/react'
 import {LuDot} from "react-icons/lu";
 import SliderOneImg from '../../../../public/assets/images/slider1.jpg';
 import SliderTwoImg from '../../../../public/assets/images/slider2.jpg';
+import SliderThreeImg from '../../../../public/assets/images/slider3.jpg';
 import {Modal} from "flowbite-react";
 import {FaAngleDown, FaUsers} from "react-icons/fa6";
 import {HiOutlineCloudArrowUp} from "react-icons/hi2";
@@ -262,19 +263,6 @@ export default function Home() {
     const handleCommentEmojiClickOutsideLoadMore = () => {
         setShowCommentEmojiLoadMore(false);
     };
-
-
-    // Lightbox Images
-    const images = [
-        {
-            src: SliderOneImg,
-            alt: 'Mechanical keyboard with white keycaps.',
-        },
-        {
-            src: SliderTwoImg,
-            alt: 'Mechanical keyboard with white keycaps.',
-        },
-    ]
 
     // Like button
     const [isClickedLikePostOne, setIsClickedLikePostOne] = useState(false);
@@ -793,6 +781,7 @@ export default function Home() {
             document.removeEventListener('mousedown', handlePostPopEmojiFiveOutside);
         };
     }, []);
+
     return (
         <>
             <section id="home-page-section">
@@ -5843,18 +5832,27 @@ export default function Home() {
                        }}
                        className="modal_cntrl"
                        onClose={() => setOpenStartPostImageModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                    </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                                 <div className="col md:col-span-8">
-                                    <div className="sticky top-0 h-56 sm:h-64 md:h-[450px]">
+                                    <div
+                                        className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                         <Carousel slide={false} indicators={false}>
-                                            <div className="flex h-full items-center justify-center bg-white">
-                                                <Image src={SliderOneImg} className="rounded" alt="SliderOneImg"/>
-                                            </div>
-                                            <div className="flex h-full items-center justify-center bg-white">
-                                                <Image src={SliderTwoImg} className="rounded" alt="SliderTwoImg"/>
-                                            </div>
+                                            <Image src={SliderOneImg} className="slider_image rounded"
+                                                   alt="SliderOneImg"/>
+                                            <Image src={SliderTwoImg} className="slider_image rounded"
+                                                   alt="SliderTwoImg"/>
+                                            <Image src={SliderThreeImg} className="slider_image rounded"
+                                                   alt="SliderThreeImg"/>
                                         </Carousel>
                                     </div>
                                 </div>

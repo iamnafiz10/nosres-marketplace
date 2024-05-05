@@ -188,6 +188,15 @@ em-emoji-picker {
     margin-top: -4px;
 }
 
+/*------------------ Slider Design ------------------*/
+.slider_wrapper button {
+    outline: none;
+}
+
+.slider_image {
+    width: -webkit-fill-available !important;
+}
+
 /*--------------- Toastify Message Design ------------------*/
 .toastBody {
     font-size: 14px;
