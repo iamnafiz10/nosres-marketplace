@@ -793,37 +793,6 @@ export default function Home() {
             document.removeEventListener('mousedown', handlePostPopEmojiFiveOutside);
         };
     }, []);
-
-
-    const leftColumnRef = useRef(null);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const leftColumn = leftColumnRef.current;
-            if (!leftColumn) return;
-
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const columnTop = leftColumn.getBoundingClientRect().top;
-            const columnHeight = leftColumn.offsetHeight;
-
-            // Adjust the position of the left column based on the scroll position
-            if (scrollTop > columnTop) {
-                leftColumn.style.position = 'fixed';
-                leftColumn.style.top = '0';
-                leftColumn.style.height = `${columnHeight}px`;
-            } else {
-                leftColumn.style.position = 'static';
-            }
-        };
-
-        // Add scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        // Clean up
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
     return (
         <>
             <section id="home-page-section">
