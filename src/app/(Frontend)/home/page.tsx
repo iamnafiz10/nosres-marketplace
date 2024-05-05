@@ -5860,13 +5860,13 @@ export default function Home() {
                         <div className="modal_body">
                             <div className="grid grid-cols-12 gap-4">
                                 <div className="col-span-8">
-                                    <div className="sticky top-0 h-56 sm:h-64 xl:h-80 2xl:h-96">
+                                    <div className="sticky top-0 h-56 sm:h-64 xl:h-[445px]">
                                         <Carousel indicators={false}>
                                             <div className="flex h-full items-center justify-center bg-white">
-                                                <Image src={SliderOneImg} alt="SliderOneImg"/>
+                                                <Image src={SliderOneImg} className="rounded" alt="SliderOneImg"/>
                                             </div>
                                             <div className="flex h-full items-center justify-center bg-white">
-                                                <Image src={SliderTwoImg} alt="SliderTwoImg"/>
+                                                <Image src={SliderTwoImg} className="rounded" alt="SliderTwoImg"/>
                                             </div>
                                         </Carousel>
                                     </div>
