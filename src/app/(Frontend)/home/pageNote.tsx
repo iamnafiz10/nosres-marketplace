@@ -5847,11 +5847,11 @@ export default function Home() {
                                     <div
                                         className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                         <Carousel slide={false} indicators={false}>
-                                            <Image src={SliderOneImg} className="slider_image rounded"
+                                            <Image src={SliderOneImg} className="slider_image"
                                                    alt="SliderOneImg"/>
-                                            <Image src={SliderTwoImg} className="slider_image rounded"
+                                            <Image src={SliderTwoImg} className="slider_image"
                                                    alt="SliderTwoImg"/>
-                                            <Image src={SliderThreeImg} className="slider_image rounded"
+                                            <Image src={SliderThreeImg} className="slider_image"
                                                    alt="SliderThreeImg"/>
                                         </Carousel>
                                     </div>

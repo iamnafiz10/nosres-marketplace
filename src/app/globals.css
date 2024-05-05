@@ -48,12 +48,12 @@ textarea {
     background: rgba(250, 250, 250, 0.73);
 }
 
-.modal_cntrl .max-w-lg {
-    border-radius: 10px !important;
+button {
+    outline: none;
 }
 
-.modal_header button {
-    outline: none !important;
+.modal_cntrl .max-w-lg {
+    border-radius: 10px !important;
 }
 
 /*------------------- Account -------------------*/
@@ -189,10 +189,6 @@ em-emoji-picker {
 }
 
 /*------------------ Slider Design ------------------*/
-.slider_wrapper button {
-    outline: none;
-}
-
 .slider_image {
     width: -moz-available; /* For Firefox */
     width: -webkit-fill-available !important;
