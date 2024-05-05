@@ -5844,24 +5844,12 @@ export default function Home() {
                        }}
                        className="modal_cntrl"
                        onClose={() => setOpenStartPostImageModal(false)}>
-                    {/*<Modal.Header*/}
-                    {/*    className="modal_header"*/}
-                    {/*    style={{*/}
-                    {/*        height: '50px',*/}
-                    {/*        display: 'flex',*/}
-                    {/*        alignItems: 'center',*/}
-                    {/*    }}*/}
-                    {/*>*/}
-                    {/*    <h4 className="text-[16px]">*/}
-                    {/*        Image*/}
-                    {/*    </h4>*/}
-                    {/*</Modal.Header>*/}
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="grid grid-cols-12 gap-4">
-                                <div className="col-span-8">
-                                    <div className="sticky top-0 h-56 sm:h-64 xl:h-[445px]">
-                                        <Carousel indicators={false}>
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                                <div className="col md:col-span-8">
+                                    <div className="sticky top-0 h-56 sm:h-64 md:h-[445px]">
+                                        <Carousel slide={false} indicators={false}>
                                             <div className="flex h-full items-center justify-center bg-white">
                                                 <Image src={SliderOneImg} className="rounded" alt="SliderOneImg"/>
                                             </div>
@@ -5871,99 +5859,102 @@ export default function Home() {
                                         </Carousel>
                                     </div>
                                 </div>
-                                <div className="col-span-4">
-                                    {/* Post Box */}
-                                    <div className="post_box_wrap">
-                                        <div className="box bg-white px-4 pb-4 rounded rounded-b-none">
-                                            <div className="flex items-center justify-between">
-                                                <Link href='#' className="flex items-center gap-1">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                    <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                            John Doe
-                                                        </h4>
+                                <div className="col md:col-span-4">
+                                    <div className="bg-white px-4 py-4 rounded rounded-b-none sticky top-0 z-[999]">
+                                        <div className="flex items-center justify-between">
+                                            <Link href='#' className="flex items-center gap-1">
+                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                <div className="leading-[17px]">
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        John Doe
+                                                    </h4>
 
-                                                        <div
-                                                            className="flex items-center text-graycolor font-normal">
+                                                    <div
+                                                        className="flex items-center text-graycolor font-normal">
                                                           <span
                                                               className="text-[12px]">
                                                             2h ago
                                                         </span>
-                                                            <LuDot size={12}/>
-                                                            <IoMdGlobe size={13}/>
-                                                        </div>
+                                                        <LuDot size={12}/>
+                                                        <IoMdGlobe size={13}/>
                                                     </div>
-                                                </Link>
+                                                </div>
+                                            </Link>
 
-                                                <div className="flex items-center justify-end text-end">
-                                                    <div onClick={handlePostMeDotClick}
-                                                         ref={PostMeDotDropdownRef}
-                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
-                                                        <svg
-                                                            className="w-3 h-3"
-                                                            fill="#828D9E"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 16 16">
-                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                            <div className="flex items-center justify-end text-end">
+                                                <div onClick={handlePostMeDotClick}
+                                                     ref={PostMeDotDropdownRef}
+                                                     className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
+                                                    <svg
+                                                        className="w-3 h-3"
+                                                        fill="#828D9E"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 16 16">
+                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                     0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                        </svg>
-                                                        {postMeDotClick &&
-                                                            <div
-                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                                <div className="container py-2">
-                                                                    <div className="space-y-1 text-[14px]">
-                                                                        <Link href='#'
-                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24
+                                                    </svg>
+                                                    {postMeDotClick &&
+                                                        <div
+                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                            <div className="container py-2">
+                                                                <div className="space-y-1 text-[14px]">
+                                                                    <Link href='#'
+                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
                                                                             24" fill="none" stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path d="M17 3a2.85 2.83 0 1 1
+                                                                            strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M17 3a2.85 2.83 0 1 1
                                                                             4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                                                <path d="m15 5 4 4"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Edit post
-                                                                            </h4>
-                                                                        </Link>
+                                                                            <path d="m15 5 4 4"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Edit post
+                                                                        </h4>
+                                                                    </Link>
 
-                                                                        <div
-                                                                            onClick={() => setOpenDeletePostModal(true)}
-                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24
+                                                                    <div
+                                                                        onClick={() => setOpenDeletePostModal(true)}
+                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
                                                                             24" fill="none" stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path d="M3 6h18"/>
-                                                                                <path
-                                                                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                            strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M3 6h18"/>
+                                                                            <path
+                                                                                d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0
                                                                             2 1 2 2v2"/>
-                                                                                <line x1="10" x2="10" y1="11"
-                                                                                      y2="17"/>
-                                                                                <line x1="14" x2="14" y1="11"
-                                                                                      y2="17"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Delete post
-                                                                            </h4>
-                                                                        </div>
+                                                                            <line x1="10" x2="10" y1="11"
+                                                                                  y2="17"/>
+                                                                            <line x1="14" x2="14" y1="11"
+                                                                                  y2="17"/>
+                                                                        </svg>
+                                                                        <h4>
+                                                                            Delete post
+                                                                        </h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        }
-                                                    </div>
+                                                        </div>
+                                                    }
                                                 </div>
                                             </div>
-                                            <h4 className="mt-3 text-[14px] text-prgcolor">
+                                        </div>
+                                    </div>
+
+                                    {/* Post Box */}
+                                    <div className="post_box_wrap h-full md:h-[445px]">
+                                        <div className="box bg-white px-4 pb-4 rounded rounded-b-none">
+                                            <h4 className="mt-0 text-[14px] text-prgcolor">
                                                 The SRS-XB100 speaker provides powerful, clear,
                                                 expansive sound in a small, portable and durable
                                                 body. Despite its size...
@@ -6803,18 +6794,6 @@ export default function Home() {
                             </div>
                         </div>
                     </Modal.Body>
-                    {/*<Modal.Footer>*/}
-                    {/*    <div className="flex w-full items-center justify-between">*/}
-                    {/*        <button onClick={() => setOpenStartPostImageModal(false)}*/}
-                    {/*                className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">*/}
-                    {/*            Close*/}
-                    {/*        </button>*/}
-                    {/*        <button onClick={() => setOpenStartPostImageModal(false)}*/}
-                    {/*                className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">*/}
-                    {/*            Done*/}
-                    {/*        </button>*/}
-                    {/*    </div>*/}
-                    {/*</Modal.Footer>*/}
                 </Modal>
                 {/* PosImage Pop-Up End */}
             </section>
