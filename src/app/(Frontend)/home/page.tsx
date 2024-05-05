@@ -5860,7 +5860,7 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div className="col md:col-span-4">
-                                    <div className="bg-white px-4 py-4 rounded rounded-b-none sticky top-0 z-[999]">
+                                    <div className="bg-white px-4 py-4 rounded rounded-b-none sticky -top-[25px] z-[999]">
                                         <div className="flex items-center justify-between">
                                             <Link href='#' className="flex items-center gap-1">
                                                 <HiUserCircle size={35} className="text-[#6B7280]"/>
