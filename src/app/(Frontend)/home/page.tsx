@@ -5844,36 +5844,34 @@ export default function Home() {
                        }}
                        className="modal_cntrl"
                        onClose={() => setOpenStartPostImageModal(false)}>
-                    <Modal.Header
-                        className="modal_header"
-                        style={{
-                            height: '50px',
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <h4 className="text-[16px]">
-                            Image
-                        </h4>
-                    </Modal.Header>
+                    {/*<Modal.Header*/}
+                    {/*    className="modal_header"*/}
+                    {/*    style={{*/}
+                    {/*        height: '50px',*/}
+                    {/*        display: 'flex',*/}
+                    {/*        alignItems: 'center',*/}
+                    {/*    }}*/}
+                    {/*>*/}
+                    {/*    <h4 className="text-[16px]">*/}
+                    {/*        Image*/}
+                    {/*    </h4>*/}
+                    {/*</Modal.Header>*/}
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="col">
+                            <div className="grid grid-cols-12 gap-4">
+                                <div className="col-span-8">
                                     <div className="sticky top-0 h-56 sm:h-64 xl:h-80 2xl:h-96">
                                         <Carousel indicators={false}>
-                                            <div
-                                                className="flex h-full items-center justify-center bg-white">
+                                            <div className="flex h-full items-center justify-center bg-white">
                                                 <Image src={SliderOneImg} alt="SliderOneImg"/>
                                             </div>
-                                            <div
-                                                className="flex h-full items-center justify-center bg-white">
+                                            <div className="flex h-full items-center justify-center bg-white">
                                                 <Image src={SliderTwoImg} alt="SliderTwoImg"/>
                                             </div>
                                         </Carousel>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col-span-4">
                                     {/* Post Box */}
                                     <div className="post_box_wrap">
                                         <div className="box bg-white px-4 pb-4 rounded rounded-b-none">
@@ -5962,20 +5960,6 @@ export default function Home() {
                                                                 </div>
                                                             </div>
                                                         }
-                                                    </div>
-
-                                                    <div
-                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
-                                                        <svg
-                                                            className="w-4 h-4"
-                                                            fill="#828D9E"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 16 16">
-                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
-                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
-                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
-                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                                        </svg>
                                                     </div>
                                                 </div>
                                             </div>
@@ -6819,18 +6803,18 @@ export default function Home() {
                             </div>
                         </div>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <div className="flex w-full items-center justify-between">
-                            <button onClick={() => setOpenStartPostImageModal(false)}
-                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
-                                Close
-                            </button>
-                            <button onClick={() => setOpenStartPostImageModal(false)}
-                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
-                                Done
-                            </button>
-                        </div>
-                    </Modal.Footer>
+                    {/*<Modal.Footer>*/}
+                    {/*    <div className="flex w-full items-center justify-between">*/}
+                    {/*        <button onClick={() => setOpenStartPostImageModal(false)}*/}
+                    {/*                className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">*/}
+                    {/*            Close*/}
+                    {/*        </button>*/}
+                    {/*        <button onClick={() => setOpenStartPostImageModal(false)}*/}
+                    {/*                className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">*/}
+                    {/*            Done*/}
+                    {/*        </button>*/}
+                    {/*    </div>*/}
+                    {/*</Modal.Footer>*/}
                 </Modal>
                 {/* PosImage Pop-Up End */}
             </section>

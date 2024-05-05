@@ -174,6 +174,52 @@ function Page() {
         notifyDelete();
         handleCloseAllPopupsDelete();
     };
+
+
+    // Copy Text ID
+    const [copied, setCopied] = useState(false);
+    const notifyCopy = () => {
+        toast.success('ID copied to clipboard', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    };
+
+    const handleCopyText = () => {
+        // Select the text inside the <h4> element
+        const textToCopy = document.querySelector('.text-copy');
+        if (textToCopy) {
+            // Create a range object to select the text
+            const range = document.createRange();
+            range.selectNode(textToCopy);
+
+            // Select the text
+            // @ts-ignore
+            window.getSelection().removeAllRanges();
+            // @ts-ignore
+            window.getSelection().addRange(range);
+
+            // Copy the selected text to the clipboard
+            document.execCommand('copy');
+
+            // Deselect the text
+            // @ts-ignore
+            window.getSelection().removeAllRanges();
+
+            // Set copied state to true and reset after 2 seconds
+            setCopied(true);
+            setTimeout(() => {
+                setCopied(false);
+            }, 2000);
+        }
+        notifyCopy();
+    };
     return (
         <>
             <section id="privacy-page-section">
@@ -770,9 +816,24 @@ function Page() {
                                                         activities associated with this
                                                         Nosres Marketplace profile.
                                                     </h4>
-                                                    <h4 className="text-[14px] text-prgcolor mt-2">
-                                                        391990162298
-                                                    </h4>
+                                                    <div className="mt-2 flex items-center gap-2">
+                                                        <h4 className="text-[14px] text-prgcolor text-copy">
+                                                            39-199-0162298
+                                                        </h4>
+                                                        <div onClick={handleCopyText}
+                                                             className="icon cursor-pointer group">
+                                                            <svg
+                                                                className="w-4 h-4 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                stroke="#828D9E" strokeWidth="1.5"
+                                                                strokeLinecap="round" strokeLinejoin="round">
+                                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                                <path
+                                                                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </>
