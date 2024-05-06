@@ -207,8 +207,8 @@ function Header() {
                 >
                     <div className="container block lg:grid grid-cols-12 items-center">
                         {/* Logo */}
-                        <div className="col-span-2 hidden lg:flex logo">
-                            <Link href='/' className="flex items-center gap-2  ml-[8px]">
+                        <div className="ml-[8px] col-span-2 hidden lg:flex logo">
+                            <Link href='/' className="flex items-center gap-2">
                                 <Image src={LogoImg} className="h-10 w-7" alt="LogoImg"/>
                                 <span className="font-[500] text-[16px]">Marketplace</span>
                             </Link>
@@ -323,78 +323,64 @@ function Header() {
                         </div>
 
                         {/* Menu */}
-                        <div className="col-span-6 nav hidden lg:flex items-center justify-end text-[12px] gap-3">
+                        <div
+                            className="col-span-6 nav hidden lg:flex items-center justify-end text-[12px] gap-8">
                             {/* Home */}
                             <Link href='/'
-                                  className="w-[80px] group flex flex-col items-center border-b-2 border-primary">
-                                <GoHomeFill className="w-full h-[22px] text-primary"/>
-                                <div
-                                    className="text-primary group-hover:text-primary transition">
-                                    Home
-                                </div>
+                                  className="group flex flex-col items-center border-b-2 border-primary">
+                                <GoHomeFill className="w-[25px] h-[22px] text-primary"/>
                             </Link>
 
                             {/* Cart */}
                             <Link href='#'
-                                  className="w-[80px] group flex flex-col items-center">
+                                  className="group flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
-                                    <IoCartOutline className="w-full h-[24px] text-prgcolor group-hover:text-primary"/>
+                                    <IoCartOutline
+                                        className="w-[25px] h-[24px] text-prgcolor group-hover:text-primary"/>
                                     <div
                                         className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         4
                                     </div>
                                 </div>
-                                <div
-                                    className="text-prgcolor group-hover:text-primary transition">
-                                    Cart
-                                </div>
                             </Link>
 
                             {/* Message */}
                             <Link href='#'
-                                  className="w-[80px] group flex flex-col items-center">
+                                  className="group flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
                                     <HiOutlineChatBubbleLeft
-                                        className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
+                                        className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
                                         className="flex absolute -top-[3px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         3
                                     </div>
                                 </div>
-                                <div
-                                    className="text-prgcolor group-hover:text-primary transition">
-                                    Messages
-                                </div>
                             </Link>
 
                             {/* Notification */}
                             <Link href='#'
-                                  className="w-[80px] group flex flex-col items-center">
+                                  className="group flex flex-col items-center">
                                 {/* Main SVG */}
                                 <div className="relative">
-                                    <GoBell className="w-full h-[22px] text-prgcolor group-hover:text-primary"/>
+                                    <GoBell className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
                                     <div
                                         className="flex absolute top-[-3px] -right-[10px] text-center bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                         8
                                     </div>
-                                </div>
-                                <div
-                                    className="text-prgcolor group-hover:text-primary transition">
-                                    Notifications
                                 </div>
                             </Link>
 
                             {/* Business Icon */}
                             <Link href='#' onClick={handleBusinessClick}
                                   ref={dropdownBusinessRef}
-                                  className="w-[80px] last_business_icon cursor-pointer flex flex-col items-center">
+                                  className="last_business_icon cursor-pointer flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     {/* Main SVG */}
                                     <div className="relative">
                                         <HiOutlineSquaresPlus
-                                            className={`w-full h-[24px] profile_icon ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}/>
+                                            className={`w-[25px] h-[24px] profile_icon ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}/>
                                     </div>
                                     {isBusinessVisible &&
                                         <div
@@ -468,21 +454,17 @@ function Header() {
                                         </div>
                                     }
                                 </div>
-                                <div
-                                    className={`profile_text transition ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}>
-                                    For Business
-                                </div>
                             </Link>
 
                             {/* User Icon */}
                             <Link href='#' onClick={handleAccountClick}
                                   ref={dropdownAccountRef}
-                                  className="mr-[8px] w-[80px] last_user_icon cursor-pointer flex flex-col items-center">
+                                  className="last_user_icon cursor-pointer flex flex-col items-center">
                                 <div className="dropdown inline-block relative">
                                     <div
                                         className="text-center cursor-pointer text-prgcolor transition relative">
                                         <HiUserCircle
-                                            className={`w-full h-[26px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
+                                            className={`w-[25px] h-[26px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
                                     </div>
                                     {isAccountVisible &&
                                         <div
@@ -620,10 +602,6 @@ function Header() {
                                             </div>
                                         </div>
                                     }
-                                </div>
-                                <div
-                                    className={`profile_text transition ${isAccountVisible ? 'text-primary' : 'text-prgcolor'}`}>
-                                    Profile
                                 </div>
                             </Link>
                         </div>
