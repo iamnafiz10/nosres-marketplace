@@ -206,6 +206,11 @@ em-emoji-picker {
     width: -webkit-fill-available !important;
 }
 
+/*------------------ Profile page design -------------*/
+.user_top_details {
+    background: linear-gradient(#e0e0e0, #505050);
+}
+
 /*--------------- Toastify Message Design ------------------*/
 .toastBody {
     font-size: 14px;

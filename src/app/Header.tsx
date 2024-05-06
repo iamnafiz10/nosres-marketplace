@@ -354,7 +354,7 @@ function Header() {
                             </Tooltip>
 
                             {/* Message */}
-                            <Tooltip content="Message" placement="bottom" style="light" className="tooltip_design">
+                            <Tooltip content="Messages" placement="bottom" style="light" className="tooltip_design">
                                 <Link href='#'
                                       className="group flex flex-col items-center relative">
                                     <div

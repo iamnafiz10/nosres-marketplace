@@ -41,7 +41,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <div
-                                                        className="flex items-center p-2 text-[16px] font-[500] text-prgcolor rounded-lg">
+                                                        className="flex items-center p-2 pl-0 text-[16px] font-[500] text-prgcolor rounded-lg">
                                                         <svg
                                                             className="w-5 h-5"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="/account"
-                                                          className={`flex ${pathname === '/account' ? 'font-semibold' : 'font-normal'} items-center p-2 text-prgcolor rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group`}>
+                                                          className={`flex ${pathname === '/account' ? 'font-semibold' : 'font-normal'} items-center p-2 pl-0 text-prgcolor rounded-lg hover:text-primary hover:bg-opacity-50 group`}>
                                                         <HiUserCircle
                                                             className={`w-[22px] ${pathname === '/account' ? 'text-primary' : ''} h-[22px] text-[#6B7280] transition duration-75 group-hover:text-primary`}/>
                                                         <span className="ms-3">Account</span>
@@ -94,7 +94,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="/notification"
-                                                          className={`flex ${pathname === '/notification' ? 'font-semibold' : 'font-normal'} items-center p-2 text-prgcolor rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group`}>
+                                                          className={`flex ${pathname === '/notification' ? 'font-semibold' : 'font-normal'} items-center p-2 pl-0 text-prgcolor rounded-lg hover:text-primary hover:bg-opacity-50 group`}>
                                                         <svg
                                                             className={`w-5  ${pathname === '/notification' ? 'stroke-primary' : ''} h-5 transition duration-75 group-hover:stroke-primary`}
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +120,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="/privacy"
-                                                          className={`flex ${pathname === '/privacy' ? 'font-semibold' : 'font-normal'} items-center p-2 text-prgcolor rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group`}>
+                                                          className={`flex ${pathname === '/privacy' ? 'font-semibold' : 'font-normal'} items-center p-2 pl-0 text-prgcolor rounded-lg hover:text-primary hover:bg-opacity-50 group`}>
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                              className={`w-5 ${pathname === '/privacy' ? 'stroke-primary' : ''} h-5 transition duration-75 group-hover:stroke-primary`}
                                                              viewBox="0 0 24
@@ -145,7 +145,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                             xmlns="http://www.w3.org/2000/svg"
