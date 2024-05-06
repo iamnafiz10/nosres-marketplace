@@ -5833,9 +5833,9 @@ export default function Home() {
                        className="modal_cntrl"
                        onClose={() => setOpenStartPostImageModal(false)}>
                     <Modal.Header
+                        className="flex lg:hidden"
                         style={{
                             height: '50px',
-                            display: 'flex',
                             alignItems: 'center'
                         }}
                     >
