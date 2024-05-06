@@ -36,7 +36,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -63,7 +63,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -91,7 +91,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -117,7 +117,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:fill-primary"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:fill-primary"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +162,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -190,7 +190,7 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
+                                                          className="flex items-center p-2 text-prgcolor font-normal rounded-lg hover:bg-gray-200 hover:text-primary hover:bg-opacity-50 group">
                                                         <svg
                                                             className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
