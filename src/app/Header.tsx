@@ -207,7 +207,7 @@ function Header() {
                 >
                     <div className="container block lg:grid grid-cols-12 items-center">
                         {/* Logo */}
-                        <div className="ml-[8px] col-span-2 hidden lg:flex logo">
+                        <div className="ml-[0px] col-span-2 hidden lg:flex logo">
                             <Link href='/' className="flex items-center gap-2">
                                 <Image src={LogoImg} className="h-10 w-7" alt="LogoImg"/>
                                 <span className="font-[500] text-[16px]">Marketplace</span>
