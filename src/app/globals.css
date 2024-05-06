@@ -61,6 +61,7 @@ button {
     display: flex;
     height: 25px;
     font-size: 12px;
+    font-weight: 400 !important;
     align-items: center;
     justify-content: center;
     color: #4D7FB8;

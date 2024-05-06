@@ -388,7 +388,7 @@ function Header() {
                             </Tooltip>
 
                             {/* Business Icon */}
-                            <Tooltip content="Business" placement="bottom" style="light" className="tooltip_design">
+                            <Tooltip content="For Business" placement="bottom" style="light" className="tooltip_design">
                                 <Link href='#' onClick={handleBusinessClick}
                                       ref={dropdownBusinessRef}
                                       className="last_business_icon cursor-pointer flex flex-col items-center relative">
@@ -476,103 +476,106 @@ function Header() {
                             </Tooltip>
 
                             {/* User Icon */}
-                            <Link href='#' onClick={handleAccountClick}
-                                  ref={dropdownAccountRef}
-                                  className="last_user_icon cursor-pointer flex flex-col items-center">
-                                <div className="dropdown inline-block relative">
+                            <Tooltip content="Profile" placement="bottom" style="light" className="tooltip_design">
+                                <Link href='#' onClick={handleAccountClick}
+                                      ref={dropdownAccountRef}
+                                      className="last_user_icon cursor-pointer flex flex-col items-center relative">
                                     <div
-                                        className="text-center cursor-pointer text-prgcolor transition relative">
-                                        <HiUserCircle
-                                            className={`w-[25px] h-[26px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
-                                    </div>
-                                    {isAccountVisible &&
+                                        className="group-hover:border-b-2 border-primary absolute top-[33px] w-[35px] transition"></div>
+                                    <div className="dropdown inline-block relative">
                                         <div
-                                            id="account_dropdown_menu"
-                                            className="account-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
-                                            <div className="container">
-                                                <div className="col flex items-center px-0 pt-[15px] pb-2">
-                                                    <div className="flex cursor-pointer items-center gap-3">
-                                                        <HiUserCircle size={50} className="text-primary"/>
-                                                        <div className="text">
-                                                            <h2 className="text-[#252C32] font-semibold text-[14px]">
-                                                                John Doe
-                                                            </h2>
-                                                            <h4 className="text-graycolor text-[12px]">
-                                                                johndoe
-                                                            </h4>
+                                            className="text-center cursor-pointer text-prgcolor transition relative">
+                                            <HiUserCircle
+                                                className={`w-[25px] h-[26px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
+                                        </div>
+                                        {isAccountVisible &&
+                                            <div
+                                                id="account_dropdown_menu"
+                                                className="account-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
+                                                <div className="container">
+                                                    <div className="col flex items-center px-0 pt-[15px] pb-2">
+                                                        <div className="flex cursor-pointer items-center gap-3">
+                                                            <HiUserCircle size={50} className="text-primary"/>
+                                                            <div className="text">
+                                                                <h2 className="text-[#252C32] font-semibold text-[14px]">
+                                                                    John Doe
+                                                                </h2>
+                                                                <h4 className="text-graycolor text-[12px]">
+                                                                    johndoe
+                                                                </h4>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <hr/>
-                                                <div className="mx-0">
-                                                    <button type="button"
-                                                            className="mt-2 w-full rounded text-[14px] text-primary hover:text-white hover:bg-primary py-2 bg-[#F9FAFB] transition">
-                                                        My Nosres Account
-                                                    </button>
-                                                </div>
+                                                    <hr/>
+                                                    <div className="mx-0">
+                                                        <button type="button"
+                                                                className="mt-2 w-full rounded text-[14px] text-primary hover:text-white hover:bg-primary py-2 bg-[#F9FAFB] transition">
+                                                            My Nosres Account
+                                                        </button>
+                                                    </div>
 
-                                                <div className="mt-3 space-y-0 text-[14px]">
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24
+                                                    <div className="mt-3 space-y-0 text-[14px]">
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24
                                                         24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M6 2 3 6v14a2
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M6 2 3 6v14a2
                                                         2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-                                                            <path d="M3 6h18"/>
-                                                            <path d="M16 10a4 4 0
+                                                                <path d="M3 6h18"/>
+                                                                <path d="M16 10a4 4 0
                                                         0 1-8 0"/>
-                                                        </svg>
-                                                        <h4 className="relative">
-                                                            My Orders
-                                                            <span
-                                                                className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
-                                                        </h4>
-                                                    </Link>
+                                                            </svg>
+                                                            <h4 className="relative">
+                                                                My Orders
+                                                                <span
+                                                                    className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                            </h4>
+                                                        </Link>
 
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path
-                                                                d="m2 7 4.41-4.41A2 2 0 01 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
-                                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 00 2-2v-8"/>
-                                                            <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
-                                                            <path d="M27h20"/>
-                                                            <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path
+                                                                    d="m2 7 4.41-4.41A2 2 0 01 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                                                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 00 2-2v-8"/>
+                                                                <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                                                                <path d="M27h20"/>
+                                                                <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82
                                                         0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7
                                                         2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0
                                                         0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
-                                                        </svg>
-                                                        <h4 className="relative">
-                                                            Store Manager
-                                                            <span
-                                                                className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
-                                                        </h4>
-                                                    </Link>
+                                                            </svg>
+                                                            <h4 className="relative">
+                                                                Store Manager
+                                                                <span
+                                                                    className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                            </h4>
+                                                        </Link>
 
-                                                    <div className="py-2">
-                                                        <hr/>
-                                                    </div>
+                                                        <div className="py-2">
+                                                            <hr/>
+                                                        </div>
 
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24
                                                          24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M12.22 2h-.44a2 2 0
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M12.22 2h-.44a2 2 0
                                                         0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0
                                                         0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1
                                                         1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2
@@ -581,48 +584,49 @@ function Header() {
                                                         0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0
                                                         .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0
                                                         1-1-1.73V4a2 2 0 0 0-2-2z"/>
-                                                            <circle cx="12" cy="12" r="3"/>
-                                                        </svg>
-                                                        <h4>Settings</h4>
-                                                    </Link>
+                                                                <circle cx="12" cy="12" r="3"/>
+                                                            </svg>
+                                                            <h4>Settings</h4>
+                                                        </Link>
 
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24
                                                          24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <circle cx="12" cy="12"
-                                                                    r="10"/>
-                                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                                                            <path d="M12 17h.01"/>
-                                                        </svg>
-                                                        <h4>Help & Support</h4>
-                                                    </Link>
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <circle cx="12" cy="12"
+                                                                        r="10"/>
+                                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                                <path d="M12 17h.01"/>
+                                                            </svg>
+                                                            <h4>Help & Support</h4>
+                                                        </Link>
 
-                                                    <Link href='#'
-                                                          className="flex gap-2 cursor-pointer items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                                                            <polyline points="16 17 21 12 16 7"/>
-                                                            <line x1="21" x2="9" y1="12" y2="12"/>
-                                                        </svg>
-                                                        <h4>Sign Out</h4>
-                                                    </Link>
+                                                        <Link href='#'
+                                                              className="flex gap-2 cursor-pointer items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                                                <polyline points="16 17 21 12 16 7"/>
+                                                                <line x1="21" x2="9" y1="12" y2="12"/>
+                                                            </svg>
+                                                            <h4>Sign Out</h4>
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
-                                </div>
-                            </Link>
+                                        }
+                                    </div>
+                                </Link>
+                            </Tooltip>
                         </div>
 
                         {/* Mobile/Tab Icons */}
