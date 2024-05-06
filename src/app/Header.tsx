@@ -13,6 +13,7 @@ import {RxCross1} from "react-icons/rx";
 import Skeleton from "react-loading-skeleton";
 import useLoading from "@/app/useLoading";
 import {usePathname} from "next/navigation";
+import {Tooltip} from "flowbite-react";
 
 function Header() {
     const loading = useLoading();
@@ -216,11 +217,11 @@ function Header() {
 
                         {/* Search */}
                         <div
-                            className={`col-span-4 ml-0 lg:ml-10 hidden lg:flex search-bar relative ${isSearchExpanded ? 'w-60 xl:w-80' : 'w-52'}`}>
+                            className={`col-span-4 ml-0 lg:ml-10 hidden lg:flex search-bar relative ${isSearchExpanded ? 'w-60 lg:w-96' : 'w-72'}`}>
                             <input
                                 ref={inputRef}
                                 type="text"
-                                className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpanded ? 'w-60 xl:w-72' : 'w-52'}`}
+                                className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpanded ? 'w-60 lg:w-96' : 'w-72'}`}
                                 placeholder="Search Marketplace"
                                 value={searchText}
                                 onChange={handleChange}
@@ -238,7 +239,7 @@ function Header() {
                             <div id="search_dropdown_menu"
                                  className={`search-dropdown-menu ${isSearchExpanded ? 'h-[180px] pt-2 opacity-100' : 'opacity-0 h-0'} overflow-hidden top-6 z-50 absolute text-gray-700 bg-white rounded shadow border`}>
                                 <div className="container p-0">
-                                    <div className="col px-3 pl-[14px] flex items-center pb-2 w-60 xl:w-72">
+                                    <div className="col px-3 pl-[14px] flex items-center pb-2 w-60 lg:w-96">
                                         <div className="flex items-center gap-3 justify-between w-full">
                                             <div className="left flex items-center gap-1">
                                                 <CiClock2 size={20} className="text-primary"/>
@@ -326,135 +327,153 @@ function Header() {
                         <div
                             className="col-span-6 nav hidden lg:flex items-center justify-end text-[12px] gap-8">
                             {/* Home */}
-                            <Link href='/'
-                                  className="group flex flex-col items-center border-b-2 border-primary">
-                                <GoHomeFill className="w-[25px] h-[22px] text-primary"/>
-                            </Link>
+                            <Tooltip content="Home" placement="bottom" style="light" className="tooltip_design">
+                                <Link href='/' className="group flex flex-col items-center relative">
+                                    <div
+                                        className="border-b-2 border-primary absolute top-[33px] w-[35px] transition"></div>
+                                    <GoHomeFill className="w-[25px] h-[22px] text-primary"/>
+                                </Link>
+                            </Tooltip>
 
                             {/* Cart */}
-                            <Link href='#'
-                                  className="group flex flex-col items-center">
-                                {/* Main SVG */}
-                                <div className="relative">
-                                    <IoCartOutline
-                                        className="w-[25px] h-[24px] text-prgcolor group-hover:text-primary"/>
+                            <Tooltip content="Cart" placement="bottom" style="light" className="tooltip_design">
+                                <Link href='#'
+                                      className="group flex flex-col items-center relative">
                                     <div
-                                        className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                        4
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* Message */}
-                            <Link href='#'
-                                  className="group flex flex-col items-center">
-                                {/* Main SVG */}
-                                <div className="relative">
-                                    <HiOutlineChatBubbleLeft
-                                        className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
-                                    <div
-                                        className="flex absolute -top-[3px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                        3
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* Notification */}
-                            <Link href='#'
-                                  className="group flex flex-col items-center">
-                                {/* Main SVG */}
-                                <div className="relative">
-                                    <GoBell className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
-                                    <div
-                                        className="flex absolute top-[-3px] -right-[10px] text-center bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                        8
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* Business Icon */}
-                            <Link href='#' onClick={handleBusinessClick}
-                                  ref={dropdownBusinessRef}
-                                  className="last_business_icon cursor-pointer flex flex-col items-center">
-                                <div className="dropdown inline-block relative">
+                                        className="group-hover:border-b-2 border-primary absolute top-[33px] w-[35px] transition"></div>
                                     {/* Main SVG */}
                                     <div className="relative">
-                                        <HiOutlineSquaresPlus
-                                            className={`w-[25px] h-[24px] profile_icon ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}/>
-                                    </div>
-                                    {isBusinessVisible &&
+                                        <IoCartOutline
+                                            className="w-[25px] h-[24px] text-prgcolor group-hover:text-primary"/>
                                         <div
-                                            id="business_dropdown_menu"
-                                            className="business-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
-                                            <div className="container">
-                                                <div className="mt-3 space-y-0 text-[14px]">
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-[19px] h-[19px] transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path
-                                                                d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-                                                            <path d="m3.3 7 8.7 5 8.7-5"/>
-                                                            <path d="M12 22V12"/>
-                                                        </svg>
-                                                        <h4 className="relative">
-                                                            Sell on Nosres
-                                                            <span
-                                                                className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
-                                                        </h4>
-                                                    </Link>
+                                            className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                            4
+                                        </div>
+                                    </div>
+                                </Link>
+                            </Tooltip>
 
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24
+                            {/* Message */}
+                            <Tooltip content="Message" placement="bottom" style="light" className="tooltip_design">
+                                <Link href='#'
+                                      className="group flex flex-col items-center relative">
+                                    <div
+                                        className="group-hover:border-b-2 border-primary absolute top-[33px] w-[35px] transition"></div>
+                                    {/* Main SVG */}
+                                    <div className="relative">
+                                        <HiOutlineChatBubbleLeft
+                                            className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
+                                        <div
+                                            className="flex absolute -top-[3px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                            3
+                                        </div>
+                                    </div>
+                                </Link>
+                            </Tooltip>
+                            {/* Notification */}
+                            <Tooltip content="Notification" placement="bottom" style="light" className="tooltip_design">
+                                <Link href='#'
+                                      className="group flex flex-col items-center relative">
+                                    <div
+                                        className="group-hover:border-b-2 border-primary absolute top-[33px] w-[35px] transition"></div>
+                                    {/* Main SVG */}
+                                    <div className="relative">
+                                        <GoBell className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
+                                        <div
+                                            className="flex absolute top-[-3px] -right-[10px] text-center bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                            8
+                                        </div>
+                                    </div>
+                                </Link>
+                            </Tooltip>
+
+                            {/* Business Icon */}
+                            <Tooltip content="Business" placement="bottom" style="light" className="tooltip_design">
+                                <Link href='#' onClick={handleBusinessClick}
+                                      ref={dropdownBusinessRef}
+                                      className="last_business_icon cursor-pointer flex flex-col items-center relative">
+                                    <div
+                                        className="group-hover:border-b-2 border-primary absolute top-[33px] w-[35px] transition"></div>
+                                    <div className="dropdown inline-block relative">
+                                        {/* Main SVG */}
+                                        <div className="relative">
+                                            <HiOutlineSquaresPlus
+                                                className={`w-[25px] h-[24px] profile_icon ${isBusinessVisible ? 'text-primary' : 'text-prgcolor'}`}/>
+                                        </div>
+                                        {isBusinessVisible &&
+                                            <div
+                                                id="business_dropdown_menu"
+                                                className="business-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
+                                                <div className="container">
+                                                    <div className="mt-3 space-y-0 text-[14px]">
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-[19px] h-[19px] transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path
+                                                                    d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                                                                <path d="m3.3 7 8.7 5 8.7-5"/>
+                                                                <path d="M12 22V12"/>
+                                                            </svg>
+                                                            <h4 className="relative">
+                                                                Sell on Nosres
+                                                                <span
+                                                                    className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                            </h4>
+                                                        </Link>
+
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24
                                                         24" fill="none" stroke="#6B7280" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M22 8.35V20a2 2
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M22 8.35V20a2 2
                                                         0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2
                                                         0 0 1 22 8.35Z"/>
-                                                            <path d="M6 18h12"/>
-                                                            <path d="M6 14h12"/>
-                                                            <rect width="12"
-                                                                  height="12" x="6" y="10"/>
-                                                        </svg>
-                                                        <h4 className="relative">
-                                                            Fulfill with Nosres
-                                                            <span
-                                                                className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
-                                                        </h4>
-                                                    </Link>
+                                                                <path d="M6 18h12"/>
+                                                                <path d="M6 14h12"/>
+                                                                <rect width="12"
+                                                                      height="12" x="6" y="10"/>
+                                                            </svg>
+                                                            <h4 className="relative">
+                                                                Fulfill with Nosres
+                                                                <span
+                                                                    className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                            </h4>
+                                                        </Link>
 
-                                                    <Link href='#'
-                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                        <svg
-                                                            className="w-[18px] h-[18px] transition duration-75 group-hover:stroke-primary"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="m3 11 18-5v12L3 14v-3z"/>
-                                                            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
-                                                        </svg>
-                                                        <h4 className="relative">
-                                                            Advertise with Nosres
-                                                            <span
-                                                                className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
-                                                        </h4>
-                                                    </Link>
+                                                        <Link href='#'
+                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                            <svg
+                                                                className="w-[18px] h-[18px] transition duration-75 group-hover:stroke-primary"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="m3 11 18-5v12L3 14v-3z"/>
+                                                                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+                                                            </svg>
+                                                            <h4 className="relative">
+                                                                Advertise with Nosres
+                                                                <span
+                                                                    className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                            </h4>
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
-                                </div>
-                            </Link>
+                                        }
+                                    </div>
+                                </Link>
+                            </Tooltip>
 
                             {/* User Icon */}
                             <Link href='#' onClick={handleAccountClick}

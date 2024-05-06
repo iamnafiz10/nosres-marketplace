@@ -56,10 +56,21 @@ button {
     border-radius: 10px !important;
 }
 
+.tooltip_design {
+    top: 55px !important;
+    display: flex;
+    height: 25px;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    color: #4D7FB8;
+    border-radius: 3px !important;
+}
+
 /*------------------- Account -------------------*/
 #account_dropdown_menu {
-    top: 47px;
-    right: -8px;
+    top: 36px;
+    right: 0;
     width: 315px;
     height: 350px;
     overflow: hidden;
@@ -92,8 +103,8 @@ button {
 
 /*------------------- Business -------------------*/
 #business_dropdown_menu {
-    top: 47px;
-    right: -25px;
+    top: 36px;
+    right: 0;
     width: 315px;
     height: 145px;
     overflow: hidden;
