@@ -5,10 +5,24 @@ import ProfileImg from '@/../public/assets/images/profile/profile-photo.jpg';
 import CoverImg from '@/../public/assets/images/profile/cover-photo.jpg';
 import Image from "next/image";
 import {LuDot} from "react-icons/lu";
+import {GoComment, GoHeart, GoHeartFill, GoReply, GoSmiley, GoSync} from "react-icons/go";
+import {Carousel, Modal, Tabs} from "flowbite-react";
+import {HiUserCircle} from "react-icons/hi";
+import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
-import {GoHeart, GoSync} from "react-icons/go";
+import {IoMdGlobe} from "react-icons/io";
+import useLoading from "@/app/useLoading";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
+import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
+import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
+import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
+import {MdPostAdd} from "react-icons/md";
+import {IoSearchOutline} from "react-icons/io5";
+import {Checkbox} from "antd";
 
 function Page() {
+    const loading = useLoading();
     // 👇️ Add 3 dots
     const [profileDotClick, setProfileDotClick] = useState(false);
     const ProfileDotDropdownRef = useRef(null);
@@ -31,11 +45,109 @@ function Page() {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
+
+    // Like post
+    const [isClickedLikePostFour, setIsClickedLikePostFour] = useState(false);
+    const [isClickedLikePostTwo, setIsClickedLikePostTwo] = useState(false);
+    // 👇️ Post 4 dots (Other)
+    const [postFourOtherDotClick, setPostFourOtherDotClick] = useState(false);
+    const PostFourOtherDotDropdownRef = useRef(null);
+    const handlePostFourOtherDotClick = () => {
+        setPostFourOtherDotClick(!postFourOtherDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (PostFourOtherDotDropdownRef.current && !PostFourOtherDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setPostFourOtherDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Post 3 dots (Me)
+    const [postMeDotClick, setPostMeDotClick] = useState(false);
+    const PostMeDotDropdownRef = useRef(null);
+    const handlePostMeDotClick = () => {
+        setPostMeDotClick(!postMeDotClick);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (PostMeDotDropdownRef.current && !PostMeDotDropdownRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setPostMeDotClick(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // Post Image Modal
+    const [openStartPostImageModal, setOpenStartPostImageModal] = useState<boolean>(false);
+
+    // For follow - following (One)
+    const [isFollowingOne, setIsFollowingOne] = useState(false);
+    const handleToggleFollowingOne = () => {
+        setIsFollowingOne(!isFollowingOne);
+    };
+
+    // For follow - following (Back-Popup)
+    const [isFollowingBack, setIsFollowingBack] = useState(false);
+    const handleToggleFollowingBack = () => {
+        setIsFollowingBack(!isFollowingBack);
+    };
+
+    // For follow - followees (popup)
+    const [isFollowingFollowees, setIsFollowingFollowees] = useState(false);
+    const handleToggleFollowingFollowees = () => {
+        setIsFollowingFollowees(!isFollowingFollowees);
+    };
+
+    // Followers Popup
+    const [openStartFollowersModal, setOpenStartFollowersModal] = useState<boolean>(false);
+    // Followees Popup
+    const [openStartFolloweesModal, setOpenStartFolloweesModal] = useState<boolean>(false);
+    const [isHovering, setIsHovering] = useState(false);
+    const handleMouseEnter = () => {
+        setIsHovering(true);
+    };
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+    };
+
+    // PeopleMore Popup
+    const [openStartPeopleMoreModal, setOpenStartPeopleMoreModal] = useState<boolean>(false);
+    // For follow - following (People)
+    const [isFollowingPeople, setIsFollowingPeople] = useState(false);
+    const handleToggleFollowingPeople = () => {
+        setIsFollowingPeople(!isFollowingPeople);
+    };
+    // StoresMore Popup
+    const [openStartStoresMoreModal, setOpenStartStoresMoreModal] = useState<boolean>(false);
+    // For follow - following (People)
+    const [isFollowingStores, setIsFollowingStores] = useState(false);
+    const handleToggleFollowingStores = () => {
+        setIsFollowingStores(!isFollowingStores);
+    };
+
     return (
         <>
             <section id="profile-section">
                 <div className="container_full pt-[50px]">
-                    <div className="topbar bg-white py-2">
+                    <div className="topbar fixed border-t top-[50px] z-20 w-full bg-white py-2">
                         <div className="container">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
@@ -65,7 +177,7 @@ function Page() {
                     </div>
                 </div>
 
-                <div className="user_top_details h-[400px]">
+                <div className="user_top_details mt-[55px] h-[480px] md:h-[400px]">
                     <div className="container">
                         <div className="relative">
                             <div className="cover_photo cursor-pointer">
@@ -73,26 +185,25 @@ function Page() {
                                        alt="CoverImg"/>
                             </div>
 
-                            <div className="absolute w-full top-[110px] left-[30px]">
-                                <div className="profile_photo cursor-pointer">
-                                    <Image src={ProfileImg} className="w-[120px] h-[120px] ring ring-white rounded-full"
+                            <div className="absolute w-full top-[110px]">
+                                <div className="ml-[45px] profile_photo cursor-pointer">
+                                    <Image src={ProfileImg}
+                                           className="w-[120px] h-[120px] ring ring-white rounded-full"
                                            alt="ProfileImg"/>
                                 </div>
 
                                 <div className="user_details text-start pt-0 text-white">
-                                    <div className="ml-[3px]">
+                                    <div className="ml-[43px]">
                                         <h4 className='mt-3 text-[24px] font-semibold'>
                                             Jebon Ahmed Sakib
                                         </h4>
-                                        <h4 className="text-[14px] mt-0">
-                                            Logic will get you from A to B. Imagination will take you everywhere.”
-                                            –Albert
-                                            Einstein
+                                        <h4 className="text-[14px] mt-0 mr-[20px]">
+                                            Logic will get you from A to B. Imagination will take you everywhere.
                                         </h4>
                                     </div>
 
-                                    <div className="flex w-full items-end justify-between">
-                                        <div className="wrap">
+                                    <div className="block md:flex w-full items-end justify-between">
+                                        <div className="ml-[40px] wrap">
                                             <div className="flex items-center gap-0 mt-4 text-[14px]">
                                                 <div className="flex items-center gap-1">
                                                     <div className="icon">
@@ -142,16 +253,18 @@ function Page() {
                                                 </div>
                                             </div>
                                             <div className="ml-[3px] mt-2 flex items-center gap-0 text-[14px]">
-                                                <h4 className="cursor-pointer">
-                                                    26K followees
+                                                <h4 onClick={() => setOpenStartFollowersModal(true)}
+                                                    className="cursor-pointer">
+                                                    26K followers
                                                 </h4>
                                                 <LuDot size={17}/>
-                                                <h4 className="cursor-pointer">
+                                                <h4 onClick={() => setOpenStartFolloweesModal(true)}
+                                                    className="cursor-pointer">
                                                     26K followees
                                                 </h4>
                                             </div>
                                         </div>
-                                        <div className="buttons flex items-center gap-3">
+                                        <div className="mt-6 md:mt-0 ml-[40px] md:ml-0 buttons flex items-center gap-3">
                                             <button type='button'
                                                     className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
                                                 <svg
@@ -215,7 +328,8 @@ function Page() {
                                                                         className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                         <svg
                                                                             className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
                                                                     24" fill="none" stroke="#6B7280"
                                                                             strokeWidth="1.5" strokeLinecap="round"
                                                                             strokeLinejoin="round">
@@ -240,6 +354,3149 @@ function Page() {
                         </div>
                     </div>
                 </div>
+
+                {/* Body Content */}
+                <div className="container pt-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="col">
+                            <div className="left_side_profile_tab">
+                                <Tabs aria-label="Tabs with underline" style="underline">
+                                    <Tabs.Item active title="Posts">
+                                        {/* Post Box Profile One */}
+                                        <div className="post_box_wrap">
+                                            <div className="box bg-white px-4 py-4 rounded rounded-b-none">
+                                                <div className="flex items-center justify-between">
+                                                    {loading ? (
+                                                        <div className="flex items-center justify-start gap-2 w-full">
+                                                            <Skeleton width={50} height={50} borderRadius="100%"
+                                                                      count={1}/>
+                                                            <Skeleton containerClassName="flex-1" height={50}
+                                                                      count={1}/>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <Link href='#' className="flex items-center gap-1">
+                                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                                <div className="leading-[17px]">
+                                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                        Robert Fox
+                                                                    </h4>
+                                                                    <div
+                                                                        className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            1m ago
+                                                        </span>
+                                                                        <LuDot size={12}/>
+                                                                        <IoMdGlobe size={13}/>
+                                                                    </div>
+                                                                </div>
+                                                            </Link>
+
+                                                            <div className="flex items-center justify-end text-end">
+                                                                <div
+                                                                    onClick={handlePostFourOtherDotClick}
+                                                                    ref={PostFourOtherDotDropdownRef}
+                                                                    className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postFourOtherDotClick ? 'bg-gray-100' : ''}`}>
+                                                                    <svg
+                                                                        className="w-3 h-3"
+                                                                        fill="#828D9E"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 16 16">
+                                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                    </svg>
+
+                                                                    {postFourOtherDotClick &&
+                                                                        <div
+                                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                            <div className="container py-2">
+                                                                                <div className="space-y-1 text-[14px]">
+                                                                                    <div
+                                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                        <svg
+                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            viewBox="0 0 24 24"
+                                                                                            fill="none"
+                                                                                            stroke="#6B7280"
+                                                                                            strokeWidth="1.5"
+                                                                                            strokeLinecap="round"
+                                                                                            strokeLinejoin="round">
+                                                                                            <path
+                                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                            <path
+                                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                            <path
+                                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                            <line x1="2" x2="22" y1="2"
+                                                                                                  y2="22"/>
+                                                                                        </svg>
+                                                                                        <h4>
+                                                                                            Hide post
+                                                                                        </h4>
+                                                                                    </div>
+
+                                                                                    <div
+                                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                        <svg
+                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                            strokeWidth="1.5"
+                                                                                            strokeLinecap="round"
+                                                                                            strokeLinejoin="round">
+                                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                            <line x1="4" x2="4" y1="22"
+                                                                                                  y2="15"/>
+                                                                                        </svg>
+                                                                                        <h4>
+                                                                                            Report post
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
+
+                                                {loading ? (
+                                                    <>
+                                                        <Skeleton height={30} count={1}/>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                            The HTCU23 Pro 5G stands as the pinnacle of smartphone
+                                                            innovation,
+                                                            offering
+                                                            unparalleled performance, connectivity, and functionality.
+                                                            Its sleek
+                                                            design
+                                                            houses a
+                                                            powerhouse of cutting-edge technology, delivering
+                                                            lightning-fast 5G
+                                                            connectivity
+                                                            and an immersive multimedia experience. With its advanced
+                                                            features
+                                                            and
+                                                            premium
+                                                            build quality, the HTCU23 Pro 5G redefines what a flagship
+                                                            smartphone can
+                                                            achieve
+                                                        </h4>
+                                                    </>
+                                                )}
+                                            </div>
+                                            <div className="post_image mt-0">
+                                                {loading ? (
+                                                    <>
+                                                        <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                            <Skeleton height={200} count={1}/>
+                                                            <Skeleton height={30} count={1}/>
+                                                        </div>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Image src={SliderOneImg} className="w-full h-56"
+                                                               alt="PostImg"/>
+                                                    </>
+                                                )}
+                                            </div>
+                                            {/* Post Icons */}
+                                            <div className="post_icons mt-0">
+                                                {loading ? (
+                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                        <Skeleton height={40} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div
+                                                            className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
+                                                            <div className="flex items-center gap-1">
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
+                                                                    {isClickedLikePostFour ? (
+                                                                        <GoHeartFill
+                                                                            className="w-4 h-4 text-primary hover:text-primary"/>
+                                                                    ) : (
+                                                                        <GoHeart
+                                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                    )}
+                                                                </div>
+                                                                <div className="count">
+                                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="flex items-center gap-1">
+                                                                <div className="cursor-pointer">
+                                                                    <GoComment
+                                                                        className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                </div>
+                                                                <div className="count">
+                                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="flex items-center gap-1">
+                                                                <div
+                                                                    className="relative cursor-pointer">
+                                                                    <GoSync
+                                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                                </div>
+                                                                <div className="count">
+                                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                        </div>
+
+
+                                        {/* Post Box Profile two */}
+                                        <div className="post_box_wrap">
+                                            <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                                <div className="flex items-center justify-between">
+                                                    {loading ? (
+                                                        <>
+                                                            <div
+                                                                className="flex items-center justify-start gap-2 w-full">
+                                                                <Skeleton width={50} height={50} borderRadius="100%"
+                                                                          count={1}/>
+                                                                <Skeleton containerClassName="flex-1" height={50}
+                                                                          count={1}/>
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <Link href='#' className="flex items-center gap-1">
+                                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                                <div className="leading-[17px]">
+                                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                        John Doe
+                                                                    </h4>
+
+                                                                    <div
+                                                                        className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            2h ago
+                                                        </span>
+                                                                        <LuDot size={12}/>
+                                                                        <IoMdGlobe size={13}/>
+                                                                    </div>
+                                                                </div>
+                                                            </Link>
+
+                                                            <div className="flex items-center justify-end text-end">
+                                                                <div onClick={handlePostMeDotClick}
+                                                                     ref={PostMeDotDropdownRef}
+                                                                     className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
+                                                                    <svg
+                                                                        className="w-3 h-3"
+                                                                        fill="#828D9E"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 16 16">
+                                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                    </svg>
+                                                                    {postMeDotClick &&
+                                                                        <div
+                                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                            <div className="container py-2">
+                                                                                <div className="space-y-1 text-[14px]">
+                                                                                    <Link href='#'
+                                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                        <svg
+                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                                            strokeWidth="1.5"
+                                                                                            strokeLinecap="round"
+                                                                                            strokeLinejoin="round">
+                                                                                            <path d="M17 3a2.85 2.83 0 1 1
+                                                                            4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                                                                            <path d="m15 5 4 4"/>
+                                                                                        </svg>
+                                                                                        <h4>
+                                                                                            Edit post
+                                                                                        </h4>
+                                                                                    </Link>
+
+                                                                                    <div
+                                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                        <svg
+                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                                            strokeWidth="1.5"
+                                                                                            strokeLinecap="round"
+                                                                                            strokeLinejoin="round">
+                                                                                            <path d="M3 6h18"/>
+                                                                                            <path
+                                                                                                d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                            2 1 2 2v2"/>
+                                                                                            <line x1="10" x2="10"
+                                                                                                  y1="11" y2="17"/>
+                                                                                            <line x1="14" x2="14"
+                                                                                                  y1="11"
+                                                                                                  y2="17"/>
+                                                                                        </svg>
+                                                                                        <h4>
+                                                                                            Delete post
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
+
+                                                {loading ? (
+                                                    <>
+                                                        <Skeleton height={30} count={1}/>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                            The SRS-XB100 speaker provides powerful, clear,
+                                                            expansive sound in a small, portable and durable
+                                                            body. Despite its size...
+                                                        </h4>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/* Post Icons */}
+                                            <div className="post_icons mt-0">
+                                                {loading ? (
+                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                        <Skeleton height={40} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div
+                                                            className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
+                                                            <div className="flex items-center gap-1">
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>
+                                                                    {isClickedLikePostTwo ? (
+                                                                        <GoHeartFill
+                                                                            className="w-4 h-4 text-primary hover:text-primary"/>
+                                                                    ) : (
+                                                                        <GoHeart
+                                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                    )}
+                                                                </div>
+                                                                <div className="count">
+                                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="flex items-center gap-1">
+                                                                <div className="cursor-pointer">
+                                                                    <GoComment
+                                                                        className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                </div>
+                                                                <div className="count">
+                                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="flex items-center gap-1">
+                                                                <div className="cursor-pointer">
+                                                                    <GoSync
+                                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                                </div>
+                                                                <div className="count">
+                                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </Tabs.Item>
+                                    <Tabs.Item title="Media">
+                                        <div className="post_image w-full mt-0">
+                                            {loading ? (
+                                                <>
+                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                        <Skeleton height={200} count={1}/>
+                                                        <Skeleton height={30} count={1}/>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div onClick={() => setOpenStartPostImageModal(true)}
+                                                         className="flex items-center gap-2 w-full cursor-pointer">
+                                                        <div className="w-full">
+                                                            <Image src={SliderOneImg}
+                                                                   className="w-full rounded h-[180px]"
+                                                                   alt="SliderImg"/>
+                                                        </div>
+                                                        <div className="w-full">
+                                                            <Image src={SliderTwoImg}
+                                                                   className="w-full rounded h-[180px]"
+                                                                   alt="SliderImg"/>
+                                                        </div>
+                                                        <div className="w-full">
+                                                            <Image src={SliderOneImg}
+                                                                   className="w-full rounded h-[180px]"
+                                                                   alt="SliderImg"/>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
+
+                                        <div className="post_image w-full mt-2">
+                                            {loading ? (
+                                                <>
+                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                        <Skeleton height={200} count={1}/>
+                                                        <Skeleton height={30} count={1}/>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div onClick={() => setOpenStartPostImageModal(true)}
+                                                         className="flex items-center gap-2 w-full cursor-pointer">
+                                                        <div className="w-full">
+                                                            <Image src={SliderOneImg}
+                                                                   className="w-full rounded h-[180px]"
+                                                                   alt="SliderImg"/>
+                                                        </div>
+                                                        <div className="w-full">
+                                                            <Image src={SliderTwoImg}
+                                                                   className="w-full rounded h-[180px]"
+                                                                   alt="SliderImg"/>
+                                                        </div>
+                                                        <div className="w-full">
+                                                            <Image src={SliderOneImg}
+                                                                   className="w-full rounded h-[180px]"
+                                                                   alt="SliderImg"/>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    </Tabs.Item>
+                                </Tabs>
+                            </div>
+                        </div>
+
+                        <div className="col">
+                            <div className="right_side"
+                                 style={{
+                                     padding: '10px 15px',
+                                 }}
+                            >
+                                <h4 className="text-[14px] font-[500] text-prgcolor pb-3">
+                                    You may like to follow
+                                </h4>
+                                <hr/>
+                                <div className="mt-4 people_content box rounded bg-white py-4 px-6">
+                                    <div className="head text-[14px] font-[500] text-prgcolor pb-4">
+                                        <h4>People</h4>
+                                    </div>
+                                    <div className="box cursor-pointer py-2 px-2 border rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                                </div>
+                                            </div>
+                                            {isFollowingOne ? (
+                                                <div onClick={handleToggleFollowingOne}
+                                                     className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                            <circle cx="9" cy="7" r="4"/>
+                                                            <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                        </svg>
+                                                    </div>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Following
+                                                    </h4>
+                                                </div>
+                                            ) : (
+                                                <div onClick={handleToggleFollowingOne}
+                                                     className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                            <circle cx="9" cy="7" r="4"/>
+                                                            <line x1="19" x2="19" y1="8"
+                                                                  y2="14"/>
+                                                            <line x1="22" x2="16" y1="11" y2="11"/>
+                                                        </svg>
+                                                    </div>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Follow
+                                                    </h4>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button onClick={() => setOpenStartPeopleMoreModal(true)} type='button'
+                                            className="pt-4 text-[14px] text-primary">
+                                        See more
+                                    </button>
+                                </div>
+
+                                <div className="mt-4 Stores_content box rounded bg-white py-4 px-6">
+                                    <div className="head text-[14px] font-[500] text-prgcolor pb-4">
+                                        <h4>Stores</h4>
+                                    </div>
+                                    <div className="box cursor-pointer py-2 px-2 border rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">London Store</h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Paris Store</h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button onClick={() => setOpenStartStoresMoreModal(true)} type='button'
+                                            className="pt-4 text-[14px] text-primary">
+                                        See more
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Start PosImage Pop-Up Start */}
+                <Modal size="5xl"
+                       dismissible
+                       show={openStartPostImageModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartPostImageModal(false)}>
+                    <Modal.Header
+                        className="flex lg:hidden"
+                        style={{
+                            height: '50px',
+                            alignItems: 'center'
+                        }}
+                    >
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                                <div className="col md:col-span-7">
+                                    <div
+                                        className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
+                                        <Carousel slide={false} indicators={false}>
+                                            <Image src={SliderOneImg} className="slider_image"
+                                                   alt="SliderOneImg"/>
+                                            <Image src={SliderTwoImg} className="slider_image"
+                                                   alt="SliderTwoImg"/>
+                                            <Image src={SliderThreeImg} className="slider_image"
+                                                   alt="SliderThreeImg"/>
+                                        </Carousel>
+                                    </div>
+                                </div>
+                                <div className="col md:col-span-5">
+                                    <div className="h-[450px] overflow-y-scroll overflow-x-hidden">
+                                        <div
+                                            className="bg-white px-4 pb-4 pt-2 rounded rounded-b-none sticky top-[0px] z-[999]">
+                                            <div className="flex items-center justify-between">
+                                                <Link href='#' className="flex items-center gap-1">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <div className="leading-[17px]">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            John Doe
+                                                        </h4>
+
+                                                        <div
+                                                            className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            2h ago
+                                                        </span>
+                                                            <LuDot size={12}/>
+                                                            <IoMdGlobe size={13}/>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div onClick={handlePostMeDotClick}
+                                                         ref={PostMeDotDropdownRef}
+                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                        </svg>
+                                                        {postMeDotClick &&
+                                                            <div
+                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                <div className="container py-2">
+                                                                    <div className="space-y-1 text-[14px]">
+                                                                        <Link href='#'
+                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                                strokeWidth="1.5"
+                                                                                strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M17 3a2.85 2.83 0 1 1
+                                                                            4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                                                                <path d="m15 5 4 4"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Edit post
+                                                                            </h4>
+                                                                        </Link>
+
+                                                                        <div
+                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            <svg
+                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                                strokeWidth="1.5"
+                                                                                strokeLinecap="round"
+                                                                                strokeLinejoin="round">
+                                                                                <path d="M3 6h18"/>
+                                                                                <path
+                                                                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                            2 1 2 2v2"/>
+                                                                                <line x1="10" x2="10" y1="11"
+                                                                                      y2="17"/>
+                                                                                <line x1="14" x2="14" y1="11"
+                                                                                      y2="17"/>
+                                                                            </svg>
+                                                                            <h4>
+                                                                                Delete post
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Post Box */}
+                                        <div className="post_box_wrap h-full">
+                                            <div className="box bg-white px-4 pb-4 rounded rounded-b-none">
+                                                <h4 className="mt-0 text-[14px] text-prgcolor">
+                                                    The SRS-XB100 speaker provides powerful, clear,
+                                                    expansive sound in a small, portable and durable
+                                                    body. Despite its size...
+                                                </h4>
+                                            </div>
+
+                                            {/* Post Icons */}
+                                            <div className="post_icons mt-0">
+                                                <div
+                                                    className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>
+                                                            {isClickedLikePostTwo ? (
+                                                                <GoHeartFill
+                                                                    className="w-4 h-4 text-primary hover:text-primary"/>
+                                                            ) : (
+                                                                <GoHeart
+                                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                            )}
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer">
+                                                            <GoComment
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1">
+                                                        <div className="cursor-pointer">
+                                                            <GoSync
+                                                                className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                        </div>
+                                                        <div className="count">
+                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Post Write Comment */}
+                                            <div className="post_write_comment mt-0">
+                                                <div
+                                                    className="flex items-center justify-between box bg-white px-4 py-2 rounded rounded-b-none">
+                                                    <div className="relative w-full flex items-center gap-1">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <input
+                                                            className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"
+                                                            type="text"
+                                                            placeholder="Write a comment..."
+                                                        />
+
+                                                        <div
+                                                            className="absolute inset-y-0 right-2 flex items-center gap-4">
+                                                            <div className="cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24"
+                                                                     fill="#4D7FB8"
+                                                                     className="w-5 h-5">
+                                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                                          clipRule="evenodd"/>
+                                                                </svg>
+                                                            </div>
+                                                            <GoSmiley
+                                                                size={20}
+                                                                className="cursor-pointer text-graycolor hover:text-primary"/>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* PosImage Pop-Up End */}
+
+
+                {/* Start Followers Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartFollowersModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartFollowersModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">33,099 followers</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[24px] bg-white pt-4">
+                                <div className="px-0 pb-2 bg-white">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="people_content box rounded bg-white py-4">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        {isFollowingOne ? (
+                                            <div onClick={handleToggleFollowingOne}
+                                                 className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Following
+                                                </h4>
+                                            </div>
+                                        ) : (
+                                            <div onClick={handleToggleFollowingOne}
+                                                 className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        {isFollowingBack ? (
+                                            <div onClick={handleToggleFollowingBack}
+                                                 className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Following
+                                                </h4>
+                                            </div>
+                                        ) : (
+                                            <div onClick={handleToggleFollowingBack}
+                                                 className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow back
+                                                </h4>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* Followers Pop-Up End */}
+
+                {/* Start Followees Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartFolloweesModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartFolloweesModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">26,000 followees</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[24px] bg-white pt-4">
+                                <div className="px-0 pb-2 bg-white">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="people_content box rounded bg-white py-4">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        {isFollowingFollowees ? (
+                                            <div
+                                                onClick={handleToggleFollowingFollowees}
+                                                onMouseEnter={handleMouseEnter}
+                                                onMouseLeave={handleMouseLeave}
+                                                className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        ) : (
+                                            <div
+                                                onClick={handleToggleFollowingFollowees}
+                                                onMouseEnter={handleMouseEnter}
+                                                onMouseLeave={handleMouseLeave}
+                                                className="follow_box group border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary group-hover:text-red-600">
+                                                    {isHovering ? 'Unfollow' : 'Following'}
+                                                </h4>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Following
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* Followees Pop-Up End */}
+
+                {/* Start PeopleMore Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartPeopleMoreModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartPeopleMoreModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">People You May Want to Follow</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[24px] bg-white pt-4">
+                                <div className="px-0 pb-2 bg-white">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="people_content box rounded bg-white py-4">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        {isFollowingPeople ? (
+                                            <div onClick={handleToggleFollowingPeople}
+                                                 className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Following
+                                                </h4>
+                                            </div>
+                                        ) : (
+                                            <div onClick={handleToggleFollowingPeople}
+                                                 className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* PeopleMore Pop-Up End */}
+
+                {/* Start StoresMore Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartStoresMoreModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartStoresMoreModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Stores You May Want to Follow</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[24px] bg-white pt-4">
+                                <div className="px-0 pb-2 bg-white">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="people_content box rounded bg-white py-4">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Roshan Nafiz</h4>
+                                            </div>
+                                        </div>
+                                        {isFollowingStores ? (
+                                            <div onClick={handleToggleFollowingStores}
+                                                 className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Following
+                                                </h4>
+                                            </div>
+                                        ) : (
+                                            <div onClick={handleToggleFollowingStores}
+                                                 className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <line x1="19" x2="19" y1="8"
+                                                              y2="14"/>
+                                                        <line x1="22" x2="16" y1="11" y2="11"/>
+                                                    </svg>
+                                                </div>
+                                                <h4 className="text-[14px] text-primary">
+                                                    Follow
+                                                </h4>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <line x1="19" x2="19" y1="8"
+                                                          y2="14"/>
+                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary">
+                                                Follow
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* StoresMore Pop-Up End */}
             </section>
         </>
     );

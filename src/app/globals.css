@@ -211,6 +211,11 @@ em-emoji-picker {
     background: linear-gradient(#e0e0e0, #505050);
 }
 
+.left_side_profile_tab button {
+    box-shadow: none !important;
+    padding: 10px 15px;
+}
+
 /*--------------- Toastify Message Design ------------------*/
 .toastBody {
     font-size: 14px;

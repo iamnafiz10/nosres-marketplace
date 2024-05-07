@@ -5706,7 +5706,7 @@ export default function Home() {
                             <div className="scroll_content mt-4">
                                 <label onClick={() => handleBoxClick('item1')}>
                                     <div
-                                        className={`box cursor-pointer py-2 px-2 border rounded${checkedItems['item1'] ? ' border-primary' : ''}`}>
+                                        className={`box cursor-pointer py-2 px-2 border rounded ${checkedItems['item1'] ? ' border-primary' : ''}`}>
                                         <Checkbox.Group
                                             className="flex items-center justify-between"
                                             value={checkedItems['item1'] ? ['1'] : []}
@@ -5843,7 +5843,7 @@ export default function Home() {
                     <Modal.Body>
                         <div className="modal_body">
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                                <div className="col md:col-span-8">
+                                <div className="col md:col-span-7">
                                     <div
                                         className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                         <Carousel slide={false} indicators={false}>
@@ -5856,7 +5856,7 @@ export default function Home() {
                                         </Carousel>
                                     </div>
                                 </div>
-                                <div className="col md:col-span-4">
+                                <div className="col md:col-span-5">
                                     <div className="h-[450px] overflow-y-scroll overflow-x-hidden">
                                         <div
                                             className="bg-white px-4 pb-4 pt-2 rounded rounded-b-none sticky top-[0px] z-[999]">
