@@ -52,6 +52,10 @@ button {
     outline: none;
 }
 
+.modal_cntrl button {
+    outline: none !important;
+}
+
 .modal_cntrl .max-w-lg {
     border-radius: 10px !important;
 }

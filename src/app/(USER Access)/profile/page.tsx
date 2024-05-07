@@ -5,21 +5,19 @@ import ProfileImg from '@/../public/assets/images/profile/profile-photo.jpg';
 import CoverImg from '@/../public/assets/images/profile/cover-photo.jpg';
 import Image from "next/image";
 import {LuDot} from "react-icons/lu";
-import {GoComment, GoHeart, GoHeartFill, GoReply, GoSmiley, GoSync} from "react-icons/go";
+import {GoComment, GoHeart, GoHeartFill, GoSmiley, GoSync} from "react-icons/go";
 import {Carousel, Modal, Tabs} from "flowbite-react";
 import {HiUserCircle} from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import {IoMdGlobe} from "react-icons/io";
 import useLoading from "@/app/useLoading";
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
 import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
 import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
-import {MdPostAdd} from "react-icons/md";
-import {IoSearchOutline} from "react-icons/io5";
-import {Checkbox} from "antd";
+import {IoCameraOutline, IoSearchOutline} from "react-icons/io5";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
 
 function Page() {
     const loading = useLoading();
@@ -143,6 +141,14 @@ function Page() {
         setIsFollowingStores(!isFollowingStores);
     };
 
+    // Cover picture Image Modal
+    const [openStartCoverViewModal, setOpenStartCoverViewModal] = useState<boolean>(false);
+
+    // Profile picture Image Modal
+    const [openStartProfileViewModal, setOpenStartProfileViewModal] = useState<boolean>(false);
+
+    // EditProfile Modal
+    const [openStartEditProfileModal, setOpenStartEditProfileModal] = useState<boolean>(false);
     return (
         <>
             <section id="profile-section">
@@ -180,176 +186,178 @@ function Page() {
                 <div className="user_top_details mt-[55px] h-[480px] md:h-[400px]">
                     <div className="container">
                         <div className="relative">
-                            <div className="cover_photo cursor-pointer">
+                            {/* Cover photo */}
+                            <div onClick={() => setOpenStartCoverViewModal(true)}
+                                 className="cover_photo cursor-pointer">
                                 <Image src={CoverImg} className="w-full h-[180px] rounded rounded-t-none"
                                        alt="CoverImg"/>
                             </div>
 
-                            <div className="absolute w-full top-[110px]">
-                                <div className="ml-[45px] profile_photo cursor-pointer">
-                                    <Image src={ProfileImg}
-                                           className="w-[120px] h-[120px] ring ring-white rounded-full"
-                                           alt="ProfileImg"/>
+                            <div className="user_details mt-[50px] text-start pt-0 text-white">
+                                <div className="ml-[43px]">
+                                    <h4 className='mt-3 text-[24px] font-semibold'>
+                                        Jebon Ahmed Sakib
+                                    </h4>
+                                    <h4 className="text-[14px] mt-0 mr-[20px]">
+                                        Logic will get you from A to B. Imagination will take you everywhere.
+                                    </h4>
                                 </div>
 
-                                <div className="user_details text-start pt-0 text-white">
-                                    <div className="ml-[43px]">
-                                        <h4 className='mt-3 text-[24px] font-semibold'>
-                                            Jebon Ahmed Sakib
-                                        </h4>
-                                        <h4 className="text-[14px] mt-0 mr-[20px]">
-                                            Logic will get you from A to B. Imagination will take you everywhere.
-                                        </h4>
-                                    </div>
-
-                                    <div className="block md:flex w-full items-end justify-between">
-                                        <div className="ml-[40px] wrap">
-                                            <div className="flex items-center gap-0 mt-4 text-[14px]">
-                                                <div className="flex items-center gap-1">
-                                                    <div className="icon">
-                                                        <svg
-                                                            className="w-4 h-4"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                <div className="block md:flex w-full items-end justify-between">
+                                    <div className="ml-[40px] wrap">
+                                        <div className="flex items-center gap-0 mt-4 text-[14px]">
+                                            <div className="flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                     24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M20 10c0 6-8 12-8
+                                                        strokeLinejoin="round">
+                                                        <path d="M20 10c0 6-8 12-8
                                         12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                            <circle cx="12" cy="10" r="3"/>
-                                                        </svg>
-                                                    </div>
-                                                    <h4>
-                                                        Taipei, Taiwan
-                                                    </h4>
+                                                        <circle cx="12" cy="10" r="3"/>
+                                                    </svg>
                                                 </div>
-                                                <div>
-                                                    <LuDot size={17}/>
-                                                </div>
-                                                <div className="flex items-center gap-1">
-                                                    <div className="icon">
-                                                        <svg
-                                                            className="w-4 h-4"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                            24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M8
-                                            2v4"/>
-                                                            <path d="M16 2v4"/>
-                                                            <rect width="18" height="18" x="3" y="4" rx="2"/>
-                                                            <path
-                                                                d="M3 10h18"/>
-                                                            <path d="M8 14h.01"/>
-                                                            <path d="M12 14h.01"/>
-                                                            <path d="M16
-                                            14h.01"/>
-                                                            <path d="M8 18h.01"/>
-                                                            <path d="M12 18h.01"/>
-                                                            <path d="M16
-                                            18h.01"/>
-                                                        </svg>
-                                                    </div>
-                                                    <h4>
-                                                        Joined May 2024
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div className="ml-[3px] mt-2 flex items-center gap-0 text-[14px]">
-                                                <h4 onClick={() => setOpenStartFollowersModal(true)}
-                                                    className="cursor-pointer">
-                                                    26K followers
+                                                <h4>
+                                                    Taipei, Taiwan
                                                 </h4>
+                                            </div>
+                                            <div>
                                                 <LuDot size={17}/>
-                                                <h4 onClick={() => setOpenStartFolloweesModal(true)}
-                                                    className="cursor-pointer">
-                                                    26K followees
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <div className="icon">
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                            24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path d="M8
+                                            2v4"/>
+                                                        <path d="M16 2v4"/>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                        <path
+                                                            d="M3 10h18"/>
+                                                        <path d="M8 14h.01"/>
+                                                        <path d="M12 14h.01"/>
+                                                        <path d="M16
+                                            14h.01"/>
+                                                        <path d="M8 18h.01"/>
+                                                        <path d="M12 18h.01"/>
+                                                        <path d="M16
+                                            18h.01"/>
+                                                    </svg>
+                                                </div>
+                                                <h4>
+                                                    Joined May 2024
                                                 </h4>
                                             </div>
                                         </div>
-                                        <div className="mt-6 md:mt-0 ml-[40px] md:ml-0 buttons flex items-center gap-3">
-                                            <button type='button'
-                                                    className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                                <svg
-                                                    className="w-4 h-4 group-hover:stroke-white"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        <div className="ml-[3px] mt-2 flex items-center gap-0 text-[14px]">
+                                            <h4 onClick={() => setOpenStartFollowersModal(true)}
+                                                className="cursor-pointer">
+                                                26K followers
+                                            </h4>
+                                            <LuDot size={17}/>
+                                            <h4 onClick={() => setOpenStartFolloweesModal(true)}
+                                                className="cursor-pointer">
+                                                26K followees
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="mt-6 md:mt-0 ml-[40px] md:ml-0 buttons flex items-center gap-3">
+                                        <button onClick={() => setOpenStartEditProfileModal(true)} type='button'
+                                                className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                            <svg
+                                                className="w-4 h-4 group-hover:stroke-white"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                         24" fill="none" stroke="#4D7FB8" strokeWidth="1.5" strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path d="M17 3a2.85 2.83 0 1 1
+                                                strokeLinejoin="round">
+                                                <path d="M17 3a2.85 2.83 0 1 1
                                         4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                    <path d="m15 5 4 4"/>
-                                                </svg>
-                                                Edit Profile
-                                            </button>
+                                                <path d="m15 5 4 4"/>
+                                            </svg>
+                                            Edit Profile
+                                        </button>
 
-                                            <button type='button'
-                                                    className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                                <svg
-                                                    className="w-4 h-4 group-hover:stroke-white"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        <button type='button'
+                                                className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                            <svg
+                                                className="w-4 h-4 group-hover:stroke-white"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                             24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path d="M5 12s2.545-5
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round">
+                                                <path d="M5 12s2.545-5
                                                 7-5c4.454 0 7 5 7 5s-2.546 5-7 5c-4.455 0-7-5-7-5z"/>
-                                                    <path d="M12 13a1 1 0 1 0
+                                                <path d="M12 13a1 1 0 1 0
                                                 0-2 1 1 0 0 0 0 2z"/>
-                                                    <path
-                                                        d="M21 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2"/>
-                                                    <path
-                                                        d="M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/>
-                                                </svg>
-                                                View as
-                                            </button>
+                                                <path
+                                                    d="M21 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2"/>
+                                                <path
+                                                    d="M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/>
+                                            </svg>
+                                            View as
+                                        </button>
 
-                                            <div className="flex items-center justify-end text-end">
-                                                <div onClick={handleProfileDotClick}
-                                                     ref={ProfileDotDropdownRef}
-                                                     className="relative cursor-pointer">
-                                                    <svg
-                                                        className="w-3 h-3"
-                                                        fill="#ffffff"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                        <div className="flex items-center justify-end text-end">
+                                            <div onClick={handleProfileDotClick}
+                                                 ref={ProfileDotDropdownRef}
+                                                 className="relative cursor-pointer">
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="#ffffff"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                             0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                    </svg>
+                                                </svg>
 
-                                                    {profileDotClick &&
-                                                        <div
-                                                            className="dots-dropdown-menu w-[300px] absolute bottom-[50px] right-0 bg-white rounded shadow border">
-                                                            <div className="container py-2">
-                                                                <div className="space-y-1 text-[14px]">
-                                                                    <div
-                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <GoSync
-                                                                            className="h-[14px] text-[#6B7280] group-hover:text-primary"/>
-                                                                        <h4 className="text-black">
-                                                                            Share profile
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div
-                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                        <svg
-                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 24
+                                                {profileDotClick &&
+                                                    <div
+                                                        className="dots-dropdown-menu w-[300px] absolute bottom-[50px] right-0 bg-white rounded shadow border">
+                                                        <div className="container py-2">
+                                                            <div className="space-y-1 text-[14px]">
+                                                                <div
+                                                                    className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                    <GoSync
+                                                                        className="h-[14px] text-[#6B7280] group-hover:text-primary"/>
+                                                                    <h4 className="text-black">
+                                                                        Share profile
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                    <svg
+                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24
                                                                     24" fill="none" stroke="#6B7280"
-                                                                            strokeWidth="1.5" strokeLinecap="round"
-                                                                            strokeLinejoin="round">
-                                                                            <path d="M17 3a2.85 2.83 0 1 1
+                                                                        strokeWidth="1.5" strokeLinecap="round"
+                                                                        strokeLinejoin="round">
+                                                                        <path d="M17 3a2.85 2.83 0 1 1
                                                                     4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                                            <path d="m15 5 4 4"/>
-                                                                        </svg>
-                                                                        <h4 className="text-black">
-                                                                            Edit privacy
-                                                                        </h4>
-                                                                    </div>
+                                                                        <path d="m15 5 4 4"/>
+                                                                    </svg>
+                                                                    <h4 className="text-black">
+                                                                        Edit privacy
+                                                                    </h4>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    }
-                                                </div>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* Profile photo */}
+                            <div onClick={() => setOpenStartProfileViewModal(true)}
+                                 className="absolute top-[105px] ml-[45px] w-[120px] profile_photo cursor-pointer">
+                                <Image src={ProfileImg}
+                                       className="w-[120px] h-[120px] ring ring-white rounded-full"
+                                       alt="ProfileImg"/>
                             </div>
                         </div>
                     </div>
@@ -809,240 +817,310 @@ function Page() {
                                      padding: '10px 15px',
                                  }}
                             >
-                                <h4 className="text-[14px] font-[500] text-prgcolor pb-3">
-                                    You may like to follow
-                                </h4>
+                                {loading ? (
+                                    <Skeleton height={10} count={1}/>
+                                ) : (
+                                    <>
+                                        <h4 className="text-[14px] font-[500] text-prgcolor pb-3">
+                                            You may like to follow
+                                        </h4>
+                                    </>
+                                )}
                                 <hr/>
                                 <div className="mt-4 people_content box rounded bg-white py-4 px-6">
-                                    <div className="head text-[14px] font-[500] text-prgcolor pb-4">
-                                        <h4>People</h4>
-                                    </div>
+                                    {loading ? (
+                                        <Skeleton height={10} count={1}/>
+                                    ) : (
+                                        <>
+                                            <div className="head text-[14px] font-[500] text-prgcolor pb-4">
+                                                <h4>People</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <div className="box cursor-pointer py-2 px-2 border rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                                </div>
-                                            </div>
-                                            {isFollowingOne ? (
-                                                <div onClick={handleToggleFollowingOne}
-                                                     className="following_box border py-1 px-4 rounded flex items-center gap-1">
-                                                    <div className="icon">
-                                                        <svg
-                                                            className="w-4 h-4"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        {loading ? (
+                                            <Skeleton height={60} count={1}/>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <div className="content">
+                                                            <h4 className="text-[14px] text-prgcolor">Robert
+                                                                Johnson</h4>
+                                                        </div>
+                                                    </div>
+                                                    {isFollowingOne ? (
+                                                        <div onClick={handleToggleFollowingOne}
+                                                             className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                            <div className="icon">
+                                                                <svg
+                                                                    className="w-4 h-4"
+                                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                         24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M16 21v-2a4 4 0 0
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <path d="M16 21v-2a4 4 0 0
                                                         0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                            <circle cx="9" cy="7" r="4"/>
-                                                            <path d="M22 21v-2a4 4 0 0
+                                                                    <circle cx="9" cy="7" r="4"/>
+                                                                    <path d="M22 21v-2a4 4 0 0
                                                         0-3-3.87"/>
-                                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                                        </svg>
-                                                    </div>
-                                                    <h4 className="text-[14px] text-primary">
-                                                        Following
-                                                    </h4>
-                                                </div>
-                                            ) : (
-                                                <div onClick={handleToggleFollowingOne}
-                                                     className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                    <div className="icon">
-                                                        <svg
-                                                            className="w-4 h-4"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                                </svg>
+                                                            </div>
+                                                            <h4 className="text-[14px] text-primary">
+                                                                Following
+                                                            </h4>
+                                                        </div>
+                                                    ) : (
+                                                        <div onClick={handleToggleFollowingOne}
+                                                             className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                            <div className="icon">
+                                                                <svg
+                                                                    className="w-4 h-4"
+                                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round">
-                                                            <path d="M16 21v-2a4 4 0 0
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                            <circle cx="9" cy="7" r="4"/>
-                                                            <line x1="19" x2="19" y1="8"
-                                                                  y2="14"/>
-                                                            <line x1="22" x2="16" y1="11" y2="11"/>
-                                                        </svg>
-                                                    </div>
-                                                    <h4 className="text-[14px] text-primary">
-                                                        Follow
-                                                    </h4>
+                                                                    <circle cx="9" cy="7" r="4"/>
+                                                                    <line x1="19" x2="19" y1="8"
+                                                                          y2="14"/>
+                                                                    <line x1="22" x2="16" y1="11" y2="11"/>
+                                                                </svg>
+                                                            </div>
+                                                            <h4 className="text-[14px] text-primary">
+                                                                Follow
+                                                            </h4>
+                                                        </div>
+                                                    )}
                                                 </div>
-                                            )}
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        {loading ? (
+                                            <Skeleton height={60} count={1}/>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <div className="content">
+                                                            <h4 className="text-[14px] text-prgcolor">Robert
+                                                                Johnson</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                        <div className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
+                                                                <circle cx="9" cy="7" r="4"/>
+                                                                <line x1="19" x2="19" y1="8"
+                                                                      y2="14"/>
+                                                                <line x1="22" x2="16" y1="11" y2="11"/>
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-[14px] text-primary">
+                                                            Follow
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        {loading ? (
+                                            <Skeleton height={60} count={1}/>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <div className="content">
+                                                            <h4 className="text-[14px] text-prgcolor">Robert
+                                                                Johnson</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                        <div className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
+                                                                <circle cx="9" cy="7" r="4"/>
+                                                                <line x1="19" x2="19" y1="8"
+                                                                      y2="14"/>
+                                                                <line x1="22" x2="16" y1="11" y2="11"/>
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-[14px] text-primary">
+                                                            Follow
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
 
-                                    <button onClick={() => setOpenStartPeopleMoreModal(true)} type='button'
-                                            className="pt-4 text-[14px] text-primary">
-                                        See more
-                                    </button>
+                                    {loading ? (
+                                        <Skeleton height={10} count={1}/>
+                                    ) : (
+                                        <>
+                                            <button onClick={() => setOpenStartPeopleMoreModal(true)} type='button'
+                                                    className="pt-4 text-[14px] text-primary">
+                                                See more
+                                            </button>
+                                        </>
+                                    )}
                                 </div>
 
                                 <div className="mt-4 Stores_content box rounded bg-white py-4 px-6">
-                                    <div className="head text-[14px] font-[500] text-prgcolor pb-4">
-                                        <h4>Stores</h4>
-                                    </div>
+                                    {loading ? (
+                                        <Skeleton height={10} count={1}/>
+                                    ) : (
+                                        <>
+                                            <div className="head text-[14px] font-[500] text-prgcolor pb-4">
+                                                <h4>Stores</h4>
+                                            </div>
+                                        </>
+                                    )}
                                     <div className="box cursor-pointer py-2 px-2 border rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">London Store</h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        {loading ? (
+                                            <Skeleton height={60} count={1}/>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <div className="content">
+                                                            <h4 className="text-[14px] text-prgcolor">London Store</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                        <div className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
+                                                                <circle cx="9" cy="7" r="4"/>
+                                                                <line x1="19" x2="19" y1="8"
+                                                                      y2="14"/>
+                                                                <line x1="22" x2="16" y1="11" y2="11"/>
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-[14px] text-primary">
+                                                            Follow
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">Paris Store</h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        {loading ? (
+                                            <Skeleton height={60} count={1}/>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <div className="content">
+                                                            <h4 className="text-[14px] text-prgcolor">Paris Store</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                        <div className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
+                                                                <circle cx="9" cy="7" r="4"/>
+                                                                <line x1="19" x2="19" y1="8"
+                                                                      y2="14"/>
+                                                                <line x1="22" x2="16" y1="11" y2="11"/>
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-[14px] text-primary">
+                                                            Follow
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        {loading ? (
+                                            <Skeleton height={60} count={1}/>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                        <div className="content">
+                                                            <h4 className="text-[14px] text-prgcolor">Robert
+                                                                Johnson</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className="follow_box border py-1 px-4 rounded flex items-center gap-1">
+                                                        <div className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
+                                                                <circle cx="9" cy="7" r="4"/>
+                                                                <line x1="19" x2="19" y1="8"
+                                                                      y2="14"/>
+                                                                <line x1="22" x2="16" y1="11" y2="11"/>
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-[14px] text-primary">
+                                                            Follow
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        </div>
+                                            </>
+                                        )}
                                     </div>
 
-                                    <button onClick={() => setOpenStartStoresMoreModal(true)} type='button'
-                                            className="pt-4 text-[14px] text-primary">
-                                        See more
-                                    </button>
+                                    {loading ? (
+                                        <Skeleton height={10} count={1}/>
+                                    ) : (
+                                        <>
+                                            <button onClick={() => setOpenStartStoresMoreModal(true)} type='button'
+                                                    className="pt-4 text-[14px] text-primary">
+                                                See more
+                                            </button>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -3497,6 +3575,139 @@ function Page() {
                     </Modal.Body>
                 </Modal>
                 {/* StoresMore Pop-Up End */}
+
+                {/* Start CoverView Pop-Up Start */}
+                <Modal size="5xl"
+                       dismissible
+                       show={openStartCoverViewModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartCoverViewModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <Image src={CoverImg} className="w-full"
+                                   alt="CoverImg"/>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* CoverView Pop-Up End */}
+
+                {/* Start ProfileView Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartProfileViewModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartProfileViewModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex items-center justify-center">
+                                <Image src={ProfileImg} className="w-[400px] h-[400px]"
+                                       alt="ProfileImg"/>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* ProfileView Pop-Up End */}
+
+                {/* Start EditProfile Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartEditProfileModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartEditProfileModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Edit Profile</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="user_pop_details">
+                                <div className="relative">
+                                    {/* Cover photo */}
+                                    <div className="cover_photo cursor-pointer relative">
+                                        <Image src={CoverImg} className="w-full h-[180px] rounded rounded-t-none"
+                                               alt="CoverImg"/>
+                                        <div className="absolute right-2 bottom-0">
+                                            <div className="icon p-1 rounded-full bg-white group">
+                                                <IoCameraOutline size={15}
+                                                                 className="text-[#828D9E] group-hover:text-primary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Profile photo */}
+                                    <div
+                                        className="absolute top-[105px] ml-[45px] w-[120px] profile_photo cursor-pointer">
+                                        <div className="relative">
+                                            <Image src={ProfileImg}
+                                                   className="w-[120px] h-[120px] ring ring-white rounded-full"
+                                                   alt="ProfileImg"/>
+                                            <div className="absolute right-2 bottom-0">
+                                                <div className="icon p-1 rounded-full bg-white group">
+                                                    <IoCameraOutline size={15}
+                                                                     className="text-[#828D9E] group-hover:text-primary"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-[50px]">
+                                <textarea
+                                    rows={3}
+                                    className="rounded mt-4 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                    placeholder="Describe yourself in a few words."
+                                >
+                            </textarea>
+                                <h4 className="text-[12px] text-graycolor">
+                                    You have 120 characters left
+                                </h4>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartEditProfileModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartEditProfileModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Save
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* EditProfile Pop-Up End */}
             </section>
         </>
     );
