@@ -220,6 +220,14 @@ em-emoji-picker {
     padding: 10px 15px;
 }
 
+.left_side_profile_tab .border-cyan-600 {
+    color: #4D7FB8;
+}
+
+.left_side_profile_tab .border-cyan-600 {
+    border-color: #4D7FB8;
+}
+
 /*--------------- Toastify Message Design ------------------*/
 .toastBody {
     font-size: 14px;

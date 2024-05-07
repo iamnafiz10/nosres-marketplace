@@ -150,6 +150,17 @@ function Page() {
     // EditProfile Modal
     const [openStartEditProfileModal, setOpenStartEditProfileModal] = useState<boolean>(false);
 
+    // For follow - following (Banner)
+    const [isFollowingBanner, setIsFollowingBanner] = useState(false);
+    const handleToggleFollowingBanner = () => {
+        setIsFollowingBanner(!isFollowingBanner);
+    };
+
+    // For follow - following (Top-Bar)
+    const [isFollowingTopbar, setIsFollowingTopbar] = useState(false);
+    const handleToggleFollowingTopbar = () => {
+        setIsFollowingTopbar(!isFollowingTopbar);
+    };
 
     // Profile image change popup
     const [openProfileImageModal, setOpenProfileImageModal] = useState<boolean>(false);
@@ -208,12 +219,31 @@ function Page() {
         handleRemoveClickCover();
         setOpenCoverImageModal(false);
     };
+    // Topbar Show
+    const [showTopbar, setShowTopbar] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 200) {
+                setShowTopbar(true);
+            } else {
+                setShowTopbar(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <>
             <section id="profile-section">
-                <div className="container_full pt-[50px]">
-                    <div className="topbar fixed border-t top-[50px] z-20 w-full bg-white py-2">
+                <div className="container_full pt-[0px]">
+                    <div
+                        className={`topbar fixed border-t top-[50px] z-20 w-full bg-white py-2 ${showTopbar ? 'block' : 'hidden'}`}>
                         <div className="container">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
@@ -223,9 +253,33 @@ function Page() {
                                         <h4 className="text-[12px] text-graycolor">London, UK</h4>
                                     </div>
                                 </div>
-                                <button type='button'
-                                        className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                     <span className="icon">
+                                <div className="first">
+                                    {isFollowingTopbar ? (
+                                        <button type='button' onClick={handleToggleFollowingTopbar}
+                                                className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                            <div className="icon">
+                                                <svg
+                                                    className="w-4 h-4 group-hover:stroke-white"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary group-hover:text-white">
+                                                Following
+                                            </h4>
+                                        </button>
+                                    ) : (
+                                        <button type='button' onClick={handleToggleFollowingTopbar}
+                                                className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                            <div className="icon">
                                                 <svg
                                                     className="w-4 h-4 group-hover:stroke-white"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -239,15 +293,19 @@ function Page() {
                                                           y2="14"/>
                                                     <line x1="22" x2="16" y1="11" y2="11"/>
                                                 </svg>
-                                            </span>
-                                    Follow
-                                </button>
+                                            </div>
+                                            <h4 className="text-[14px] text-primary group-hover:text-white">
+                                                Follow
+                                            </h4>
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="user_top_details mt-[55px] h-[480px] md:h-[400px]">
+                <div className="user_top_details mt-[0px] h-[480px] md:h-[400px]">
                     <div className="container">
                         <div className="relative">
                             {/* Cover photo */}
@@ -330,25 +388,53 @@ function Page() {
                                         </div>
                                     </div>
                                     <div className="mt-6 md:mt-0 ml-[40px] md:ml-0 buttons flex items-center gap-3">
-                                        <button type='button'
-                                                className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                            <span className="icon">
-                                                <svg
-                                                    className="w-4 h-4 group-hover:stroke-white"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                        <div className="first">
+                                            {isFollowingBanner ? (
+                                                <button type='button' onClick={handleToggleFollowingBanner}
+                                                        className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                                    <div className="icon">
+                                                        <svg
+                                                            className="w-4 h-4 group-hover:stroke-white"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path d="M16 21v-2a4 4 0 0
+                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                                            <circle cx="9" cy="7" r="4"/>
+                                                            <path d="M22 21v-2a4 4 0 0
+                                                        0-3-3.87"/>
+                                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                        </svg>
+                                                    </div>
+                                                    <h4 className="text-[14px] text-primary group-hover:text-white">
+                                                        Following
+                                                    </h4>
+                                                </button>
+                                            ) : (
+                                                <button type='button' onClick={handleToggleFollowingBanner}
+                                                        className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                                    <div className="icon">
+                                                        <svg
+                                                            className="w-4 h-4 group-hover:stroke-white"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path d="M16 21v-2a4 4 0 0
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path d="M16 21v-2a4 4 0 0
                                                     0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                    <circle cx="9" cy="7" r="4"/>
-                                                    <line x1="19" x2="19" y1="8"
-                                                          y2="14"/>
-                                                    <line x1="22" x2="16" y1="11" y2="11"/>
-                                                </svg>
-                                            </span>
-                                            Follow
-                                        </button>
+                                                            <circle cx="9" cy="7" r="4"/>
+                                                            <line x1="19" x2="19" y1="8"
+                                                                  y2="14"/>
+                                                            <line x1="22" x2="16" y1="11" y2="11"/>
+                                                        </svg>
+                                                    </div>
+                                                    <h4 className="text-[14px] text-primary group-hover:text-white">
+                                                        Follow
+                                                    </h4>
+                                                </button>
+                                            )}
+                                        </div>
 
                                         <button type='button'
                                                 className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
@@ -371,7 +457,7 @@ function Page() {
 
                                                 {profileDotClick &&
                                                     <div
-                                                        className="dots-dropdown-menu w-[300px] absolute bottom-[50px] right-0 bg-white rounded shadow border">
+                                                        className="dots-dropdown-menu w-[300px] absolute top-[15px] right-0 bg-white rounded shadow border">
                                                         <div className="container py-2">
                                                             <div className="space-y-1 text-[14px]">
                                                                 <div
@@ -436,7 +522,7 @@ function Page() {
 
                 {/* Body Content */}
                 <div className="container pt-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
                         <div className="col">
                             <div className="left_side_profile_tab">
                                 <Tabs aria-label="Tabs with underline" style="underline">
@@ -885,7 +971,7 @@ function Page() {
                         <div className="col">
                             <div className="right_side"
                                  style={{
-                                     padding: '10px 15px',
+                                     padding: '10px 0px',
                                  }}
                             >
                                 {loading ? (
@@ -2089,7 +2175,7 @@ function Page() {
                                                 className="follow_box group border py-1 px-4 rounded flex items-center gap-1">
                                                 <div className="icon">
                                                     <svg
-                                                        className="w-4 h-4"
+                                                        className="w-4 h-4 group-hover:stroke-red-600"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                         24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
                                                         strokeLinecap="round"
@@ -2601,23 +2687,6 @@ function Page() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="top_content sticky z-[999] -top-[24px] bg-white pt-4">
-                                <div className="px-0 pb-2 bg-white">
-                                    <div className="relative w-full">
-                                        <input
-                                            type="text"
-                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                            placeholder="Search"
-                                        />
-
-                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
-                                            <IoSearchOutline
-                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div className="people_content box rounded bg-white py-4">
                                 <div className="box cursor-pointer py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
@@ -3134,24 +3203,7 @@ function Page() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="top_content sticky z-[999] -top-[24px] bg-white pt-4">
-                                <div className="px-0 pb-2 bg-white">
-                                    <div className="relative w-full">
-                                        <input
-                                            type="text"
-                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                            placeholder="Search"
-                                        />
-
-                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
-                                            <IoSearchOutline
-                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="people_content box rounded bg-white py-4">
+                            <div className="people_content box rounded bg-white">
                                 <div className="box cursor-pointer py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
@@ -3755,14 +3807,17 @@ function Page() {
                             </div>
 
                             <div className="mt-[50px]">
+                                <h4 className="text-[14px] text-prgcolor">
+                                    Bio
+                                </h4>
                                 <textarea
                                     rows={3}
-                                    className="rounded mt-4 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                    className="rounded mt-2 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                     placeholder="Describe yourself in a few words."
                                 >
                             </textarea>
                                 <h4 className="text-[12px] text-graycolor">
-                                    You have 120 characters left
+                                    You have 120 characters left.
                                 </h4>
                             </div>
                         </div>
