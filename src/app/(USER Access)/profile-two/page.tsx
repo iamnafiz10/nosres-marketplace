@@ -19,7 +19,7 @@ import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {IoCameraOutline, IoSearchOutline} from "react-icons/io5";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
-import {HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
+import {HiOutlineChatBubbleLeft, HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
 
 function Page() {
     const loading = useLoading();
@@ -221,24 +221,28 @@ function Page() {
                                 <div className="flex items-center gap-2">
                                     <Image src={UserImg} className="w-10 h-10 rounded-full" alt="UserImg"/>
                                     <div className="wrap">
-                                        <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
-                                        <h4 className="text-[12px] text-graycolor">Taipei, Taiwan</h4>
+                                        <h4 className="text-[14px] text-prgcolor font-[500]">Chelsea Woodler</h4>
+                                        <h4 className="text-[12px] text-graycolor">London, UK</h4>
                                     </div>
                                 </div>
                                 <button type='button'
                                         className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                  <span className="icon">
+                                    <span className="icon">
                                         <svg
                                             className="w-4 h-4 group-hover:stroke-white"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5" strokeLinecap="round"
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                            strokeLinecap="round"
                                             strokeLinejoin="round">
-                                        <path d="M17 3a2.85 2.83 0 1 1
-                                        4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                        <path d="m15 5 4 4"/>
-                                    </svg>
-                                  </span>
-                                    Edit Profile
+                                            <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <line x1="19" x2="19" y1="8"
+                                                  y2="14"/>
+                                            <line x1="22" x2="16" y1="11" y2="11"/>
+                                        </svg>
+                                    </span>
+                                    Follow Back
                                 </button>
                             </div>
                         </div>
@@ -258,10 +262,10 @@ function Page() {
                             <div className="user_details mt-[50px] text-start pt-0 text-white">
                                 <div className="ml-[43px]">
                                     <h4 className='mt-3 text-[24px] font-semibold'>
-                                        Jebon Ahmed Sakib
+                                        Chelsea Woodler
                                     </h4>
                                     <h4 className="text-[14px] mt-0 mr-[20px]">
-                                        Logic will get you from A to B. Imagination will take you everywhere.
+                                        Dura lex, sed lex.
                                     </h4>
                                 </div>
 
@@ -328,38 +332,31 @@ function Page() {
                                         </div>
                                     </div>
                                     <div className="mt-6 md:mt-0 ml-[40px] md:ml-0 buttons flex items-center gap-3">
-                                        <button onClick={() => setOpenStartEditProfileModal(true)} type='button'
+                                        <button type='button'
                                                 className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                            <svg
-                                                className="w-4 h-4 group-hover:stroke-white"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5" strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <path d="M17 3a2.85 2.83 0 1 1
-                                        4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                <path d="m15 5 4 4"/>
-                                            </svg>
-                                            Edit Profile
+                                         <span className="icon">
+                                        <svg
+                                            className="w-4 h-4 group-hover:stroke-white"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
+                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round">
+                                            <path d="M16 21v-2a4 4 0 0
+                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <line x1="19" x2="19" y1="8"
+                                                  y2="14"/>
+                                            <line x1="22" x2="16" y1="11" y2="11"/>
+                                        </svg>
+                                    </span>
+                                            Follow Back
                                         </button>
 
                                         <button type='button'
                                                 className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
-                                            <svg
-                                                className="w-4 h-4 group-hover:stroke-white"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                            24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <path d="M5 12s2.545-5
-                                                7-5c4.454 0 7 5 7 5s-2.546 5-7 5c-4.455 0-7-5-7-5z"/>
-                                                <path d="M12 13a1 1 0 1 0
-                                                0-2 1 1 0 0 0 0 2z"/>
-                                                <path
-                                                    d="M21 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2"/>
-                                                <path
-                                                    d="M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/>
-                                            </svg>
-                                            View as
+                                            <HiOutlineChatBubbleLeft
+                                                className="w-4 h-4 group-hover:text-white"/>
+                                            Direct Message
                                         </button>
 
                                         <div className="flex items-center justify-end text-end">
@@ -381,27 +378,41 @@ function Page() {
                                                             <div className="space-y-1 text-[14px]">
                                                                 <div
                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                    <GoSync
-                                                                        className="h-[14px] text-[#6B7280] group-hover:text-primary"/>
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                            strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                            4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                            <line x1="4" x2="4" y1="22"
+                                                                                  y2="15"/>
+                                                                        </svg>
+                                                                    </div>
                                                                     <h4 className="text-black">
-                                                                        Share profile
+                                                                        Report profile
                                                                     </h4>
                                                                 </div>
                                                                 <div
                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                    <svg
-                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 24
-                                                                    24" fill="none" stroke="#6B7280"
-                                                                        strokeWidth="1.5" strokeLinecap="round"
-                                                                        strokeLinejoin="round">
-                                                                        <path d="M17 3a2.85 2.83 0 1 1
-                                                                    4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                                        <path d="m15 5 4 4"/>
-                                                                    </svg>
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none" stroke="#6B7280"
+                                                                            strokewidth="1.5" strokelinecap="round"
+                                                                            strokelinejoin="round">
+                                                                            <circle cx="12" cy="12" r="10"/>
+                                                                            <path d="m4.9 4.9 14.2 14.2"/>
+                                                                        </svg>
+                                                                    </div>
                                                                     <h4 className="text-black">
-                                                                        Edit privacy
+                                                                        Block
                                                                     </h4>
                                                                 </div>
                                                             </div>
