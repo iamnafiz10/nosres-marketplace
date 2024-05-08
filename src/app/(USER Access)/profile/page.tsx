@@ -454,17 +454,35 @@ function Page() {
                                     <Tabs.Item active title="Posts">
                                         <div className="block lg:flex items-start justify-between gap-0">
                                             <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
-                                                <Image src={ProfileImg} className="w-12 h-12 rounded-full"
-                                                       alt="ProfileImg"/>
-                                                <h4 className="mt-1 text-[14px] font-[500]">
-                                                    Jebon Ahmed Sakib
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    26K followers
-                                                </h4>
+                                                {loading ? (
+                                                    <Skeleton width={50} height={50} borderRadius="100%"
+                                                              count={1}/>
+                                                ) : (
+                                                    <>
+                                                        <Image src={ProfileImg} className="w-12 h-12 rounded-full"
+                                                               alt="ProfileImg"/>
+                                                    </>
+                                                )}
 
-                                                <ul className="mt-2 space-y-2 text-[14px]">
-                                                    <li className="flex items-center gap-2">
+                                                {loading ? (
+                                                    <Skeleton height={10} count={2}/>
+                                                ) : (
+                                                    <>
+                                                        <h4 className="mt-1 text-[14px] font-[500]">
+                                                            Jebon Ahmed Sakib
+                                                        </h4>
+                                                        <h4 className="text-[12px] text-graycolor">
+                                                            26K followers
+                                                        </h4>
+                                                    </>
+                                                )}
+
+                                                <ul className="mt-2 space-y-2 text-[12px]">
+                                                    {loading ? (
+                                                        <Skeleton height={10} count={5}/>
+                                                    ) : (
+                                                        <>
+                                                            <li className="flex items-center gap-2">
                                                         <span className="icon">
                                                         <svg
                                                             className="w-4 h-4"
@@ -476,9 +494,9 @@ function Page() {
                                                             <rect width="20" height="14" x="2" y="6" rx="2"/>
                                                         </svg>
                                                     </span>
-                                                        <h4>Web Developer</h4>
-                                                    </li>
-                                                    <li className="flex items-start gap-2">
+                                                                <h4>Web Developer</h4>
+                                                            </li>
+                                                            <li className="flex items-start gap-2">
                                                         <span className="icon">
                                                             <svg
                                                                 className="w-4 h-4"
@@ -489,9 +507,9 @@ function Page() {
                                                                 d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path
                                                                 d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
                                                         </span>
-                                                        <h4>BSc in Computer Science</h4>
-                                                    </li>
-                                                    <li className="flex items-center gap-2">
+                                                                <h4>BSc in Computer Science</h4>
+                                                            </li>
+                                                            <li className="flex items-start gap-2">
                                                         <span className="icon">
                                                             <svg
                                                                 className="w-4 h-4"
@@ -507,10 +525,9 @@ function Page() {
                                                                 d="M18 17v.01"/><path d="M18 13v.01"/><path
                                                                 d="M14 22v-5a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5"/></svg>
                                                     </span>
-                                                        <h4>MIT</h4>
-                                                    </li>
-
-                                                    <li className="flex items-center gap-2">
+                                                                <h4 className="mt-[1px]">MIT</h4>
+                                                            </li>
+                                                            <li className="flex items-center gap-2">
                                                         <span className="icon">
                                                             <svg
                                                                 className="w-4 h-4"
@@ -521,10 +538,9 @@ function Page() {
                                                                 d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path
                                                                 d="M16 8.2C16 7 15 6 13.8 6c-.8 0-1.4.3-1.8.9-.4-.6-1-.9-1.8-.9C9 6 8 7 8 8.2c0 .6.3 1.2.7 1.6h0C10 11.1 12 13 12 13s2-1.9 3.3-3.1h0c.4-.4.7-1 .7-1.7z"/></svg>
                                                         </span>
-                                                        <h4>Video games</h4>
-                                                    </li>
-
-                                                    <li className="flex items-center gap-2">
+                                                                <h4>Video games</h4>
+                                                            </li>
+                                                            <li className="flex items-center gap-2">
                                                         <span className="icon">
                                                         <svg
                                                             className="w-4 h-4"
@@ -537,8 +553,10 @@ function Page() {
                                                                                                  y2="12"/></svg>
 
                                                         </span>
-                                                        <h4>jebonasakib.com</h4>
-                                                    </li>
+                                                                <h4>jebonasakib.com</h4>
+                                                            </li>
+                                                        </>
+                                                    )}
                                                 </ul>
                                             </div>
                                             <div className="post_wrap mt-6 lg:mt-0 w-full lg:w-[495px]">
@@ -549,14 +567,17 @@ function Page() {
                                                             {loading ? (
                                                                 <div
                                                                     className="flex items-center justify-start gap-2 w-full">
-                                                                    <Skeleton width={50} height={50} borderRadius="100%"
+                                                                    <Skeleton width={50} height={50}
+                                                                              borderRadius="100%"
                                                                               count={1}/>
-                                                                    <Skeleton containerClassName="flex-1" height={50}
+                                                                    <Skeleton containerClassName="flex-1"
+                                                                              height={50}
                                                                               count={1}/>
                                                                 </div>
                                                             ) : (
                                                                 <>
-                                                                    <Link href='#' className="flex items-center gap-1">
+                                                                    <Link href='#'
+                                                                          className="flex items-center gap-1">
                                                                         <HiUserCircle size={35}
                                                                                       className="text-[#6B7280]"/>
                                                                         <div className="leading-[17px]">
@@ -613,7 +634,8 @@ function Page() {
                                                                                                         d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
                                                                                                     <path
                                                                                                         d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                                                    <line x1="2" x2="22"
+                                                                                                    <line x1="2"
+                                                                                                          x2="22"
                                                                                                           y1="2"
                                                                                                           y2="22"/>
                                                                                                 </svg>
@@ -634,7 +656,8 @@ function Page() {
                                                                                                     strokeLinejoin="round">
                                                                                                     <path d="M4 15s1-1 4-1 5 2 8 2
                                                                                 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                                                    <line x1="4" x2="4"
+                                                                                                    <line x1="4"
+                                                                                                          x2="4"
                                                                                                           y1="22"
                                                                                                           y2="15"/>
                                                                                                 </svg>
@@ -668,7 +691,8 @@ function Page() {
                                                                     Its sleek
                                                                     design
                                                                     houses a
-                                                                    powerhouse of cutting-edge technology, delivering
+                                                                    powerhouse of cutting-edge technology,
+                                                                    delivering
                                                                     lightning-fast 5G
                                                                     connectivity
                                                                     and an immersive multimedia experience. With its
@@ -676,7 +700,8 @@ function Page() {
                                                                     features
                                                                     and
                                                                     premium
-                                                                    build quality, the HTCU23 Pro 5G redefines what a
+                                                                    build quality, the HTCU23 Pro 5G redefines what
+                                                                    a
                                                                     flagship
                                                                     smartphone can
                                                                     achieve
@@ -703,7 +728,8 @@ function Page() {
                                                     {/* Post Icons */}
                                                     <div className="post_icons mt-0">
                                                         {loading ? (
-                                                            <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                            <div
+                                                                className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
                                                                 <Skeleton height={40} count={1}/>
                                                             </div>
                                                         ) : (
@@ -753,7 +779,8 @@ function Page() {
                                                 </div>
                                                 {/* Post Box Profile two */}
                                                 <div className="post_box_wrap">
-                                                    <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                                    <div
+                                                        className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
                                                         <div className="flex items-center justify-between">
                                                             {loading ? (
                                                                 <>
@@ -769,7 +796,8 @@ function Page() {
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    <Link href='#' className="flex items-center gap-1">
+                                                                    <Link href='#'
+                                                                          className="flex items-center gap-1">
                                                                         <HiUserCircle size={35}
                                                                                       className="text-[#6B7280]"/>
                                                                         <div className="leading-[17px]">
@@ -838,7 +866,8 @@ function Page() {
                                                                                                     strokeWidth="1.5"
                                                                                                     strokeLinecap="round"
                                                                                                     strokeLinejoin="round">
-                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M3 6h18"/>
                                                                                                     <path
                                                                                                         d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
                                                                                                     <path d="M8 6V4c0-1 1-2 2-2h4c1 0
@@ -884,7 +913,8 @@ function Page() {
                                                     {/* Post Icons */}
                                                     <div className="post_icons mt-0">
                                                         {loading ? (
-                                                            <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                            <div
+                                                                className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
                                                                 <Skeleton height={40} count={1}/>
                                                             </div>
                                                         ) : (
@@ -3850,10 +3880,50 @@ function Page() {
                                     className="rounded mt-2 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                     placeholder="Describe yourself in a few words."
                                 >
-                            </textarea>
+                                </textarea>
                                 <h4 className="text-[12px] text-graycolor">
                                     You have 120 characters left.
                                 </h4>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-[14px] text-prgcolor">
+                                    Current Position
+                                </h4>
+                                <input type="text" placeholder="Software Engineer"
+                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-[14px] text-prgcolor">
+                                    Degree
+                                </h4>
+                                <input type="text" placeholder="BSc in Computer Science"
+                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-[14px] text-prgcolor">
+                                    School
+                                </h4>
+                                <input type="text" placeholder="Rice University"
+                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-[14px] text-prgcolor">
+                                    Interests
+                                </h4>
+                                <input type="text" placeholder="Photography"
+                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-[14px] text-prgcolor">
+                                    Website URL
+                                </h4>
+                                <input type="text" placeholder="www.example.com"
+                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
                             </div>
                         </div>
                     </Modal.Body>

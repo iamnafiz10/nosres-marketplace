@@ -525,380 +525,520 @@ function Page() {
 
                 {/* Body Content */}
                 <div className="container pt-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
-                        <div className="col">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div className="col lg:col-span-8">
                             <div className="left_side_profile_tab">
                                 <Tabs aria-label="Tabs with underline" style="underline">
                                     <Tabs.Item active title="Posts">
-                                        {/* Post Box Profile One */}
-                                        <div className="post_box_wrap">
-                                            <div className="box bg-white px-4 py-4 rounded rounded-b-none">
-                                                <div className="flex items-center justify-between">
+                                        <div className="block lg:flex items-start justify-between gap-0">
+                                            <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
+                                                {loading ? (
+                                                    <Skeleton width={50} height={50} borderRadius="100%"
+                                                              count={1}/>
+                                                ) : (
+                                                    <>
+                                                        <Image src={ProfileImg} className="w-12 h-12 rounded-full"
+                                                               alt="ProfileImg"/>
+                                                    </>
+                                                )}
+
+                                                {loading ? (
+                                                    <Skeleton height={10} count={2}/>
+                                                ) : (
+                                                    <>
+                                                        <h4 className="mt-1 text-[14px] font-[500]">
+                                                            Jebon Ahmed Sakib
+                                                        </h4>
+                                                        <h4 className="text-[12px] text-graycolor">
+                                                            26K followers
+                                                        </h4>
+                                                    </>
+                                                )}
+
+                                                <ul className="mt-2 space-y-2 text-[12px]">
                                                     {loading ? (
-                                                        <div className="flex items-center justify-start gap-2 w-full">
-                                                            <Skeleton width={50} height={50} borderRadius="100%"
-                                                                      count={1}/>
-                                                            <Skeleton containerClassName="flex-1" height={50}
-                                                                      count={1}/>
-                                                        </div>
+                                                        <Skeleton height={10} count={5}/>
                                                     ) : (
                                                         <>
-                                                            <Link href='#' className="flex items-center gap-1">
-                                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                                <div className="leading-[17px]">
-                                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                                        Robert Fox
-                                                                    </h4>
-                                                                    <div
-                                                                        className="flex items-center text-graycolor font-normal">
+                                                            <li className="flex items-center gap-2">
+                                                        <span className="icon">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24 24" fill="none" stroke="#828D9E"
+                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                                            <rect width="20" height="14" x="2" y="6" rx="2"/>
+                                                        </svg>
+                                                    </span>
+                                                                <h4>Web Developer</h4>
+                                                            </li>
+                                                            <li className="flex items-start gap-2">
+                                                        <span className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                stroke="#828D9E" strokeWidth="1.5"
+                                                                strokeLinecap="round" strokeLinejoin="round"><path
+                                                                d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path
+                                                                d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                                                        </span>
+                                                                <h4>BSc in Computer Science</h4>
+                                                            </li>
+                                                            <li className="flex items-start gap-2">
+                                                        <span className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                stroke="#828D9E" strokeWidth="1.5"
+                                                                strokeLinecap="round" strokeLinejoin="round"><circle
+                                                                cx="12"
+                                                                cy="10"
+                                                                r="1"/><path
+                                                                d="M22 20V8h-4l-6-4-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2"/><path
+                                                                d="M6 17v.01"/><path d="M6 13v.01"/><path
+                                                                d="M18 17v.01"/><path d="M18 13v.01"/><path
+                                                                d="M14 22v-5a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5"/></svg>
+                                                    </span>
+                                                                <h4 className="mt-[1px]">MIT</h4>
+                                                            </li>
+                                                            <li className="flex items-center gap-2">
+                                                        <span className="icon">
+                                                            <svg
+                                                                className="w-4 h-4"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                stroke="#828D9E" strokeWidth="1.5"
+                                                                strokeLinecap="round" strokeLinejoin="round"><path
+                                                                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path
+                                                                d="M16 8.2C16 7 15 6 13.8 6c-.8 0-1.4.3-1.8.9-.4-.6-1-.9-1.8-.9C9 6 8 7 8 8.2c0 .6.3 1.2.7 1.6h0C10 11.1 12 13 12 13s2-1.9 3.3-3.1h0c.4-.4.7-1 .7-1.7z"/></svg>
+                                                        </span>
+                                                                <h4>Video games</h4>
+                                                            </li>
+                                                            <li className="flex items-center gap-2">
+                                                        <span className="icon">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24 24" fill="none" stroke="#828D9E"
+                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                            strokeLinejoin="round"><path
+                                                            d="M9 17H7A5 5 0 0 1 7 7h2"/><path
+                                                            d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12"
+                                                                                                 y2="12"/></svg>
+
+                                                        </span>
+                                                                <h4>jebonasakib.com</h4>
+                                                            </li>
+                                                        </>
+                                                    )}
+                                                </ul>
+                                            </div>
+                                            <div className="post_wrap mt-6 lg:mt-0 w-full lg:w-[495px]">
+                                                {/* Post Box Profile One */}
+                                                <div className="post_box_wrap">
+                                                    <div className="box bg-white px-4 py-4 rounded rounded-b-none">
+                                                        <div className="flex items-center justify-between">
+                                                            {loading ? (
+                                                                <div
+                                                                    className="flex items-center justify-start gap-2 w-full">
+                                                                    <Skeleton width={50} height={50}
+                                                                              borderRadius="100%"
+                                                                              count={1}/>
+                                                                    <Skeleton containerClassName="flex-1"
+                                                                              height={50}
+                                                                              count={1}/>
+                                                                </div>
+                                                            ) : (
+                                                                <>
+                                                                    <Link href='#'
+                                                                          className="flex items-center gap-1">
+                                                                        <HiUserCircle size={35}
+                                                                                      className="text-[#6B7280]"/>
+                                                                        <div className="leading-[17px]">
+                                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                                Robert Fox
+                                                                            </h4>
+                                                                            <div
+                                                                                className="flex items-center text-graycolor font-normal">
                                                           <span
                                                               className="text-[12px]">
                                                             1m ago
                                                         </span>
-                                                                        <LuDot size={12}/>
-                                                                        <IoMdGlobe size={13}/>
-                                                                    </div>
-                                                                </div>
-                                                            </Link>
-
-                                                            <div className="flex items-center justify-end text-end">
-                                                                <div
-                                                                    onClick={handlePostFourOtherDotClick}
-                                                                    ref={PostFourOtherDotDropdownRef}
-                                                                    className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postFourOtherDotClick ? 'bg-gray-100' : ''}`}>
-                                                                    <svg
-                                                                        className="w-3 h-3"
-                                                                        fill="#828D9E"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 16 16">
-                                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                                    </svg>
-
-                                                                    {postFourOtherDotClick &&
-                                                                        <div
-                                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                                            <div className="container py-2">
-                                                                                <div className="space-y-1 text-[14px]">
-                                                                                    <div
-                                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                                        <svg
-                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 0 24 24"
-                                                                                            fill="none"
-                                                                                            stroke="#6B7280"
-                                                                                            strokeWidth="1.5"
-                                                                                            strokeLinecap="round"
-                                                                                            strokeLinejoin="round">
-                                                                                            <path
-                                                                                                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                                            <path
-                                                                                                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                                            <path
-                                                                                                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                                            <line x1="2" x2="22" y1="2"
-                                                                                                  y2="22"/>
-                                                                                        </svg>
-                                                                                        <h4>
-                                                                                            Hide post
-                                                                                        </h4>
-                                                                                    </div>
-
-                                                                                    <div
-                                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                                        <svg
-                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                                            strokeWidth="1.5"
-                                                                                            strokeLinecap="round"
-                                                                                            strokeLinejoin="round">
-                                                                                            <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                                            <line x1="4" x2="4" y1="22"
-                                                                                                  y2="15"/>
-                                                                                        </svg>
-                                                                                        <h4>
-                                                                                            Report post
-                                                                                        </h4>
-                                                                                    </div>
-                                                                                </div>
+                                                                                <LuDot size={12}/>
+                                                                                <IoMdGlobe size={13}/>
                                                                             </div>
                                                                         </div>
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                </div>
-
-                                                {loading ? (
-                                                    <>
-                                                        <Skeleton height={30} count={1}/>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <h4 className="mt-3 text-[14px] text-prgcolor">
-                                                            The HTCU23 Pro 5G stands as the pinnacle of smartphone
-                                                            innovation,
-                                                            offering
-                                                            unparalleled performance, connectivity, and functionality.
-                                                            Its sleek
-                                                            design
-                                                            houses a
-                                                            powerhouse of cutting-edge technology, delivering
-                                                            lightning-fast 5G
-                                                            connectivity
-                                                            and an immersive multimedia experience. With its advanced
-                                                            features
-                                                            and
-                                                            premium
-                                                            build quality, the HTCU23 Pro 5G redefines what a flagship
-                                                            smartphone can
-                                                            achieve
-                                                        </h4>
-                                                    </>
-                                                )}
-                                            </div>
-                                            <div className="post_image mt-0">
-                                                {loading ? (
-                                                    <>
-                                                        <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
-                                                            <Skeleton height={200} count={1}/>
-                                                            <Skeleton height={30} count={1}/>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <Image src={SliderOneImg} className="w-full h-56"
-                                                               alt="PostImg"/>
-                                                    </>
-                                                )}
-                                            </div>
-                                            {/* Post Icons */}
-                                            <div className="post_icons mt-0">
-                                                {loading ? (
-                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
-                                                        <Skeleton height={40} count={1}/>
-                                                    </div>
-                                                ) : (
-                                                    <>
-                                                        <div
-                                                            className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
-                                                            <div className="flex items-center gap-1">
-                                                                <div className="cursor-pointer"
-                                                                     onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
-                                                                    {isClickedLikePostFour ? (
-                                                                        <GoHeartFill
-                                                                            className="w-4 h-4 text-primary hover:text-primary"/>
-                                                                    ) : (
-                                                                        <GoHeart
-                                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                                    )}
-                                                                </div>
-                                                                <div className="count">
-                                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex items-center gap-1">
-                                                                <div className="cursor-pointer">
-                                                                    <GoComment
-                                                                        className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                                </div>
-                                                                <div className="count">
-                                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex items-center gap-1">
-                                                                <div
-                                                                    className="relative cursor-pointer">
-                                                                    <GoSync
-                                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
-                                                                </div>
-                                                                <div className="count">
-                                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </div>
-                                        </div>
-
-
-                                        {/* Post Box Profile two */}
-                                        <div className="post_box_wrap">
-                                            <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
-                                                <div className="flex items-center justify-between">
-                                                    {loading ? (
-                                                        <>
-                                                            <div
-                                                                className="flex items-center justify-start gap-2 w-full">
-                                                                <Skeleton width={50} height={50} borderRadius="100%"
-                                                                          count={1}/>
-                                                                <Skeleton containerClassName="flex-1" height={50}
-                                                                          count={1}/>
-                                                            </div>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <Link href='#' className="flex items-center gap-1">
-                                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                                <div className="leading-[17px]">
-                                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
-                                                                        John Doe
-                                                                    </h4>
+                                                                    </Link>
 
                                                                     <div
-                                                                        className="flex items-center text-graycolor font-normal">
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            onClick={handlePostFourOtherDotClick}
+                                                                            ref={PostFourOtherDotDropdownRef}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postFourOtherDotClick ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {postFourOtherDotClick &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path
+                                                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                                    <path
+                                                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                                    <path
+                                                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                                    <line x1="2"
+                                                                                                          x2="22"
+                                                                                                          y1="2"
+                                                                                                          y2="22"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Hide post
+                                                                                                </h4>
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                                    <line x1="4"
+                                                                                                          x2="4"
+                                                                                                          y1="22"
+                                                                                                          y2="15"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Report post
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            )}
+                                                        </div>
+
+                                                        {loading ? (
+                                                            <>
+                                                                <Skeleton height={30} count={1}/>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                                    The HTCU23 Pro 5G stands as the pinnacle of
+                                                                    smartphone
+                                                                    innovation,
+                                                                    offering
+                                                                    unparalleled performance, connectivity, and
+                                                                    functionality.
+                                                                    Its sleek
+                                                                    design
+                                                                    houses a
+                                                                    powerhouse of cutting-edge technology,
+                                                                    delivering
+                                                                    lightning-fast 5G
+                                                                    connectivity
+                                                                    and an immersive multimedia experience. With its
+                                                                    advanced
+                                                                    features
+                                                                    and
+                                                                    premium
+                                                                    build quality, the HTCU23 Pro 5G redefines what
+                                                                    a
+                                                                    flagship
+                                                                    smartphone can
+                                                                    achieve
+                                                                </h4>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                    <div className="post_image mt-0">
+                                                        {loading ? (
+                                                            <>
+                                                                <div
+                                                                    className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                                    <Skeleton height={200} count={1}/>
+                                                                    <Skeleton height={30} count={1}/>
+                                                                </div>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <Image src={SliderOneImg} className="w-full h-56"
+                                                                       alt="PostImg"/>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                    {/* Post Icons */}
+                                                    <div className="post_icons mt-0">
+                                                        {loading ? (
+                                                            <div
+                                                                className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                                <Skeleton height={40} count={1}/>
+                                                            </div>
+                                                        ) : (
+                                                            <>
+                                                                <div
+                                                                    className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
+                                                                    <div className="flex items-center gap-1">
+                                                                        <div className="cursor-pointer"
+                                                                             onClick={() => setIsClickedLikePostFour(!isClickedLikePostFour)}>
+                                                                            {isClickedLikePostFour ? (
+                                                                                <GoHeartFill
+                                                                                    className="w-4 h-4 text-primary hover:text-primary"/>
+                                                                            ) : (
+                                                                                <GoHeart
+                                                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="count">
+                                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="flex items-center gap-1">
+                                                                        <div className="cursor-pointer">
+                                                                            <GoComment
+                                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                        </div>
+                                                                        <div className="count">
+                                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="flex items-center gap-1">
+                                                                        <div
+                                                                            className="relative cursor-pointer">
+                                                                            <GoSync
+                                                                                className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                                        </div>
+                                                                        <div className="count">
+                                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                {/* Post Box Profile two */}
+                                                <div className="post_box_wrap">
+                                                    <div
+                                                        className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                                        <div className="flex items-center justify-between">
+                                                            {loading ? (
+                                                                <>
+                                                                    <div
+                                                                        className="flex items-center justify-start gap-2 w-full">
+                                                                        <Skeleton width={50} height={50}
+                                                                                  borderRadius="100%"
+                                                                                  count={1}/>
+                                                                        <Skeleton containerClassName="flex-1"
+                                                                                  height={50}
+                                                                                  count={1}/>
+                                                                    </div>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <Link href='#'
+                                                                          className="flex items-center gap-1">
+                                                                        <HiUserCircle size={35}
+                                                                                      className="text-[#6B7280]"/>
+                                                                        <div className="leading-[17px]">
+                                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                                John Doe
+                                                                            </h4>
+
+                                                                            <div
+                                                                                className="flex items-center text-graycolor font-normal">
                                                           <span
                                                               className="text-[12px]">
                                                             2h ago
                                                         </span>
-                                                                        <LuDot size={12}/>
-                                                                        <IoMdGlobe size={13}/>
-                                                                    </div>
-                                                                </div>
-                                                            </Link>
-
-                                                            <div className="flex items-center justify-end text-end">
-                                                                <div onClick={handlePostMeDotClick}
-                                                                     ref={PostMeDotDropdownRef}
-                                                                     className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
-                                                                    <svg
-                                                                        className="w-3 h-3"
-                                                                        fill="#828D9E"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 16 16">
-                                                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                                    </svg>
-                                                                    {postMeDotClick &&
-                                                                        <div
-                                                                            className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                                            <div className="container py-2">
-                                                                                <div className="space-y-1 text-[14px]">
-                                                                                    <Link href='#'
-                                                                                          className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                                        <svg
-                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 0 24
-                                                                            24" fill="none" stroke="#6B7280"
-                                                                                            strokeWidth="1.5"
-                                                                                            strokeLinecap="round"
-                                                                                            strokeLinejoin="round">
-                                                                                            <path d="M17 3a2.85 2.83 0 1 1
-                                                                            4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                                                            <path d="m15 5 4 4"/>
-                                                                                        </svg>
-                                                                                        <h4>
-                                                                                            Edit post
-                                                                                        </h4>
-                                                                                    </Link>
-
-                                                                                    <div
-                                                                                        className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                                        <svg
-                                                                                            className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 0 24
-                                                                            24" fill="none" stroke="#6B7280"
-                                                                                            strokeWidth="1.5"
-                                                                                            strokeLinecap="round"
-                                                                                            strokeLinejoin="round">
-                                                                                            <path d="M3 6h18"/>
-                                                                                            <path
-                                                                                                d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0
-                                                                            2 1 2 2v2"/>
-                                                                                            <line x1="10" x2="10"
-                                                                                                  y1="11" y2="17"/>
-                                                                                            <line x1="14" x2="14"
-                                                                                                  y1="11"
-                                                                                                  y2="17"/>
-                                                                                        </svg>
-                                                                                        <h4>
-                                                                                            Delete post
-                                                                                        </h4>
-                                                                                    </div>
-                                                                                </div>
+                                                                                <LuDot size={12}/>
+                                                                                <IoMdGlobe size={13}/>
                                                                             </div>
                                                                         </div>
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                </div>
+                                                                    </Link>
 
-                                                {loading ? (
-                                                    <>
-                                                        <Skeleton height={30} count={1}/>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <h4 className="mt-3 text-[14px] text-prgcolor">
-                                                            The SRS-XB100 speaker provides powerful, clear,
-                                                            expansive sound in a small, portable and durable
-                                                            body. Despite its size...
-                                                        </h4>
-                                                    </>
-                                                )}
-                                            </div>
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div onClick={handlePostMeDotClick}
+                                                                             ref={PostMeDotDropdownRef}
+                                                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${postMeDotClick ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                    0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+                                                                            {postMeDotClick &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+                                                                                            <Link href='#'
+                                                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M17 3a2.85 2.83 0 1 1
+                                                                            4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                                                                                    <path
+                                                                                                        d="m15 5 4 4"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Edit post
+                                                                                                </h4>
+                                                                                            </Link>
 
-                                            {/* Post Icons */}
-                                            <div className="post_icons mt-0">
-                                                {loading ? (
-                                                    <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
-                                                        <Skeleton height={40} count={1}/>
-                                                    </div>
-                                                ) : (
-                                                    <>
-                                                        <div
-                                                            className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
-                                                            <div className="flex items-center gap-1">
-                                                                <div className="cursor-pointer"
-                                                                     onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>
-                                                                    {isClickedLikePostTwo ? (
-                                                                        <GoHeartFill
-                                                                            className="w-4 h-4 text-primary hover:text-primary"/>
-                                                                    ) : (
-                                                                        <GoHeart
-                                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                                    )}
-                                                                </div>
-                                                                <div className="count">
-                                                                    <h4 className="text-[12px] text-prgcolor">112</h4>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex items-center gap-1">
-                                                                <div className="cursor-pointer">
-                                                                    <GoComment
-                                                                        className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
-                                                                </div>
-                                                                <div className="count">
-                                                                    <h4 className="text-[12px] text-prgcolor">852</h4>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex items-center gap-1">
-                                                                <div className="cursor-pointer">
-                                                                    <GoSync
-                                                                        className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
-                                                                </div>
-                                                                <div className="count">
-                                                                    <h4 className="text-[12px] text-prgcolor">2k</h4>
-                                                                </div>
-                                                            </div>
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24
+                                                                            24" fill="none" stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path
+                                                                                                        d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0
+                                                                            2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete post
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            )}
                                                         </div>
-                                                    </>
-                                                )}
+
+                                                        {loading ? (
+                                                            <>
+                                                                <Skeleton height={30} count={1}/>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <h4 className="mt-3 text-[14px] text-prgcolor">
+                                                                    The SRS-XB100 speaker provides powerful, clear,
+                                                                    expansive sound in a small, portable and durable
+                                                                    body. Despite its size...
+                                                                </h4>
+                                                            </>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Post Icons */}
+                                                    <div className="post_icons mt-0">
+                                                        {loading ? (
+                                                            <div
+                                                                className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                                                <Skeleton height={40} count={1}/>
+                                                            </div>
+                                                        ) : (
+                                                            <>
+                                                                <div
+                                                                    className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
+                                                                    <div className="flex items-center gap-1">
+                                                                        <div className="cursor-pointer"
+                                                                             onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>
+                                                                            {isClickedLikePostTwo ? (
+                                                                                <GoHeartFill
+                                                                                    className="w-4 h-4 text-primary hover:text-primary"/>
+                                                                            ) : (
+                                                                                <GoHeart
+                                                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="count">
+                                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="flex items-center gap-1">
+                                                                        <div className="cursor-pointer">
+                                                                            <GoComment
+                                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                                        </div>
+                                                                        <div className="count">
+                                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="flex items-center gap-1">
+                                                                        <div className="cursor-pointer">
+                                                                            <GoSync
+                                                                                className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                                        </div>
+                                                                        <div className="count">
+                                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </Tabs.Item>
@@ -971,7 +1111,7 @@ function Page() {
                             </div>
                         </div>
 
-                        <div className="col">
+                        <div className="col lg:col-span-4">
                             <div className="right_side"
                                  style={{
                                      padding: '10px 0px',
