@@ -362,8 +362,8 @@ function Page() {
                                             Edit Profile
                                         </button>
 
-                                        <button type='button'
-                                                className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
+                                        <Link href='/profile-view'
+                                              className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
                                             <svg
                                                 className="w-4 h-4 group-hover:stroke-white"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
@@ -380,7 +380,7 @@ function Page() {
                                                     d="M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/>
                                             </svg>
                                             View as
-                                        </button>
+                                        </Link>
 
                                         <div className="flex items-center justify-end text-end">
                                             <div onClick={handleProfileDotClick}

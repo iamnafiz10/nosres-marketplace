@@ -252,8 +252,8 @@ function Page() {
                                     </h4>
                                 </div>
                                 <div className="first">
-                                    <button type='button'
-                                            className="py-2 px-4 group rounded bg-gray-100 flex items-center border gap-1 text-[14px] text-primary hover:border-white hover:text-white hover:bg-primary">
+                                    <Link href='/profile'
+                                          className="py-2 px-4 group rounded bg-gray-100 flex items-center border gap-1 text-[14px] text-primary hover:border-white hover:text-white hover:bg-primary">
                                         <div className="icon">
                                             <svg
                                                 className="w-4 h-4 group-hover:stroke-white"
@@ -271,7 +271,7 @@ function Page() {
                                         <h4 className="text-[14px] text-primary group-hover:text-white">
                                             Exit
                                         </h4>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
