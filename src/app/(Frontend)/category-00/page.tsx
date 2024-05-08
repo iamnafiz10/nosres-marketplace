@@ -756,11 +756,9 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/*----------------------- Modal Show Area  ---------------*/
-                }
+                {/*----------------------- Modal Show Area  ---------------*/}
 
-                {/* Start FeedbackAd Pop-Up Start (Right Side) */
-                }
+                {/* Start FeedbackAd Pop-Up Start (Right Side) */}
                 <Modal size="lg"
                        show={openFeedbackAdModalRightSide}
                        style={{
