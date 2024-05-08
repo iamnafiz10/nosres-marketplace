@@ -910,7 +910,7 @@ function Page() {
                         <div className="col lg:col-span-4">
                             <div className="right_side"
                                  style={{
-                                     padding: '10px 0px',
+                                     padding: '12px 0px',
                                  }}
                             >
                                 {loading ? (
@@ -1461,117 +1461,7 @@ function Page() {
                             </div>
 
                             <div className="people_content box rounded bg-white py-4">
-                                <div className="box cursor-pointer py-2 px-2 border rounded">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="content">
-                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                            </div>
-                                        </div>
-                                        {isFollowingOne ? (
-                                            <div onClick={handleToggleFollowingOne}
-                                                 className="following_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
-                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <path d="M22 21v-2a4 4 0 0
-                                                        0-3-3.87"/>
-                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                                    </svg>
-                                                </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Following
-                                                </h4>
-                                            </div>
-                                        ) : (
-                                            <div onClick={handleToggleFollowingOne}
-                                                 className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
-                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
-                                                </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="content">
-                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                            </div>
-                                        </div>
-                                        {isFollowingBack ? (
-                                            <div onClick={handleToggleFollowingBack}
-                                                 className="following_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
-                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <path d="M22 21v-2a4 4 0 0
-                                                        0-3-3.87"/>
-                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                                    </svg>
-                                                </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Following
-                                                </h4>
-                                            </div>
-                                        ) : (
-                                            <div onClick={handleToggleFollowingBack}
-                                                 className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
-                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
-                                                </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow back
-                                                </h4>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1602,7 +1492,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1633,7 +1523,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1664,7 +1554,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1695,7 +1585,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1726,7 +1616,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1757,7 +1647,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1788,7 +1678,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1819,7 +1709,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1850,7 +1740,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1881,7 +1771,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1912,7 +1802,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -1943,38 +1833,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="content">
-                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                            </div>
-                                        </div>
-                                        <div
-                                            className="follow_box border py-1 px-4 rounded flex items-center gap-1">
-                                            <div className="icon">
-                                                <svg
-                                                    className="w-4 h-4"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path d="M16 21v-2a4 4 0 0
-                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                    <circle cx="9" cy="7" r="4"/>
-                                                    <line x1="19" x2="19" y1="8"
-                                                          y2="14"/>
-                                                    <line x1="22" x2="16" y1="11" y2="11"/>
-                                                </svg>
-                                            </div>
-                                            <h4 className="text-[14px] text-primary">
-                                                Follow
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2049,69 +1908,7 @@ function Page() {
                             </div>
 
                             <div className="people_content box rounded bg-white py-4">
-                                <div className="box cursor-pointer py-2 px-2 border rounded">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="content">
-                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
-                                            </div>
-                                        </div>
-                                        {isFollowingFollowees ? (
-                                            <div
-                                                onClick={handleToggleFollowingFollowees}
-                                                onMouseEnter={handleMouseEnter}
-                                                onMouseLeave={handleMouseLeave}
-                                                className="following_box border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                    24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
-                                                    0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <line x1="19" x2="19" y1="8"
-                                                              y2="14"/>
-                                                        <line x1="22" x2="16" y1="11" y2="11"/>
-                                                    </svg>
-                                                </div>
-                                                <h4 className="text-[14px] text-primary">
-                                                    Follow
-                                                </h4>
-                                            </div>
-                                        ) : (
-                                            <div
-                                                onClick={handleToggleFollowingFollowees}
-                                                onMouseEnter={handleMouseEnter}
-                                                onMouseLeave={handleMouseLeave}
-                                                className="follow_box group border py-1 px-4 rounded flex items-center gap-1">
-                                                <div className="icon">
-                                                    <svg
-                                                        className="w-4 h-4 group-hover:stroke-red-600"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                        24" fill="none" stroke="#4D7FB8" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M16 21v-2a4 4 0 0
-                                                        0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                                        <circle cx="9" cy="7" r="4"/>
-                                                        <path d="M22 21v-2a4 4 0 0
-                                                        0-3-3.87"/>
-                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                                    </svg>
-                                                </div>
-                                                <h4 className="text-[14px] text-primary group-hover:text-red-600">
-                                                    {isHovering ? 'Unfollow' : 'Following'}
-                                                </h4>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2142,7 +1939,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2173,7 +1970,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2204,7 +2001,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2235,7 +2032,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2266,7 +2063,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2297,7 +2094,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2328,7 +2125,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2359,7 +2156,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2390,7 +2187,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2421,7 +2218,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2452,7 +2249,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2483,7 +2280,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2514,7 +2311,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
@@ -2545,7 +2342,7 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                <div className="box mt-2 cursor-not-allowed py-2 px-2 border rounded">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
