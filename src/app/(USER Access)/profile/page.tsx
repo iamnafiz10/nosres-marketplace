@@ -453,7 +453,7 @@ function Page() {
                                 <Tabs aria-label="Tabs with underline" style="underline">
                                     <Tabs.Item active title="Posts">
                                         <div className="block lg:flex items-start justify-between gap-0">
-                                            <div className="box py-4 px-4 w-[185px] bg-white rounded">
+                                            <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
                                                 <Image src={ProfileImg} className="w-12 h-12 rounded-full"
                                                        alt="ProfileImg"/>
                                                 <h4 className="mt-1 text-[14px] font-[500]">
@@ -541,7 +541,7 @@ function Page() {
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div className="post_wrap w-full lg:w-[495px]">
+                                            <div className="post_wrap mt-6 lg:mt-0 w-full lg:w-[495px]">
                                                 {/* Post Box Profile One */}
                                                 <div className="post_box_wrap">
                                                     <div className="box bg-white px-4 py-4 rounded rounded-b-none">
