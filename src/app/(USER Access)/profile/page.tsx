@@ -176,6 +176,7 @@ function Page() {
         handleRemoveClick();
         setOpenProfileImageModal(false);
     };
+    const currentYear = new Date().getFullYear();
 
     const handleSaveClick = () => {
         handleRemoveClick();
@@ -553,7 +554,8 @@ function Page() {
                                                                                                  y2="12"/></svg>
 
                                                         </span>
-                                                                <h4>jebonasakib.com</h4>
+                                                                <Link href='#'
+                                                                      className="text-blue-500">jebonasakib.com</Link>
                                                             </li>
                                                         </>
                                                     )}
@@ -1346,6 +1348,59 @@ function Page() {
                                         </>
                                     )}
                                 </div>
+
+                                <footer className="mt-4">
+                                    {loading ? (
+                                        <div>
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>About Nosres</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Privacy</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Terms</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Careers</Link>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <LuDot size={12}/>
+                                                </li>
+                                                <li className="hover:text-primary">
+                                                    <Link href='#'>Support</Link>
+                                                </li>
+                                            </ul>
+                                        </>
+                                    )}
+
+                                    {loading ? (
+                                        <div>
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <h4 className="mt-[8px] text-graycolor text-[12px]">© {currentYear} Nosres
+                                                Inc. All
+                                                rights
+                                                reserved.</h4>
+                                        </>
+                                    )}
+                                </footer>
                             </div>
                         </div>
                     </div>

@@ -2929,7 +2929,6 @@ export default function Home() {
 
                         {/* Right Sidebar */}
                         <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mr-[0px]">
-
                             <div className={`box bg-white px-4 py-4 rounded ${hideDiv1 ? 'hidden' : ''}`}>
                                 {loading ? (
                                     <div>
