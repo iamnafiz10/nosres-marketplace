@@ -914,16 +914,18 @@ function Page() {
                                  }}
                             >
                                 {loading ? (
-                                    <Skeleton height={10} count={1}/>
+                                    <div className="pb-[5px]">
+                                        <Skeleton height={10} count={1}/>
+                                    </div>
                                 ) : (
                                     <>
-                                        <h4 className="text-[14px] font-[500] text-prgcolor pb-3">
+                                        <h4 className="text-[14px] font-[500] text-prgcolor pb-[9px]">
                                             You may like to follow
                                         </h4>
                                     </>
                                 )}
                                 <hr/>
-                                <div className="mt-4 people_content box rounded bg-white py-4 px-6">
+                                <div className="mt-[19px] people_content box rounded bg-white py-4 px-6">
                                     {loading ? (
                                         <Skeleton height={10} count={1}/>
                                     ) : (

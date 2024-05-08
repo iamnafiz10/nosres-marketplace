@@ -3,8 +3,7 @@ import React from "react";
 import useLoading from "@/app/useLoading";
 import Skeleton from "react-loading-skeleton";
 import useTitle from "@/app/useTitle";
-import Image from "next/image";
-import CategoryOneImg from '../../../../public/assets/images/category-two.png';
+import { Tabs } from "flowbite-react";
 
 export default function Home() {
     const loading = useLoading();
@@ -12,156 +11,36 @@ export default function Home() {
     return (
         <>
             <section id="home-page-section">
+                <div className="topbar_tab_wrap">
+                    <Tabs aria-label="Pills" style="pills">
+                        <Tabs.Item active title="Tab 1">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
+                        </Tabs.Item>
+                        <Tabs.Item title="Tab 2">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Content 2</p>
+                        </Tabs.Item>
+                        <Tabs.Item title="Tab 3">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Content 3</p>
+                        </Tabs.Item>
+                        <Tabs.Item title="Tab 4">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Content 4</p>
+                        </Tabs.Item>
+                        <Tabs.Item disabled title="Tab 5">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Content 5</p>
+                        </Tabs.Item>
+                    </Tabs>
+                </div>
                 <div className="container py-16">
                     <div className="grid grid-cols-1 lg:grid-cols-12">
                         <div className="col lg:col-span-2"></div>
-                        <div className="col ml-0 lg:ml-10 lg:col-span-6">
-                            {/* Body Content */}
-                            <div className="heading_wrap">
-                                <h4 className="text-[20px] font-[500]">All Categories</h4>
-                            </div>
-                            <div className="grid grid-cols-3 gap-4 mt-2">
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                            <Skeleton height={150} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="text-[16px] font-[500]">
-                                                Electronics
-                                            </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
-                                        </>
-                                    )}
-                                </div>
-                            </div>
+
+                        {/* Body Content */}
+                        <div className="col ml-0 lg:ml-10 lg:col-span-7">
+                            <h1>Hi</h1>
                         </div>
 
                         {/* Right Sidebar */}
-                        <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
-
+                        <div className="col lg:col-span-3 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
                         </div>
                     </div>
                 </div>
