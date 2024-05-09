@@ -782,6 +782,9 @@ export default function Home() {
         };
     }, []);
 
+    // WhoLike WhoShare Popup
+    const [openStartWhoLikeModal, setOpenStartWhoLikeModal] = useState<boolean>(false);
+    const [openStartWhoShareModal, setOpenStartWhoShareModal] = useState<boolean>(false);
     return (
         <>
             <section id="home-page-section">
@@ -855,7 +858,7 @@ export default function Home() {
                                                     <Link href='#' className="flex items-center gap-1">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                         <div className="leading-[17px]">
-                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                 Sony Inc.
                                                             </h4>
                                                             <span
@@ -1158,7 +1161,7 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             John Doe
                                                         </h4>
 
@@ -2201,7 +2204,7 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             Inna K.
                                                         </h4>
                                                         <div className="flex items-center text-graycolor font-normal">
@@ -2397,7 +2400,7 @@ export default function Home() {
                                                     <Link href='#' className="flex items-center gap-1">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                         <div className="leading-[17px]">
-                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                 Robert Fox
                                                             </h4>
                                                             <div
@@ -2557,7 +2560,10 @@ export default function Home() {
                                                             )}
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
+                                                            <h4 onClick={() => setOpenStartWhoLikeModal(true)}
+                                                                className="text-[12px] cursor-pointer text-prgcolor hover:underline">
+                                                                112
+                                                            </h4>
                                                         </div>
                                                     </div>
 
@@ -2631,7 +2637,8 @@ export default function Home() {
                                                             }
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
+                                                            <h4 onClick={() => setOpenStartWhoShareModal(true)}
+                                                                className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2761,7 +2768,7 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="flex items-center gap-0">
-                                                        <h4 className="text-[14px] mr-1 font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] mr-1 font-semibold text-prgcolor hover:underline">
                                                             Inna K.
                                                         </h4>
                                                         <h4 className="text-graycolor text-[14px] flex items-center gap-0">
@@ -2820,7 +2827,7 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             Robert Fox
                                                         </h4>
                                                         <div
@@ -3152,7 +3159,7 @@ export default function Home() {
                                                     <div className="flex items-center gap-2">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                         <div className="leading-[17px]">
-                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                                 Sony Inc.
                                                             </h4>
                                                             <span
@@ -3447,7 +3454,7 @@ export default function Home() {
                         <div className="modal_body">
                             <div className="flex items-center gap-1">
                                 <HiUserCircle size={50} className="text-graycolor"/>
-                                <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
+                                <h4 className="text-[14px] text-prgcolor font-[500] hover:underline">John Doe</h4>
 
                                 <div onClick={() => setOpenStartAudienceModal(true)}
                                      className="dropdown_menu ml-2">
@@ -5530,7 +5537,7 @@ export default function Home() {
                         <div className="modal_body">
                             <div className="flex items-center gap-1">
                                 <HiUserCircle size={50} className="text-graycolor"/>
-                                <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
+                                <h4 className="text-[14px] text-prgcolor font-[500] hover:underline">John Doe</h4>
 
                                 <div onClick={() => setOpenStartAudienceModal(true)}
                                      className="dropdown_menu ml-2">
@@ -5866,7 +5873,7 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             John Doe
                                                         </h4>
 
@@ -6805,6 +6812,320 @@ export default function Home() {
                     </Modal.Body>
                 </Modal>
                 {/* PosImage Pop-Up End */}
+
+                {/* Start WhoLike Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartWhoLikeModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartWhoLikeModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">People Who Like This</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="people_content box rounded bg-white">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* WhoLike Pop-Up End */}
+
+                {/* Start WhoShare Pop-Up Start */}
+                <Modal size="lg"
+                       dismissible
+                       show={openStartWhoShareModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartWhoShareModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">People Who Share This</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="people_content box rounded bg-white">
+                                <div className="box cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="box mt-2 cursor-pointer py-2 px-2 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* WhoLike Pop-Up End */}
             </section>
         </>
     )

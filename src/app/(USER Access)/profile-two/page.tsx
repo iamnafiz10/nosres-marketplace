@@ -661,7 +661,7 @@ function Page() {
                                                                         <HiUserCircle size={35}
                                                                                       className="text-[#6B7280]"/>
                                                                         <div className="leading-[17px]">
-                                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                                 Robert Fox
                                                                             </h4>
                                                                             <div
@@ -881,7 +881,7 @@ function Page() {
                                                                         <HiUserCircle size={35}
                                                                                       className="text-[#6B7280]"/>
                                                                         <div className="leading-[17px]">
-                                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                                 John Doe
                                                                             </h4>
 
@@ -1524,7 +1524,7 @@ function Page() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             John Doe
                                                         </h4>
 

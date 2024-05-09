@@ -126,7 +126,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -142,7 +142,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -158,7 +158,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -174,7 +174,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -190,7 +190,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -206,7 +206,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -222,7 +222,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -238,7 +238,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -254,7 +254,7 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[14px] font-semibold">
+                                            <h4 className="text-[14px] font-normal">
                                                 Electronics
                                             </h4>
                                             <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
@@ -278,7 +278,7 @@ export default function Home() {
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
                                                 <GoHistory className="w-[18px] h-[18px] text-[#6B7280]"/>
-                                                <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                <h4 className="text-[14px] font-normal text-prgcolor">
                                                     Recently Viewed Items
                                                 </h4>
                                             </div>
@@ -440,7 +440,7 @@ export default function Home() {
                                     <>
                                         <div className="flex gap-2 items-center">
                                             <GoPackage className="w-5 h-5 text-[#6B7280]"/>
-                                            <h4 className="relative text-[14px] font-semibold">
+                                            <h4 className="relative text-[14px] font-normal">
                                                 Sell on Nosres
                                                 <span
                                                     className="absolute -right-8 -top-1 text-[12px] font-normal text-primary">BETA</span>
@@ -489,7 +489,7 @@ export default function Home() {
                                                     <div className="flex items-center gap-2">
                                                         <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                         <div className="leading-[17px]">
-                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[14px] font-normal text-prgcolor hover:underline">
                                                                 Sony Inc.
                                                             </h4>
                                                             <span

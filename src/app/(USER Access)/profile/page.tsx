@@ -242,7 +242,8 @@ function Page() {
                                 <div className="flex items-center gap-2">
                                     <Image src={UserImg} className="w-10 h-10 rounded-full" alt="UserImg"/>
                                     <div className="wrap">
-                                        <h4 className="text-[14px] text-prgcolor font-[500]">John Doe</h4>
+                                        <h4 className="text-[14px] text-prgcolor font-[500] hover:underline">John
+                                            Doe</h4>
                                         <h4 className="text-[12px] text-graycolor">Taipei, Taiwan</h4>
                                     </div>
                                 </div>
@@ -583,7 +584,7 @@ function Page() {
                                                                         <HiUserCircle size={35}
                                                                                       className="text-[#6B7280]"/>
                                                                         <div className="leading-[17px]">
-                                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                                 Robert Fox
                                                                             </h4>
                                                                             <div
@@ -803,7 +804,7 @@ function Page() {
                                                                         <HiUserCircle size={35}
                                                                                       className="text-[#6B7280]"/>
                                                                         <div className="leading-[17px]">
-                                                                            <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                                 John Doe
                                                                             </h4>
 
@@ -1447,7 +1448,7 @@ function Page() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             John Doe
                                                         </h4>
 

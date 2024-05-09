@@ -59,7 +59,7 @@ export default function Home() {
         <>
             <section id="home-page-section">
                 <div className="pt-[49px]">
-                    <div className="topbar_tab_wrap bg-white py-3 border">
+                    <div className="topbar_tab_wrap fixed w-full bg-white py-3 border">
                         <div className="container">
                             <div className="flex items-center gap-2">
                                 <button
@@ -125,7 +125,7 @@ export default function Home() {
                         <div className="col lg:col-span-2"></div>
 
                         {/* Body Content */}
-                        <div className="col ml-0 lg:ml-10 lg:col-span-6">
+                        <div className="col ml-0 lg:ml-10 lg:col-span-8">
                             <div className={`all_content ${activeTab === 'all' ? 'block' : 'hidden'}`}>
                                 {/* Listing */}
                                 <div className="box py-4 px-6 bg-white rounded">
@@ -545,7 +545,7 @@ export default function Home() {
                                                                 <Link href='#' className="flex items-center gap-1">
                                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                                     <div className="leading-[17px]">
-                                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                             John Doe
                                                                         </h4>
 
@@ -601,7 +601,7 @@ export default function Home() {
                                                                         )}
                                                                     </div>
                                                                     <div className="count">
-                                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                        <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">112</h4>
                                                                     </div>
                                                                 </div>
 
@@ -611,7 +611,7 @@ export default function Home() {
                                                                             className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                                     </div>
                                                                     <div className="count">
-                                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                        <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">852</h4>
                                                                     </div>
                                                                 </div>
 
@@ -621,7 +621,7 @@ export default function Home() {
                                                                             className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                                     </div>
                                                                     <div className="count">
-                                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                        <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">2k</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -693,7 +693,7 @@ export default function Home() {
                                                                 <Link href='#' className="flex items-center gap-1">
                                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                                     <div className="leading-[17px]">
-                                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                                             Inna K.
                                                                         </h4>
                                                                         <div
@@ -771,7 +771,7 @@ export default function Home() {
                                                                         )}
                                                                     </div>
                                                                     <div className="count">
-                                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                        <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">112</h4>
                                                                     </div>
                                                                 </div>
 
@@ -781,7 +781,7 @@ export default function Home() {
                                                                             className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                                     </div>
                                                                     <div className="count">
-                                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                        <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">852</h4>
                                                                     </div>
                                                                 </div>
 
@@ -791,7 +791,7 @@ export default function Home() {
                                                                             className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                                     </div>
                                                                     <div className="count">
-                                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                        <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">2k</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -868,7 +868,7 @@ export default function Home() {
                         </div>
 
                         {/* Right Sidebar */}
-                        <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
+                        <div className="col lg:col-span-2 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
                         </div>
                     </div>
                 </div>
@@ -914,7 +914,7 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
                                                             John Doe
                                                         </h4>
 
@@ -1025,7 +1025,7 @@ export default function Home() {
                                                             )}
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                            <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">112</h4>
                                                         </div>
                                                     </div>
 
@@ -1035,7 +1035,7 @@ export default function Home() {
                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                            <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">852</h4>
                                                         </div>
                                                     </div>
 
@@ -1045,7 +1045,7 @@ export default function Home() {
                                                                 className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                            <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">2k</h4>
                                                         </div>
                                                     </div>
                                                 </div>
