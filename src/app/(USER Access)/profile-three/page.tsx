@@ -378,12 +378,12 @@ function Page() {
                                         </div>
                                         <div className="ml-[3px] mt-2 flex items-center gap-0 text-[14px]">
                                             <h4 onClick={() => setOpenStartFollowersModal(true)}
-                                                className="cursor-pointer">
+                                                className="cursor-pointer hover:underline">
                                                 26K followers
                                             </h4>
                                             <LuDot size={17}/>
                                             <h4 onClick={() => setOpenStartFolloweesModal(true)}
-                                                className="cursor-pointer">
+                                                className="cursor-pointer hover:underline">
                                                 26K followees
                                             </h4>
                                         </div>
@@ -630,7 +630,7 @@ function Page() {
 
                                                         </span>
                                                                 <Link href='#'
-                                                                      className="text-blue-500">jebonasakib.com</Link>
+                                                                      className="text-blue-500 hover:underline">jebonasakib.com</Link>
                                                             </li>
                                                         </>
                                                     )}
@@ -1282,7 +1282,7 @@ function Page() {
                                     ) : (
                                         <>
                                             <button onClick={() => setOpenStartPeopleMoreModal(true)} type='button'
-                                                    className="pt-4 text-[14px] text-primary">
+                                                    className="pt-4 text-[14px] text-primary hover:underline">
                                                 See more
                                             </button>
                                         </>
@@ -1417,7 +1417,7 @@ function Page() {
                                     ) : (
                                         <>
                                             <button onClick={() => setOpenStartStoresMoreModal(true)} type='button'
-                                                    className="pt-4 text-[14px] text-primary">
+                                                    className="pt-4 text-[14px] text-primary hover:underline">
                                                 See more
                                             </button>
                                         </>
