@@ -52,6 +52,47 @@ button {
     outline: none;
 }
 
+/* Ant Design Checkbox */
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #4D7FB8 !important;
+    border-color: #4D7FB8 !important;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #4D7FB8 !important;
+    border-color: #4D7FB8 !important;
+}
+
+.ant-checkbox-checked:hover .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #4D7FB8 !important;
+    border-color: #4D7FB8 !important;
+}
+
+.ant-checkbox-checked:after {
+    border-color: #4D7FB8 !important;
+}
+
+.ant-checkbox:hover::after {
+    border-color: #4D7FB8 !important;
+}
+
+.ant-checkbox:hover .ant-checkbox-inner {
+    border-color: #4D7FB8 !important;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner {
+    border-color: #4D7FB8 !important;
+}
+
+/* Dropdown design */
+#post_filter {
+    padding: 4px 20px !important;
+    border: 0 !important;
+    outline: 0 !important;
+    --tw-ring-opacity: 0 !important;
+}
+
+/* Modal design */
 .modal_cntrl button {
     outline: none !important;
 }

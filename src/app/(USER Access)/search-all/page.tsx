@@ -8,7 +8,7 @@ import StoreImg from '@/../public/assets/images/store.jpg';
 import UserImg from '@/../public/assets/images/profile/user.jpg';
 import Image from "next/image";
 import {FaPlus} from "react-icons/fa";
-import {GoComment, GoHeart, GoHeartFill, GoReply, GoSmiley, GoSync} from "react-icons/go";
+import {GoComment, GoHeart, GoHeartFill, GoSmiley, GoSync} from "react-icons/go";
 import {HiUserCircle} from "react-icons/hi";
 import Link from "next/link";
 import {LuDot} from "react-icons/lu";
@@ -58,14 +58,14 @@ export default function Home() {
     return (
         <>
             <section id="home-page-section">
-                <div className="pt-[49px]">
-                    <div className="topbar_tab_wrap fixed w-full bg-white py-3 border">
+                <div className="py-[49px]">
+                    <div className="topbar_tab_wrap fixed w-full bg-white py-2 border z-20">
                         <div className="container">
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => handleTabClick('all')}
                                     type='button'
-                                    className={`py-2 px-4 rounded-full text-[14px] ${
+                                    className={`py-1 px-4 rounded text-[12px] ${
                                         activeTab === 'all'
                                             ? 'text-white bg-primary border'
                                             : 'text-black bg-gray-100 hover:bg-primary hover:text-white border hover:border-primary'
@@ -75,7 +75,7 @@ export default function Home() {
                                 <button
                                     type='button'
                                     onClick={() => handleTabClick('posts')}
-                                    className={`py-2 px-4 rounded-full text-[14px] ${
+                                    className={`py-1 px-4 rounded text-[12px] ${
                                         activeTab === 'posts'
                                             ? 'text-white bg-primary border'
                                             : 'text-black bg-gray-100 hover:bg-primary hover:text-white border hover:border-primary'
@@ -86,7 +86,7 @@ export default function Home() {
                                 <button
                                     type='button'
                                     onClick={() => handleTabClick('listings')}
-                                    className={`py-2 px-4 rounded-full text-[14px] ${
+                                    className={`py-1 px-4 rounded text-[12px] ${
                                         activeTab === 'listings'
                                             ? 'text-white bg-primary border'
                                             : 'text-black bg-gray-100 hover:bg-primary hover:text-white border hover:border-primary'
@@ -97,7 +97,7 @@ export default function Home() {
                                 <button
                                     type='button'
                                     onClick={() => handleTabClick('stores')}
-                                    className={`py-2 px-4 rounded-full text-[14px] ${
+                                    className={`py-1 px-4 rounded text-[12px] ${
                                         activeTab === 'stores'
                                             ? 'text-white bg-primary border'
                                             : 'text-black bg-gray-100 hover:bg-primary hover:text-white border hover:border-primary'
@@ -108,7 +108,7 @@ export default function Home() {
                                 <button
                                     type='button'
                                     onClick={() => handleTabClick('users')}
-                                    className={`py-2 px-4 rounded-full text-[14px] ${
+                                    className={`py-1 px-4 rounded text-[12px] ${
                                         activeTab === 'users'
                                             ? 'text-white bg-primary border'
                                             : 'text-black bg-gray-100 hover:bg-primary hover:text-white border hover:border-primary'
@@ -125,7 +125,7 @@ export default function Home() {
                         <div className="col lg:col-span-2"></div>
 
                         {/* Body Content */}
-                        <div className="col ml-0 lg:ml-10 lg:col-span-8">
+                        <div className="col ml-0 lg:ml-10 lg:col-span-9">
                             <div className={`all_content ${activeTab === 'all' ? 'block' : 'hidden'}`}>
                                 {/* Listing */}
                                 <div className="box py-4 px-6 bg-white rounded">
@@ -134,7 +134,7 @@ export default function Home() {
                                     </div>
                                     <hr/>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 pb-4">
-                                        <div className="col border rounded p-4">
+                                        <div className="col border rounded p-4 cursor-pointer">
                                             <Image src={ProductImg} alt="ProductImg"/>
                                             <div className="product_content mt-3">
                                                 <h4 className='text-[12px] text-graycolor'>
@@ -143,16 +143,12 @@ export default function Home() {
                                                 <h4 className='text-[14px] text-prgcolor font-[500]'>
                                                     Playstation X
                                                 </h4>
-                                                <h4 className='mt-1 text-[14px] text-prgcolor font-[500]'>
+                                                <h4 className='mt-1 text-[14px] text-black font-[500]'>
                                                     $1200.00
                                                 </h4>
-                                                <button type='button'
-                                                        className="mt-4 py-2 px-4 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
-                                                    Add to Cart
-                                                </button>
                                             </div>
                                         </div>
-                                        <div className="col border rounded p-4">
+                                        <div className="col border rounded p-4 cursor-pointer">
                                             <Image src={ProductImg} alt="ProductImg"/>
                                             <div className="product_content mt-3">
                                                 <h4 className='text-[12px] text-graycolor'>
@@ -161,16 +157,12 @@ export default function Home() {
                                                 <h4 className='text-[14px] text-prgcolor font-[500]'>
                                                     Playstation X
                                                 </h4>
-                                                <h4 className='mt-1 text-[14px] text-prgcolor font-[500]'>
+                                                <h4 className='mt-1 text-[14px] text-black font-[500]'>
                                                     $1200.00
                                                 </h4>
-                                                <button type='button'
-                                                        className="mt-4 py-2 px-4 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
-                                                    Add to Cart
-                                                </button>
                                             </div>
                                         </div>
-                                        <div className="col border rounded p-4">
+                                        <div className="col border rounded p-4 cursor-pointer">
                                             <Image src={ProductImg} alt="ProductImg"/>
                                             <div className="product_content mt-3">
                                                 <h4 className='text-[12px] text-graycolor'>
@@ -179,13 +171,9 @@ export default function Home() {
                                                 <h4 className='text-[14px] text-prgcolor font-[500]'>
                                                     Playstation X
                                                 </h4>
-                                                <h4 className='mt-1 text-[14px] text-prgcolor font-[500]'>
+                                                <h4 className='mt-1 text-[14px] text-black font-[500]'>
                                                     $1200.00
                                                 </h4>
-                                                <button type='button'
-                                                        className="mt-4 py-2 px-4 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
-                                                    Add to Cart
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -208,13 +196,13 @@ export default function Home() {
                                         <div className="col border rounded py-4 px-6">
                                             <div className="block lg:flex items-center justify-between">
                                                 <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={StoreImg} className="w-[100px] h-[100px]"
+                                                    <Image src={StoreImg} className="w-[80px] h-[80px] rounded-full"
                                                            alt="StoreImg"/>
                                                     <div className="content_wrap">
                                                         <h4 className="text-[16px] font-[500]">
                                                             Store name
                                                         </h4>
-                                                        <div className="mt-3 flex items-center gap-1">
+                                                        <div className="mt-2 flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
@@ -233,7 +221,7 @@ export default function Home() {
                                                             </h4>
                                                         </div>
 
-                                                        <div className="mt-2 flex items-center gap-1">
+                                                        <div className="mt-1 flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
@@ -265,13 +253,13 @@ export default function Home() {
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
                                                 <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={StoreImg} className="w-[100px] h-[100px]"
+                                                    <Image src={StoreImg} className="w-[80px] h-[80px] rounded-full"
                                                            alt="StoreImg"/>
                                                     <div className="content_wrap">
                                                         <h4 className="text-[16px] font-[500]">
                                                             Store name
                                                         </h4>
-                                                        <div className="mt-3 flex items-center gap-1">
+                                                        <div className="mt-2 flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
@@ -290,7 +278,7 @@ export default function Home() {
                                                             </h4>
                                                         </div>
 
-                                                        <div className="mt-2 flex items-center gap-1">
+                                                        <div className="mt-1 flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
@@ -322,13 +310,13 @@ export default function Home() {
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
                                                 <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={StoreImg} className="w-[100px] h-[100px]"
+                                                    <Image src={StoreImg} className="w-[80px] h-[80px] rounded-full"
                                                            alt="StoreImg"/>
                                                     <div className="content_wrap">
                                                         <h4 className="text-[16px] font-[500]">
                                                             Store name
                                                         </h4>
-                                                        <div className="mt-3 flex items-center gap-1">
+                                                        <div className="mt-2 flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
@@ -347,7 +335,7 @@ export default function Home() {
                                                             </h4>
                                                         </div>
 
-                                                        <div className="mt-2 flex items-center gap-1">
+                                                        <div className="mt-1 flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
@@ -396,7 +384,7 @@ export default function Home() {
                                         <div className="col border rounded py-4 px-6">
                                             <div className="block lg:flex items-center justify-between">
                                                 <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={UserImg} className="w-[100px] h-[100px] rounded-full"
+                                                    <Image src={UserImg} className="w-[80px] h-[80px] rounded-full"
                                                            alt="UserImg"/>
                                                     <div className="content_wrap">
                                                         <h4 className="text-[16px] font-[500]">
@@ -416,7 +404,7 @@ export default function Home() {
                                                                     <circle cx="12" cy="10" r="3"/>
                                                                 </svg>
                                                             </div>
-                                                            <h4 className="text-prgcolor text-[14px]">
+                                                            <h4 className="text-graycolor text-[14px]">
                                                                 Bangladesh, Raj
                                                             </h4>
                                                         </div>
@@ -434,7 +422,7 @@ export default function Home() {
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
                                                 <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={UserImg} className="w-[100px] h-[100px] rounded-full"
+                                                    <Image src={UserImg} className="w-[80px] h-[80px] rounded-full"
                                                            alt="UserImg"/>
                                                     <div className="content_wrap">
                                                         <h4 className="text-[16px] font-[500]">
@@ -454,7 +442,7 @@ export default function Home() {
                                                                     <circle cx="12" cy="10" r="3"/>
                                                                 </svg>
                                                             </div>
-                                                            <h4 className="text-prgcolor text-[14px]">
+                                                            <h4 className="text-graycolor text-[14px]">
                                                                 Bangladesh, Raj
                                                             </h4>
                                                         </div>
@@ -472,7 +460,7 @@ export default function Home() {
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
                                                 <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={UserImg} className="w-[100px] h-[100px] rounded-full"
+                                                    <Image src={UserImg} className="w-[80px] h-[80px] rounded-full"
                                                            alt="UserImg"/>
                                                     <div className="content_wrap">
                                                         <h4 className="text-[16px] font-[500]">
@@ -492,7 +480,7 @@ export default function Home() {
                                                                     <circle cx="12" cy="10" r="3"/>
                                                                 </svg>
                                                             </div>
-                                                            <h4 className="text-prgcolor text-[14px]">
+                                                            <h4 className="text-graycolor text-[14px]">
                                                                 Bangladesh, Raj
                                                             </h4>
                                                         </div>
@@ -854,7 +842,406 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className={`posts_content ${activeTab === 'posts' ? 'block' : 'hidden'}`}>
-                                <h1>Posts</h1>
+                                {/*<div className="grid grid-cols-1 lg:grid-cols-12 gap-6">*/}
+                                {/*    <div className="col lg:col-span-4">*/}
+                                {/*        <div className="pb-4">*/}
+                                {/*            <h4 className="text-[14px] text-prgcolor">Filters</h4>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="box py-3 px-6 bg-white rounded">*/}
+                                {/*            <details open={true} className="group">*/}
+                                {/*                <summary*/}
+                                {/*                    className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
+                                {/*                    Post from*/}
+                                {/*                    <RxPlus*/}
+                                {/*                        className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
+                                {/*                </summary>*/}
+                                {/*                <ul className="mt-4 pb-3 space-y-2 text-gray-500 text-[12px]">*/}
+                                {/*                    <div id="checkbox" className="mt-3">*/}
+                                {/*                        <div className="flex items-center gap-2">*/}
+                                {/*                            <Checkbox>*/}
+                                {/*                                Anyone*/}
+                                {/*                            </Checkbox>*/}
+                                {/*                        </div>*/}
+                                {/*                        <div className="mt-2 flex items-center gap-2">*/}
+                                {/*                            <Checkbox>People</Checkbox>*/}
+                                {/*                        </div>*/}
+                                {/*                        <div className="mt-2 flex items-center gap-2">*/}
+                                {/*                            <Checkbox>Stores</Checkbox>*/}
+                                {/*                        </div>*/}
+                                {/*                    </div>*/}
+                                {/*                </ul>*/}
+                                {/*                <hr/>*/}
+                                {/*                <div className="mt-3">*/}
+                                {/*                    <button type='button'*/}
+                                {/*                            className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">*/}
+                                {/*                        Clear Setting*/}
+                                {/*                    </button>*/}
+                                {/*                </div>*/}
+                                {/*            </details>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div className="col lg:col-span-8">*/}
+                                {/*        <div className="flex text-[14px] items-center justify-end gap-3">*/}
+                                {/*            <div className="max-w-md">*/}
+                                {/*                <Select id="post_filter">*/}
+                                {/*                    <option>Sort by</option>*/}
+                                {/*                    <option>Newest</option>*/}
+                                {/*                    <option>Most Popular</option>*/}
+                                {/*                </Select>*/}
+                                {/*            </div>*/}
+                                {/*        </div>*/}
+                                {/*        <div className="box bg-white rounded">*/}
+                                {/*            <div className="grid grid-cols-1 mt-2 pb-4">*/}
+                                {/*                <div className="col border rounded py-4 px-6">*/}
+                                {/*                    /!* Post Box *!/*/}
+                                {/*                    <div className="post_box_wrap">*/}
+                                {/*                        <div*/}
+                                {/*                            className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">*/}
+                                {/*                            <div className="flex items-center justify-between">*/}
+                                {/*                                {loading ? (*/}
+                                {/*                                    <>*/}
+                                {/*                                        <div*/}
+                                {/*                                            className="flex items-center justify-start gap-2 w-full">*/}
+                                {/*                                            <Skeleton width={50} height={50}*/}
+                                {/*                                                      borderRadius="100%"*/}
+                                {/*                                                      count={1}/>*/}
+                                {/*                                            <Skeleton containerClassName="flex-1"*/}
+                                {/*                                                      height={50}*/}
+                                {/*                                                      count={1}/>*/}
+                                {/*                                        </div>*/}
+                                {/*                                    </>*/}
+                                {/*                                ) : (*/}
+                                {/*                                    <>*/}
+                                {/*                                        <Link href='#'*/}
+                                {/*                                              className="flex items-center gap-1">*/}
+                                {/*                                            <HiUserCircle size={35}*/}
+                                {/*                                                          className="text-[#6B7280]"/>*/}
+                                {/*                                            <div className="leading-[17px]">*/}
+                                {/*                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">*/}
+                                {/*                                                    John Doe*/}
+                                {/*                                                </h4>*/}
+
+                                {/*                                                <div*/}
+                                {/*                                                    className="flex items-center text-graycolor font-normal">*/}
+                                {/*                          <span*/}
+                                {/*                              className="text-[12px]">*/}
+                                {/*                            2h ago*/}
+                                {/*                        </span>*/}
+                                {/*                                                    <LuDot size={12}/>*/}
+                                {/*                                                    <IoMdGlobe size={13}/>*/}
+                                {/*                                                </div>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </Link>*/}
+                                {/*                                    </>*/}
+                                {/*                                )}*/}
+                                {/*                            </div>*/}
+
+                                {/*                            {loading ? (*/}
+                                {/*                                <>*/}
+                                {/*                                    <Skeleton height={30} count={1}/>*/}
+                                {/*                                </>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <h4 className="mt-3 text-[14px] text-prgcolor">*/}
+                                {/*                                        The SRS-XB100 speaker provides powerful, clear,*/}
+                                {/*                                        expansive sound in a small, portable and durable*/}
+                                {/*                                        body. Despite its size...*/}
+                                {/*                                    </h4>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+
+                                {/*                        /!* Post Icons *!/*/}
+                                {/*                        <div className="post_icons mt-0">*/}
+                                {/*                            {loading ? (*/}
+                                {/*                                <div*/}
+                                {/*                                    className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">*/}
+                                {/*                                    <Skeleton height={40} count={1}/>*/}
+                                {/*                                </div>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <div*/}
+                                {/*                                        className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">*/}
+                                {/*                                        <div className="flex items-center gap-1">*/}
+                                {/*                                            <div className="cursor-pointer"*/}
+                                {/*                                                 onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>*/}
+                                {/*                                                {isClickedLikePostTwo ? (*/}
+                                {/*                                                    <GoHeartFill*/}
+                                {/*                                                        className="w-4 h-4 text-primary hover:text-primary"/>*/}
+                                {/*                                                ) : (*/}
+                                {/*                                                    <GoHeart*/}
+                                {/*                                                        className="w-4 h-4 text-[#6B7280] hover:text-primary"/>*/}
+                                {/*                                                )}*/}
+                                {/*                                            </div>*/}
+                                {/*                                            <div className="count">*/}
+                                {/*                                                <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">112</h4>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+
+                                {/*                                        <div className="flex items-center gap-1">*/}
+                                {/*                                            <div className="cursor-pointer">*/}
+                                {/*                                                <GoComment*/}
+                                {/*                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>*/}
+                                {/*                                            </div>*/}
+                                {/*                                            <div className="count">*/}
+                                {/*                                                <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">852</h4>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+
+                                {/*                                        <div className="flex items-center gap-1">*/}
+                                {/*                                            <div className="cursor-pointer">*/}
+                                {/*                                                <GoSync*/}
+                                {/*                                                    className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>*/}
+                                {/*                                            </div>*/}
+                                {/*                                            <div className="count">*/}
+                                {/*                                                <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">2k</h4>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+                                {/*                                    </div>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+
+                                {/*                        /!* Post Write Comment *!/*/}
+                                {/*                        <div className="post_write_comment mt-0">*/}
+                                {/*                            {loading ? (*/}
+                                {/*                                <div*/}
+                                {/*                                    className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">*/}
+                                {/*                                    <Skeleton height={40} count={1}/>*/}
+                                {/*                                </div>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <div*/}
+                                {/*                                        className="flex items-center justify-between box bg-white px-4 py-2 rounded rounded-b-none">*/}
+                                {/*                                        <div*/}
+                                {/*                                            className="relative w-full flex items-center gap-1">*/}
+                                {/*                                            <HiUserCircle size={40}*/}
+                                {/*                                                          className="text-[#6B7280]"/>*/}
+                                {/*                                            <input*/}
+                                {/*                                                className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"*/}
+                                {/*                                                type="text"*/}
+                                {/*                                                placeholder="Write a comment..."*/}
+                                {/*                                            />*/}
+
+                                {/*                                            <div*/}
+                                {/*                                                className="absolute inset-y-0 right-2 flex items-center gap-4">*/}
+                                {/*                                                <div className="cursor-pointer">*/}
+                                {/*                                                    <svg*/}
+                                {/*                                                        xmlns="http://www.w3.org/2000/svg"*/}
+                                {/*                                                        viewBox="0 0 24 24"*/}
+                                {/*                                                        fill="#4D7FB8"*/}
+                                {/*                                                        className="w-5 h-5">*/}
+                                {/*                                                        <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0*/}
+                                {/*                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3*/}
+                                {/*                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0*/}
+                                {/*                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3*/}
+                                {/*                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"*/}
+                                {/*                                                              clipRule="evenodd"/>*/}
+                                {/*                                                    </svg>*/}
+                                {/*                                                </div>*/}
+                                {/*                                                <GoSmiley*/}
+                                {/*                                                    size={20}*/}
+                                {/*                                                    className="cursor-pointer text-graycolor hover:text-primary"/>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+                                {/*                                    </div>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+                                {/*                    </div>*/}
+                                {/*                </div>*/}
+
+                                {/*                <div className="col border rounded py-4 px-6 mt-4">*/}
+                                {/*                    /!* Post Box *!/*/}
+                                {/*                    <div className="post_box_wrap">*/}
+                                {/*                        <div*/}
+                                {/*                            className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">*/}
+                                {/*                            <div className="flex items-center justify-between">*/}
+                                {/*                                {loading ? (*/}
+                                {/*                                    <div*/}
+                                {/*                                        className="flex items-center justify-start gap-2 w-full">*/}
+                                {/*                                        <Skeleton width={50} height={50}*/}
+                                {/*                                                  borderRadius="100%"*/}
+                                {/*                                                  count={1}/>*/}
+                                {/*                                        <Skeleton containerClassName="flex-1"*/}
+                                {/*                                                  height={50}*/}
+                                {/*                                                  count={1}/>*/}
+                                {/*                                    </div>*/}
+                                {/*                                ) : (*/}
+                                {/*                                    <>*/}
+                                {/*                                        <Link href='#'*/}
+                                {/*                                              className="flex items-center gap-1">*/}
+                                {/*                                            <HiUserCircle size={35}*/}
+                                {/*                                                          className="text-[#6B7280]"/>*/}
+                                {/*                                            <div className="leading-[17px]">*/}
+                                {/*                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">*/}
+                                {/*                                                    Inna K.*/}
+                                {/*                                                </h4>*/}
+                                {/*                                                <div*/}
+                                {/*                                                    className="flex items-center text-graycolor font-normal">*/}
+                                {/*                          <span*/}
+                                {/*                              className="text-[12px]">*/}
+                                {/*                            6d ago*/}
+                                {/*                        </span>*/}
+                                {/*                                                    <LuDot size={12}/>*/}
+                                {/*                                                    <IoMdGlobe size={13}/>*/}
+                                {/*                                                </div>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </Link>*/}
+                                {/*                                    </>*/}
+                                {/*                                )}*/}
+                                {/*                            </div>*/}
+                                {/*                            {loading ? (*/}
+                                {/*                                <>*/}
+                                {/*                                    <Skeleton height={30} count={1}/>*/}
+                                {/*                                </>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <h4 className="mt-3 text-[14px] text-prgcolor">*/}
+                                {/*                                        Could anyone please tell me where to find a good*/}
+                                {/*                                        deal on*/}
+                                {/*                                        the iPhone 15?*/}
+                                {/*                                    </h4>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+                                {/*                        <div className="post_image w-full mt-0">*/}
+                                {/*                            {loading ? (*/}
+                                {/*                                <>*/}
+                                {/*                                    <div*/}
+                                {/*                                        className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">*/}
+                                {/*                                        <Skeleton height={200} count={1}/>*/}
+                                {/*                                        <Skeleton height={30} count={1}/>*/}
+                                {/*                                    </div>*/}
+                                {/*                                </>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <div*/}
+                                {/*                                        onClick={() => setOpenStartPostImageModal(true)}*/}
+                                {/*                                        className="flex items-center gap-0 w-full cursor-pointer">*/}
+                                {/*                                        <div className="w-full">*/}
+                                {/*                                            <Image src={SliderOneImg}*/}
+                                {/*                                                   className="w-full h-[180px]"*/}
+                                {/*                                                   alt="SliderImg"/>*/}
+                                {/*                                        </div>*/}
+                                {/*                                        <div className="w-full">*/}
+                                {/*                                            <Image src={SliderTwoImg}*/}
+                                {/*                                                   className="w-full h-[180px]"*/}
+                                {/*                                                   alt="SliderImg"/>*/}
+                                {/*                                        </div>*/}
+                                {/*                                    </div>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+                                {/*                        /!* Post Icons *!/*/}
+                                {/*                        <div className="post_icons mt-0">*/}
+                                {/*                            {loading ? (*/}
+                                {/*                                <div*/}
+                                {/*                                    className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">*/}
+                                {/*                                    <Skeleton height={40} count={1}/>*/}
+                                {/*                                </div>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <div*/}
+                                {/*                                        className="flex items-center justify-between rounded rounded-t-none bg-white px-4 py-3 mt-0">*/}
+                                {/*                                        <div className="flex items-center gap-1">*/}
+                                {/*                                            <div className="cursor-pointer"*/}
+                                {/*                                                 onClick={() => setIsClickedLikePostThree(!isClickedLikePostThree)}>*/}
+                                {/*                                                {isClickedLikePostThree ? (*/}
+                                {/*                                                    <GoHeartFill*/}
+                                {/*                                                        className="w-4 h-4 text-primary hover:text-primary"/>*/}
+                                {/*                                                ) : (*/}
+                                {/*                                                    <GoHeart*/}
+                                {/*                                                        className="w-4 h-4 text-[#6B7280] hover:text-primary"/>*/}
+                                {/*                                                )}*/}
+                                {/*                                            </div>*/}
+                                {/*                                            <div className="count">*/}
+                                {/*                                                <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">112</h4>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+
+                                {/*                                        <div className="flex items-center gap-1">*/}
+                                {/*                                            <div className="cursor-pointer">*/}
+                                {/*                                                <GoComment*/}
+                                {/*                                                    className="w-4 h-4 text-[#6B7280] hover:text-primary"/>*/}
+                                {/*                                            </div>*/}
+                                {/*                                            <div className="count">*/}
+                                {/*                                                <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">852</h4>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+
+                                {/*                                        <div className="flex items-center gap-1">*/}
+                                {/*                                            <div className="cursor-pointer">*/}
+                                {/*                                                <GoSync*/}
+                                {/*                                                    className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>*/}
+                                {/*                                            </div>*/}
+                                {/*                                            <div className="count">*/}
+                                {/*                                                <h4 className="text-[12px] text-prgcolor cursor-pointer hover:underline">2k</h4>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+                                {/*                                    </div>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+                                {/*                        /!* Post Write Comment *!/*/}
+                                {/*                        <div className="post_write_comment mt-0">*/}
+                                {/*                            {loading ? (*/}
+                                {/*                                <div*/}
+                                {/*                                    className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">*/}
+                                {/*                                    <Skeleton height={40} count={1}/>*/}
+                                {/*                                </div>*/}
+                                {/*                            ) : (*/}
+                                {/*                                <>*/}
+                                {/*                                    <div*/}
+                                {/*                                        className="flex items-center justify-between box bg-white px-4 py-2 rounded rounded-b-none">*/}
+                                {/*                                        <div*/}
+                                {/*                                            className="relative w-full flex items-center gap-1">*/}
+                                {/*                                            <HiUserCircle size={40}*/}
+                                {/*                                                          className="text-[#6B7280]"/>*/}
+                                {/*                                            <input*/}
+                                {/*                                                className="m-0 rounded-full w-full py-1 px-3 border-bordercolor focus:border-primary focus:ring focus:ring-transparent text-prgcolor text-[14px] focus:outline-none"*/}
+                                {/*                                                type="text"*/}
+                                {/*                                                placeholder="Write a comment..."*/}
+                                {/*                                            />*/}
+
+                                {/*                                            <div*/}
+                                {/*                                                className="absolute inset-y-0 right-2 flex items-center gap-4">*/}
+                                {/*                                                <div className="cursor-pointer">*/}
+                                {/*                                                    <svg*/}
+                                {/*                                                        xmlns="http://www.w3.org/2000/svg"*/}
+                                {/*                                                        viewBox="0 0 24 24"*/}
+                                {/*                                                        fill="#4D7FB8"*/}
+                                {/*                                                        className="w-5 h-5">*/}
+                                {/*                                                        <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0*/}
+                                {/*                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3*/}
+                                {/*                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0*/}
+                                {/*                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3*/}
+                                {/*                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"*/}
+                                {/*                                                              clipRule="evenodd"/>*/}
+                                {/*                                                    </svg>*/}
+                                {/*                                                </div>*/}
+                                {/*                                                <GoSmiley*/}
+                                {/*                                                    size={20}*/}
+                                {/*                                                    className="cursor-pointer text-graycolor hover:text-primary"/>*/}
+                                {/*                                            </div>*/}
+                                {/*                                        </div>*/}
+                                {/*                                    </div>*/}
+                                {/*                                </>*/}
+                                {/*                            )}*/}
+                                {/*                        </div>*/}
+                                {/*                    </div>*/}
+                                {/*                </div>*/}
+                                {/*            </div>*/}
+                                {/*            <hr/>*/}
+                                {/*            <div className="button_wrap text-center pt-2">*/}
+                                {/*                <button type='button'*/}
+                                {/*                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">*/}
+                                {/*                    View all*/}
+                                {/*                </button>*/}
+                                {/*            </div>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                             <div className={`listings_content ${activeTab === 'listings' ? 'block' : 'hidden'}`}>
                                 <h1>Listings</h1>
@@ -868,7 +1255,7 @@ export default function Home() {
                         </div>
 
                         {/* Right Sidebar */}
-                        <div className="col lg:col-span-2 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
+                        <div className="col lg:col-span-1 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
                         </div>
                     </div>
                 </div>
