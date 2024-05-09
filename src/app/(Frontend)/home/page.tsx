@@ -956,7 +956,7 @@ export default function Home() {
                                                     The SRS-XB100 speaker provides powerful, clear,
                                                     expansive sound in a small, portable and durable
                                                     body. Despite its size... <button type='button'
-                                                                                      className="text-primary">See
+                                                                                      className="text-primary hover:underline">See
                                                     more</button>
                                                 </h4>
                                             </>
@@ -976,7 +976,7 @@ export default function Home() {
 
                                                 <div
                                                     className="flex items-center justify-between bg-gray-200 bg-opacity-50 px-4 py-2 mt-0">
-                                                    <h4 className="text-[14px] text-prgcolor font-[500]">Sony
+                                                    <h4 className="text-[14px] text-prgcolor font-[500] hover:underline cursor-pointer">Sony
                                                         SRS-XB13B</h4>
                                                     <button type="button"
                                                             className="py-2 px-4 rounded border text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
@@ -1008,7 +1008,7 @@ export default function Home() {
                                                             )}
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
                                                         </div>
                                                     </div>
 
@@ -1018,7 +1018,7 @@ export default function Home() {
                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
                                                         </div>
                                                     </div>
 
@@ -1028,7 +1028,7 @@ export default function Home() {
                                                                 className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1290,7 +1290,7 @@ export default function Home() {
                                                         )}
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
                                                     </div>
                                                 </div>
 
@@ -1300,7 +1300,7 @@ export default function Home() {
                                                             className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
                                                     </div>
                                                 </div>
 
@@ -1310,7 +1310,7 @@ export default function Home() {
                                                             className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1400,7 +1400,7 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className={`wrap ${hideComment ? 'opacity-50' : ''}`}>
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                 Kathy Erickson
                                                             </h4>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -1529,7 +1529,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
                                                                          className='hover:text-primary'/>
-                                                                <span className="ml-1">3</span>
+                                                                <span className="ml-1 hover:underline">3</span>
                                                             </div>
                                                             <div
                                                                 className="right flex items-center gap-0 group">
@@ -1538,7 +1538,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoReply size={13}
                                                                          className='group-hover:text-primary'/>
-                                                                <span className="ml-1">6</span>
+                                                                <span className="ml-1 hover:underline">6</span>
                                                             </div>
                                                         </div>
                                                         <div className="c_time">2d</div>
@@ -1629,11 +1629,12 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                 John Doe
                                                             </h4>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
-                                                                Thank you, <Link href='#' className="text-primary">Kathy
+                                                                Thank you, <Link href='#'
+                                                                                 className="text-primary hover:underline">Kathy
                                                                 Erickson</Link>!
                                                             </h4>
                                                         </div>
@@ -1722,7 +1723,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
                                                                          className='cursor-pointer hover:text-primary'/>
-                                                                <span className="ml-1">3</span>
+                                                                <span className="ml-1 hover:underline">3</span>
                                                             </Link>
                                                             <div
                                                                 className="right cursor-pointer flex items-center gap-0 group">
@@ -1731,7 +1732,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoReply size={13}
                                                                          className='cursor-pointer group-hover:text-primary'/>
-                                                                <span className="ml-1">6</span>
+                                                                <span className="ml-1 hover:underline">6</span>
                                                             </div>
                                                         </div>
                                                         <div className="c_time">1d</div>
@@ -1823,11 +1824,12 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                 Kathy Erickson
                                                             </h4>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
-                                                                Thank you, <Link href='#' className="text-primary">John
+                                                                Thank you, <Link href='#'
+                                                                                 className="text-primary hover:underline">John
                                                                 Doe</Link>!
                                                             </h4>
                                                         </div>
@@ -1863,7 +1865,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
                                                                          className='cursor-pointer hover:text-primary'/>
-                                                                <span className="ml-1">3</span>
+                                                                <span className="ml-1 hover:underline">3</span>
                                                             </Link>
                                                             <div
                                                                 className="right cursor-pointer flex items-center gap-0 group">
@@ -1872,7 +1874,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoReply size={13}
                                                                          className='cursor-pointer group-hover:text-primary'/>
-                                                                <span className="ml-1">6</span>
+                                                                <span className="ml-1 hover:underline">6</span>
                                                             </div>
                                                         </div>
                                                         <div className="c_time">1d</div>
@@ -1902,7 +1904,7 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                 Bonnie Lindsey
                                                             </h4>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -1942,7 +1944,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
                                                                          className='cursor-pointer hover:text-primary'/>
-                                                                <span className="ml-1">3</span>
+                                                                <span className="ml-1 hover:underline">3</span>
                                                             </Link>
                                                             <div
                                                                 className="right cursor-pointer flex items-center gap-0 group">
@@ -1951,7 +1953,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoReply size={13}
                                                                          className='cursor-pointer group-hover:text-primary'/>
-                                                                <span className="ml-1">6</span>
+                                                                <span className="ml-1 hover:underline">6</span>
                                                             </div>
                                                         </div>
                                                         <div className="c_time">1d</div>
@@ -2046,7 +2048,7 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                 Roshan Nafiz
                                                             </h4>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -2085,7 +2087,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoHeart size={13}
                                                                          className='cursor-pointer hover:text-primary'/>
-                                                                <span className="ml-1">3</span>
+                                                                <span className="ml-1 hover:underline">3</span>
                                                             </Link>
                                                             <div
                                                                 className="right cursor-pointer flex items-center gap-0 group">
@@ -2094,7 +2096,7 @@ export default function Home() {
                                                                 <LuDot size={12}/>
                                                                 <GoReply size={13}
                                                                          className='cursor-pointer group-hover:text-primary'/>
-                                                                <span className="ml-1">6</span>
+                                                                <span className="ml-1 hover:underline">6</span>
                                                             </div>
                                                         </div>
                                                         <div className="c_time">1d</div>
@@ -2351,7 +2353,7 @@ export default function Home() {
                                                         )}
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
                                                     </div>
                                                 </div>
 
@@ -2361,7 +2363,7 @@ export default function Home() {
                                                             className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
                                                     </div>
                                                 </div>
 
@@ -2371,7 +2373,7 @@ export default function Home() {
                                                             className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2555,7 +2557,7 @@ export default function Home() {
                                                             )}
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
                                                         </div>
                                                     </div>
 
@@ -2565,7 +2567,7 @@ export default function Home() {
                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
                                                         </div>
                                                     </div>
 
@@ -2629,7 +2631,7 @@ export default function Home() {
                                                             }
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2896,7 +2898,7 @@ export default function Home() {
                                                         )}
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
                                                     </div>
                                                 </div>
 
@@ -2906,7 +2908,7 @@ export default function Home() {
                                                             className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
                                                     </div>
                                                 </div>
 
@@ -2917,7 +2919,7 @@ export default function Home() {
                                                             className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                     </div>
                                                     <div className="count">
-                                                        <h4 className="text-[12px] text-prgcolor">36</h4>
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">36</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3249,7 +3251,7 @@ export default function Home() {
                                                     <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
 
                                                     <div className="flex items-center justify-between mt-3">
-                                                        <h4 className="text-[14px] text-prgcolor font-[500]">Sony
+                                                        <h4 className="text-[14px] text-prgcolor font-[500] cursor-pointer hover:underline">Sony
                                                             SRS-XB13B</h4>
                                                         <button type="button"
                                                                 className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
@@ -5618,7 +5620,8 @@ export default function Home() {
                                     </div>
                                     <h4 className="mt-3 text-[14px] text-prgcolor">
                                         The HTCU23 Pro 5G stands as the pinnacle of smartphone innovation,
-                                        offering... <Link href='#' className="text-[14px] text-primary">See more</Link>
+                                        offering... <Link href='#' className="text-[14px] text-primary hover:underline">See
+                                        more</Link>
                                     </h4>
                                 </div>
                                 <div className="post_image mt-0">
@@ -5975,7 +5978,7 @@ export default function Home() {
                                                             )}
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
                                                         </div>
                                                     </div>
 
@@ -5985,7 +5988,7 @@ export default function Home() {
                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
                                                         </div>
                                                     </div>
 
@@ -5995,7 +5998,7 @@ export default function Home() {
                                                                 className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                            <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">2k</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -6069,7 +6072,7 @@ export default function Home() {
                                                             className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                             <div
                                                                 className={`wrap ${hideComment ? 'opacity-50' : ''}`}>
-                                                                <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                     Kathy Erickson
                                                                 </h4>
                                                                 <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -6203,7 +6206,8 @@ export default function Home() {
                                                                             <LuDot size={12}/>
                                                                             <GoHeart size={13}
                                                                                      className='hover:text-primary'/>
-                                                                            <span className="ml-1">3</span>
+                                                                            <span
+                                                                                className="ml-1 hover:underline">3</span>
                                                                         </div>
                                                                         <div
                                                                             className="right flex items-center gap-0 group">
@@ -6212,7 +6216,8 @@ export default function Home() {
                                                                             <LuDot size={12}/>
                                                                             <GoReply size={13}
                                                                                      className='group-hover:text-primary'/>
-                                                                            <span className="ml-1">6</span>
+                                                                            <span
+                                                                                className="ml-1 hover:underline">6</span>
                                                                         </div>
                                                                     </div>
                                                                     <div className="c_time">2d</div>
@@ -6300,7 +6305,7 @@ export default function Home() {
                                                         <div
                                                             className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                             <div className="wrap">
-                                                                <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                     John Doe
                                                                 </h4>
                                                                 <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -6389,7 +6394,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoHeart size={13}
                                                                              className='cursor-pointer hover:text-primary'/>
-                                                                    <span className="ml-1">3</span>
+                                                                    <span className="ml-1 hover:underline">3</span>
                                                                 </Link>
                                                                 <div
                                                                     className="right cursor-pointer flex items-center gap-0 group">
@@ -6398,7 +6403,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoReply size={13}
                                                                              className='cursor-pointer group-hover:text-primary'/>
-                                                                    <span className="ml-1">6</span>
+                                                                    <span className="ml-1 hover:underline">6</span>
                                                                 </div>
                                                             </div>
                                                             <div className="c_time">1d</div>
@@ -6480,7 +6485,7 @@ export default function Home() {
                                                         <div
                                                             className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                             <div className="wrap">
-                                                                <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                     Kathy Erickson
                                                                 </h4>
                                                                 <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -6515,7 +6520,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoHeart size={13}
                                                                              className='cursor-pointer hover:text-primary'/>
-                                                                    <span className="ml-1">3</span>
+                                                                    <span className="ml-1 hover:underline">3</span>
                                                                 </Link>
                                                                 <div
                                                                     className="right cursor-pointer flex items-center gap-0 group">
@@ -6524,7 +6529,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoReply size={13}
                                                                              className='cursor-pointer group-hover:text-primary'/>
-                                                                    <span className="ml-1">6</span>
+                                                                    <span className="ml-1 hover:underline">6</span>
                                                                 </div>
                                                             </div>
                                                             <div className="c_time">1d</div>
@@ -6544,7 +6549,7 @@ export default function Home() {
                                                         <div
                                                             className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                             <div className="wrap">
-                                                                <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                     Bonnie Lindsey
                                                                 </h4>
                                                                 <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -6578,7 +6583,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoHeart size={13}
                                                                              className='cursor-pointer hover:text-primary'/>
-                                                                    <span className="ml-1">3</span>
+                                                                    <span className="ml-1 hover:underline">3</span>
                                                                 </Link>
                                                                 <div
                                                                     className="right cursor-pointer flex items-center gap-0 group">
@@ -6587,7 +6592,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoReply size={13}
                                                                              className='cursor-pointer group-hover:text-primary'/>
-                                                                    <span className="ml-1">6</span>
+                                                                    <span className="ml-1 hover:underline">6</span>
                                                                 </div>
                                                             </div>
                                                             <div className="c_time">1d</div>
@@ -6672,7 +6677,7 @@ export default function Home() {
                                                         <div
                                                             className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                             <div className="wrap">
-                                                                <h4 className="text-[12px] font-semibold text-prgcolor">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                                     Roshan Nafiz
                                                                 </h4>
                                                                 <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
@@ -6704,7 +6709,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoHeart size={13}
                                                                              className='cursor-pointer hover:text-primary'/>
-                                                                    <span className="ml-1">3</span>
+                                                                    <span className="ml-1 hover:underline">3</span>
                                                                 </Link>
                                                                 <div
                                                                     className="right cursor-pointer flex items-center gap-0 group">
@@ -6713,7 +6718,7 @@ export default function Home() {
                                                                     <LuDot size={12}/>
                                                                     <GoReply size={13}
                                                                              className='cursor-pointer group-hover:text-primary'/>
-                                                                    <span className="ml-1">6</span>
+                                                                    <span className="ml-1 hover:underline">6</span>
                                                                 </div>
                                                             </div>
                                                             <div className="c_time">1d</div>

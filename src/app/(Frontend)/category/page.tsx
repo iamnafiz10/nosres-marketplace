@@ -117,9 +117,6 @@ export default function Home() {
                         <div className="col lg:col-span-2"></div>
                         <div className="col ml-0 lg:ml-10 lg:col-span-6">
                             {/* Body Content */}
-                            <div className="heading_wrap">
-                                <h4 className="text-[20px] font-[500]">All Categories</h4>
-                            </div>
                             <div className="grid grid-cols-3 gap-4 mt-2">
                                 <div className="col image_box cursor-pointer pt-4 pl-6 bg-white rounded pb-0">
                                     {loading ? (
@@ -129,10 +126,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -144,10 +142,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -159,10 +158,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -174,10 +174,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -189,10 +190,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -204,10 +206,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -219,10 +222,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -234,10 +238,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -249,10 +254,11 @@ export default function Home() {
                                         </div>
                                     ) : (
                                         <>
-                                            <h4 className="text-[16px] font-[500]">
+                                            <h4 className="text-[14px] font-semibold">
                                                 Electronics
                                             </h4>
-                                            <Image src={CategoryOneImg} className="w-full mt-4" alt="CategoryImg"/>
+                                            <Image src={CategoryOneImg} className="w-full mt-4 rounded-r"
+                                                   alt="CategoryImg"/>
                                         </>
                                     )}
                                 </div>
@@ -582,7 +588,7 @@ export default function Home() {
                                                     <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
 
                                                     <div className="flex items-center justify-between mt-3">
-                                                        <h4 className="text-[14px] text-prgcolor font-[500]">Sony
+                                                        <h4 className="text-[14px] text-prgcolor font-[500] hover:underline cursor-pointer">Sony
                                                             SRS-XB13B</h4>
                                                         <button type="button"
                                                                 className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">

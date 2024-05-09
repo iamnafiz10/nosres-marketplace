@@ -125,7 +125,7 @@ export default function Home() {
                         <div className="col lg:col-span-2"></div>
 
                         {/* Body Content */}
-                        <div className="col ml-0 lg:ml-10 lg:col-span-10">
+                        <div className="col ml-0 lg:ml-10 lg:col-span-6">
                             <div className={`all_content ${activeTab === 'all' ? 'block' : 'hidden'}`}>
                                 {/* Listing */}
                                 <div className="box py-4 px-6 bg-white rounded">
@@ -868,7 +868,7 @@ export default function Home() {
                         </div>
 
                         {/* Right Sidebar */}
-                        <div className="col lg:col-span-0 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
+                        <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mt-2 mr-[0px]">
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import {HiOutlineChatBubbleLeft} from "react-icons/hi2";
 import React, {useState} from "react";
 import useLoading from "@/app/useLoading";
 import Skeleton from "react-loading-skeleton";
+import {usePathname} from "next/navigation";
 
 function LeftSidebar() {
     const loading = useLoading();
@@ -17,6 +18,9 @@ function LeftSidebar() {
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
     };
+
+    // Menu active className
+    const pathname = usePathname();
     return (
         <>
             <section id="left-sidebar-section">
@@ -190,9 +194,9 @@ function LeftSidebar() {
                                             <>
                                                 <li>
                                                     <Link href="#"
-                                                          className="flex items-center p-2 pl-0 text-prgcolor font-normal rounded-lg hover:bg-transparent hover:text-primary hover:bg-opacity-50 group">
+                                                          className={`flex items-center ${pathname === '/category' ? 'font-semibold' : 'font-normal'} p-2 pl-0 text-prgcolor rounded-lg hover:bg-transparent hover:text-primary hover:bg-opacity-50 group`}>
                                                         <svg
-                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                            className={`w-5 h-5 ${pathname === '/category' ? 'stroke-primary' : ''} transition duration-75 group-hover:stroke-primary`}
                                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
                                                     24" fill="none" stroke="#6B7280" strokeWidth="1.5"
                                                             strokeLinecap="round"

@@ -750,7 +750,7 @@ function Page() {
                                                                             )}
                                                                         </div>
                                                                         <div className="count">
-                                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">112</h4>
                                                                         </div>
                                                                     </div>
 
@@ -760,7 +760,7 @@ function Page() {
                                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                                         </div>
                                                                         <div className="count">
-                                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">852</h4>
                                                                         </div>
                                                                     </div>
 
@@ -771,7 +771,7 @@ function Page() {
                                                                                 className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                                         </div>
                                                                         <div className="count">
-                                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">2k</h4>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -935,7 +935,7 @@ function Page() {
                                                                             )}
                                                                         </div>
                                                                         <div className="count">
-                                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">112</h4>
                                                                         </div>
                                                                     </div>
 
@@ -945,7 +945,7 @@ function Page() {
                                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                                         </div>
                                                                         <div className="count">
-                                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">852</h4>
                                                                         </div>
                                                                     </div>
 
@@ -955,7 +955,7 @@ function Page() {
                                                                                 className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                                         </div>
                                                                         <div className="count">
-                                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">2k</h4>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1558,7 +1558,7 @@ function Page() {
                                                             )}
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">112</h4>
+                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">112</h4>
                                                         </div>
                                                     </div>
 
@@ -1568,7 +1568,7 @@ function Page() {
                                                                 className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">852</h4>
+                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">852</h4>
                                                         </div>
                                                     </div>
 
@@ -1578,7 +1578,7 @@ function Page() {
                                                                 className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
                                                         </div>
                                                         <div className="count">
-                                                            <h4 className="text-[12px] text-prgcolor">2k</h4>
+                                                            <h4 className="text-[12px] text-prgcolor hover:underline cursor-pointer">2k</h4>
                                                         </div>
                                                     </div>
                                                 </div>
