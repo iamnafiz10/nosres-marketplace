@@ -954,7 +954,7 @@ export default function Home() {
                                             </div>
                                         </div>
 
-                                        <div className="box">
+                                        <div className="box bg-white mt-1 rounded px-6 py-6">
                                             <div className="grid grid-cols-1 mt-1">
                                                 <div className="col bg-white border border-b-0 rounded py-4 px-6">
                                                     {/* Post Box */}
