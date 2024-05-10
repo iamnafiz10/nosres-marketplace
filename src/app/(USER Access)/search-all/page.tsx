@@ -942,7 +942,7 @@ export default function Home() {
                                                                 Popular
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group border-t"
+                                                        <div className="cursor-pointer group"
                                                              onClick={() => handleOptionSelectFilter("Newest")}>
                                                             <div
                                                                 className="block p-2 border-transparent border-l-4 group-hover:border-primary border-blue-600 group-hover:bg-gray-100">
