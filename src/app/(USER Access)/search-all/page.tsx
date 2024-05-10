@@ -16,12 +16,11 @@ import {LuDot} from "react-icons/lu";
 import {IoMdGlobe} from "react-icons/io";
 import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
 import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
-import {Carousel, Modal, Select} from "flowbite-react";
+import {Carousel, Modal} from "flowbite-react";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {RxPlus} from "react-icons/rx";
 import {Checkbox} from "antd";
-import classnames from "classnames";
-import {HiArrowLongLeft, HiArrowLongRight} from "react-icons/hi2";
+import {RiArrowDropDownLine} from "react-icons/ri";
 
 export default function Home() {
     const loading = useLoading();
@@ -105,6 +104,36 @@ export default function Home() {
         setMaxVal(value);
         event.target.value = value.toString();
     };
+
+
+    //----------- Filter Dropdown Start --------------//
+    const [isOpenDropdownFilter, setIsOpenDropdownFilter] = useState(false);
+    const [selectedOptionFilter, setSelectedOptionFilter] = useState("Sort by"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownFilter = () => {
+        setIsOpenDropdownFilter(!isOpenDropdownFilter);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectFilter = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilter(option);
+        setIsOpenDropdownFilter(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownFilterRef = useRef(null);
+    const handleClickOutside = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownFilterRef.current && !dropdownFilterRef.current.contains(event.target)) {
+            setIsOpenDropdownFilter(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+    //----------- Filter Dropdown End --------------//
     return (
         <>
             <section id="home-page-section">
@@ -873,17 +902,60 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="col lg:col-span-8">
-                                        <div className="flex text-[14px] items-center justify-end gap-3">
-                                            <div className="max-w-lg">
-                                                <Select id="post_filter">
-                                                    <option>Sort by</option>
-                                                    <option>Newest</option>
-                                                    <option>Popular</option>
-                                                </Select>
+                                        <div className="flex text-[14px] items-center justify-end">
+                                            {/* Filter dropdown */}
+                                            <div ref={dropdownFilterRef} onClick={toggleDropdownFilter}
+                                                 className="filter_dropdown cursor-pointer relative">
+                                                <div
+                                                    className="h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                    <input value={selectedOptionFilter} name="select"
+                                                           id="select"
+                                                           className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
+                                                           readOnly/>
+                                                    <button type='button'
+                                                            className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                        <RiArrowDropDownLine size={25}/>
+                                                    </button>
+                                                </div>
+
+                                                {isOpenDropdownFilter && (
+                                                    <div
+                                                        className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                        <div className="cursor-pointer group"
+                                                             onClick={() => handleOptionSelectFilter("Sort by")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                Sort by
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer group"
+                                                             onClick={() => handleOptionSelectFilter("Relevance")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                Relevance
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer group"
+                                                             onClick={() => handleOptionSelectFilter("Popular")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                Popular
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer group border-t"
+                                                             onClick={() => handleOptionSelectFilter("Newest")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary border-blue-600 group-hover:bg-gray-100">
+                                                                Newest
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
+
                                         <div className="box bg-white rounded">
-                                            <div className="grid grid-cols-1 mt-2 pb-4">
+                                            <div className="grid grid-cols-1 mt-1 pb-4">
                                                 <div className="col border rounded py-4 px-6">
                                                     {/* Post Box */}
                                                     <div className="post_box_wrap">

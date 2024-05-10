@@ -92,6 +92,11 @@ button {
     --tw-ring-opacity: 0 !important;
 }
 
+/* Filter Dropdown */
+.filter_dropdown input {
+    background: white !important;
+}
+
 /* Modal design */
 .modal_cntrl button {
     outline: none !important;
