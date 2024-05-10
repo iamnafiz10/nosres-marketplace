@@ -371,7 +371,8 @@ function Header() {
                                 </Link>
                             </Tooltip>
                             {/* Notification */}
-                            <Tooltip content="Notifications" placement="bottom" style="light" className="tooltip_design">
+                            <Tooltip content="Notifications" placement="bottom" style="light"
+                                     className="tooltip_design">
                                 <Link href='#'
                                       className="group flex flex-col items-center relative">
                                     <div
@@ -380,7 +381,7 @@ function Header() {
                                     <div className="relative">
                                         <GoBell className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
                                         <div
-                                            className="flex absolute top-[-3px] -right-[10px] text-center bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                            className="flex absolute top-[-3px] -right-[7px] text-center bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                             8
                                         </div>
                                     </div>

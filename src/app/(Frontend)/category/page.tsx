@@ -455,8 +455,8 @@ export default function Home() {
                                 ) : (
                                     <>
                                         <h4 className="text-graycolor mt-3 text-[12px]">
-                                            Promote your products by sharing them on
-                                            your page, receive orders, receive notification, discuss with customers.
+                                            Promote your products by sharing them on your store profile, receive orders,
+                                            get notifications, and engage in discussions with customers.
                                         </h4>
                                     </>
                                 )}
