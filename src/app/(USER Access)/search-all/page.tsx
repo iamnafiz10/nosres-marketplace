@@ -954,9 +954,9 @@ export default function Home() {
                                             </div>
                                         </div>
 
-                                        <div className="box bg-white rounded">
-                                            <div className="grid grid-cols-1 mt-1 pb-4">
-                                                <div className="col border rounded py-4 px-6">
+                                        <div className="box">
+                                            <div className="grid grid-cols-1 mt-1">
+                                                <div className="col bg-white border border-b-0 rounded py-4 px-6">
                                                     {/* Post Box */}
                                                     <div className="post_box_wrap">
                                                         <div
@@ -1115,7 +1115,9 @@ export default function Home() {
                                                     </div>
                                                 </div>
 
-                                                <div className="col border rounded py-4 px-6 mt-4">
+                                                <hr/>
+
+                                                <div className="col mt-4 bg-white border border-b-0 rounded rounded-b-none py-4 px-6">
                                                     {/* Post Box */}
                                                     <div className="post_box_wrap">
                                                         <div
@@ -1296,10 +1298,9 @@ export default function Home() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr/>
-                                            <div className="button_wrap text-center pt-2">
+                                            <div className="button_wrap text-center bg-white">
                                                 <button type='button'
-                                                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
+                                                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded rounded-t-none w-full">
                                                     View all
                                                 </button>
                                             </div>
