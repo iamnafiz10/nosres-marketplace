@@ -872,7 +872,7 @@ export default function Home() {
                                             <details open={true} className="group">
                                                 <summary
                                                     className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
-                                                    Post from
+                                                    Posts from
                                                     <RxPlus
                                                         className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
                                                 </summary>
@@ -895,7 +895,7 @@ export default function Home() {
                                                 <div className="mt-3">
                                                     <button type='button'
                                                             className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
-                                                        Clear Setting
+                                                        Clear Settings
                                                     </button>
                                                 </div>
                                             </details>
@@ -907,7 +907,7 @@ export default function Home() {
                                             <div ref={dropdownFilterRef} onClick={toggleDropdownFilter}
                                                  className="filter_dropdown cursor-pointer relative">
                                                 <div
-                                                    className="h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                    className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">
                                                     <input value={selectedOptionFilter} name="select"
                                                            id="select"
                                                            className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
@@ -1117,7 +1117,8 @@ export default function Home() {
 
                                                 <hr/>
 
-                                                <div className="col mt-4 bg-white border border-b-0 rounded rounded-b-none py-4 px-6">
+                                                <div
+                                                    className="col mt-4 bg-white border border-b-0 rounded rounded-b-none py-4 px-6">
                                                     {/* Post Box */}
                                                     <div className="post_box_wrap">
                                                         <div
