@@ -107,40 +107,157 @@ export default function Home() {
         event.target.value = value.toString();
     };
 
-
-    //----------- Filter Dropdown Start --------------//
-    const [isOpenDropdownFilter, setIsOpenDropdownFilter] = useState(false);
-    const [selectedOptionFilter, setSelectedOptionFilter] = useState("Sort by"); // State to store the selected option
+    //----------- FilterPostTab Dropdown Start --------------//
+    const [isOpenDropdownFilterPostTab, setIsOpenDropdownFilterPostTab] = useState(false);
+    const [selectedOptionFilterPostTab, setSelectedOptionFilterPostTab] = useState("Sort by"); // State to store the selected option
     // Function to toggle the dropdown visibility
-    const toggleDropdownFilter = () => {
-        setIsOpenDropdownFilter(!isOpenDropdownFilter);
+    const toggleDropdownFilterPostTab = () => {
+        setIsOpenDropdownFilterPostTab(!isOpenDropdownFilterPostTab);
     };
     // Function to handle selection of an option
-    const handleOptionSelectFilter = (option: React.SetStateAction<string>) => {
-        setSelectedOptionFilter(option);
-        setIsOpenDropdownFilter(false); // Close the dropdown after selection
+    const handleOptionSelectFilterPostTab = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilterPostTab(option);
+        setIsOpenDropdownFilterPostTab(false); // Close the dropdown after selection
     };
     // Function to handle clicks outside the dropdown to close it
-    const dropdownFilterRef = useRef(null);
-    const handleClickOutside = (event: { target: any; }) => {
+    const dropdownFilterPostTabRef = useRef(null);
+    const handleClickOutsideFilterPostTab = (event: { target: any; }) => {
         // @ts-ignore
-        if (dropdownFilterRef.current && !dropdownFilterRef.current.contains(event.target)) {
-            setIsOpenDropdownFilter(false);
+        if (dropdownFilterPostTabRef.current && !dropdownFilterPostTabRef.current.contains(event.target)) {
+            setIsOpenDropdownFilterPostTab(false);
         }
     };
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutsideFilterPostTab);
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutsideFilterPostTab);
         };
     }, []);
-    //----------- Filter Dropdown End --------------//
+    //----------- FilterPostTab Dropdown End --------------//
+
+    //----------- FilterListingTab Dropdown Start --------------//
+    const [isOpenDropdownFilterListingTab, setIsOpenDropdownFilterListingTab] = useState(false);
+    const [selectedOptionFilterListingTab, setSelectedOptionFilterListingTab] = useState("Sort by"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownFilterListingTab = () => {
+        setIsOpenDropdownFilterListingTab(!isOpenDropdownFilterListingTab);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectFilterListingTab = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilterListingTab(option);
+        setIsOpenDropdownFilterListingTab(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownFilterListingTabRef = useRef(null);
+    const handleClickOutsideFilterListingTab = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownFilterListingTabRef.current && !dropdownFilterListingTabRef.current.contains(event.target)) {
+            setIsOpenDropdownFilterListingTab(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideFilterListingTab);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideFilterListingTab);
+        };
+    }, []);
+    //----------- FilterListingTab Dropdown End --------------//
+
+
+    //----------- FilterStoreTab Dropdown Start --------------//
+    const [isOpenDropdownFilterStoreTab, setIsOpenDropdownFilterStoreTab] = useState(false);
+    const [selectedOptionFilterStoreTab, setSelectedOptionFilterStoreTab] = useState("Sort by"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownFilterStoreTab = () => {
+        setIsOpenDropdownFilterStoreTab(!isOpenDropdownFilterStoreTab);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectFilterStoreTab = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilterStoreTab(option);
+        setIsOpenDropdownFilterStoreTab(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownFilterStoreTabRef = useRef(null);
+    const handleClickOutsideFilterStoreTab = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownFilterStoreTabRef.current && !dropdownFilterStoreTabRef.current.contains(event.target)) {
+            setIsOpenDropdownFilterStoreTab(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideFilterStoreTab);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideFilterStoreTab);
+        };
+    }, []);
+    //----------- FilterStoreTab Dropdown End --------------//
+
+
+    //----------- Category Dropdown Start --------------//
+    const [isOpenDropdownCategory, setIsOpenDropdownCategory] = useState(false);
+    const [selectedOptionCategory, setSelectedOptionCategory] = useState("Select"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownCategory = () => {
+        setIsOpenDropdownCategory(!isOpenDropdownCategory);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectCategory = (option: React.SetStateAction<string>) => {
+        setSelectedOptionCategory(option);
+        setIsOpenDropdownCategory(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownCategoryRef = useRef(null);
+    const handleClickOutsideCategory = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownCategoryRef.current && !dropdownCategoryRef.current.contains(event.target)) {
+            setIsOpenDropdownCategory(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideCategory);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideCategory);
+        };
+    }, []);
+    //----------- Category Dropdown End --------------//
+
+    //----------- Location Dropdown Start --------------//
+    const [isOpenDropdownLocation, setIsOpenDropdownLocation] = useState(false);
+    const [selectedOptionLocation, setSelectedOptionLocation] = useState("Select"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownLocation = () => {
+        setIsOpenDropdownLocation(!isOpenDropdownLocation);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectLocation = (option: React.SetStateAction<string>) => {
+        setSelectedOptionLocation(option);
+        setIsOpenDropdownLocation(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownLocationRef = useRef(null);
+    const handleClickOutsideLocation = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownLocationRef.current && !dropdownLocationRef.current.contains(event.target)) {
+            setIsOpenDropdownLocation(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideLocation);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideLocation);
+        };
+    }, []);
+    //----------- Location Dropdown End --------------//
     return (
         <>
             <section id="home-page-section">
                 <div className="py-[49px]">
-                    <div className="topbar_tab_wrap fixed w-full bg-white py-2 border z-20">
+                    <div className="topbar_tab_wrap fixed w-full bg-white py-2 border z-50">
                         <div className="container">
                             <div className="flex items-center gap-2">
                                 <button
@@ -205,6 +322,7 @@ export default function Home() {
                     <div className="grid grid-cols-1">
                         {/* Body Content */}
                         <div className="col">
+                            {/* All */}
                             <div
                                 className={`all_content mx-auto w-full lg:w-[750px] ${activeTab === 'all' ? 'block' : 'hidden'}`}>
                                 {/* Listing */}
@@ -864,6 +982,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
+                            {/* Posts */}
                             <div className={`posts_content ${activeTab === 'posts' ? 'block' : 'hidden'}`}>
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                                     <div className="col lg:col-span-4">
@@ -905,12 +1024,12 @@ export default function Home() {
                                     </div>
                                     <div className="col lg:col-span-8">
                                         <div className="flex text-[14px] items-center justify-end">
-                                            {/* Filter dropdown */}
-                                            <div ref={dropdownFilterRef} onClick={toggleDropdownFilter}
-                                                 className="filter_dropdown cursor-pointer relative">
+                                            {/* FilterPostTab dropdown */}
+                                            <div ref={dropdownFilterPostTabRef} onClick={toggleDropdownFilterPostTab}
+                                                 className="filter_dropdown  z-20 cursor-pointer relative">
                                                 <div
                                                     className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">
-                                                    <input value={selectedOptionFilter} name="select"
+                                                    <input value={selectedOptionFilterPostTab} name="select"
                                                            id="select"
                                                            className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
                                                            readOnly/>
@@ -920,34 +1039,34 @@ export default function Home() {
                                                     </button>
                                                 </div>
 
-                                                {isOpenDropdownFilter && (
+                                                {isOpenDropdownFilterPostTab && (
                                                     <div
                                                         className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Sort by")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterPostTab("Sort by")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
                                                                 Sort by
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Relevance")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterPostTab("Relevance")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
                                                                 Relevance
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Popular")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterPostTab("Popular")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
                                                                 Popular
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Newest")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterPostTab("Newest")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary border-blue-600 group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">
                                                                 Newest
                                                             </div>
                                                         </div>
@@ -1311,6 +1430,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
+                            {/* Listings */}
                             <div className={`listings_content ${activeTab === 'listings' ? 'block' : 'hidden'}`}>
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                                     <div className="col lg:col-span-4">
@@ -1493,7 +1613,7 @@ export default function Home() {
                                                 <div className="mt-3">
                                                     <button type='button'
                                                             className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
-                                                        Clear Setting
+                                                        Clear Settings
                                                     </button>
                                                 </div>
                                             </div>
@@ -1501,12 +1621,13 @@ export default function Home() {
                                     </div>
                                     <div className="col lg:col-span-8">
                                         <div className="flex text-[14px] items-center justify-end">
-                                            {/* Filter dropdown */}
-                                            <div ref={dropdownFilterRef} onClick={toggleDropdownFilter}
-                                                 className="filter_dropdown cursor-pointer relative">
+                                            {/* FilterListingTab dropdown */}
+                                            <div ref={dropdownFilterListingTabRef}
+                                                 onClick={toggleDropdownFilterListingTab}
+                                                 className="filter_dropdown  z-20 cursor-pointer relative">
                                                 <div
                                                     className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">
-                                                    <input value={selectedOptionFilter} name="select"
+                                                    <input value={selectedOptionFilterListingTab} name="select"
                                                            id="select"
                                                            className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
                                                            readOnly/>
@@ -1516,34 +1637,34 @@ export default function Home() {
                                                     </button>
                                                 </div>
 
-                                                {isOpenDropdownFilter && (
+                                                {isOpenDropdownFilterListingTab && (
                                                     <div
                                                         className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Sort by")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterListingTab("Sort by")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
                                                                 Sort by
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Relevance")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterListingTab("Relevance")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
                                                                 Relevance
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Popular")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterListingTab("Popular")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
                                                                 Popular
                                                             </div>
                                                         </div>
-                                                        <div className="cursor-pointer group"
-                                                             onClick={() => handleOptionSelectFilter("Newest")}>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterListingTab("Newest")}>
                                                             <div
-                                                                className="block p-2 border-transparent border-l-4 group-hover:border-primary border-blue-600 group-hover:bg-gray-100">
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">
                                                                 Newest
                                                             </div>
                                                         </div>
@@ -1674,9 +1795,360 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={`stores_content ${activeTab === 'stores' ? 'block' : 'hidden'}`}>
-                                <h1>Stores</h1>
-                            </div>
+                            {/* Stores */}
+                            {/*<div className={`stores_content ${activeTab === 'stores' ? 'block' : 'hidden'}`}>*/}
+                            {/*    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">*/}
+                            {/*        <div className="col lg:col-span-4">*/}
+                            {/*            <div className="pb-4">*/}
+                            {/*                <h4 className="text-[14px] text-prgcolor">Filters</h4>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="box py-3 px-6 bg-white rounded">*/}
+                            {/*                <details open={true} className="group">*/}
+                            {/*                    <summary*/}
+                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
+                            {/*                        Category*/}
+                            {/*                        <RxPlus*/}
+                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
+                            {/*                    </summary>*/}
+                            {/*                    /!* Category dropdown *!/*/}
+                            {/*                    <div ref={dropdownCategoryRef} onClick={toggleDropdownCategory}*/}
+                            {/*                         className="filter_dropdown z-30 text-[14px] cursor-pointer relative my-4">*/}
+                            {/*                        <div*/}
+                            {/*                            className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">*/}
+                            {/*                            <input value={selectedOptionCategory} name="select"*/}
+                            {/*                                   id="select"*/}
+                            {/*                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
+                            {/*                                   readOnly/>*/}
+                            {/*                            <button type='button'*/}
+                            {/*                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
+                            {/*                                <RiArrowDropDownLine size={25}/>*/}
+                            {/*                            </button>*/}
+                            {/*                        </div>*/}
+
+                            {/*                        {isOpenDropdownCategory && (*/}
+                            {/*                            <div*/}
+                            {/*                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
+                            {/*                                <div className="cursor-pointer"*/}
+                            {/*                                     onClick={() => handleOptionSelectCategory("Select")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Select*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+
+                            {/*                                <div className="cursor-pointer"*/}
+                            {/*                                     onClick={() => handleOptionSelectCategory("Electronics")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Electronics*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                                <div className="cursor-pointer group"*/}
+                            {/*                                     onClick={() => handleOptionSelectCategory("Woman Fashion")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Woman Fashion*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                                <div className="cursor-pointer group"*/}
+                            {/*                                     onClick={() => handleOptionSelectCategory("Men Fashion")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Men Fashion*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                        )}*/}
+                            {/*                    </div>*/}
+                            {/*                </details>*/}
+                            {/*                <details className="group">*/}
+                            {/*                    <summary*/}
+                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
+                            {/*                        Location*/}
+                            {/*                        <RxPlus*/}
+                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
+                            {/*                    </summary>*/}
+                            {/*                    /!* Location dropdown *!/*/}
+                            {/*                    <div ref={dropdownLocationRef} onClick={toggleDropdownLocation}*/}
+                            {/*                         className="filter_dropdown  z-20 text-[14px] cursor-pointer relative my-4">*/}
+                            {/*                        <div*/}
+                            {/*                            className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">*/}
+                            {/*                            <input value={selectedOptionLocation} name="select"*/}
+                            {/*                                   id="select"*/}
+                            {/*                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
+                            {/*                                   readOnly/>*/}
+                            {/*                            <button type='button'*/}
+                            {/*                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
+                            {/*                                <RiArrowDropDownLine size={25}/>*/}
+                            {/*                            </button>*/}
+                            {/*                        </div>*/}
+
+                            {/*                        {isOpenDropdownLocation && (*/}
+                            {/*                            <div*/}
+                            {/*                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
+                            {/*                                <div className="cursor-pointer"*/}
+                            {/*                                     onClick={() => handleOptionSelectLocation("Select")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Select*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+
+                            {/*                                <div className="cursor-pointer"*/}
+                            {/*                                     onClick={() => handleOptionSelectLocation("United States")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        United States*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                                <div className="cursor-pointer group"*/}
+                            {/*                                     onClick={() => handleOptionSelectLocation("Canada")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Canada*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                                <div className="cursor-pointer group"*/}
+                            {/*                                     onClick={() => handleOptionSelectLocation("Mexico")}>*/}
+                            {/*                                    <div*/}
+                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                        Mexico*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                        )}*/}
+                            {/*                    </div>*/}
+                            {/*                </details>*/}
+                            {/*                <details className="group">*/}
+                            {/*                    <summary*/}
+                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
+                            {/*                        Rating*/}
+                            {/*                        <RxPlus*/}
+                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
+                            {/*                    </summary>*/}
+                            {/*                    <hr/>*/}
+                            {/*                    <div className="mt-3">*/}
+                            {/*                        <button type='button'*/}
+                            {/*                                className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">*/}
+                            {/*                            Clear Settings*/}
+                            {/*                        </button>*/}
+                            {/*                    </div>*/}
+                            {/*                </details>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="col lg:col-span-8">*/}
+                            {/*            <div className="flex text-[14px] items-center justify-end">*/}
+                            {/*                /!* FilterStoreTab dropdown *!/*/}
+                            {/*                <div ref={dropdownFilterStoreTabRef} onClick={toggleDropdownFilterStoreTab}*/}
+                            {/*                     className="filter_dropdown  z-20 cursor-pointer relative">*/}
+                            {/*                    <div*/}
+                            {/*                        className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">*/}
+                            {/*                        <input value={selectedOptionFilterStoreTab} name="select"*/}
+                            {/*                               id="select"*/}
+                            {/*                               className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
+                            {/*                               readOnly/>*/}
+                            {/*                        <button type='button'*/}
+                            {/*                                className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
+                            {/*                            <RiArrowDropDownLine size={25}/>*/}
+                            {/*                        </button>*/}
+                            {/*                    </div>*/}
+
+                            {/*                    {isOpenDropdownFilterStoreTab && (*/}
+                            {/*                        <div*/}
+                            {/*                            className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
+                            {/*                            <div className="cursor-pointer"*/}
+                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Sort by")}>*/}
+                            {/*                                <div*/}
+                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                    Sort by*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="cursor-pointer"*/}
+                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Relevance")}>*/}
+                            {/*                                <div*/}
+                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                    Relevance*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="cursor-pointer"*/}
+                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Popular")}>*/}
+                            {/*                                <div*/}
+                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
+                            {/*                                    Popular*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="cursor-pointer"*/}
+                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Newest")}>*/}
+                            {/*                                <div*/}
+                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">*/}
+                            {/*                                    Newest*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    )}*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+
+                            {/*            /!* Stores *!/*/}
+                            {/*            <div className="mt-1 box py-4 px-6 bg-white rounded">*/}
+                            {/*                <div className="grid grid-cols-1">*/}
+                            {/*                    <div className="col border rounded py-4 px-6">*/}
+                            {/*                        <div className="block lg:flex items-center justify-between">*/}
+                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
+                            {/*                                <Image src={StoreImg}*/}
+                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
+                            {/*                                       alt="StoreImg"/>*/}
+                            {/*                                <div className="content_wrap">*/}
+                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
+                            {/*                                        Store name*/}
+                            {/*                                    </h4>*/}
+                            {/*                                    <div className="mt-1 flex items-center gap-1">*/}
+                            {/*                                        <div className="icon">*/}
+                            {/*                                            <svg*/}
+                            {/*                                                className="w-4 h-4"*/}
+                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
+                            {/*                                                viewBox="0 0 24 24"*/}
+                            {/*                                                fill="none"*/}
+                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
+                            {/*                                                strokeLinecap="round"*/}
+                            {/*                                                strokeLinejoin="round">*/}
+                            {/*                                                <path*/}
+                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
+                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
+                            {/*                                            </svg>*/}
+                            {/*                                        </div>*/}
+                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
+                            {/*                                            Texas, USA*/}
+                            {/*                                        </h4>*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="button mt-3 lg:mt-0">*/}
+                            {/*                                <button type='button'*/}
+                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
+                            {/*                                    <FaPlus size={10}/>*/}
+                            {/*                                    Follow*/}
+                            {/*                                </button>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                    <div className="col border rounded py-4 px-6 mt-4">*/}
+                            {/*                        <div className="block lg:flex items-center justify-between">*/}
+                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
+                            {/*                                <Image src={StoreImg}*/}
+                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
+                            {/*                                       alt="StoreImg"/>*/}
+                            {/*                                <div className="content_wrap">*/}
+                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
+                            {/*                                        Store name*/}
+                            {/*                                    </h4>*/}
+                            {/*                                    <div className="mt-1 flex items-center gap-1">*/}
+                            {/*                                        <div className="icon">*/}
+                            {/*                                            <svg*/}
+                            {/*                                                className="w-4 h-4"*/}
+                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
+                            {/*                                                viewBox="0 0 24 24"*/}
+                            {/*                                                fill="none"*/}
+                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
+                            {/*                                                strokeLinecap="round"*/}
+                            {/*                                                strokeLinejoin="round">*/}
+                            {/*                                                <path*/}
+                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
+                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
+                            {/*                                            </svg>*/}
+                            {/*                                        </div>*/}
+                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
+                            {/*                                            Texas, USA*/}
+                            {/*                                        </h4>*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="button mt-3 lg:mt-0">*/}
+                            {/*                                <button type='button'*/}
+                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
+                            {/*                                    <FaPlus size={10}/>*/}
+                            {/*                                    Follow*/}
+                            {/*                                </button>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                    <div className="col border rounded py-4 px-6 mt-4">*/}
+                            {/*                        <div className="block lg:flex items-center justify-between">*/}
+                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
+                            {/*                                <Image src={StoreImg}*/}
+                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
+                            {/*                                       alt="StoreImg"/>*/}
+                            {/*                                <div className="content_wrap">*/}
+                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
+                            {/*                                        Store name*/}
+                            {/*                                    </h4>*/}
+                            {/*                                    <div className="mt-1 flex items-center gap-1">*/}
+                            {/*                                        <div className="icon">*/}
+                            {/*                                            <svg*/}
+                            {/*                                                className="w-4 h-4"*/}
+                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
+                            {/*                                                viewBox="0 0 24 24"*/}
+                            {/*                                                fill="none"*/}
+                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
+                            {/*                                                strokeLinecap="round"*/}
+                            {/*                                                strokeLinejoin="round">*/}
+                            {/*                                                <path*/}
+                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
+                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
+                            {/*                                            </svg>*/}
+                            {/*                                        </div>*/}
+                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
+                            {/*                                            Texas, USA*/}
+                            {/*                                        </h4>*/}
+                            {/*                                    </div>*/}
+                            {/*                                </div>*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="button mt-3 lg:mt-0">*/}
+                            {/*                                <button type='button'*/}
+                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
+                            {/*                                    <FaPlus size={10}/>*/}
+                            {/*                                    Follow*/}
+                            {/*                                </button>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*                /!* Pagination *!/*/}
+                            {/*                <div className="pagination mt-4 flex items-center justify-center">*/}
+                            {/*                    <nav aria-label="Page navigation example">*/}
+                            {/*                        <ul className="inline-flex -space-x-px text-[14px] gap-1">*/}
+                            {/*                            <li>*/}
+                            {/*                                <Link href='#' aria-current="page"*/}
+                            {/*                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">*/}
+                            {/*                                    <HiArrowLongLeft/>*/}
+                            {/*                                </Link>*/}
+                            {/*                            </li>*/}
+                            {/*                            <li>*/}
+                            {/*                                <Link href='#' aria-current="page"*/}
+                            {/*                                      className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">*/}
+                            {/*                                    1*/}
+                            {/*                                </Link>*/}
+                            {/*                            </li>*/}
+                            {/*                            <li>*/}
+                            {/*                                <Link href='#'*/}
+                            {/*                                      className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">*/}
+                            {/*                                    2*/}
+                            {/*                                </Link>*/}
+                            {/*                            </li>*/}
+                            {/*                            <li>*/}
+                            {/*                                <Link href='#' aria-current="page"*/}
+                            {/*                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">*/}
+                            {/*                                    <HiArrowLongRight/>*/}
+                            {/*                                </Link>*/}
+                            {/*                            </li>*/}
+                            {/*                        </ul>*/}
+                            {/*                    </nav>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
+                            {/* Users */}
                             <div className={`users_content ${activeTab === 'users' ? 'block' : 'hidden'}`}>
                                 <h1>Users</h1>
                             </div>
