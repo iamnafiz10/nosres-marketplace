@@ -113,7 +113,7 @@ function Page() {
                     </div>
 
                     {/* Listings */}
-                    <div className="listings_content">
+                    <div className="listings_content mb-6">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                             <div className="col lg:col-span-4">
                                 <div className="pb-4">
