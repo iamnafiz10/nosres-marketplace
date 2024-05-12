@@ -318,7 +318,7 @@ export default function Home() {
         <>
             <section id="home-page-section">
                 <div className="py-[49px]">
-                    <div className="topbar_tab_wrap fixed w-full bg-white py-2 border z-50">
+                    <div className="topbar_tab_wrap fixed w-full bg-white py-2 border z-30">
                         <div className="container">
                             <div className="flex items-center gap-2">
                                 <button
@@ -2156,16 +2156,60 @@ export default function Home() {
                                                     <RxPlus
                                                         className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
                                                 </summary>
+                                                <div className="flex items-center gap-1">
+                                                    <div className="flex items-center gap-2 mt-3">
+                                                        <Checkbox></Checkbox>
+                                                        <div className="star_wrap flex items-center gap-1">
+                                                            <h4 className="text-[14px] text-prgcolor">
+                                                                1
+                                                            </h4>
+                                                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 mt-3">
+                                                        <Checkbox></Checkbox>
+                                                        <div className="star_wrap flex items-center gap-1">
+                                                            <h4 className="text-[14px] text-prgcolor">
+                                                                2
+                                                            </h4>
+                                                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 mt-3">
+                                                        <Checkbox></Checkbox>
+                                                        <div className="star_wrap flex items-center gap-1">
+                                                            <h4 className="text-[14px] text-prgcolor">
+                                                                3
+                                                            </h4>
+                                                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 mt-3">
+                                                        <Checkbox></Checkbox>
+                                                        <div className="star_wrap flex items-center gap-1">
+                                                            <h4 className="text-[14px] text-prgcolor">
+                                                                4
+                                                            </h4>
+                                                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 mt-3">
+                                                        <Checkbox></Checkbox>
+                                                        <div className="star_wrap flex items-center gap-1">
+                                                            <h4 className="text-[14px] text-prgcolor">
+                                                                5
+                                                            </h4>
+                                                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div className="flex items-center gap-2 mt-3">
                                                     <Checkbox></Checkbox>
-                                                    <div className="star_wrap flex items-center">
-                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                    <div className="star_wrap flex items-center gap-1">
+                                                        <h4 className="text-[14px] text-prgcolor">
+                                                            Unrated
+                                                        </h4>
                                                     </div>
-                                                    <h4 className="text-[14px] text-prgcolor">and higher</h4>
                                                 </div>
                                             </details>
                                             <div className="group">
