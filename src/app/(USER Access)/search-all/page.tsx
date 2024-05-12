@@ -388,334 +388,495 @@ export default function Home() {
                                 className={`all_content mx-auto w-full lg:w-[750px] ${activeTab === 'all' ? 'block' : 'hidden'}`}>
                                 {/* Listing */}
                                 <div className="box py-4 px-6 bg-white rounded">
-                                    <div className="header_wrap text-center font-[500] text-[16px] pb-2">
-                                        <h1>Listings</h1>
-                                    </div>
+                                    {loading ? (
+                                        <Skeleton height={20} count={1}/>
+                                    ) : (
+                                        <>
+                                            <div className="header_wrap text-center font-[500] text-[16px] pb-2">
+                                                <h1>Listings</h1>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 pb-4">
                                         <div className="col border rounded p-4 cursor-pointer">
-                                            <Image src={ProductImg} alt="ProductImg"/>
-                                            <div className="product_content mt-3">
-                                                <h4 className='text-[12px] text-graycolor'>
-                                                    Electronics
-                                                </h4>
-                                                <h4 className='text-[14px] text-prgcolor font-[500]'>
-                                                    Playstation X
-                                                </h4>
-                                                <h4 className='mt-1 text-[14px] text-black font-[500]'>
-                                                    $1200.00
-                                                </h4>
-                                            </div>
+                                            {loading ? (
+                                                <Skeleton height={170} count={1}/>
+                                            ) : (
+                                                <>
+                                                    <Image src={ProductImg} alt="ProductImg"/>
+                                                </>
+                                            )}
+                                            {loading ? (
+                                                <div className="mt-3">
+                                                    <Skeleton height={10} count={3}/>
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    <div className="product_content mt-3">
+                                                        <h4 className='text-[12px] text-graycolor'>
+                                                            Electronics
+                                                        </h4>
+                                                        <h4 className='text-[14px] text-prgcolor font-[500]'>
+                                                            Playstation X
+                                                        </h4>
+                                                        <h4 className='mt-1 text-[14px] text-black font-[500]'>
+                                                            $1200.00
+                                                        </h4>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                         <div className="col border rounded p-4 cursor-pointer">
-                                            <Image src={ProductImg} alt="ProductImg"/>
-                                            <div className="product_content mt-3">
-                                                <h4 className='text-[12px] text-graycolor'>
-                                                    Electronics
-                                                </h4>
-                                                <h4 className='text-[14px] text-prgcolor font-[500]'>
-                                                    Playstation X
-                                                </h4>
-                                                <h4 className='mt-1 text-[14px] text-black font-[500]'>
-                                                    $1200.00
-                                                </h4>
-                                            </div>
+                                            {loading ? (
+                                                <Skeleton height={170} count={1}/>
+                                            ) : (
+                                                <>
+                                                    <Image src={ProductImg} alt="ProductImg"/>
+                                                </>
+                                            )}
+                                            {loading ? (
+                                                <div className="mt-3">
+                                                    <Skeleton height={10} count={3}/>
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    <div className="product_content mt-3">
+                                                        <h4 className='text-[12px] text-graycolor'>
+                                                            Electronics
+                                                        </h4>
+                                                        <h4 className='text-[14px] text-prgcolor font-[500]'>
+                                                            Playstation X
+                                                        </h4>
+                                                        <h4 className='mt-1 text-[14px] text-black font-[500]'>
+                                                            $1200.00
+                                                        </h4>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                         <div className="col border rounded p-4 cursor-pointer">
-                                            <Image src={ProductImg} alt="ProductImg"/>
-                                            <div className="product_content mt-3">
-                                                <h4 className='text-[12px] text-graycolor'>
-                                                    Electronics
-                                                </h4>
-                                                <h4 className='text-[14px] text-prgcolor font-[500]'>
-                                                    Playstation X
-                                                </h4>
-                                                <h4 className='mt-1 text-[14px] text-black font-[500]'>
-                                                    $1200.00
-                                                </h4>
-                                            </div>
+                                            {loading ? (
+                                                <Skeleton height={170} count={1}/>
+                                            ) : (
+                                                <>
+                                                    <Image src={ProductImg} alt="ProductImg"/>
+                                                </>
+                                            )}
+                                            {loading ? (
+                                                <div className="mt-3">
+                                                    <Skeleton height={10} count={3}/>
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    <div className="product_content mt-3">
+                                                        <h4 className='text-[12px] text-graycolor'>
+                                                            Electronics
+                                                        </h4>
+                                                        <h4 className='text-[14px] text-prgcolor font-[500]'>
+                                                            Playstation X
+                                                        </h4>
+                                                        <h4 className='mt-1 text-[14px] text-black font-[500]'>
+                                                            $1200.00
+                                                        </h4>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                     <hr/>
                                     <div className="button_wrap text-center pt-2">
-                                        <button type='button'
-                                                className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
-                                            View all
-                                        </button>
+                                        {loading ? (
+                                            <Skeleton height={20} count={1}/>
+                                        ) : (
+                                            <>
+                                                <button type='button'
+                                                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
+                                                    View all
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
 
                                 {/* Stores */}
                                 <div className="mt-6 box py-4 px-6 bg-white rounded">
-                                    <div className="header_wrap text-center font-[500] text-[16px] pb-2">
-                                        <h1>Stores</h1>
-                                    </div>
+                                    {loading ? (
+                                        <Skeleton height={20} count={1}/>
+                                    ) : (
+                                        <>
+                                            <div className="header_wrap text-center font-[500] text-[16px] pb-2">
+                                                <h1>Stores</h1>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
                                     <div className="grid grid-cols-1 mt-4 pb-4">
                                         <div className="col border rounded py-4 px-6">
                                             <div className="block lg:flex items-center justify-between">
-                                                <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={StoreImg} className="w-[80px] h-[80px] rounded-full"
-                                                           alt="StoreImg"/>
-                                                    <div className="content_wrap">
-                                                        <h4 className="text-[16px] font-[500]">
-                                                            Store name
-                                                        </h4>
-                                                        <div className="mt-1 flex items-center gap-1">
-                                                            <div className="icon">
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="#828D9E" strokeWidth="1.5"
-                                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                                    <circle cx="12" cy="10" r="3"/>
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Texas, USA
-                                                            </h4>
-                                                        </div>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={70} height={70} borderRadius="100%"
+                                                                  count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50}
+                                                                  count={1}/>
                                                     </div>
-                                                </div>
-                                                <div className="button mt-3 lg:mt-0">
-                                                    <button type='button'
-                                                            className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
-                                                        <FaPlus size={10}/>
-                                                        Follow
-                                                    </button>
-                                                </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={StoreImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="StoreImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Store name
+                                                                </h4>
+                                                                <div className="mt-1 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Texas, USA
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
-                                                <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={StoreImg} className="w-[80px] h-[80px] rounded-full"
-                                                           alt="StoreImg"/>
-                                                    <div className="content_wrap">
-                                                        <h4 className="text-[16px] font-[500]">
-                                                            Store name
-                                                        </h4>
-                                                        <div className="mt-1 flex items-center gap-1">
-                                                            <div className="icon">
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="#828D9E" strokeWidth="1.5"
-                                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                                    <circle cx="12" cy="10" r="3"/>
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Texas, USA
-                                                            </h4>
-                                                        </div>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={70} height={70} borderRadius="100%"
+                                                                  count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50}
+                                                                  count={1}/>
                                                     </div>
-                                                </div>
-                                                <div className="button mt-3 lg:mt-0">
-                                                    <button type='button'
-                                                            className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
-                                                        <FaPlus size={10}/>
-                                                        Follow
-                                                    </button>
-                                                </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={StoreImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="StoreImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Store name
+                                                                </h4>
+                                                                <div className="mt-1 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Texas, USA
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
-                                                <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={StoreImg} className="w-[80px] h-[80px] rounded-full"
-                                                           alt="StoreImg"/>
-                                                    <div className="content_wrap">
-                                                        <h4 className="text-[16px] font-[500]">
-                                                            Store name
-                                                        </h4>
-                                                        <div className="mt-1 flex items-center gap-1">
-                                                            <div className="icon">
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="#828D9E" strokeWidth="1.5"
-                                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                                    <circle cx="12" cy="10" r="3"/>
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Texas, USA
-                                                            </h4>
-                                                        </div>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={70} height={70} borderRadius="100%"
+                                                                  count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50}
+                                                                  count={1}/>
                                                     </div>
-                                                </div>
-                                                <div className="button mt-3 lg:mt-0">
-                                                    <button type='button'
-                                                            className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
-                                                        <FaPlus size={10}/>
-                                                        Follow
-                                                    </button>
-                                                </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={StoreImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="StoreImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Store name
+                                                                </h4>
+                                                                <div className="mt-1 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Texas, USA
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                     <hr/>
                                     <div className="button_wrap text-center pt-2">
-                                        <button type='button'
-                                                className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
-                                            View all
-                                        </button>
+                                        {loading ? (
+                                            <Skeleton height={20} count={1}/>
+                                        ) : (
+                                            <>
+                                                <button type='button'
+                                                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
+                                                    View all
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
 
                                 {/* Users */}
                                 <div className="mt-6 box py-4 px-6 bg-white rounded">
-                                    <div className="header_wrap text-center font-[500] text-[16px] pb-2">
-                                        <h1>Users</h1>
-                                    </div>
+                                    {loading ? (
+                                        <Skeleton height={20} count={1}/>
+                                    ) : (
+                                        <>
+                                            <div className="header_wrap text-center font-[500] text-[16px] pb-2">
+                                                <h1>Users</h1>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
                                     <div className="grid grid-cols-1 mt-4 pb-4">
                                         <div className="col border rounded py-4 px-6">
                                             <div className="block lg:flex items-center justify-between">
-                                                <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={UserImg} className="w-[80px] h-[80px] rounded-full"
-                                                           alt="UserImg"/>
-                                                    <div className="content_wrap">
-                                                        <h4 className="text-[16px] font-[500]">
-                                                            Roshan Nafiz
-                                                        </h4>
-                                                        <div className="mt-2 flex items-center gap-1">
-                                                            <div className="icon">
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="#828D9E" strokeWidth="1.5"
-                                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                                    <circle cx="12" cy="10" r="3"/>
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Bangladesh, Raj
-                                                            </h4>
-                                                        </div>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={70} height={70} borderRadius="100%"
+                                                                  count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50}
+                                                                  count={1}/>
                                                     </div>
-                                                </div>
-                                                <div className="button mt-3 lg:mt-0">
-                                                    <button type='button'
-                                                            className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
-                                                        <FaPlus size={10}/>
-                                                        Follow
-                                                    </button>
-                                                </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={UserImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="UserImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Roshan Nafiz
+                                                                </h4>
+                                                                <div className="mt-2 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Bangladesh, Raj
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
-                                                <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={UserImg} className="w-[80px] h-[80px] rounded-full"
-                                                           alt="UserImg"/>
-                                                    <div className="content_wrap">
-                                                        <h4 className="text-[16px] font-[500]">
-                                                            Roshan Nafiz
-                                                        </h4>
-                                                        <div className="mt-2 flex items-center gap-1">
-                                                            <div className="icon">
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="#828D9E" strokeWidth="1.5"
-                                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                                    <circle cx="12" cy="10" r="3"/>
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Bangladesh, Raj
-                                                            </h4>
-                                                        </div>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={70} height={70} borderRadius="100%"
+                                                                  count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50}
+                                                                  count={1}/>
                                                     </div>
-                                                </div>
-                                                <div className="button mt-3 lg:mt-0">
-                                                    <button type='button'
-                                                            className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
-                                                        <FaPlus size={10}/>
-                                                        Follow
-                                                    </button>
-                                                </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={UserImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="UserImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Roshan Nafiz
+                                                                </h4>
+                                                                <div className="mt-2 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Bangladesh, Raj
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col border rounded py-4 px-6 mt-4">
                                             <div className="block lg:flex items-center justify-between">
-                                                <div className="flex items-center gap-4 cursor-pointer">
-                                                    <Image src={UserImg} className="w-[80px] h-[80px] rounded-full"
-                                                           alt="UserImg"/>
-                                                    <div className="content_wrap">
-                                                        <h4 className="text-[16px] font-[500]">
-                                                            Roshan Nafiz
-                                                        </h4>
-                                                        <div className="mt-2 flex items-center gap-1">
-                                                            <div className="icon">
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="#828D9E" strokeWidth="1.5"
-                                                                    strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path
-                                                                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                                                    <circle cx="12" cy="10" r="3"/>
-                                                                </svg>
-                                                            </div>
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Bangladesh, Raj
-                                                            </h4>
-                                                        </div>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={70} height={70} borderRadius="100%"
+                                                                  count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50}
+                                                                  count={1}/>
                                                     </div>
-                                                </div>
-                                                <div className="button mt-3 lg:mt-0">
-                                                    <button type='button'
-                                                            className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
-                                                        <FaPlus size={10}/>
-                                                        Follow
-                                                    </button>
-                                                </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={UserImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="UserImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Roshan Nafiz
+                                                                </h4>
+                                                                <div className="mt-2 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Bangladesh, Raj
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                     <hr/>
                                     <div className="button_wrap text-center pt-2">
-                                        <button type='button'
-                                                className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
-                                            View all
-                                        </button>
+                                        {loading ? (
+                                            <Skeleton height={20} count={1}/>
+                                        ) : (
+                                            <>
+                                                <button type='button'
+                                                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
+                                                    View all
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
 
                                 {/* Posts */}
                                 <div className="mt-6 box py-4 px-6 bg-white rounded">
-                                    <div className="header_wrap text-center font-[500] text-[16px] pb-2">
-                                        <h1>Posts</h1>
-                                    </div>
+                                    {loading ? (
+                                        <Skeleton height={20} count={1}/>
+                                    ) : (
+                                        <>
+                                            <div className="header_wrap text-center font-[500] text-[16px] pb-2">
+                                                <h1>Posts</h1>
+                                            </div>
+                                        </>
+                                    )}
                                     <hr/>
                                     <div className="grid grid-cols-1 mt-4 pb-4">
                                         <div className="col border rounded py-4 px-6">
-
                                             {/* Post Box */}
                                             <div className="post_box_wrap">
                                                 <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
@@ -1036,10 +1197,16 @@ export default function Home() {
                                     </div>
                                     <hr/>
                                     <div className="button_wrap text-center pt-2">
-                                        <button type='button'
-                                                className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
-                                            View all
-                                        </button>
+                                        {loading ? (
+                                            <Skeleton height={20} count={1}/>
+                                        ) : (
+                                            <>
+                                                <button type='button'
+                                                        className="text-[14px] text-primary py-2 hover:bg-primary hover:text-white transition border rounded w-full">
+                                                    View all
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -1857,663 +2024,663 @@ export default function Home() {
                                 </div>
                             </div>
                             {/* Stores */}
-                            {/*<div className={`stores_content ${activeTab === 'stores' ? 'block' : 'hidden'}`}>*/}
-                            {/*    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">*/}
-                            {/*        <div className="col lg:col-span-4">*/}
-                            {/*            <div className="pb-4">*/}
-                            {/*                <h4 className="text-[14px] text-prgcolor">Filters</h4>*/}
-                            {/*            </div>*/}
-                            {/*            <div className="box py-3 px-6 bg-white rounded">*/}
-                            {/*                <details open={true} className="group pb-3">*/}
-                            {/*                    <summary*/}
-                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
-                            {/*                        Category*/}
-                            {/*                        <RxPlus*/}
-                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
-                            {/*                    </summary>*/}
-                            {/*                    /!* Category dropdown *!/*/}
-                            {/*                    <div ref={dropdownCategoryRef} onClick={toggleDropdownCategory}*/}
-                            {/*                         className="filter_dropdown z-30 text-[14px] cursor-pointer relative my-4">*/}
-                            {/*                        <div*/}
-                            {/*                            className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">*/}
-                            {/*                            <input value={selectedOptionCategory} name="select"*/}
-                            {/*                                   id="select"*/}
-                            {/*                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
-                            {/*                                   readOnly/>*/}
-                            {/*                            <button type='button'*/}
-                            {/*                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
-                            {/*                                <RiArrowDropDownLine size={25}/>*/}
-                            {/*                            </button>*/}
-                            {/*                        </div>*/}
+                            <div className={`stores_content ${activeTab === 'stores' ? 'block' : 'hidden'}`}>
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                    <div className="col lg:col-span-4">
+                                        <div className="pb-4">
+                                            <h4 className="text-[14px] text-prgcolor">Filters</h4>
+                                        </div>
+                                        <div className="box py-3 px-6 bg-white rounded">
+                                            <details open={true} className="group pb-3">
+                                                <summary
+                                                    className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                                    Category
+                                                    <RxPlus
+                                                        className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
+                                                </summary>
+                                                {/* Category dropdown */}
+                                                <div ref={dropdownCategoryRef} onClick={toggleDropdownCategory}
+                                                     className="filter_dropdown z-30 text-[14px] cursor-pointer relative my-4">
+                                                    <div
+                                                        className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                        <input value={selectedOptionCategory} name="select"
+                                                               id="select"
+                                                               className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
+                                                               readOnly/>
+                                                        <button type='button'
+                                                                className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                            <RiArrowDropDownLine size={25}/>
+                                                        </button>
+                                                    </div>
 
-                            {/*                        {isOpenDropdownCategory && (*/}
-                            {/*                            <div*/}
-                            {/*                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
-                            {/*                                <div className="cursor-pointer"*/}
-                            {/*                                     onClick={() => handleOptionSelectCategory("Select")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Select*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
+                                                    {isOpenDropdownCategory && (
+                                                        <div
+                                                            className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                            <div className="cursor-pointer"
+                                                                 onClick={() => handleOptionSelectCategory("Select")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Select
+                                                                </div>
+                                                            </div>
 
-                            {/*                                <div className="cursor-pointer"*/}
-                            {/*                                     onClick={() => handleOptionSelectCategory("Electronics")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Electronics*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                                <div className="cursor-pointer group"*/}
-                            {/*                                     onClick={() => handleOptionSelectCategory("Woman Fashion")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Woman Fashion*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                                <div className="cursor-pointer group"*/}
-                            {/*                                     onClick={() => handleOptionSelectCategory("Men Fashion")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Men Fashion*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                        )}*/}
-                            {/*                    </div>*/}
-                            {/*                </details>*/}
-                            {/*                <hr/>*/}
-                            {/*                <details className="group py-3">*/}
-                            {/*                    <summary*/}
-                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
-                            {/*                        Location*/}
-                            {/*                        <RxPlus*/}
-                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
-                            {/*                    </summary>*/}
-                            {/*                    /!* Location dropdown *!/*/}
-                            {/*                    <div ref={dropdownLocationRef} onClick={toggleDropdownLocation}*/}
-                            {/*                         className="filter_dropdown  z-20 text-[14px] cursor-pointer relative my-4">*/}
-                            {/*                        <div*/}
-                            {/*                            className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">*/}
-                            {/*                            <input value={selectedOptionLocation} name="select"*/}
-                            {/*                                   id="select"*/}
-                            {/*                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
-                            {/*                                   readOnly/>*/}
-                            {/*                            <button type='button'*/}
-                            {/*                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
-                            {/*                                <RiArrowDropDownLine size={25}/>*/}
-                            {/*                            </button>*/}
-                            {/*                        </div>*/}
+                                                            <div className="cursor-pointer"
+                                                                 onClick={() => handleOptionSelectCategory("Electronics")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Electronics
+                                                                </div>
+                                                            </div>
+                                                            <div className="cursor-pointer group"
+                                                                 onClick={() => handleOptionSelectCategory("Woman Fashion")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Woman Fashion
+                                                                </div>
+                                                            </div>
+                                                            <div className="cursor-pointer group"
+                                                                 onClick={() => handleOptionSelectCategory("Men Fashion")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Men Fashion
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </details>
+                                            <hr/>
+                                            <details className="group py-3">
+                                                <summary
+                                                    className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                                    Location
+                                                    <RxPlus
+                                                        className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
+                                                </summary>
+                                                {/* Location dropdown */}
+                                                <div ref={dropdownLocationRef} onClick={toggleDropdownLocation}
+                                                     className="filter_dropdown  z-20 text-[14px] cursor-pointer relative my-4">
+                                                    <div
+                                                        className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                        <input value={selectedOptionLocation} name="select"
+                                                               id="select"
+                                                               className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
+                                                               readOnly/>
+                                                        <button type='button'
+                                                                className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                            <RiArrowDropDownLine size={25}/>
+                                                        </button>
+                                                    </div>
 
-                            {/*                        {isOpenDropdownLocation && (*/}
-                            {/*                            <div*/}
-                            {/*                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
-                            {/*                                <div className="cursor-pointer"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocation("Select")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Select*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
+                                                    {isOpenDropdownLocation && (
+                                                        <div
+                                                            className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                            <div className="cursor-pointer"
+                                                                 onClick={() => handleOptionSelectLocation("Select")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Select
+                                                                </div>
+                                                            </div>
 
-                            {/*                                <div className="cursor-pointer"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocation("United States")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        United States*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                                <div className="cursor-pointer group"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocation("Canada")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Canada*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                                <div className="cursor-pointer group"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocation("Mexico")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Mexico*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                        )}*/}
-                            {/*                    </div>*/}
-                            {/*                </details>*/}
-                            {/*                <hr/>*/}
-                            {/*                <details className="group py-3">*/}
-                            {/*                    <summary*/}
-                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
-                            {/*                        Rating*/}
-                            {/*                        <RxPlus*/}
-                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
-                            {/*                    </summary>*/}
-                            {/*                    <div className="flex items-center gap-2 mt-3">*/}
-                            {/*                        <Checkbox></Checkbox>*/}
-                            {/*                        <div className="star_wrap flex items-center">*/}
-                            {/*                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>*/}
-                            {/*                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>*/}
-                            {/*                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>*/}
-                            {/*                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>*/}
-                            {/*                            <TiStarFullOutline className="w-5 h-5 text-graycolor"/>*/}
-                            {/*                        </div>*/}
-                            {/*                        <h4 className="text-[14px] text-prgcolor">and higher</h4>*/}
-                            {/*                    </div>*/}
-                            {/*                </details>*/}
-                            {/*                <div className="group">*/}
-                            {/*                    <hr/>*/}
-                            {/*                    <div className="mt-3">*/}
-                            {/*                        <button type='button'*/}
-                            {/*                                className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">*/}
-                            {/*                            Clear Settings*/}
-                            {/*                        </button>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*        <div className="col lg:col-span-8">*/}
-                            {/*            <div className="flex text-[14px] items-center justify-end">*/}
-                            {/*                /!* FilterStoreTab dropdown *!/*/}
-                            {/*                <div ref={dropdownFilterStoreTabRef} onClick={toggleDropdownFilterStoreTab}*/}
-                            {/*                     className="filter_dropdown  z-20 cursor-pointer relative">*/}
-                            {/*                    <div*/}
-                            {/*                        className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">*/}
-                            {/*                        <input value={selectedOptionFilterStoreTab} name="select"*/}
-                            {/*                               id="select"*/}
-                            {/*                               className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
-                            {/*                               readOnly/>*/}
-                            {/*                        <button type='button'*/}
-                            {/*                                className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
-                            {/*                            <RiArrowDropDownLine size={25}/>*/}
-                            {/*                        </button>*/}
-                            {/*                    </div>*/}
+                                                            <div className="cursor-pointer"
+                                                                 onClick={() => handleOptionSelectLocation("United States")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    United States
+                                                                </div>
+                                                            </div>
+                                                            <div className="cursor-pointer group"
+                                                                 onClick={() => handleOptionSelectLocation("Canada")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Canada
+                                                                </div>
+                                                            </div>
+                                                            <div className="cursor-pointer group"
+                                                                 onClick={() => handleOptionSelectLocation("Mexico")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Mexico
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </details>
+                                            <hr/>
+                                            <details className="group py-3">
+                                                <summary
+                                                    className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                                    Rating
+                                                    <RxPlus
+                                                        className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
+                                                </summary>
+                                                <div className="flex items-center gap-2 mt-3">
+                                                    <Checkbox></Checkbox>
+                                                    <div className="star_wrap flex items-center">
+                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                    </div>
+                                                    <h4 className="text-[14px] text-prgcolor">and higher</h4>
+                                                </div>
+                                            </details>
+                                            <div className="group">
+                                                <hr/>
+                                                <div className="mt-3">
+                                                    <button type='button'
+                                                            className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
+                                                        Clear Settings
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col lg:col-span-8">
+                                        <div className="flex text-[14px] items-center justify-end">
+                                            {/* FilterStoreTab dropdown */}
+                                            <div ref={dropdownFilterStoreTabRef} onClick={toggleDropdownFilterStoreTab}
+                                                 className="filter_dropdown  z-20 cursor-pointer relative">
+                                                <div
+                                                    className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                    <input value={selectedOptionFilterStoreTab} name="select"
+                                                           id="select"
+                                                           className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
+                                                           readOnly/>
+                                                    <button type='button'
+                                                            className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                        <RiArrowDropDownLine size={25}/>
+                                                    </button>
+                                                </div>
 
-                            {/*                    {isOpenDropdownFilterStoreTab && (*/}
-                            {/*                        <div*/}
-                            {/*                            className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Sort by")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                    Sort by*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Relevance")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                    Relevance*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Popular")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                    Popular*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterStoreTab("Newest")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">*/}
-                            {/*                                    Newest*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    )}*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
+                                                {isOpenDropdownFilterStoreTab && (
+                                                    <div
+                                                        className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterStoreTab("Sort by")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                Sort by
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterStoreTab("Relevance")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                Relevance
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterStoreTab("Popular")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                Popular
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterStoreTab("Newest")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">
+                                                                Newest
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
 
-                            {/*            /!* Stores *!/*/}
-                            {/*            <div className="mt-1 box py-4 px-6 bg-white rounded">*/}
-                            {/*                <div className="grid grid-cols-1">*/}
-                            {/*                    <div className="col border rounded py-4 px-6">*/}
-                            {/*                        <div className="block lg:flex items-center justify-between">*/}
-                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
-                            {/*                                <Image src={StoreImg}*/}
-                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
-                            {/*                                       alt="StoreImg"/>*/}
-                            {/*                                <div className="content_wrap">*/}
-                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
-                            {/*                                        Store name*/}
-                            {/*                                    </h4>*/}
-                            {/*                                    <div className="mt-1 flex items-center gap-1">*/}
-                            {/*                                        <div className="icon">*/}
-                            {/*                                            <svg*/}
-                            {/*                                                className="w-4 h-4"*/}
-                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*                                                viewBox="0 0 24 24"*/}
-                            {/*                                                fill="none"*/}
-                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
-                            {/*                                                strokeLinecap="round"*/}
-                            {/*                                                strokeLinejoin="round">*/}
-                            {/*                                                <path*/}
-                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
-                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
-                            {/*                                            </svg>*/}
-                            {/*                                        </div>*/}
-                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
-                            {/*                                            Texas, USA*/}
-                            {/*                                        </h4>*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="button mt-3 lg:mt-0">*/}
-                            {/*                                <button type='button'*/}
-                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
-                            {/*                                    <FaPlus size={10}/>*/}
-                            {/*                                    Follow*/}
-                            {/*                                </button>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className="col border rounded py-4 px-6 mt-4">*/}
-                            {/*                        <div className="block lg:flex items-center justify-between">*/}
-                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
-                            {/*                                <Image src={StoreImg}*/}
-                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
-                            {/*                                       alt="StoreImg"/>*/}
-                            {/*                                <div className="content_wrap">*/}
-                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
-                            {/*                                        Store name*/}
-                            {/*                                    </h4>*/}
-                            {/*                                    <div className="mt-1 flex items-center gap-1">*/}
-                            {/*                                        <div className="icon">*/}
-                            {/*                                            <svg*/}
-                            {/*                                                className="w-4 h-4"*/}
-                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*                                                viewBox="0 0 24 24"*/}
-                            {/*                                                fill="none"*/}
-                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
-                            {/*                                                strokeLinecap="round"*/}
-                            {/*                                                strokeLinejoin="round">*/}
-                            {/*                                                <path*/}
-                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
-                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
-                            {/*                                            </svg>*/}
-                            {/*                                        </div>*/}
-                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
-                            {/*                                            Texas, USA*/}
-                            {/*                                        </h4>*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="button mt-3 lg:mt-0">*/}
-                            {/*                                <button type='button'*/}
-                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
-                            {/*                                    <FaPlus size={10}/>*/}
-                            {/*                                    Follow*/}
-                            {/*                                </button>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className="col border rounded py-4 px-6 mt-4">*/}
-                            {/*                        <div className="block lg:flex items-center justify-between">*/}
-                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
-                            {/*                                <Image src={StoreImg}*/}
-                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
-                            {/*                                       alt="StoreImg"/>*/}
-                            {/*                                <div className="content_wrap">*/}
-                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
-                            {/*                                        Store name*/}
-                            {/*                                    </h4>*/}
-                            {/*                                    <div className="mt-1 flex items-center gap-1">*/}
-                            {/*                                        <div className="icon">*/}
-                            {/*                                            <svg*/}
-                            {/*                                                className="w-4 h-4"*/}
-                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*                                                viewBox="0 0 24 24"*/}
-                            {/*                                                fill="none"*/}
-                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
-                            {/*                                                strokeLinecap="round"*/}
-                            {/*                                                strokeLinejoin="round">*/}
-                            {/*                                                <path*/}
-                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
-                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
-                            {/*                                            </svg>*/}
-                            {/*                                        </div>*/}
-                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
-                            {/*                                            Texas, USA*/}
-                            {/*                                        </h4>*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="button mt-3 lg:mt-0">*/}
-                            {/*                                <button type='button'*/}
-                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
-                            {/*                                    <FaPlus size={10}/>*/}
-                            {/*                                    Follow*/}
-                            {/*                                </button>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*                /!* Pagination *!/*/}
-                            {/*                <div className="pagination mt-4 flex items-center justify-center">*/}
-                            {/*                    <nav aria-label="Page navigation example">*/}
-                            {/*                        <ul className="inline-flex -space-x-px text-[14px] gap-1">*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#' aria-current="page"*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">*/}
-                            {/*                                    <HiArrowLongLeft/>*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#' aria-current="page"*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">*/}
-                            {/*                                    1*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#'*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">*/}
-                            {/*                                    2*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#' aria-current="page"*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">*/}
-                            {/*                                    <HiArrowLongRight/>*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                        </ul>*/}
-                            {/*                    </nav>*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
+                                        {/* Stores */}
+                                        <div className="mt-1 box py-4 px-6 bg-white rounded">
+                                            <div className="grid grid-cols-1">
+                                                <div className="col border rounded py-4 px-6">
+                                                    <div className="block lg:flex items-center justify-between">
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={StoreImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="StoreImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Store name
+                                                                </h4>
+                                                                <div className="mt-1 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Texas, USA
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col border rounded py-4 px-6 mt-4">
+                                                    <div className="block lg:flex items-center justify-between">
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={StoreImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="StoreImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Store name
+                                                                </h4>
+                                                                <div className="mt-1 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Texas, USA
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col border rounded py-4 px-6 mt-4">
+                                                    <div className="block lg:flex items-center justify-between">
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={StoreImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="StoreImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Store name
+                                                                </h4>
+                                                                <div className="mt-1 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Texas, USA
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* Pagination */}
+                                            <div className="pagination mt-4 flex items-center justify-center">
+                                                <nav aria-label="Page navigation example">
+                                                    <ul className="inline-flex -space-x-px text-[14px] gap-1">
+                                                        <li>
+                                                            <Link href='#' aria-current="page"
+                                                                  className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
+                                                                <HiArrowLongLeft/>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#' aria-current="page"
+                                                                  className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">
+                                                                1
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">
+                                                                2
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#' aria-current="page"
+                                                                  className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
+                                                                <HiArrowLongRight/>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {/* Users */}
-                            {/*<div className={`users_content ${activeTab === 'users' ? 'block' : 'hidden'}`}>*/}
-                            {/*    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">*/}
-                            {/*        <div className="col lg:col-span-4">*/}
-                            {/*            <div className="pb-4">*/}
-                            {/*                <h4 className="text-[14px] text-prgcolor">Filters</h4>*/}
-                            {/*            </div>*/}
-                            {/*            <div className="box py-3 px-6 bg-white rounded">*/}
-                            {/*                <details open={true} className="group py-3">*/}
-                            {/*                    <summary*/}
-                            {/*                        className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">*/}
-                            {/*                        Location*/}
-                            {/*                        <RxPlus*/}
-                            {/*                            className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>*/}
-                            {/*                    </summary>*/}
-                            {/*                    /!* LocationUser dropdown *!/*/}
-                            {/*                    <div ref={dropdownLocationUserRef} onClick={toggleDropdownLocationUser}*/}
-                            {/*                         className="filter_dropdown  z-20 text-[14px] cursor-pointer relative my-4">*/}
-                            {/*                        <div*/}
-                            {/*                            className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">*/}
-                            {/*                            <input value={selectedOptionLocationUser} name="select"*/}
-                            {/*                                   id="select"*/}
-                            {/*                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
-                            {/*                                   readOnly/>*/}
-                            {/*                            <button type='button'*/}
-                            {/*                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
-                            {/*                                <RiArrowDropDownLine size={25}/>*/}
-                            {/*                            </button>*/}
-                            {/*                        </div>*/}
+                            <div className={`users_content ${activeTab === 'users' ? 'block' : 'hidden'}`}>
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                    <div className="col lg:col-span-4">
+                                        <div className="pb-4">
+                                            <h4 className="text-[14px] text-prgcolor">Filters</h4>
+                                        </div>
+                                        <div className="box py-3 px-6 bg-white rounded">
+                                            <details open={true} className="group py-3">
+                                                <summary
+                                                    className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                                    Location
+                                                    <RxPlus
+                                                        className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
+                                                </summary>
+                                                {/* LocationUser dropdown */}
+                                                <div ref={dropdownLocationUserRef} onClick={toggleDropdownLocationUser}
+                                                     className="filter_dropdown  z-20 text-[14px] cursor-pointer relative my-4">
+                                                    <div
+                                                        className="w-full h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                        <input value={selectedOptionLocationUser} name="select"
+                                                               id="select"
+                                                               className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
+                                                               readOnly/>
+                                                        <button type='button'
+                                                                className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                            <RiArrowDropDownLine size={25}/>
+                                                        </button>
+                                                    </div>
 
-                            {/*                        {isOpenDropdownLocationUser && (*/}
-                            {/*                            <div*/}
-                            {/*                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
-                            {/*                                <div className="cursor-pointer"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocationUser("Select")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Select*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
+                                                    {isOpenDropdownLocationUser && (
+                                                        <div
+                                                            className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                            <div className="cursor-pointer"
+                                                                 onClick={() => handleOptionSelectLocationUser("Select")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Select
+                                                                </div>
+                                                            </div>
 
-                            {/*                                <div className="cursor-pointer"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocationUser("United States")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        United States*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                                <div className="cursor-pointer group"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocationUser("Canada")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Canada*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                                <div className="cursor-pointer group"*/}
-                            {/*                                     onClick={() => handleOptionSelectLocationUser("Mexico")}>*/}
-                            {/*                                    <div*/}
-                            {/*                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                        Mexico*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                        )}*/}
-                            {/*                    </div>*/}
-                            {/*                </details>*/}
-                            {/*                <hr/>*/}
-                            {/*                <div className="group">*/}
-                            {/*                    <hr/>*/}
-                            {/*                    <div className="mt-3">*/}
-                            {/*                        <button type='button'*/}
-                            {/*                                className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">*/}
-                            {/*                            Clear Settings*/}
-                            {/*                        </button>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*        <div className="col lg:col-span-8">*/}
-                            {/*            <div className="flex text-[14px] items-center justify-end">*/}
-                            {/*                /!* FilterUserTab dropdown *!/*/}
-                            {/*                <div ref={dropdownFilterUserTabRef} onClick={toggleDropdownFilterUserTab}*/}
-                            {/*                     className="filter_dropdown  z-20 cursor-pointer relative">*/}
-                            {/*                    <div*/}
-                            {/*                        className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">*/}
-                            {/*                        <input value={selectedOptionFilterUserTab} name="select"*/}
-                            {/*                               id="select"*/}
-                            {/*                               className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"*/}
-                            {/*                               readOnly/>*/}
-                            {/*                        <button type='button'*/}
-                            {/*                                className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">*/}
-                            {/*                            <RiArrowDropDownLine size={25}/>*/}
-                            {/*                        </button>*/}
-                            {/*                    </div>*/}
+                                                            <div className="cursor-pointer"
+                                                                 onClick={() => handleOptionSelectLocationUser("United States")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    United States
+                                                                </div>
+                                                            </div>
+                                                            <div className="cursor-pointer group"
+                                                                 onClick={() => handleOptionSelectLocationUser("Canada")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Canada
+                                                                </div>
+                                                            </div>
+                                                            <div className="cursor-pointer group"
+                                                                 onClick={() => handleOptionSelectLocationUser("Mexico")}>
+                                                                <div
+                                                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                    Mexico
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </details>
+                                            <hr/>
+                                            <div className="group">
+                                                <hr/>
+                                                <div className="mt-3">
+                                                    <button type='button'
+                                                            className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
+                                                        Clear Settings
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col lg:col-span-8">
+                                        <div className="flex text-[14px] items-center justify-end">
+                                            {/* FilterUserTab dropdown */}
+                                            <div ref={dropdownFilterUserTabRef} onClick={toggleDropdownFilterUserTab}
+                                                 className="filter_dropdown  z-20 cursor-pointer relative">
+                                                <div
+                                                    className="w-[150px] h-8 bg-white flex border border-gray-200 rounded items-center">
+                                                    <input value={selectedOptionFilterUserTab} name="select"
+                                                           id="select"
+                                                           className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full bg-white"
+                                                           readOnly/>
+                                                    <button type='button'
+                                                            className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                        <RiArrowDropDownLine size={25}/>
+                                                    </button>
+                                                </div>
 
-                            {/*                    {isOpenDropdownFilterUserTab && (*/}
-                            {/*                        <div*/}
-                            {/*                            className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterUserTab("Sort by")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                    Sort by*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterUserTab("Relevance")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                    Relevance*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterUserTab("Popular")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">*/}
-                            {/*                                    Popular*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="cursor-pointer"*/}
-                            {/*                                 onClick={() => handleOptionSelectFilterUserTab("Newest")}>*/}
-                            {/*                                <div*/}
-                            {/*                                    className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">*/}
-                            {/*                                    Newest*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    )}*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
+                                                {isOpenDropdownFilterUserTab && (
+                                                    <div
+                                                        className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterUserTab("Sort by")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                Sort by
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterUserTab("Relevance")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                Relevance
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterUserTab("Popular")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                Popular
+                                                            </div>
+                                                        </div>
+                                                        <div className="cursor-pointer"
+                                                             onClick={() => handleOptionSelectFilterUserTab("Newest")}>
+                                                            <div
+                                                                className="block p-2 border-transparent border-l-4 hover:border-primary border-blue-600 hover:bg-gray-100">
+                                                                Newest
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
 
-                            {/*            /!* Stores *!/*/}
-                            {/*            <div className="mt-1 box py-4 px-6 bg-white rounded">*/}
-                            {/*                <div className="grid grid-cols-1">*/}
-                            {/*                    <div className="col border rounded py-4 px-6">*/}
-                            {/*                        <div className="block lg:flex items-center justify-between">*/}
-                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
-                            {/*                                <Image src={UserImg}*/}
-                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
-                            {/*                                       alt="UserImg"/>*/}
-                            {/*                                <div className="content_wrap">*/}
-                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
-                            {/*                                        Roshan Nafiz*/}
-                            {/*                                    </h4>*/}
-                            {/*                                    <div className="mt-2 flex items-center gap-1">*/}
-                            {/*                                        <div className="icon">*/}
-                            {/*                                            <svg*/}
-                            {/*                                                className="w-4 h-4"*/}
-                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*                                                viewBox="0 0 24 24"*/}
-                            {/*                                                fill="none"*/}
-                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
-                            {/*                                                strokeLinecap="round"*/}
-                            {/*                                                strokeLinejoin="round">*/}
-                            {/*                                                <path*/}
-                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
-                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
-                            {/*                                            </svg>*/}
-                            {/*                                        </div>*/}
-                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
-                            {/*                                            Bangladesh, Raj*/}
-                            {/*                                        </h4>*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="button mt-3 lg:mt-0">*/}
-                            {/*                                <button type='button'*/}
-                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
-                            {/*                                    <FaPlus size={10}/>*/}
-                            {/*                                    Follow*/}
-                            {/*                                </button>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className="col border rounded py-4 px-6 mt-4">*/}
-                            {/*                        <div className="block lg:flex items-center justify-between">*/}
-                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
-                            {/*                                <Image src={UserImg}*/}
-                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
-                            {/*                                       alt="UserImg"/>*/}
-                            {/*                                <div className="content_wrap">*/}
-                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
-                            {/*                                        Roshan Nafiz*/}
-                            {/*                                    </h4>*/}
-                            {/*                                    <div className="mt-2 flex items-center gap-1">*/}
-                            {/*                                        <div className="icon">*/}
-                            {/*                                            <svg*/}
-                            {/*                                                className="w-4 h-4"*/}
-                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*                                                viewBox="0 0 24 24"*/}
-                            {/*                                                fill="none"*/}
-                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
-                            {/*                                                strokeLinecap="round"*/}
-                            {/*                                                strokeLinejoin="round">*/}
-                            {/*                                                <path*/}
-                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
-                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
-                            {/*                                            </svg>*/}
-                            {/*                                        </div>*/}
-                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
-                            {/*                                            Bangladesh, Raj*/}
-                            {/*                                        </h4>*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="button mt-3 lg:mt-0">*/}
-                            {/*                                <button type='button'*/}
-                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
-                            {/*                                    <FaPlus size={10}/>*/}
-                            {/*                                    Follow*/}
-                            {/*                                </button>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className="col border rounded py-4 px-6 mt-4">*/}
-                            {/*                        <div className="block lg:flex items-center justify-between">*/}
-                            {/*                            <div className="flex items-center gap-4 cursor-pointer">*/}
-                            {/*                                <Image src={UserImg}*/}
-                            {/*                                       className="w-[80px] h-[80px] rounded-full"*/}
-                            {/*                                       alt="UserImg"/>*/}
-                            {/*                                <div className="content_wrap">*/}
-                            {/*                                    <h4 className="text-[16px] font-[500]">*/}
-                            {/*                                        Roshan Nafiz*/}
-                            {/*                                    </h4>*/}
-                            {/*                                    <div className="mt-2 flex items-center gap-1">*/}
-                            {/*                                        <div className="icon">*/}
-                            {/*                                            <svg*/}
-                            {/*                                                className="w-4 h-4"*/}
-                            {/*                                                xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*                                                viewBox="0 0 24 24"*/}
-                            {/*                                                fill="none"*/}
-                            {/*                                                stroke="#828D9E" strokeWidth="1.5"*/}
-                            {/*                                                strokeLinecap="round"*/}
-                            {/*                                                strokeLinejoin="round">*/}
-                            {/*                                                <path*/}
-                            {/*                                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>*/}
-                            {/*                                                <circle cx="12" cy="10" r="3"/>*/}
-                            {/*                                            </svg>*/}
-                            {/*                                        </div>*/}
-                            {/*                                        <h4 className="text-graycolor text-[14px]">*/}
-                            {/*                                            Bangladesh, Raj*/}
-                            {/*                                        </h4>*/}
-                            {/*                                    </div>*/}
-                            {/*                                </div>*/}
-                            {/*                            </div>*/}
-                            {/*                            <div className="button mt-3 lg:mt-0">*/}
-                            {/*                                <button type='button'*/}
-                            {/*                                        className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">*/}
-                            {/*                                    <FaPlus size={10}/>*/}
-                            {/*                                    Follow*/}
-                            {/*                                </button>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*                /!* Pagination *!/*/}
-                            {/*                <div className="pagination mt-4 flex items-center justify-center">*/}
-                            {/*                    <nav aria-label="Page navigation example">*/}
-                            {/*                        <ul className="inline-flex -space-x-px text-[14px] gap-1">*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#' aria-current="page"*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">*/}
-                            {/*                                    <HiArrowLongLeft/>*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#' aria-current="page"*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">*/}
-                            {/*                                    1*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#'*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">*/}
-                            {/*                                    2*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                            <li>*/}
-                            {/*                                <Link href='#' aria-current="page"*/}
-                            {/*                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">*/}
-                            {/*                                    <HiArrowLongRight/>*/}
-                            {/*                                </Link>*/}
-                            {/*                            </li>*/}
-                            {/*                        </ul>*/}
-                            {/*                    </nav>*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
+                                        {/* Stores */}
+                                        <div className="mt-1 box py-4 px-6 bg-white rounded">
+                                            <div className="grid grid-cols-1">
+                                                <div className="col border rounded py-4 px-6">
+                                                    <div className="block lg:flex items-center justify-between">
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={UserImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="UserImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Roshan Nafiz
+                                                                </h4>
+                                                                <div className="mt-2 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Bangladesh, Raj
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col border rounded py-4 px-6 mt-4">
+                                                    <div className="block lg:flex items-center justify-between">
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={UserImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="UserImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Roshan Nafiz
+                                                                </h4>
+                                                                <div className="mt-2 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Bangladesh, Raj
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col border rounded py-4 px-6 mt-4">
+                                                    <div className="block lg:flex items-center justify-between">
+                                                        <div className="flex items-center gap-4 cursor-pointer">
+                                                            <Image src={UserImg}
+                                                                   className="w-[80px] h-[80px] rounded-full"
+                                                                   alt="UserImg"/>
+                                                            <div className="content_wrap">
+                                                                <h4 className="text-[16px] font-[500]">
+                                                                    Roshan Nafiz
+                                                                </h4>
+                                                                <div className="mt-2 flex items-center gap-1">
+                                                                    <div className="icon">
+                                                                        <svg
+                                                                            className="w-4 h-4"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            stroke="#828D9E" strokeWidth="1.5"
+                                                                            strokeLinecap="round"
+                                                                            strokeLinejoin="round">
+                                                                            <path
+                                                                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                                                            <circle cx="12" cy="10" r="3"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 className="text-graycolor text-[14px]">
+                                                                        Bangladesh, Raj
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="button mt-3 lg:mt-0">
+                                                            <button type='button'
+                                                                    className="py-2 px-10 flex items-center gap-1 bg-primary text-white border hover:bg-transparent hover:border-primary hover:text-primary rounded text-[14px]">
+                                                                <FaPlus size={10}/>
+                                                                Follow
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* Pagination */}
+                                            <div className="pagination mt-4 flex items-center justify-center">
+                                                <nav aria-label="Page navigation example">
+                                                    <ul className="inline-flex -space-x-px text-[14px] gap-1">
+                                                        <li>
+                                                            <Link href='#' aria-current="page"
+                                                                  className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
+                                                                <HiArrowLongLeft/>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#' aria-current="page"
+                                                                  className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">
+                                                                1
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">
+                                                                2
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#' aria-current="page"
+                                                                  className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
+                                                                <HiArrowLongRight/>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
