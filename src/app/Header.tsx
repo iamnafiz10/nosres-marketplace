@@ -334,7 +334,7 @@ function Header() {
                                     {pathname === '/home' ? (
                                         <GoHomeFill className="w-[25px] h-[22px] text-primary"/>
                                     ) : (
-                                        <GoHome className="w-[25px] h-[22px] text-primary"/>
+                                        <GoHome className="w-[25px] h-[22px] text-prgcolor"/>
                                     )}
                                 </Link>
                             </Tooltip>
@@ -348,7 +348,7 @@ function Header() {
                                     {/* Main SVG */}
                                     <div className="relative">
                                         <IoCartOutline
-                                            className="w-[25px] h-[24px] text-prgcolor group-hover:text-primary"/>
+                                            className="w-[25px] h-[24px] c group-hover:text-primary"/>
                                         <div
                                             className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                             4
