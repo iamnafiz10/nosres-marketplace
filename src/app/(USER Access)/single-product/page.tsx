@@ -35,7 +35,7 @@ function Page() {
                                             <nav className="mt-6 mb-3 flex justify-between" aria-label="Breadcrumb">
                                                 <ol className="inline-flex items-center text-[14px] mb-3 sm:mb-0">
                                                     <li className="text-graycolor hover:text-prgcolor cursor-pointer">
-                                                        Newsfeed
+                                                        Home
                                                     </li>
                                                     <span className="mx-2 text-gray-400">/</span>
                                                     <li className="text-graycolor hover:text-prgcolor cursor-pointer">
