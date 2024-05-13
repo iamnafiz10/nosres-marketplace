@@ -12,6 +12,7 @@ import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {IoCartOutline} from "react-icons/io5";
 import {HiUserCircle} from "react-icons/hi";
+import {TiStarFullOutline} from "react-icons/ti";
 
 function Page() {
     const loading = useLoading();
@@ -89,6 +90,16 @@ function Page() {
                                                 Experience
                                                 (Black)
                                             </h1>
+                                            <div className="star_wrap mt-1 flex items-center gap-1">
+                                                <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                <TiStarFullOutline className="w-5 h-5 text-graycolor"/>
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    5
+                                                </h4>
+                                            </div>
                                             <div className="mt-3">
                                                 <h4 className="text-[14px] text-graycolor">
                                                     Condition: <span className="text-prgcolor">New</span>

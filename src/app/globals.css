@@ -118,6 +118,25 @@ button {
     border-radius: 3px !important;
 }
 
+/*-- Phone dropdown design ----------*/
+.react-international-phone-input-container .react-international-phone-input {
+    font-size: 14px !important;
+    padding-left: 1rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    z-index: 2 !important;
+    width: 100% !important;
+}
+
+.react-international-phone-input-container .react-international-phone-input:focus {
+    border: 1px solid #4D7FB8 !important;
+    box-shadow: none !important;
+}
+
+.react-international-phone-country-selector-button__button-content {
+    padding: 0 10px !important;
+}
+
 /*------------------- Account -------------------*/
 #account_dropdown_menu {
     top: 40px;
@@ -337,4 +356,15 @@ em-emoji-picker {
 
 .Toastify__progress-bar-theme--colored.Toastify__progress-bar--info {
     background: rgba(77, 127, 184, 0.61) !important;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .react-international-phone-input-container .react-international-phone-input {
+        width: 61.3% !important;
+    }
+
+    .react-international-phone-country-selector-button__button-content {
+        padding: 0 3px !important;
+    }
 }
