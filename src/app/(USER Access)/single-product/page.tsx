@@ -927,8 +927,7 @@ function Page() {
                     {/*<Modal.Footer>*/}
                     {/*</Modal.Footer>*/}
                 </Modal>
-                {/* Review Pop-Up End */
-                }
+                {/* Review Pop-Up End */}
             </section>
         </>
     )
