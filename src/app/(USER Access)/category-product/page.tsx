@@ -10,7 +10,7 @@ import Image from "next/image";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import Link from "next/link";
-import {HiArrowLongLeft, HiArrowLongRight} from "react-icons/hi2";
+import {HiArrowLongLeft, HiArrowLongRight, HiOutlineChatBubbleLeft} from "react-icons/hi2";
 import Skeleton from "react-loading-skeleton";
 import {Carousel, Modal} from "flowbite-react";
 import {HiUserCircle} from "react-icons/hi";
@@ -760,15 +760,18 @@ function Page() {
                                                 Experience
                                                 (Black)
                                             </h1>
-                                            <div className="flex items-center gap-2">
-                                                <h4 className="text-[20px] text-black font-semibold mt-1">
+                                            <div className="flex mt-1 items-center gap-0">
+                                                <h4 className="text-[20px] text-black font-semibold">
                                                     $350
                                                 </h4>
-                                                <h4 className="text-[14px] text-graycolor mt-1">
+                                                <div className="icon">
+                                                    <LuDot size={15} className='text-graycolor'/>
+                                                </div>
+                                                <h4 className="text-[14px] text-graycolor">
                                                     In Stock
                                                 </h4>
                                             </div>
-                                            <div className="mt-2 relative flex items-center gap-4">
+                                            <div className="mt-2 relative flex items-center gap-1">
                                                 <div className="star_wrap mt-1 flex items-center gap-1">
                                                     <TiStarFullOutline className="w-5 h-5 text-primary"/>
                                                     <TiStarFullOutline className="w-5 h-5 text-primary"/>
@@ -779,6 +782,9 @@ function Page() {
                                                         (5)
                                                     </h4>
                                                 </div>
+                                                <div className="icon mt-1">
+                                                    <LuDot size={15} className='text-graycolor'/>
+                                                </div>
                                                 <div ref={ratingRef}>
                                                     <h4 onClick={handleRatingClick}
                                                         className="mt-1 hover:underline cursor-pointer text-[14px] text-graycolor">
@@ -787,11 +793,11 @@ function Page() {
                                                     {/* Rating dropdown */}
                                                     {showRating &&
                                                         <div
-                                                            className="rating_view absolute top-8 left-0 bg-white py-4 px-4 rounded w-[229px]">
+                                                            className="rating_view absolute top-8 left-[7px] bg-white border py-4 px-4 rounded w-[229px]">
                                                             <div
                                                                 className="flex items-center justify-center text-center mb-2">
-                                                                <p className="ms-1 text-[14px] font-[500] text-black">4.5</p>
-                                                                <h4 className="ms-1 text-[14px] text-graycolor">
+                                                                <p className="ms-1 text-[16px] font-[500] text-black">4.5</p>
+                                                                <h4 className="ms-1 text-[16px] text-graycolor">
                                                                     out of 5
                                                                 </h4>
                                                             </div>
@@ -838,7 +844,7 @@ function Page() {
                                                                         d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                                                 </svg>
                                                             </div>
-                                                            <h4 className="mt-1 text-center text-[14px] text-graycolor">
+                                                            <h4 className="mt-1 text-center text-[12px] text-graycolor">
                                                                 Based on 230 ratings
                                                             </h4>
                                                             <div className="rating_progress">
@@ -921,6 +927,9 @@ function Page() {
                                                         </div>
                                                     }
                                                 </div>
+                                                <div className="icon mt-1">
+                                                    <LuDot size={15} className='text-graycolor'/>
+                                                </div>
                                                 <h4 onClick={() => setOpenReviewModal(true)}
                                                     className="mt-1 hover:underline cursor-pointer text-[14px] text-graycolor">
                                                     23 Reviews
@@ -935,8 +944,9 @@ function Page() {
                                                         Add to Cart
                                                     </button>
                                                     <button type='button'
-                                                            className="py-2 px-6 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
-                                                        Contract Seller
+                                                            className="py-2 px-6 flex items-center gap-1 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
+                                                        <HiOutlineChatBubbleLeft size={15}/>
+                                                        Contact Seller
                                                     </button>
                                                     <div className="flex items-center justify-end text-end">
                                                         <div onClick={handleAddDotClick}
@@ -1012,23 +1022,19 @@ function Page() {
                                                         <Skeleton height={10} count={2}/>
                                                     ) : (
                                                         <>
-                                                            <div className="mt-2 flex items-center gap-2">
-                                                                <h4 className="text-[14px] text-graycolor">
+                                                            <div className="mt-2 flex items-center gap-4">
+                                                                <h4 className="text-[12px] text-graycolor">
                                                                     Condition: <span
                                                                     className="text-prgcolor">New</span>
                                                                 </h4>
-                                                                <h4 className="text-[14px] text-graycolor">
+                                                                <h4 className="text-[12px] text-graycolor">
                                                                     Brand: <span className="text-prgcolor">Sony</span>
                                                                 </h4>
                                                             </div>
-                                                            <div className="mt-1 flex items-center gap-2">
-                                                                <h4 className="text-[14px] text-graycolor">
+                                                            <div className="mt-1 flex items-center gap-4">
+                                                                <h4 className="text-[12px] text-graycolor">
                                                                     Delivery: <span
                                                                     className="text-prgcolor">Ship Only</span>
-                                                                </h4>
-                                                                <h4 className="text-[14px] text-graycolor">
-                                                                    Store Located: <span
-                                                                    className="text-prgcolor">California, USA</span>
                                                                 </h4>
                                                             </div>
                                                         </>
@@ -1037,7 +1043,7 @@ function Page() {
                                                         <Skeleton height={20} count={2}/>
                                                     ) : (
                                                         <>
-                                                            <h4 className="mt-2 text-[14px] text-graycolor">
+                                                            <h4 className="mt-4 text-[14px] text-prgcolor">
                                                                 Lorem ipsum dolor sit amet, consectetur adipisicing
                                                                 elit.
                                                                 Aperiam beatae
@@ -1060,8 +1066,11 @@ function Page() {
                                                         <Skeleton height={20} count={5}/>
                                                     ) : (
                                                         <>
-                                                            <div className='mt-2 text-[14px] text-graycolor'>
-                                                                <b>Refund and Return Policy:</b>
+                                                            <div className='mt-4 text-[14px] text-prgcolor'>
+                                                                <h4 className="text-[16px] pb-2 font-[500] text-prgcolor">
+                                                                    Refund and Return Policy:
+                                                                </h4>
+                                                                <hr/>
 
                                                                 <div className="mt-2">
                                                                     Unused items in original packaging can be
@@ -1095,15 +1104,16 @@ function Page() {
                                                     )}
 
                                                 </div>
-                                                <div className="mt-3">
+                                                <div className="mt-4">
                                                     <div className="seller_box mt-3">
                                                         {loading ? (
                                                             <Skeleton height={50} count={1}/>
                                                         ) : (
                                                             <>
-                                                                <h4 className="text-[14px] font-[500]">
+                                                                <h4 className="text-[16px] pb-2 font-[500] text-prgcolor">
                                                                     Seller Information
                                                                 </h4>
+                                                                <hr/>
                                                             </>
                                                         )}
                                                         {loading ? (
@@ -1206,7 +1216,7 @@ function Page() {
                                         </button>
                                         <button type='button'
                                                 className="py-1 px-4 hover:bg-primary hover:text-white rounded bg-gray-100 text-black text-[12px]">
-                                            Packaging Quality (23)
+                                            Packaging quality (23)
                                         </button>
                                     </div>
                                 </div>
@@ -1279,7 +1289,7 @@ function Page() {
                             </div>
 
                             {/* User Review */}
-                            <div className="user_review">
+                            <div className="user_review mx-4">
                                 <div className="box bg-white border py-4 px-6 rounded">
                                     <div className="flex items-start justify-between">
                                         <Link href='#' className="flex items-center gap-1">
@@ -1333,7 +1343,7 @@ function Page() {
                                                                               y2="15"/>
                                                                     </svg>
                                                                     <h4>
-                                                                        Report product
+                                                                        Report review
                                                                     </h4>
                                                                 </Link>
                                                             </div>
