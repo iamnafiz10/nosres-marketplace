@@ -6,6 +6,10 @@ import useTitle from "@/app/useTitle";
 import {PhoneInput} from 'react-international-phone';
 import 'react-international-phone/style.css';
 import {Checkbox} from "antd";
+import Link from "next/link";
+import ProductImg from '../../../../public/assets/images/product-1.png';
+import Image from "next/image";
+import {CiLock} from "react-icons/ci";
 
 function Page() {
     useTitle("Checkout")
@@ -16,11 +20,8 @@ function Page() {
         <>
             <section id="checkout-section">
                 {/*<div className="container pt-[50px] pb-12">*/}
-                {/*    <div className="grid grid-cols-12">*/}
-                {/*        <div className="col-span-2">*/}
-                {/*            HI*/}
-                {/*        </div>*/}
-                {/*        <div className="col-span-7">*/}
+                {/*    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">*/}
+                {/*        <div className="col lg:col-span-7">*/}
                 {/*            <div className="header_wrap mt-4">*/}
                 {/*                {loading ? (*/}
                 {/*                    <Skeleton height={20} count={1}/>*/}
@@ -145,8 +146,93 @@ function Page() {
                 {/*                </form>*/}
                 {/*            </div>*/}
                 {/*        </div>*/}
-                {/*        <div className="col-span-3">*/}
-                {/*            HI*/}
+                {/*        <div className="col lg:col-span-5">*/}
+                {/*            <div className="mt-14 box py-4 px-6 bg-white rounded">*/}
+                {/*                /!* Product Area *!/*/}
+                {/*                <div className="product_wrap space-y-3">*/}
+                {/*                    <h4 className="text-[14px] text-prgcolor font-semibold">*/}
+                {/*                        Order Summary*/}
+                {/*                    </h4>*/}
+                {/*                    {loading ? (*/}
+                {/*                        <div className="flex items-center justify-start gap-2 w-full">*/}
+                {/*                            <Skeleton width={80} height={60} borderRadius="10%" count={1}/>*/}
+                {/*                            <Skeleton containerClassName="flex-1" height={50} count={1}/>*/}
+                {/*                        </div>*/}
+                {/*                    ) : (*/}
+                {/*                        <>*/}
+                {/*                            <Link href='#' className="show_product group mt-2 flex items-start gap-4">*/}
+                {/*                                <div className="p-1 border rounded">*/}
+                {/*                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>*/}
+                {/*                                </div>*/}
+                {/*                                <div className="product_content">*/}
+                {/*                                    <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple*/}
+                {/*                                        iPhone XS</h4>*/}
+                {/*                                    <h4 className="text-[12px] text-graycolor">$860.00</h4>*/}
+                {/*                                </div>*/}
+                {/*                            </Link>*/}
+                {/*                        </>*/}
+                {/*                    )}*/}
+
+                {/*                    {loading ? (*/}
+                {/*                        <div className="flex items-center justify-start gap-2 w-full">*/}
+                {/*                            <Skeleton width={80} height={60} borderRadius="10%" count={1}/>*/}
+                {/*                            <Skeleton containerClassName="flex-1" height={50} count={1}/>*/}
+                {/*                        </div>*/}
+                {/*                    ) : (*/}
+                {/*                        <>*/}
+                {/*                            <Link href='#' className="show_product group mt-2 flex items-start gap-4">*/}
+                {/*                                <div className="p-1 border rounded">*/}
+                {/*                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>*/}
+                {/*                                </div>*/}
+                {/*                                <div className="product_content">*/}
+                {/*                                    <h4 className="text-[14px] group-hover:text-primary text-prgcolor">T-Shirt</h4>*/}
+                {/*                                    <h4 className="text-[12px] text-graycolor">$450.00</h4>*/}
+                {/*                                </div>*/}
+                {/*                            </Link>*/}
+                {/*                        </>*/}
+                {/*                    )}*/}
+
+                {/*                    {loading ? (*/}
+                {/*                        <div className="flex items-center justify-start gap-2 w-full">*/}
+                {/*                            <Skeleton width={80} height={60} borderRadius="10%" count={1}/>*/}
+                {/*                            <Skeleton containerClassName="flex-1" height={50} count={1}/>*/}
+                {/*                        </div>*/}
+                {/*                    ) : (*/}
+                {/*                        <>*/}
+                {/*                            <Link href='#' className="show_product group mt-2 flex items-start gap-4">*/}
+                {/*                                <div className="p-1 border rounded">*/}
+                {/*                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>*/}
+                {/*                                </div>*/}
+                {/*                                <div className="product_content">*/}
+                {/*                                    <h4 className="text-[14px] group-hover:text-primary text-prgcolor">Polo*/}
+                {/*                                        Shirt</h4>*/}
+                {/*                                    <h4 className="text-[12px] text-graycolor">$320.00</h4>*/}
+                {/*                                </div>*/}
+                {/*                            </Link>*/}
+                {/*                        </>*/}
+                {/*                    )}*/}
+                {/*                </div>*/}
+                {/*                <div className="mt-6 space-y-2">*/}
+                {/*                    <hr/>*/}
+                {/*                    <div className="pt-2 flex items-center justify-between">*/}
+                {/*                        <h4 className="text-graycolor text-[14px]">Items price:</h4>*/}
+                {/*                        <h4 className="text-prgcolor font-[500] text-[14px]">$1189.00</h4>*/}
+                {/*                    </div>*/}
+                {/*                    <div className="flex items-center justify-between">*/}
+                {/*                        <h4 className="text-graycolor text-[14px]">Shipping:</h4>*/}
+                {/*                        <h4 className="text-prgcolor font-[500] text-[14px]">$11.31</h4>*/}
+                {/*                    </div>*/}
+                {/*                    <div className="flex items-center justify-between">*/}
+                {/*                        <h4 className="text-graycolor text-[14px]">Total:</h4>*/}
+                {/*                        <h4 className="text-prgcolor font-[500] text-[14px]">$1200.31</h4>*/}
+                {/*                    </div>*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*            <div className="py-3 flex it gap-1">*/}
+                {/*                <CiLock size={18} className="text-graycolor"/>*/}
+                {/*                <h4 className="text-[14px] text-graycolor">Your transaction is secured with SSL*/}
+                {/*                    encryption</h4>*/}
+                {/*            </div>*/}
                 {/*        </div>*/}
                 {/*    </div>*/}
                 {/*</div>*/}
