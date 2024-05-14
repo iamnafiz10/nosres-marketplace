@@ -796,7 +796,7 @@ function Page() {
                                                             className="rating_view absolute top-8 left-[7px] bg-white border py-4 px-4 rounded w-[229px]">
                                                             <div
                                                                 className="flex items-center justify-center text-center mb-2">
-                                                                <p className="ms-1 text-[16px] font-[500] text-black">4.5</p>
+                                                                <p className="text-[16px] font-[500] text-black">4.5</p>
                                                                 <h4 className="ms-1 text-[16px] text-graycolor">
                                                                     out of 5
                                                                 </h4>
@@ -938,13 +938,13 @@ function Page() {
                                             <div className="mt-3">
                                                 <div className="mt-3 flex items-center gap-2">
                                                     <button type='button'
-                                                            className="py-2 px-6 flex items-center gap-2 bg-primary border hover:bg-white hover:border-primary hover:text-black rounded text-[14px] text-white">
+                                                            className="py-2 px-4 flex items-center gap-2 bg-primary border hover:bg-white hover:border-primary hover:text-black rounded text-[14px] text-white">
                                                         <IoCartOutline size={20}
                                                                        className=""/>
                                                         Add to Cart
                                                     </button>
                                                     <button type='button'
-                                                            className="py-2 px-6 flex items-center gap-1 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
+                                                            className="py-2 px-4 flex items-center gap-2 bg-white border hover:bg-primary hover:border-primary hover:text-white rounded text-[14px] text-prgcolor">
                                                         <HiOutlineChatBubbleLeft size={15}/>
                                                         Contact Seller
                                                     </button>
@@ -1022,11 +1022,14 @@ function Page() {
                                                         <Skeleton height={10} count={2}/>
                                                     ) : (
                                                         <>
-                                                            <div className="mt-2 flex items-center gap-4">
+                                                            <div className="mt-2 flex items-center gap-1">
                                                                 <h4 className="text-[12px] text-graycolor">
                                                                     Condition: <span
                                                                     className="text-prgcolor">New</span>
                                                                 </h4>
+                                                                <div className="icon">
+                                                                    <LuDot size={15} className='text-graycolor'/>
+                                                                </div>
                                                                 <h4 className="text-[12px] text-graycolor">
                                                                     Brand: <span className="text-prgcolor">Sony</span>
                                                                 </h4>
@@ -1066,7 +1069,7 @@ function Page() {
                                                         <Skeleton height={20} count={5}/>
                                                     ) : (
                                                         <>
-                                                            <div className='mt-4 text-[14px] text-prgcolor'>
+                                                            <div className='mt-8 text-[14px] text-prgcolor'>
                                                                 <h4 className="text-[16px] pb-2 font-[500] text-prgcolor">
                                                                     Refund and Return Policy:
                                                                 </h4>
@@ -1104,7 +1107,7 @@ function Page() {
                                                     )}
 
                                                 </div>
-                                                <div className="mt-4">
+                                                <div className="mt-8">
                                                     <div className="seller_box mt-3">
                                                         {loading ? (
                                                             <Skeleton height={50} count={1}/>
@@ -1289,10 +1292,10 @@ function Page() {
                             </div>
 
                             {/* User Review */}
-                            <div className="user_review mx-4">
-                                <div className="box bg-white border py-4 px-6 rounded">
+                            <div className="user_review">
+                                <div className="box bg-white border py-4 px-2 rounded">
                                     <div className="flex items-start justify-between">
-                                        <Link href='#' className="flex items-center gap-1">
+                                        <Link href='#' className="ml-[3px] flex items-center gap-1">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="leading-[17px]">
                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
@@ -1378,9 +1381,9 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 bg-white border py-4 px-6 rounded">
+                                <div className="box mt-2 bg-white border py-4 px-2 rounded">
                                     <div className="flex items-start justify-between">
-                                        <Link href='#' className="flex items-center gap-1">
+                                        <Link href='#' className="ml-[3px] flex items-center gap-1">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="leading-[17px]">
                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
@@ -1431,9 +1434,9 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 bg-white border py-4 px-6 rounded">
+                                <div className="box mt-2 bg-white border py-4 px-2 rounded">
                                     <div className="flex items-start justify-between">
-                                        <Link href='#' className="flex items-center gap-1">
+                                        <Link href='#' className="ml-[3px] flex items-center gap-1">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="leading-[17px]">
                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
@@ -1484,9 +1487,9 @@ function Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box mt-2 bg-white border py-4 px-6 rounded">
+                                <div className="box mt-2 bg-white border py-4 px-2 rounded">
                                     <div className="flex items-start justify-between">
-                                        <Link href='#' className="flex items-center gap-1">
+                                        <Link href='#' className="ml-[3px] flex items-center gap-1">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="leading-[17px]">
                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
