@@ -616,7 +616,7 @@ function Page() {
                                                 <h4 className="mt-[1px] text-[14px] text-prgcolor">
                                                     5
                                                 </h4>
-                                                <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                             </div>
                                             <h4 className="mt-[1px] text-[12px] text-graycolor">(23)</h4>
                                         </div>
@@ -628,7 +628,7 @@ function Page() {
                                                 <h4 className="mt-[1px] text-[14px] text-prgcolor">
                                                     4
                                                 </h4>
-                                                <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                             </div>
                                             <h4 className="mt-[1px] text-[12px] text-graycolor">(2)</h4>
                                         </div>
@@ -640,7 +640,7 @@ function Page() {
                                                 <h4 className="mt-[1px] text-[14px] text-prgcolor">
                                                     3
                                                 </h4>
-                                                <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                             </div>
                                             <h4 className="mt-[1px] text-[12px] text-graycolor">(0)</h4>
                                         </div>
@@ -652,7 +652,7 @@ function Page() {
                                                 <h4 className="mt-[1px] text-[14px] text-prgcolor">
                                                     2
                                                 </h4>
-                                                <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                             </div>
                                             <h4 className="mt-[1px] text-[12px] text-graycolor">(0)</h4>
                                         </div>
@@ -664,7 +664,7 @@ function Page() {
                                                 <h4 className="mt-[1px] text-[14px] text-prgcolor">
                                                     1
                                                 </h4>
-                                                <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                             </div>
                                             <h4 className="mt-[1px] text-[12px] text-graycolor">(0)</h4>
                                         </div>
@@ -683,11 +683,11 @@ function Page() {
                                                     Up Town Store
                                                 </h4>
                                                 <span className="star_wrap flex items-center gap-0">
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                                         <h4 className="text-[12px] text-graycolor ml-3">
                                                             April 16, 2024
                                                         </h4>
@@ -771,11 +771,11 @@ function Page() {
                                                     Up Town Store
                                                 </h4>
                                                 <span className="star_wrap flex items-center gap-0">
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                                         <h4 className="text-[12px] text-graycolor ml-3">
                                                             April 16, 2024
                                                         </h4>
@@ -824,11 +824,11 @@ function Page() {
                                                     Up Town Store
                                                 </h4>
                                                 <span className="star_wrap flex items-center gap-0">
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                                         <h4 className="text-[12px] text-graycolor ml-3">
                                                             April 16, 2024
                                                         </h4>
@@ -877,11 +877,11 @@ function Page() {
                                                     Up Town Store
                                                 </h4>
                                                 <span className="star_wrap flex items-center gap-0">
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
-                                                        <TiStarFullOutline className="w-4 h-4 text-graycolor"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
+                                                        <TiStarFullOutline className="w-4 h-4 text-primary"/>
                                                         <h4 className="text-[12px] text-graycolor ml-3">
                                                             April 16, 2024
                                                         </h4>
