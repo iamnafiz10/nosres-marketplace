@@ -5853,8 +5853,7 @@ export default function Home() {
                         <div className="modal_body">
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                                 <div className="col md:col-span-7">
-                                    <div
-                                        className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
+                                    <div className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                         <Carousel slide={false} indicators={false}>
                                             <Image src={SliderOneImg} className="slider_image"
                                                    alt="SliderOneImg"/>
