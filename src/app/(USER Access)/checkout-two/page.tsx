@@ -11,6 +11,7 @@ import ProductImg from '../../../../public/assets/images/product-1.png';
 import Image from "next/image";
 import {CiLock} from "react-icons/ci";
 import {RiArrowDropDownLine} from "react-icons/ri";
+import {GoAlertFill} from "react-icons/go";
 
 function Page() {
     useTitle("Checkout")
@@ -96,6 +97,14 @@ function Page() {
                                                     className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="Full name"
                                                 />
+                                                <div className="warning mt-1 flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <GoAlertFill size={12} className="text-red-600"/>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-red-600 mt-1">
+                                                        Please complete this field.
+                                                    </h4>
+                                                </div>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="phone_sumber" className="text-[14px] font-normal">
@@ -107,6 +116,14 @@ function Page() {
                                                     value={phone}
                                                     onChange={(phone) => setPhone(phone)}
                                                 />
+                                                <div className="warning mt-1 flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <GoAlertFill size={12} className="text-red-600"/>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-red-600 mt-1">
+                                                        Please complete this field.
+                                                    </h4>
+                                                </div>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="location" className="text-[14px] font-normal">
@@ -117,6 +134,14 @@ function Page() {
                                                     className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="United States of America, BDK as-6506"
                                                 />
+                                                <div className="warning mt-1 flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <GoAlertFill size={12} className="text-red-600"/>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-red-600 mt-1">
+                                                        Please complete this field.
+                                                    </h4>
+                                                </div>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="location" className="text-[14px] font-normal">
@@ -127,6 +152,14 @@ function Page() {
                                                     className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="United States"
                                                 />
+                                                <div className="warning mt-1 flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <GoAlertFill size={12} className="text-red-600"/>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-red-600 mt-1">
+                                                        Please complete this field.
+                                                    </h4>
+                                                </div>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <div
@@ -140,6 +173,14 @@ function Page() {
                                                             className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                             placeholder="Fresno"
                                                         />
+                                                        <div className="warning mt-1 flex items-center gap-1">
+                                                            <div className="icon">
+                                                                <GoAlertFill size={12} className="text-red-600"/>
+                                                            </div>
+                                                            <h4 className="text-[12px] text-red-600 mt-1">
+                                                                Please complete this field.
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <div className="two w-full mt-4 lg:mt-0">
                                                         <label htmlFor="zip" className="text-[14px] font-normal">
@@ -150,6 +191,14 @@ function Page() {
                                                             className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                             placeholder="93722"
                                                         />
+                                                        <div className="warning mt-1 flex items-center gap-1">
+                                                            <div className="icon">
+                                                                <GoAlertFill size={12} className="text-red-600"/>
+                                                            </div>
+                                                            <h4 className="text-[12px] text-red-600 mt-1">
+                                                                Please complete this field.
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,6 +260,14 @@ function Page() {
                                                             </div>
                                                         )}
                                                     </div>
+                                                </div>
+                                                <div className="warning mt-1 flex items-center gap-1">
+                                                    <div className="icon">
+                                                        <GoAlertFill size={12} className="text-red-600"/>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-red-600 mt-1">
+                                                        Please complete this field.
+                                                    </h4>
                                                 </div>
                                             </div>
                                             <div className="input_box mt-4">
