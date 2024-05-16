@@ -113,12 +113,12 @@ function Page() {
                                         {/* Form Area */}
                                         <form action="#" className="mt-4 pb-4">
                                             <div className="input_box">
-                                                <label htmlFor="full_name" className="text-[14px] font-[500]">
+                                                <label htmlFor="full_name" className="text-[14px]">
                                                     Store Name
                                                 </label><br/>
                                                 <input
                                                     type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                    className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="Store name"
                                                 />
                                                 <h4 className="text-[12px] text-graycolor mt-1">
@@ -126,24 +126,24 @@ function Page() {
                                                 </h4>
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="location" className="text-[14px] font-[500]">
+                                                <label htmlFor="location" className="text-[14px]">
                                                     Your Location
                                                 </label><br/>
                                                 <input
                                                     type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                    className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="Location"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="carrier" className="text-[14px] font-[500]">
+                                                <label htmlFor="carrier" className="text-[14px]">
                                                     Category
                                                 </label><br/>
-                                                <div className="flex text-[14px] items-center justify-start mt-1">
+                                                <div className="flex text-[12px] items-center justify-start mt-1">
                                                     {/* FilterStoreTab dropdown */}
                                                     <div ref={dropdownFilterStoreTabRef}
                                                          onClick={toggleDropdownFilterStoreTab}
-                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full lg:w-[70%]">
+                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full">
                                                         <div
                                                             className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
                                                             <input value={selectedOptionFilterStoreTab} name="select"

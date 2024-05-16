@@ -65,7 +65,7 @@ function Page() {
                                     </div>
                                 ) : (
                                     <>
-                                        <h4 className="text-[20px] font-semibold">
+                                        <h4 className="text-[20px]">
                                             Checkout (<span className="text-primary">3 items</span>)
                                         </h4>
                                     </>
@@ -344,7 +344,7 @@ function Page() {
                                         <div className="py-3 flex it gap-1">
                                             <CiLock size={18} className="text-graycolor"/>
                                             <h4 className="text-[14px] text-graycolor">
-                                                Your transaction is secured with SSL encryption
+                                                Your transaction is secured with SSL encryption.
                                             </h4>
                                         </div>
                                     </>
