@@ -97,6 +97,10 @@ button {
     background: white !important;
 }
 
+.filter_dropdown_checkout input {
+    background-color: rgba(250, 250, 250, 0.73) !important;
+}
+
 /* Modal design */
 .modal_cntrl button {
     outline: none !important;

@@ -1,5 +1,5 @@
 "use client";
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Skeleton from "react-loading-skeleton";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
@@ -10,12 +10,42 @@ import Link from "next/link";
 import ProductImg from '../../../../public/assets/images/product-1.png';
 import Image from "next/image";
 import {CiLock} from "react-icons/ci";
+import {RiArrowDropDownLine} from "react-icons/ri";
 
 function Page() {
     useTitle("Checkout")
     const loading = useLoading();
     // Phone dropdown
     const [phone, setPhone] = useState('');
+
+    //----------- FilterStoreTab Dropdown Start --------------//
+    const [isOpenDropdownFilterStoreTab, setIsOpenDropdownFilterStoreTab] = useState(false);
+    const [selectedOptionFilterStoreTab, setSelectedOptionFilterStoreTab] = useState("UPS Ground 11.30"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownFilterStoreTab = () => {
+        setIsOpenDropdownFilterStoreTab(!isOpenDropdownFilterStoreTab);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectFilterStoreTab = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilterStoreTab(option);
+        setIsOpenDropdownFilterStoreTab(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownFilterStoreTabRef = useRef(null);
+    const handleClickOutsideFilterStoreTab = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownFilterStoreTabRef.current && !dropdownFilterStoreTabRef.current.contains(event.target)) {
+            setIsOpenDropdownFilterStoreTab(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideFilterStoreTab);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideFilterStoreTab);
+        };
+    }, []);
+    //----------- FilterStoreTab Dropdown End --------------//
     return (
         <>
             <section id="checkout-section">
@@ -24,7 +54,9 @@ function Page() {
                         <div className="col lg:col-span-7">
                             <div className="header_wrap mt-4">
                                 {loading ? (
-                                    <Skeleton height={20} count={1}/>
+                                    <div className='pb-1'>
+                                        <Skeleton height={20} count={1}/>
+                                    </div>
                                 ) : (
                                     <>
                                         <h4 className="text-[20px] font-semibold">
@@ -129,11 +161,51 @@ function Page() {
                                                 <label htmlFor="carrier" className="text-[14px] font-[500]">
                                                     Shipping Carrier & Rate
                                                 </label><br/>
-                                                <input
-                                                    type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                                    placeholder="UPS Ground $11.31"
-                                                />
+                                                <div className="flex text-[14px] items-center justify-start mt-1">
+                                                    {/* FilterStoreTab dropdown */}
+                                                    <div ref={dropdownFilterStoreTabRef}
+                                                         onClick={toggleDropdownFilterStoreTab}
+                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full lg:w-[70%]">
+                                                        <div
+                                                            className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
+                                                            <input value={selectedOptionFilterStoreTab} name="select"
+                                                                   id="select"
+                                                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full"
+                                                                   readOnly/>
+                                                            <button type='button'
+                                                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                                <RiArrowDropDownLine size={25}/>
+                                                            </button>
+                                                        </div>
+
+                                                        {isOpenDropdownFilterStoreTab && (
+                                                            <div
+                                                                className="absolute rounded shadow bg-white overflow-hidden w-full lg:w-[70%] mt-1 border border-gray-200">
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("UPS Ground 11.30")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        UPS Ground 11.30
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("UPS Ground 50.12")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        UPS Ground 50.12
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("UPS Ground 20.50")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        UPS Ground 20.50
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="carrier" className="text-[14px] font-[500]">
@@ -156,7 +228,7 @@ function Page() {
                         </div>
                         <div className="col lg:col-span-5">
                             <div className="sticky top-[58px]">
-                                <div className="mt-0 lg:mt-14 box py-4 px-6 bg-white rounded">
+                                <div className="mt-0 lg:mt-[54px] box py-4 px-6 bg-white rounded">
                                     {/* Product Area */}
                                     <div className="product_wrap space-y-3">
                                         {loading ? (
