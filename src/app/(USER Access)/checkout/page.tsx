@@ -60,7 +60,7 @@ function Page() {
                                 ) : (
                                     <>
                                         <h4 className="text-[20px] font-semibold">
-                                            Checkout
+                                            Checkout (<span className="text-primary">3 items</span>)
                                         </h4>
                                     </>
                                 )}
@@ -82,17 +82,17 @@ function Page() {
                                         {/* Form Area */}
                                         <form action="#" className="mt-4">
                                             <div className="input_box">
-                                                <label htmlFor="full_name" className="text-[14px] font-[500]">
+                                                <label htmlFor="full_name" className="text-[14px]">
                                                     Full Name
                                                 </label><br/>
                                                 <input
                                                     type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                    className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="Full name"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="phone_sumber" className="text-[14px] font-[500]">
+                                                <label htmlFor="phone_sumber" className="text-[14px] font-normal">
                                                     Phone Number
                                                 </label><br/>
                                                 <PhoneInput
@@ -103,69 +103,68 @@ function Page() {
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="location" className="text-[14px] font-[500]">
+                                                <label htmlFor="location" className="text-[14px] font-normal">
                                                     Enter Shipping Location
                                                 </label><br/>
                                                 <input
                                                     type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                    className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="United States of America, BDK as-6506"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="location" className="text-[14px] font-[500]">
+                                                <label htmlFor="location" className="text-[14px] font-normal">
                                                     Address
                                                 </label><br/>
                                                 <input
                                                     type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                    className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="United States"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
-                                                <div
-                                                    className="block w-full lg:w-[70%] lg:flex gap-2 items-center justify-between">
-                                                    <div className="one">
-                                                        <label htmlFor="city" className="text-[14px] font-[500]">
+                                                <div className="block w-full lg:flex gap-2 items-center justify-between">
+                                                    <div className="one w-full">
+                                                        <label htmlFor="city" className="text-[14px] font-normal">
                                                             City
                                                         </label><br/>
                                                         <input
                                                             type="text"
-                                                            className="mt-1 py-1 pl-4 w-full border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                            className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                             placeholder="Fresno"
                                                         />
                                                     </div>
-                                                    <div className="two mt-4 lg:mt-0">
-                                                        <label htmlFor="zip" className="text-[14px] font-[500]">
+                                                    <div className="two w-full mt-4 lg:mt-0">
+                                                        <label htmlFor="zip" className="text-[14px] font-normal">
                                                             Zip
                                                         </label><br/>
                                                         <input
                                                             type="text"
-                                                            className="mt-1 py-1 pl-4 w-full border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                            className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                             placeholder="93722"
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="state" className="text-[14px] font-[500]">
+                                                <label htmlFor="state" className="text-[14px] font-normal">
                                                     State
                                                 </label><br/>
                                                 <input
                                                     type="text"
-                                                    className="mt-1 py-1 pl-4 w-full lg:w-[70%] border text-[14px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                                    className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                                     placeholder="California"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="carrier" className="text-[14px] font-[500]">
+                                                <label htmlFor="carrier" className="text-[14px] font-normal">
                                                     Shipping Carrier & Rate
                                                 </label><br/>
-                                                <div className="flex text-[14px] items-center justify-start mt-1">
+                                                <div className="flex text-[12px] items-center justify-start mt-1">
                                                     {/* FilterStoreTab dropdown */}
                                                     <div ref={dropdownFilterStoreTabRef}
                                                          onClick={toggleDropdownFilterStoreTab}
-                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full lg:w-[70%]">
+                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full ">
                                                         <div
                                                             className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
                                                             <input value={selectedOptionFilterStoreTab} name="select"
@@ -180,7 +179,7 @@ function Page() {
 
                                                         {isOpenDropdownFilterStoreTab && (
                                                             <div
-                                                                className="absolute rounded shadow bg-white overflow-hidden w-full lg:w-[70%] mt-1 border border-gray-200">
+                                                                className="absolute rounded shadow bg-white overflow-hidden w-full  mt-1 border border-gray-200">
                                                                 <div className="cursor-pointer"
                                                                      onClick={() => handleOptionSelectFilterStoreTab("UPS Ground 11.30")}>
                                                                     <div
@@ -208,7 +207,7 @@ function Page() {
                                                 </div>
                                             </div>
                                             <div className="input_box mt-4">
-                                                <label htmlFor="carrier" className="text-[14px] font-[500]">
+                                                <label htmlFor="carrier" className="text-[14px] font-normal">
                                                     Payment
                                                 </label><br/>
                                                 <Checkbox className="mt-1">
@@ -217,7 +216,7 @@ function Page() {
                                             </div>
                                             <div className="button_box w-full mt-4">
                                                 <button type='button'
-                                                        className="w-full lg:w-[70%] py-2 px-8 text-[14px] bg-primary text-white rounded border border-primary hover:border-primary hover:bg-transparent hover:text-primary transition">
+                                                        className="w-full  py-2 px-8 text-[14px] bg-primary text-white rounded border border-primary hover:border-primary hover:bg-transparent hover:text-primary transition">
                                                     Pay Now
                                                 </button>
                                             </div>
@@ -318,9 +317,9 @@ function Page() {
                                                     <h4 className="text-graycolor text-[14px]">Shipping:</h4>
                                                     <h4 className="text-prgcolor font-[500] text-[14px]">$11.31</h4>
                                                 </div>
-                                                <div className="flex items-center justify-between">
-                                                    <h4 className="text-graycolor text-[14px]">Total:</h4>
-                                                    <h4 className="text-prgcolor font-[500] text-[14px]">$1200.31</h4>
+                                                <div className="flex items-center justify-between text-[14px]">
+                                                    <h4 className="text-primary font-semibold">Total:</h4>
+                                                    <h4 className="text-primary font-semibold">$1200.31</h4>
                                                 </div>
                                             </>
                                         )}
