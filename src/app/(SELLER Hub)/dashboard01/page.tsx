@@ -435,7 +435,7 @@ function Page() {
                                     </>
                                 )}
                             </div>
-                            <div className="block mt-2 w-full overflow-x-auto bg-white">
+                            <div className="block mt-2 w-full overflow-x-auto bg-white rounded">
                                 {loading ? (
                                     <div>
                                         <div className="px-2 py-1">
@@ -519,23 +519,23 @@ function Page() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
+                                                <th className="align-top border-0 px-6 p-4 pb-4 whitespace-nowrap text-left">
                                                     <h4 className="text-[14px] font-normal text-prgcolor">
                                                         Samsung
                                                     </h4>
                                                 </th>
-                                                <td className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-center">
+                                                <td className="align-top border-0 px-6 p-4 pb-4 whitespace-nowrap text-center">
                                                     <div
                                                         className="text-[12px] py-1 px-4 w-[90px] bg-yellow-300 rounded text-white">
                                                         Pending
                                                     </div>
                                                 </td>
-                                                <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-0">
+                                                <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-4">
                                                     <h4 className="text-[14px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
                                                 </td>
-                                                <td className="align-top border-t-0 px-6 text-start border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                <td className="align-top border-t-0 px-6 text-start border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-4">
                                                     <h4 className="text-[14px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
