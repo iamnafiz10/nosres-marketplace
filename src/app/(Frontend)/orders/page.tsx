@@ -98,7 +98,7 @@ function Page() {
                                     </div>
                                 ) : (
                                     <>
-                                        <h4 className="text-[20px] font-semibold">
+                                        <h4 className="text-[20px] font-normal">
                                             Orders
                                         </h4>
                                         <h4 className="text-[14px] text-graycolor">
@@ -166,24 +166,28 @@ function Page() {
                                 </>
                             )}
                             {/* Product Table */}
-                            <div className="block mt-2 w-full overflow-x-auto">
+                            <div className="block mt-2 w-full overflow-x-auto bg-white">
                                 {loading ? (
                                     <div>
-                                        <Skeleton height={20} count={1}/>
-                                        <div className="flex items-center justify-start gap-2 w-full">
+                                        <div className="px-2 py-1">
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                        <div className="px-2 py-1 flex items-center justify-start gap-2 w-full">
                                             <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
                                             <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
-                                        <div className="flex items-center justify-start gap-2 w-full">
+                                        <div className="px-2 py-1 flex items-center justify-start gap-2 w-full">
                                             <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
                                             <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
-                                        <Skeleton height={20} count={1}/>
-                                        <div className="flex items-center justify-start gap-2 w-full">
+                                        <div className="px-2 py-1">
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                        <div className="px-2 py-1 flex items-center justify-start gap-2 w-full">
                                             <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
                                             <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
-                                        <div className="flex items-center justify-start gap-2 w-full">
+                                        <div className="px-2 py-1 flex items-center justify-start gap-2 w-full">
                                             <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
                                             <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
@@ -246,10 +250,10 @@ function Page() {
                                                 </th>
                                                 <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="wrap">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                             T-Shirt - Black
                                                         </h4>
-                                                        <h4 className="text-[14px] font-normal text-graycolor">
+                                                        <h4 className="text-[12px] font-normal text-graycolor">
                                                             Delivery: <span className="text-prgcolor">Ship Only</span>
                                                         </h4>
                                                         <h4 onClick={() => setOpenSubmitReviewModal(true)}
@@ -275,10 +279,10 @@ function Page() {
                                                 </th>
                                                 <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="wrap">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                             T-Shirt - Red
                                                         </h4>
-                                                        <h4 className="text-[14px] font-normal text-graycolor">
+                                                        <h4 className="text-[12px] font-normal text-graycolor">
                                                             Delivery: <span className="text-prgcolor">Ship Only</span>
                                                         </h4>
                                                     </div>
@@ -330,10 +334,10 @@ function Page() {
                                                 </th>
                                                 <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="wrap">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor cursor-pointer hover:underline">
                                                             T-Shirt - Yellow
                                                         </h4>
-                                                        <h4 className="text-[14px] font-normal text-graycolor">
+                                                        <h4 className="text-[12px] font-normal text-graycolor">
                                                             Delivery: <span className="text-prgcolor">Ship Only</span>
                                                         </h4>
                                                     </div>
@@ -351,37 +355,37 @@ function Page() {
                                         </table>
                                     </>
                                 )}
-                                {/* Pagination */}
-                                <div className="pagination mt-4 flex items-center justify-center">
-                                    <nav aria-label="Page navigation example">
-                                        <ul className="inline-flex -space-x-px text-[14px] gap-1">
-                                            <li>
-                                                <Link href='#' aria-current="page"
-                                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
-                                                    <HiArrowLongLeft/>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href='#' aria-current="page"
-                                                      className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">
-                                                    1
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href='#'
-                                                      className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">
-                                                    2
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href='#' aria-current="page"
-                                                      className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
-                                                    <HiArrowLongRight/>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                            </div>
+                            {/* Pagination */}
+                            <div className="pagination mt-4 flex items-center justify-center">
+                                <nav aria-label="Page navigation example">
+                                    <ul className="inline-flex -space-x-px text-[14px] gap-1">
+                                        <li>
+                                            <Link href='#' aria-current="page"
+                                                  className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
+                                                <HiArrowLongLeft/>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#' aria-current="page"
+                                                  className="flex items-center justify-center px-3 h-8 text-primary border border-primary bg-blue-50 hover:text-primary">
+                                                1
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:border-primary hover:text-primary">
+                                                2
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#' aria-current="page"
+                                                  className="flex items-center justify-center px-3 h-8 border border-gray-300 hover:border-primary hover:text-primary">
+                                                <HiArrowLongRight/>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -403,7 +407,7 @@ function Page() {
                             alignItems: 'center'
                         }}
                     >
-                        <h4 className="text-[16px]">Submit a Review</h4>
+                        <h4 className="text-[16px]">Submit a Product Review</h4>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
@@ -497,7 +501,7 @@ function Page() {
                                     </h4>
                                     <textarea
                                         rows={3}
-                                        className="rounded mt-2 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                        className="rounded leading-[20px] mt-2 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
                                         placeholder="Please provide further details. Your review plays a crucial role in
                                         creating a safer and more trustworthy community for everyone.">
                                     </textarea>
@@ -574,8 +578,8 @@ function Page() {
                                 Cancel
                             </button>
                             <button onClick={() => setOpenSubmitReviewTwoModal(true)}
-                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
-                                Next
+                                    className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit Review
                             </button>
                         </div>
                     </Modal.Footer>
@@ -583,7 +587,6 @@ function Page() {
                 {/* SubmitReview Pop-Up End */}
                 {/* Start SubmitReviewTwo Pop-Up Start */}
                 <Modal size="lg"
-                       dismissible
                        show={openSubmitReviewTwoModal}
                        style={{
                            backgroundColor: 'rgb(17 24 39 / 40%)',
@@ -598,7 +601,7 @@ function Page() {
                             alignItems: 'center'
                         }}
                     >
-                        <h4 className="text-[16px]">Submit a Review</h4>
+                        <h4 className="text-[16px]">Submit a Product Review</h4>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
