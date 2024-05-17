@@ -191,22 +191,33 @@ function Page() {
                                             <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
                                             <Skeleton containerClassName="flex-1" height={50} count={1}/>
                                         </div>
+                                        <div className="px-2 py-1">
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                        <div className="px-2 py-1 flex items-center justify-start gap-2 w-full">
+                                            <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
+                                            <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                        </div>
+                                        <div className="px-2 py-1 flex items-center justify-start gap-2 w-full">
+                                            <Skeleton width={60} height={60} borderRadius="10%" count={1}/>
+                                            <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                        </div>
                                     </div>
                                 ) : (
                                     <>
                                         <table className="items-start bg-transparent w-full border-collapse">
                                             <thead>
                                             <tr>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Order ID
                                                 </th>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Order Placed
                                                 </th>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Total
                                                 </th>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
 
                                                 </th>
                                             </tr>
@@ -250,7 +261,7 @@ function Page() {
                                                 </th>
                                                 <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="wrap">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                        <h4 className="text-[14px] text-prgcolor hover:underline cursor-pointer">
                                                             T-Shirt - Black
                                                         </h4>
                                                         <h4 className="text-[12px] font-normal text-graycolor">
@@ -279,7 +290,7 @@ function Page() {
                                                 </th>
                                                 <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="wrap">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor cursor-pointer hover:underline">
+                                                        <h4 className="text-[14px] text-prgcolor cursor-pointer hover:underline">
                                                             T-Shirt - Red
                                                         </h4>
                                                         <h4 className="text-[12px] font-normal text-graycolor">
@@ -326,6 +337,115 @@ function Page() {
                                                     </button>
                                                 </td>
                                             </tr>
+                                            <tr className="border-b-2">
+                                                <th className="align-top border-0 px-6 p-2 whitespace-nowrap text-left">
+                                                    <div className="product_image cursor-pointer">
+                                                        <Image src={ProductImg} className="w-20" alt="ProductImg"/>
+                                                    </div>
+                                                </th>
+                                                <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
+                                                    <div className="wrap">
+                                                        <h4 className="text-[14px] text-prgcolor cursor-pointer hover:underline">
+                                                            T-Shirt - Yellow
+                                                        </h4>
+                                                        <h4 className="text-[12px] font-normal text-graycolor">
+                                                            Delivery: <span className="text-prgcolor">Ship Only</span>
+                                                        </h4>
+                                                    </div>
+                                                </td>
+                                                <td className="align-center border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                        $172.00
+                                                    </h4>
+                                                </td>
+                                                <td className="align-center border-t-0 px-6 text-end border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        #100191
+                                                    </h4>
+                                                </th>
+                                                <td className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
+                                                    <div className="flex items-center gap-4">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            02 May 2024
+                                                        </h4>
+                                                        <div
+                                                            className="text-[12px] py-1 px-4 bg-red-200 rounded text-red-600">
+                                                            Canceled
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-0">
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        $12523.00
+                                                    </h4>
+                                                </td>
+                                                <td className="align-top border-t-0 px-6 text-end border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                    <button type='button'
+                                                            className="py-2 px-4 text-[14px] bg-primary text-white border border-primary rounded hover:bg-transparent hover:text-primary transition">
+                                                        Order Details
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr className="border-b-2">
+                                                <th className="align-top border-0 px-6 p-2 whitespace-nowrap text-left">
+                                                    <div className="product_image cursor-pointer">
+                                                        <Image src={ProductImg} className="w-20" alt="ProductImg"/>
+                                                    </div>
+                                                </th>
+                                                <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
+                                                    <div className="wrap">
+                                                        <h4 className="text-[14px] text-prgcolor cursor-pointer hover:underline">
+                                                            T-Shirt - Yellow
+                                                        </h4>
+                                                        <h4 className="text-[12px] font-normal text-graycolor">
+                                                            Delivery: <span className="text-prgcolor">Ship Only</span>
+                                                        </h4>
+                                                    </div>
+                                                </td>
+                                                <td className="align-center border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                        $172.00
+                                                    </h4>
+                                                </td>
+                                                <td className="align-center border-t-0 px-6 text-end border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        #100191
+                                                    </h4>
+                                                </th>
+                                                <td className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
+                                                    <div className="flex items-center gap-4">
+                                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                            02 May 2024
+                                                        </h4>
+                                                        <div
+                                                            className="text-[12px] py-1 px-4 bg-yellow-100 rounded text-yellow-400">
+                                                            Pending
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-0">
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor">
+                                                        $12523.00
+                                                    </h4>
+                                                </td>
+                                                <td className="align-top border-t-0 px-6 text-end border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                    <button type='button'
+                                                            className="py-2 px-4 text-[14px] bg-primary text-white border border-primary rounded hover:bg-transparent hover:text-primary transition">
+                                                        Order Details
+                                                    </button>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <th className="align-top border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="product_image cursor-pointer">
@@ -334,7 +454,7 @@ function Page() {
                                                 </th>
                                                 <td className="align-center border-0 px-6 p-2 whitespace-nowrap text-left">
                                                     <div className="wrap">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor cursor-pointer hover:underline">
+                                                        <h4 className="text-[14px] text-prgcolor cursor-pointer hover:underline">
                                                             T-Shirt - Yellow
                                                         </h4>
                                                         <h4 className="text-[12px] font-normal text-graycolor">
@@ -393,7 +513,6 @@ function Page() {
 
                 {/* Start SubmitReview Pop-Up Start */}
                 <Modal size="lg"
-                       dismissible={!openSubmitReviewTwoModal}
                        show={openSubmitReviewModal}
                        style={{
                            padding: '0px',
@@ -522,7 +641,7 @@ function Page() {
 
                                 <div className="star_riview_box mt-4">
                                     <h4 className="text-[14px] text-prgcolor">
-                                        Tap a star to rate features
+                                        Tap a star to rate the features below.
                                     </h4>
                                     <div className="all_rating_wrap mt-1 -space-y-2">
                                         <div className="star_icon flex items-center gap-3">
@@ -601,7 +720,7 @@ function Page() {
                             alignItems: 'center'
                         }}
                     >
-                        <h4 className="text-[16px]">Submit a Product Review</h4>
+                        <h4 className="text-[16px]">Submit a Store Review</h4>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
@@ -716,7 +835,7 @@ function Page() {
 
                                 <div className="star_riview_box mt-4">
                                     <h4 className="text-[14px] text-prgcolor">
-                                        Tap a star to rate features
+                                        Tap a star to rate the features below.
                                     </h4>
                                     <div className="all_rating_wrap mt-1 -space-y-2">
                                         <div className="star_icon flex items-center gap-3">
