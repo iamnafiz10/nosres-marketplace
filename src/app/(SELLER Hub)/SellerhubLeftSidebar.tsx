@@ -4,8 +4,6 @@ import Link from "next/link";
 import {GoBell, GoHomeFill} from "react-icons/go";
 import {
     HiOutlineChatBubbleLeft,
-    HiOutlineHome, HiOutlineIdentification,
-    HiOutlineShieldCheck
 } from "react-icons/hi2";
 import React, {useState} from "react";
 import useLoading from "@/app/useLoading";
@@ -38,89 +36,135 @@ function SellerhubLeftSidebar() {
                     <div className="h-full px-3 pb-4 pt-20 overflow-y-auto bg-white">
                         <ul className="space-y-1 font-medium">
                             <li>
-                                <div
-                                    className="flex items-center text-[14px] p-2 rounded-lg hover:bg-gray-100 group">
-                                    <HiUserCircle size={30}
-                                                  className="text-primary w-7 transition duration-75 group-hover:text-primary"/>
-                                    <span className="ms-3 font-semibold">UpTown Store</span>
-                                </div>
+                                {loading ? (
+                                    <>
+                                        <div className="flex items-center justify-start gap-2 w-full">
+                                            <Skeleton width={30} height={30} borderRadius="100%" count={1}/>
+                                            <Skeleton containerClassName="flex-1" height={30} count={1}/>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div
+                                            className="flex items-center text-[14px] p-2 rounded-lg hover:bg-gray-100 group">
+                                            <HiUserCircle size={30}
+                                                          className="text-primary w-7 transition duration-75 group-hover:text-primary"/>
+                                            <span className="ms-3 font-semibold">UpTown Store</span>
+                                        </div>
+                                    </>
+                                )}
                             </li>
 
                             <hr/>
-                            <li>
-                                <Link href="#"
-                                      className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
-                                    <svg
-                                        className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                                        strokeLinejoin="round">
-                                        <rect width="7" height="9" x="3" y="3" rx="1"/>
-                                        <rect width="7" height="5" x="14" y="3" rx="1"/>
-                                        <rect width="7" height="9" x="14" y="12" rx="1"/>
-                                        <rect width="7" height="5" x="3" y="16" rx="1"/>
-                                    </svg>
-                                    <span className="ms-3">Dashboard</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#"
-                                      className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
-                                    <svg
-                                        className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                                        strokeLinejoin="round">
-                                        <path
-                                            d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
-                                        <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
-                                        <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
-                                    </svg>
-                                    <span className="ms-3">Listings</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#"
-                                      className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
-                                    <svg
-                                        className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                                        strokeLinejoin="round">
-                                        <circle cx="8" cy="21" r="1"/>
-                                        <circle cx="19" cy="21" r="1"/>
-                                        <path
-                                            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-                                    </svg>
-                                    <span className="ms-3">Orders</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#"
-                                      className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
-                                    <svg
-                                        className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                                        strokeLinejoin="round">
-                                        <path d="m3 11 18-5v12L3 14v-3z"/>
-                                        <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
-                                    </svg>
-                                    <span className="ms-3">Ads</span>
-                                </Link>
-                            </li>
+                            {loading ? (
+                                <Skeleton height={20} count={1}/>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link href="#"
+                                              className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
+                                            <svg
+                                                className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round">
+                                                <rect width="7" height="9" x="3" y="3" rx="1"/>
+                                                <rect width="7" height="5" x="14" y="3" rx="1"/>
+                                                <rect width="7" height="9" x="14" y="12" rx="1"/>
+                                                <rect width="7" height="5" x="3" y="16" rx="1"/>
+                                            </svg>
+                                            <span className="ms-3">Dashboard</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
+                            {loading ? (
+                                <Skeleton height={20} count={1}/>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link href="#"
+                                              className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
+                                            <svg
+                                                className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round">
+                                                <path
+                                                    d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+                                                <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+                                                <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+                                            </svg>
+                                            <span className="ms-3">Listings</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
+                            {loading ? (
+                                <Skeleton height={20} count={1}/>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link href="#"
+                                              className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
+                                            <svg
+                                                className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round">
+                                                <circle cx="8" cy="21" r="1"/>
+                                                <circle cx="19" cy="21" r="1"/>
+                                                <path
+                                                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                                            </svg>
+                                            <span className="ms-3">Orders</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
+                            {loading ? (
+                                <Skeleton height={20} count={1}/>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link href="#"
+                                              className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
+                                            <svg
+                                                className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round">
+                                                <path d="m3 11 18-5v12L3 14v-3z"/>
+                                                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+                                            </svg>
+                                            <span className="ms-3">Ads</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
                         </ul>
-
-                        <div className="bottom-div absolute left-6 bottom-10">
-                            <div className="flex space-x-2">
-                                <Link href='#' className="text-[12px] hover:text-primary">Terms</Link>
-                                <Link href='#' className="text-[12px] hover:text-primary">Privacy</Link>
-                                <Link href='#' className="text-[12px] hover:text-primary">Support</Link>
+                        {loading ? (
+                            <div className="w-[210px] absolute left-6 bottom-10">
+                                <Skeleton height={20} count={2}/>
                             </div>
-                            <h6 className="mt-1 text-gray-500 text-[12px]">
-                                © {currentYear} Nosres Inc. All rights reserved.
-                            </h6>
-                        </div>
+                        ) : (
+                            <>
+                                <div className="bottom-div absolute left-6 bottom-10">
+                                    <div className="flex space-x-2">
+                                        <Link href='#' className="text-[12px] hover:text-primary">Terms</Link>
+                                        <Link href='#' className="text-[12px] hover:text-primary">Privacy</Link>
+                                        <Link href='#' className="text-[12px] hover:text-primary">Support</Link>
+                                    </div>
+                                    <h6 className="mt-1 text-gray-500 text-[12px]">
+                                        © {currentYear} Nosres Inc. All rights reserved.
+                                    </h6>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </aside>
             </section>

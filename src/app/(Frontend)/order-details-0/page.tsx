@@ -46,7 +46,7 @@ function Page() {
                                     <Skeleton height={20} count={1}/>
                                 ) : (
                                     <>
-                                        <h4 className="text-[20px] font-semibold">
+                                        <h4 className="text-[20px] font-normal">
                                             Order Details
                                         </h4>
                                     </>
@@ -91,7 +91,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>Order Placed:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         02 May 2024
                                                     </h4>
                                                 </div>
@@ -101,7 +101,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>Order Number:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         #001285
                                                     </h4>
                                                 </div>
@@ -111,7 +111,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>Total:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         $1541.00
                                                     </h4>
                                                 </div>
@@ -121,7 +121,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>Buyer:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         Jon doe
                                                     </h4>
                                                 </div>
@@ -129,7 +129,7 @@ function Page() {
                                             <div className="grid grid-cols-1 gap-0">
                                                 <div className="col">
                                                     <button type='button'
-                                                            className="py-2 px-4 bg-gray-100 rounded text-[14px] border hover:bg-primary hover:text-white transition hover:border-primary">
+                                                            className="py-2 px-4 bg-gray-100 rounded text-[12px] border hover:bg-primary hover:text-white transition hover:border-primary">
                                                         Contact Seller
                                                     </button>
                                                 </div>
@@ -167,7 +167,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>Address line 1:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         United States
                                                     </h4>
                                                 </div>
@@ -177,7 +177,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>City:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         United
                                                     </h4>
                                                 </div>
@@ -187,7 +187,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>Zip:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         48541
                                                     </h4>
                                                 </div>
@@ -197,7 +197,7 @@ function Page() {
                                                     <h4 className='text-graycolor text-[14px]'>State:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         United
                                                     </h4>
                                                 </div>
@@ -208,7 +208,7 @@ function Page() {
                                                         Rate:</h4>
                                                 </div>
                                                 <div className="col">
-                                                    <h4 className="text-[14px] text-prgcolor">
+                                                    <h4 className="text-[12px] text-prgcolor">
                                                         UPS Ground $11.25
                                                     </h4>
                                                 </div>
