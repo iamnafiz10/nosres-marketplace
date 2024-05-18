@@ -1372,7 +1372,7 @@ function Page() {
                             alignItems: 'center'
                         }}
                     >
-                        <h4 className="text-[16px]">Return or Replace Item(s)</h4>
+                        <h4 className="text-[16px]">Cancel order</h4>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
@@ -1431,7 +1431,7 @@ function Page() {
                             </div>
 
                             <h4 className="text-[14px] font-normal mt-6">
-                                Please specify the reason for returning this item.
+                                Please specify the reason for cancelling this item.
                             </h4>
                             <div className="select-box mt-2 relative" ref={selectBoxRefAccDtv}>
                                 <div className="select-option flex"
@@ -1443,41 +1443,44 @@ function Page() {
                                     {isOptionsVisibleAccDtv && (
                                         <div className="info-content absolute z-50 w-full gender_content">
                                             <ul className="options">
-                                                <li onClick={() => handleOptionClickAccDtv("Wrong size/color")}>
-                                                    Wrong size/color
+                                                <li onClick={() => handleOptionClickAccDtv("Wrong item ordered")}>
+                                                    Wrong item ordered
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Defective item")}>
-                                                    Defective item
+                                                <li onClick={() => handleOptionClickAccDtv("Found a better price")}>
+                                                    Found a better price
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Item damaged")}>
-                                                    Item damaged
+                                                <li onClick={() => handleOptionClickAccDtv("Shipping too slow")}>
+                                                    Shipping too slow
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Not as described")}>
-                                                    Not as described
+                                                <li onClick={() => handleOptionClickAccDtv("Order duplicated")}>
+                                                    Order duplicated
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Better price found")}>
-                                                    Better price found
+                                                <li onClick={() => handleOptionClickAccDtv("Item no longer needed")}>
+                                                    Item no longer needed
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Poor quality")}>
-                                                    Poor quality
+                                                <li onClick={() => handleOptionClickAccDtv("Shipping cost too high")}>
+                                                    Shipping cost too high
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Received late")}>
-                                                    Received late
+                                                <li onClick={() => handleOptionClickAccDtv("Incorrect delivery address")}>
+                                                    Incorrect delivery address
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Duplicate order")}>
-                                                    Duplicate order
+                                                <li onClick={() => handleOptionClickAccDtv("Item out of stock")}>
+                                                    Item out of stock
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Missing parts")}>
-                                                    Missing parts
+                                                <li onClick={() => handleOptionClickAccDtv("Poor customer service")}>
+                                                    Poor customer service
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Wrong item received")}>
-                                                    Wrong item received
+                                                <li onClick={() => handleOptionClickAccDtv("Better alternative found")}>
+                                                    Better alternative found
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Packaging damaged")}>
-                                                    Packaging damaged
+                                                <li onClick={() => handleOptionClickAccDtv("Delayed delivery date")}>
+                                                    Delayed delivery date
                                                 </li>
-                                                <li onClick={() => handleOptionClickAccDtv("Didn’t meet expectations")}>
-                                                    Didn’t meet expectations
+                                                <li onClick={() => handleOptionClickAccDtv("Order placed by mistake")}>
+                                                    Order placed by mistake
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Product description misleading")}>
+                                                    Product description misleading
                                                 </li>
                                                 <li onClick={() => handleOptionClickAccDtv("Changed my mind")}>
                                                     Changed my mind
@@ -1572,7 +1575,7 @@ function Page() {
                                 <div className="icon">
                                     <PiHandsPrayingLight className="w-[50px] h-[50px] text-primary"/>
                                 </div>
-                                <h4 className="text-prgcolor text-[24px] mt-3">
+                                <h4 className="text-prgcolor text-[18px] mt-3">
                                     Thank You for Your Review!
                                 </h4>
                                 <h4 className="text-graycolor text-[14px] mt-3">

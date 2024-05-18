@@ -61,7 +61,7 @@ function Page() {
                                             Orders
                                         </h4>
                                         <h4 className="text-[14px] text-graycolor">
-                                            View and manage all your orders
+                                            View and manage all your orders.
                                         </h4>
                                     </>
                                 )}
