@@ -236,7 +236,7 @@ function Page() {
                                                             01 May 2024
                                                         </h4>
                                                         <div
-                                                            className="text-[12px] py-1 px-4 bg-green-500 rounded text-white">
+                                                            className="text-[12px] py-1 px-4 bg-green-200 rounded text-green-500">
                                                             Completed
                                                         </div>
                                                     </div>

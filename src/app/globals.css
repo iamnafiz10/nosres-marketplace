@@ -211,12 +211,12 @@ em-emoji-picker {
 
 /*------------ Modal Dropdown Design --------------------*/
 .select-option {
-    position: relative;
+    /*position: relative;*/
 }
 
 .info-content {
     position: absolute;
-    width: 90%;
+    top: 35px;
     background-color: white;
     border: 1px solid lightgray;
     color: black;
