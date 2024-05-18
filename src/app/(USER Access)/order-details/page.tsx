@@ -1572,7 +1572,7 @@ function Page() {
                                 <div className="icon">
                                     <PiHandsPrayingLight className="w-[50px] h-[50px] text-primary"/>
                                 </div>
-                                <h4 className="text-graycolor text-[24px] mt-3">
+                                <h4 className="text-prgcolor text-[24px] mt-3">
                                     Thank You for Your Review!
                                 </h4>
                                 <h4 className="text-graycolor text-[14px] mt-3">
