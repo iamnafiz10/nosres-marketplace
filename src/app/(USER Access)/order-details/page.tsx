@@ -140,8 +140,7 @@ function Page() {
             <section id="order-details-section">
                 <div className="container py-16">
                     <div className="grid grid-cols-1 lg:grid-cols-12">
-                        <div className="col lg:col-span-2"></div>
-                        <div className="col ml-0 lg:ml-10 lg:col-span-6">
+                        <div className="col lg:col-span-8">
                             {/* Breadcrumb */}
                             <div className="breadcrumb_wrap">
                                 {loading ? (
@@ -206,8 +205,8 @@ function Page() {
                                                 </div>
                                                 <div className="col">
                                                     <button type='button'
-                                                            className="text-[12px] cursor-auto py-1 px-4 bg-[#E6EDF4] rounded text-primary">
-                                                        In progress
+                                                            className="text-[12px] cursor-auto py-1 px-4 bg-green-200 rounded text-green-500">
+                                                        Completed
                                                     </button>
                                                 </div>
                                             </div>
@@ -251,7 +250,7 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="grid grid-cols-2 gap-2">
+                                            <div className="grid grid-cols-2 gap-2 lg:flex lg:items-center">
                                                 <div className="col">
                                                     <button onClick={() => setOpenStartReturnModal(true)} type='button'
                                                             className="py-2 px-4 bg-gray-100 rounded text-[12px] border hover:bg-primary hover:text-white transition hover:border-primary">
@@ -266,7 +265,8 @@ function Page() {
                                                     </button>
                                                 </div>
                                                 <div className="col">
-                                                    <button onClick={() => setOpenSubmitReviewModal(true)} type='button'
+                                                    <button onClick={() => setOpenSubmitReviewTwoModal(true)}
+                                                            type='button'
                                                             className="py-2 px-4 bg-gray-100 rounded text-[12px] border hover:bg-primary hover:text-white transition hover:border-primary">
                                                         Write a Store Review
                                                     </button>
@@ -357,7 +357,7 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="grid grid-cols-2 gap-2">
+                                            <div className="grid grid-cols-2 gap-2 lg:flex lg:items-center">
                                                 <div className="col">
                                                     <button onClick={() => setOpenStartCancelOrderModal(true)}
                                                             type='button'
@@ -630,9 +630,6 @@ function Page() {
                                             <li onClick={() => handleOptionClickAccDtv("Poor quality")}>
                                                 Poor quality
                                             </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Poor quality")}>
-                                                Poor quality
-                                            </li>
                                             <li onClick={() => handleOptionClickAccDtv("Received late")}>
                                                 Received late
                                             </li>
@@ -742,7 +739,7 @@ function Page() {
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Replace the item (s)
                                                 </h4>
-                                                <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                <h4 className="mt-1 text-[12px] text-graycolor leading-[17px]">
                                                     Please send the original item (s) back within 15 days.
                                                 </h4>
                                             </div>
@@ -778,7 +775,7 @@ function Page() {
                                                 <h4 className="text-[14px] text-prgcolor">
                                                     Refund to your visa ending in 1234
                                                 </h4>
-                                                <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                <h4 className="mt-1 text-[12px] text-graycolor leading-[17px]">
                                                     Please send the original item(s) back within 15 days. We will<br/>
                                                     process your refund once we receive the original item(s).
                                                 </h4>
@@ -869,7 +866,7 @@ function Page() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please select the product for which you would like to write a review
+                                Please select the product for which you would like to write a review.
                             </h4>
                             <div className="mt-4">
                                 <div onClick={() => onChange(15)}
@@ -1067,8 +1064,7 @@ function Page() {
                                     <textarea
                                         rows={3}
                                         className="rounded leading-[20px] mt-2 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
-                                        placeholder="Please provide further details. Your review plays a crucial role in
-                                        creating a safer and more trustworthy community for everyone.">
+                                        placeholder="Please provide further details. Your review plays a crucial role in creating a safer and more trustworthy community for everyone.">
                                     </textarea>
                                     <span className="text-[12px] text-graycolor">
                                         You have 5,000 characters left.
@@ -1142,7 +1138,7 @@ function Page() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={() => setOpenSubmitReviewTwoModal(true)}
+                            <button onClick={handleClickReviewTwoCancel}
                                     className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Submit Review
                             </button>
@@ -1276,8 +1272,7 @@ function Page() {
                                     <textarea
                                         rows={3}
                                         className="rounded mt-2 w-full py-2 px-4 border border-gray-200 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
-                                        placeholder="Please provide further details. Your review plays a crucial role in
-                                        creating a safer and more trustworthy community for everyone.">
+                                        placeholder="Please provide further details. Your review plays a crucial role in creating a safer and more trustworthy community for everyone.">
                                     </textarea>
                                     <span className="text-[12px] text-graycolor">
                                         You have 5,000 characters left.
@@ -1429,62 +1424,59 @@ function Page() {
                             <h4 className="text-[14px] font-normal mt-6">
                                 Please specify the reason for returning this item.
                             </h4>
-                            <div className="select-box relative mt-2" ref={selectBoxRefAccDtv}>
+                            <div className="select-box mt-2 relative" ref={selectBoxRefAccDtv}>
                                 <div className="select-option flex"
                                      onClick={toggleOptionsVisibilityAccDtv}>
                                     <input type="text" placeholder="Select a reason"
                                            readOnly
                                            value={selectedOptionAccDtv}
                                            className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300 "/>
+                                    {isOptionsVisibleAccDtv && (
+                                        <div className="info-content absolute z-50 w-full gender_content">
+                                            <ul className="options">
+                                                <li onClick={() => handleOptionClickAccDtv("Wrong size/color")}>
+                                                    Wrong size/color
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Defective item")}>
+                                                    Defective item
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Item damaged")}>
+                                                    Item damaged
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Not as described")}>
+                                                    Not as described
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Better price found")}>
+                                                    Better price found
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Poor quality")}>
+                                                    Poor quality
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Received late")}>
+                                                    Received late
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Duplicate order")}>
+                                                    Duplicate order
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Missing parts")}>
+                                                    Missing parts
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Wrong item received")}>
+                                                    Wrong item received
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Packaging damaged")}>
+                                                    Packaging damaged
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Didn’t meet expectations")}>
+                                                    Didn’t meet expectations
+                                                </li>
+                                                <li onClick={() => handleOptionClickAccDtv("Changed my mind")}>
+                                                    Changed my mind
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    )}
                                 </div>
-                                {isOptionsVisibleAccDtv && (
-                                    <div className="info-content w-full gender_content">
-                                        <ul className="options">
-                                            <li onClick={() => handleOptionClickAccDtv("Wrong size/color")}>
-                                                Wrong size/color
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Defective item")}>
-                                                Defective item
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Item damaged")}>
-                                                Item damaged
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Not as described")}>
-                                                Not as described
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Better price found")}>
-                                                Better price found
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Poor quality")}>
-                                                Poor quality
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Poor quality")}>
-                                                Poor quality
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Received late")}>
-                                                Received late
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Duplicate order")}>
-                                                Duplicate order
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Missing parts")}>
-                                                Missing parts
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Wrong item received")}>
-                                                Wrong item received
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Packaging damaged")}>
-                                                Packaging damaged
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Didn’t meet expectations")}>
-                                                Didn’t meet expectations
-                                            </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Changed my mind")}>
-                                                Changed my mind
-                                            </li>
-                                        </ul>
-                                    </div>
-                                )}
                             </div>
 
                             {selectedOptionAccDtv && (

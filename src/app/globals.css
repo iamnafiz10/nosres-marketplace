@@ -211,7 +211,7 @@ em-emoji-picker {
 
 /*------------ Modal Dropdown Design --------------------*/
 .select-option {
-    /*position: relative;*/
+    position: relative;
 }
 
 .info-content {
@@ -224,6 +224,9 @@ em-emoji-picker {
     margin-top: 5px;
     z-index: 999;
     padding: 10px 0;
+}
+.gender_content {
+    width: 100%;
 }
 
 .modal_body input {
