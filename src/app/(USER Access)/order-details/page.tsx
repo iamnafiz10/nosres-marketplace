@@ -12,6 +12,7 @@ import type {RadioChangeEvent} from 'antd';
 import {IoAlertCircle} from "react-icons/io5";
 // @ts-ignore
 import ReactStars from "react-rating-stars-component";
+import {PiHandsPrayingLight} from "react-icons/pi";
 
 function Page() {
     useTitle("Order-details")
@@ -135,6 +136,14 @@ function Page() {
         setOpenStartCancelOrderConfirmModal(false);
     };
 
+    //  SubmitReviewCrm popup
+    const [openSubmitReviewModalCrm, setOpenSubmitReviewModalCrm] = useState<boolean>(false);
+    const handleClickSubmitReviewModalCrm = () => {
+        setOpenSubmitReviewModalCrm(false);
+        setOpenSubmitReviewModal(false);
+        setOpenStartProductReviewModal(false);
+        setOpenSubmitReviewTwoModal(false);
+    };
     return (
         <>
             <section id="order-details-section">
@@ -1138,7 +1147,7 @@ function Page() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={handleClickReviewTwoCancel}
+                            <button onClick={() => setOpenSubmitReviewModalCrm(true)}
                                     className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Submit Review
                             </button>
@@ -1338,9 +1347,9 @@ function Page() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={handleClickReviewTwoCancel}
+                            <button onClick={() => setOpenSubmitReviewModalCrm(true)}
                                     className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
-                                Summit Review
+                                Submit Review
                             </button>
                         </div>
                     </Modal.Footer>
@@ -1546,6 +1555,39 @@ function Page() {
                     </Modal.Body>
                 </Modal>
                 {/*  ReturnConfirmDone Pop-Up End */}
+
+
+                {/* Start SubmitProductReview Pop-Up Start */}
+                <Modal size="lg"
+                       show={openSubmitReviewModalCrm}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenSubmitReviewModalCrm(false)}>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <PiHandsPrayingLight className="w-[50px] h-[50px] text-primary"/>
+                                </div>
+                                <h4 className="text-graycolor text-[24px] mt-3">
+                                    Thank You for Your Review!
+                                </h4>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    We appreciate your valuable feedback and insights.
+                                    Your comments will help us improve and grow.
+                                </h4>
+                                <button onClick={handleClickSubmitReviewModalCrm}
+                                        className="mt-6 px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    Continue Shopping
+                                </button>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/*  SubmitProductReview Pop-Up End */}
 
             </section>
         </>

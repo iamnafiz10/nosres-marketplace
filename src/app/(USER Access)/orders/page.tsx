@@ -48,8 +48,7 @@ function Page() {
             <section id="order-section">
                 <div className="container pt-[50px] pb-14">
                     <div className="grid grid-cols-1 lg:grid-cols-12">
-                        <div className="col lg:col-span-2"></div>
-                        <div className="col ml-0 lg:ml-10 lg:col-span-10">
+                        <div className="col lg:col-span-12">
                             <div className="header_wrap mt-4">
                                 {loading ? (
                                     <div>
