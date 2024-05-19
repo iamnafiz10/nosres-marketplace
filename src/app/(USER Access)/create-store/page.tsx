@@ -231,7 +231,7 @@ function Page() {
                         </div>
                         <div className="col lg:col-span-5">
                             <div className="sticky">
-                                <div className="mt-0 lg:mt-[72px] box py-4 px-6 bg-white rounded">
+                                <div className="mt-0 lg:mt-[73px] box py-4 px-6 bg-white rounded">
                                     {/* Cover Image */}
                                     <div className="cover_image_wrap">
                                         {loading ? (
