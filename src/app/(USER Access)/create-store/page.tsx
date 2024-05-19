@@ -9,6 +9,7 @@ import {RiArrowDropDownLine} from "react-icons/ri";
 import {RxCross1} from "react-icons/rx";
 import {HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
 import {HiUserCircle} from "react-icons/hi";
+import {FaArrowRight, FaArrowRightLong} from "react-icons/fa6";
 
 function Page() {
     useTitle("Create store")
@@ -77,7 +78,7 @@ function Page() {
     return (
         <>
             <section id="checkout-section">
-                <div className="container pt-[50px] pb-12">
+                <div className="container pt-[50px] pb-[50px] lg:pb-8">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                         <div className="col lg:col-span-7">
                             <div className="header_wrap mt-4">
@@ -87,7 +88,7 @@ function Page() {
                                     </div>
                                 ) : (
                                     <>
-                                        <h4 className="text-[20px] font-semibold">
+                                        <h4 className="text-[20px]">
                                             Create a Store
                                         </h4>
                                         <h4 className="text-[14px] text-graycolor">
@@ -99,7 +100,10 @@ function Page() {
                             <div className="mt-2 box py-4 px-6 bg-white rounded">
                                 {loading ? (
                                     <div>
-                                        <Skeleton height={20} count={10}/>
+                                        <Skeleton height={20} count={3}/>
+                                        <Skeleton height={5} count={1}/>
+                                        <Skeleton height={40} count={4}/>
+                                        <Skeleton height={30} count={5}/>
                                     </div>
                                 ) : (
                                     <>
@@ -158,7 +162,7 @@ function Page() {
 
                                                         {isOpenDropdownFilterStoreTab && (
                                                             <div
-                                                                className="absolute rounded shadow bg-white overflow-hidden w-full lg:w-[70%] mt-1 border border-gray-200">
+                                                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
                                                                 <div className="cursor-pointer"
                                                                      onClick={() => handleOptionSelectFilterStoreTab("Select")}>
                                                                     <div
@@ -194,8 +198,8 @@ function Page() {
                                 {loading ? (
                                     <div>
                                         <Skeleton height={20} count={1}/>
+                                        <Skeleton height={80} count={1}/>
                                         <Skeleton height={30} count={1}/>
-                                        <Skeleton height={20} count={1}/>
                                     </div>
                                 ) : (
                                     <>
@@ -225,7 +229,7 @@ function Page() {
                             </div>
                         </div>
                         <div className="col lg:col-span-5">
-                            <div className="sticky top-[58px]">
+                            <div className="sticky">
                                 <div className="mt-0 lg:mt-[72px] box py-4 px-6 bg-white rounded">
                                     {/* Cover Image */}
                                     <div className="cover_image_wrap">
@@ -367,6 +371,27 @@ function Page() {
                             </div>
                         </div>
                     </div>
+
+                    {/* Bottom Buttons */}
+                    {loading ? (
+                        <div className="mt-5">
+                            <Skeleton height={50} count={1}/>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="flex items-center justify-between bg-white rounded py-4 px-6 mt-5">
+                                <button type='button'
+                                        className="py-2 px-6 bg-gray-100 hover:bg-primary hover:text-white border text-[14px] rounded">
+                                    Cancel
+                                </button>
+                                <button type='button'
+                                        className="py-2 px-6 text-white flex items-center gap-2 bg-primary hover:bg-transparent hover:text-primary hover:bg-primary border text-[14px] rounded">
+                                    Create
+                                    <FaArrowRight size={15}/>
+                                </button>
+                            </div>
+                        </>
+                    )}
                 </div>
             </section>
         </>
