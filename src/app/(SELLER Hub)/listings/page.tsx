@@ -264,7 +264,7 @@ function Page() {
                             <div
                                 className={`published_content mx-auto w-full ${activeTab === 'published' ? 'block' : 'hidden'}`}>
                                 {/* Product Table */}
-                                <div className="block mt-2 w-full overflow-x-auto bg-white">
+                                <div className="block mt-2 pb-2 w-full overflow-x-auto bg-white">
                                     {loading ? (
                                         <div>
                                             <div className="px-2 py-1">
@@ -310,7 +310,7 @@ function Page() {
                                                         Product
                                                     </th>
                                                     <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
-                                                        Create at
+                                                        Created on
                                                     </th>
                                                     <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                         Amount
@@ -714,7 +714,7 @@ function Page() {
                             <div
                                 className={`draft_content mx-auto w-full ${activeTab === 'draft' ? 'block' : 'hidden'}`}>
                                 {/* Product Table */}
-                                <div className="block mt-2 w-full overflow-x-auto bg-white">
+                                <div className="block mt-2 pb-2 w-full overflow-x-auto bg-white">
                                     {loading ? (
                                         <div>
                                             <div className="px-2 py-1">
@@ -760,7 +760,7 @@ function Page() {
                                                         Product
                                                     </th>
                                                     <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
-                                                        Create at
+                                                        Created on
                                                     </th>
                                                     <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                         Amount
@@ -1163,7 +1163,7 @@ function Page() {
                             <div
                                 className={`sold_content mx-auto w-full ${activeTab === 'sold' ? 'block' : 'hidden'}`}>
                                 {/* Product Table */}
-                                <div className="block mt-2 w-full overflow-x-auto bg-white">
+                                <div className="block mt-2 pb-2 w-full overflow-x-auto bg-white">
                                     {loading ? (
                                         <div>
                                             <div className="px-2 py-1">
@@ -1209,7 +1209,7 @@ function Page() {
                                                         Product
                                                     </th>
                                                     <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
-                                                        Create at
+                                                        Created on
                                                     </th>
                                                     <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                         Amount
