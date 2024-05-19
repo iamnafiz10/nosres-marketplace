@@ -61,10 +61,10 @@ function SellerhubLeftSidebar() {
                             ) : (
                                 <>
                                     <li>
-                                        <Link href="#"
-                                              className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
+                                        <Link href="/dashboard01"
+                                              className={`${pathname === '/dashboard' ? 'font-semibold' : 'font-normal'} flex items-center p-2 text-[14px] rounded-lg hover:bg-gray-100 group`}>
                                             <svg
-                                                className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                className={`${pathname === '/dashboard' ? 'stroke-primary' : 'text-gray-500'} w-5 h-5 transition duration-75 group-hover:stroke-primary`}
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="none" stroke="currentColor" strokeWidth="1.5"
                                                 strokeLinecap="round"
@@ -84,10 +84,10 @@ function SellerhubLeftSidebar() {
                             ) : (
                                 <>
                                     <li>
-                                        <Link href="#"
-                                              className="flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group">
+                                        <Link href="/listings"
+                                              className={`${pathname === '/listings' ? 'font-semibold' : 'font-normal'} flex items-center p-2 text-[14px] rounded-lg hover:bg-gray-100 group`}>
                                             <svg
-                                                className="text-gray-500 w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                className={`${pathname === '/listings' ? 'stroke-primary' : 'text-gray-500'} w-5 h-5 transition duration-75 group-hover:stroke-primary`}
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="none" stroke="currentColor" strokeWidth="1.5"
                                                 strokeLinecap="round"

@@ -344,9 +344,9 @@ export default function Home() {
                                 </button>
                                 <button
                                     type='button'
-                                    onClick={() => handleTabClick('listings')}
+                                    onClick={() => handleTabClick('listings01')}
                                     className={`py-1 px-4 rounded text-[12px] ${
-                                        activeTab === 'listings'
+                                        activeTab === 'listings01'
                                             ? 'text-white bg-primary border'
                                             : 'text-black bg-gray-100 hover:bg-primary hover:text-white border hover:border-primary'
                                     }`}
@@ -1658,7 +1658,7 @@ export default function Home() {
                                 </div>
                             </div>
                             {/* Listings */}
-                            <div className={`listings_content ${activeTab === 'listings' ? 'block' : 'hidden'}`}>
+                            <div className={`listings_content ${activeTab === 'listings01' ? 'block' : 'hidden'}`}>
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                                     <div className="col lg:col-span-4">
                                         <div className="pb-4">

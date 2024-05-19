@@ -456,16 +456,16 @@ function Page() {
                                         <table className="items-start bg-transparent w-full border-collapse">
                                             <thead>
                                             <tr>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Product Name
                                                 </th>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Status
                                                 </th>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Amount
                                                 </th>
-                                                <th className="px-6 py-3 bg-[#EFEFEF] font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
+                                                <th className="px-6 py-3 bg-white font-normal text-graycolor text-[14px] text-left border-2 border-l-0 border-r-0 border-t-0 whitespace-nowrap">
                                                     Price
                                                 </th>
                                             </tr>
@@ -474,41 +474,64 @@ function Page() {
                                             <tbody>
                                             <tr>
                                                 <th className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         iPhone 15
                                                     </h4>
                                                 </th>
                                                 <td className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-center">
                                                     <div
-                                                        className="text-[12px] py-1 px-4 w-[90px] bg-green-500 rounded text-white">
+                                                        className="text-[12px] py-1 px-4 w-[90px] bg-green-200 rounded text-green-500">
                                                         Completed
                                                     </div>
                                                 </td>
                                                 <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-0">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
                                                 </td>
                                                 <td className="align-top border-t-0 px-6 text-start border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
+                                                        iPhone 15
+                                                    </h4>
+                                                </th>
+                                                <td className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-center">
+                                                    <div
+                                                        className="text-[12px] py-1 w-[90px] px-4 bg-[#E6EDF4] rounded text-primary">
+                                                        In progress
+                                                    </div>
+                                                </td>
+                                                <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-0">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
+                                                        $5015.00
+                                                    </h4>
+                                                </td>
+                                                <td className="align-top border-t-0 px-6 text-start border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
+                                                        $5015.00
+                                                    </h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-left">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         iPhone 14
                                                     </h4>
                                                 </th>
                                                 <td className="align-top border-0 px-6 p-4 pb-0 whitespace-nowrap text-center">
                                                     <div
-                                                        className="text-[12px] py-1 px-4 w-[90px] bg-red-600 rounded text-white">
+                                                        className="text-[12px] py-1 px-4 w-[90px] bg-red-200 rounded text-red-600">
                                                         Canceled
                                                     </div>
                                                 </td>
                                                 <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-0">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
                                                 </td>
@@ -520,23 +543,23 @@ function Page() {
                                             </tr>
                                             <tr>
                                                 <th className="align-top border-0 px-6 p-4 pb-4 whitespace-nowrap text-left">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         Samsung
                                                     </h4>
                                                 </th>
                                                 <td className="align-top border-0 px-6 p-4 pb-4 whitespace-nowrap text-center">
                                                     <div
-                                                        className="text-[12px] py-1 px-4 w-[90px] bg-yellow-300 rounded text-white">
+                                                        className="text-[12px] py-1 w-[90px] px-4 bg-yellow-100 rounded text-yellow-400">
                                                         Pending
                                                     </div>
                                                 </td>
                                                 <td className="align-top border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-4">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
                                                 </td>
                                                 <td className="align-top border-t-0 px-6 text-start border-l-0 border-r-0 text-xs whitespace-nowrap p-4 pb-4">
-                                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                                    <h4 className="text-[12px] font-normal text-prgcolor">
                                                         $5015.00
                                                     </h4>
                                                 </td>

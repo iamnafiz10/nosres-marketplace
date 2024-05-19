@@ -127,7 +127,7 @@ function Page() {
                                                     placeholder="Store name"
                                                 />
                                                 <h4 className="text-[12px] text-graycolor mt-1">
-                                                    Max 150 symbols.
+                                                    You have 150 characters left.
                                                 </h4>
                                             </div>
                                             <div className="input_box mt-4">
@@ -231,7 +231,7 @@ function Page() {
                         </div>
                         <div className="col lg:col-span-5">
                             <div className="sticky">
-                                <div className="mt-0 lg:mt-[73px] box py-4 px-6 bg-white rounded">
+                                <div className="mt-0 lg:mt-[75px] box py-4 px-6 bg-white rounded">
                                     {/* Cover Image */}
                                     {/*<div className="cover_image_wrap">*/}
                                     {/*    {loading ? (*/}
