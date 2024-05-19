@@ -233,75 +233,75 @@ function Page() {
                             <div className="sticky">
                                 <div className="mt-0 lg:mt-[73px] box py-4 px-6 bg-white rounded">
                                     {/* Cover Image */}
-                                    <div className="cover_image_wrap">
-                                        {loading ? (
-                                            <Skeleton height={20} count={1}/>
-                                        ) : (
-                                            <>
-                                                <h4 className="text-[14px] font-500 mb-2">
-                                                    Cover
-                                                </h4>
-                                            </>
-                                        )}
-                                        {loading ? (
-                                            <Skeleton height={200} count={1}/>
-                                        ) : (
-                                            <>
-                                                {/*<div className="flex mt-2 items-center justify-between">*/}
-                                                {/*    <div className="left">*/}
-                                                {/*        {selectedFileCover ? (*/}
-                                                {/*            <div className="mb-4 relative inline-block">*/}
-                                                {/*                <Image*/}
-                                                {/*                    src={URL.createObjectURL(selectedFileCover)}*/}
-                                                {/*                    width={100}*/}
-                                                {/*                    height={100}*/}
-                                                {/*                    alt="Uploaded Preview"*/}
-                                                {/*                    className="w-full h-full object-cover rounded"*/}
-                                                {/*                />*/}
-                                                {/*                <button*/}
-                                                {/*                    className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"*/}
-                                                {/*                    onClick={handleRemoveClickCover}*/}
-                                                {/*                >*/}
-                                                {/*                    <RxCross1 size={15}*/}
-                                                {/*                              className="text-primary group-hover:text-white"/>*/}
-                                                {/*                </button>*/}
-                                                {/*            </div>*/}
-                                                {/*        ) : (*/}
-                                                {/*            <div>*/}
+                                    {/*<div className="cover_image_wrap">*/}
+                                    {/*    {loading ? (*/}
+                                    {/*        <Skeleton height={20} count={1}/>*/}
+                                    {/*    ) : (*/}
+                                    {/*        <>*/}
+                                    {/*            <h4 className="text-[14px] font-500 mb-2">*/}
+                                    {/*                Cover*/}
+                                    {/*            </h4>*/}
+                                    {/*        </>*/}
+                                    {/*    )}*/}
+                                    {/*    {loading ? (*/}
+                                    {/*        <Skeleton height={200} count={1}/>*/}
+                                    {/*    ) : (*/}
+                                    {/*        <>*/}
+                                    {/*            <div className="flex mt-2 items-center justify-between">*/}
+                                    {/*                <div className="left">*/}
+                                    {/*                    {selectedFileCover ? (*/}
+                                    {/*                        <div className="mb-4 relative inline-block">*/}
+                                    {/*                            <Image*/}
+                                    {/*                                src={URL.createObjectURL(selectedFileCover)}*/}
+                                    {/*                                width={100}*/}
+                                    {/*                                height={100}*/}
+                                    {/*                                alt="Uploaded Preview"*/}
+                                    {/*                                className="w-full h-full object-cover rounded"*/}
+                                    {/*                            />*/}
+                                    {/*                            <button*/}
+                                    {/*                                className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"*/}
+                                    {/*                                onClick={handleRemoveClickCover}*/}
+                                    {/*                            >*/}
+                                    {/*                                <RxCross1 size={15}*/}
+                                    {/*                                          className="text-primary group-hover:text-white"/>*/}
+                                    {/*                            </button>*/}
+                                    {/*                        </div>*/}
+                                    {/*                    ) : (*/}
+                                    {/*                        <div>*/}
 
-                                                {/*            </div>*/}
-                                                {/*        )}*/}
-                                                {/*    </div>*/}
-                                                {/*</div>*/}
-                                                <div className="image-upload mt-4">
-                                                    <div className="flex items-center justify-center mt-3 w-full">
-                                                        <label htmlFor="dropzone-file"
-                                                               className="flex flex-col items-center justify-center w-full h-28 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100">
-                                                            <div
-                                                                className="flex flex-col items-center justify-center pt-5 pb-6">
-                                                                <HiOutlineCloudArrowUp
-                                                                    className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>
-                                                                <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span
-                                                                    className="font-semibold">Click to upload</span> or
-                                                                    drag and
-                                                                    drop</p>
-                                                                <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
-                                                                    .svg, .png, .jpg, or .gif (max. 800 x 400 px)
-                                                                </h4>
-                                                            </div>
-                                                            <input id="dropzone-file" type="file" className="hidden"
-                                                                   onChange={(event) => handleFileChangeCover(event)}
-                                                                   ref={fileInputRefCover}
-                                                            />
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
+                                    {/*                        </div>*/}
+                                    {/*                    )}*/}
+                                    {/*                </div>*/}
+                                    {/*            </div>*/}
+                                    {/*            <div className="image-upload mt-4">*/}
+                                    {/*                <div className="flex items-center justify-center mt-3 w-full">*/}
+                                    {/*                    <label htmlFor="dropzone-file"*/}
+                                    {/*                           className="flex flex-col items-center justify-center w-full h-28 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100">*/}
+                                    {/*                        <div*/}
+                                    {/*                            className="flex flex-col items-center justify-center pt-5 pb-6">*/}
+                                    {/*                            <HiOutlineCloudArrowUp*/}
+                                    {/*                                className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>*/}
+                                    {/*                            <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span*/}
+                                    {/*                                className="font-semibold">Click to upload</span> or*/}
+                                    {/*                                drag and*/}
+                                    {/*                                drop</p>*/}
+                                    {/*                            <h4 className="text-[12px] text-gray-500 dark:text-gray-400">*/}
+                                    {/*                                .svg, .png, .jpg, or .gif (max. 800 x 400 px)*/}
+                                    {/*                            </h4>*/}
+                                    {/*                        </div>*/}
+                                    {/*                        <input id="dropzone-file" type="file" className="hidden"*/}
+                                    {/*                               onChange={(event) => handleFileChangeCover(event)}*/}
+                                    {/*                               ref={fileInputRefCover}*/}
+                                    {/*                        />*/}
+                                    {/*                    </label>*/}
+                                    {/*                </div>*/}
+                                    {/*            </div>*/}
+                                    {/*        </>*/}
+                                    {/*    )}*/}
+                                    {/*</div>*/}
 
                                     {/* Logo Image */}
-                                    <div className="logo_image_wrap mt-6">
+                                    <div className="logo_image_wrap mt-0">
                                         {loading ? (
                                             <Skeleton height={20} count={1}/>
                                         ) : (
