@@ -9,7 +9,7 @@ import {RiArrowDropDownLine} from "react-icons/ri";
 import {RxCross1} from "react-icons/rx";
 import {HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
 import {HiUserCircle} from "react-icons/hi";
-import {FaArrowRight, FaArrowRightLong} from "react-icons/fa6";
+import {FaArrowRight} from "react-icons/fa6";
 
 function Page() {
     useTitle("Create store")
@@ -92,7 +92,8 @@ function Page() {
                                             Create a Store
                                         </h4>
                                         <h4 className="text-[14px] text-graycolor">
-                                            View and manage all your listings. You can easily find listing using search.
+                                            View and manage all your listings effortlessly. Easily find listings using
+                                            the search feature.
                                         </h4>
                                     </>
                                 )}
@@ -131,7 +132,7 @@ function Page() {
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="location" className="text-[14px]">
-                                                    Your Location
+                                                    Location
                                                 </label><br/>
                                                 <input
                                                     type="text"
@@ -215,13 +216,13 @@ function Page() {
                                                 Stripe Connection
                                             </h4>
                                             <h4 className="text-[14px] mt-2 text-graycolor">
-                                                Before you can sell, you need to have a Stripe account.
-                                                You can link an existing account or create a new one. It{`'`}s first and
-                                                easy!
+                                                Before you can sell on Nosres Marketplace, you need to have a Stripe
+                                                account. You can link an existing account or create a new one. It’s fast
+                                                and easy!
                                             </h4>
                                             <button type='button'
                                                     className="text-[14px] py-2 px-6 bg-primary text-white border border-primary rounded mt-4 hover:text-primary hover:bg-transparent transition">
-                                                Connect account
+                                                Connect Account
                                             </button>
                                         </div>
                                     </>
@@ -246,32 +247,32 @@ function Page() {
                                             <Skeleton height={200} count={1}/>
                                         ) : (
                                             <>
-                                                <div className="flex mt-2 items-center justify-between">
-                                                    <div className="left">
-                                                        {selectedFileCover ? (
-                                                            <div className="mb-4 relative inline-block">
-                                                                <Image
-                                                                    src={URL.createObjectURL(selectedFileCover)}
-                                                                    width={100}
-                                                                    height={100}
-                                                                    alt="Uploaded Preview"
-                                                                    className="w-full h-full object-cover rounded"
-                                                                />
-                                                                <button
-                                                                    className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"
-                                                                    onClick={handleRemoveClickCover}
-                                                                >
-                                                                    <RxCross1 size={15}
-                                                                              className="text-primary group-hover:text-white"/>
-                                                                </button>
-                                                            </div>
-                                                        ) : (
-                                                            <div>
+                                                {/*<div className="flex mt-2 items-center justify-between">*/}
+                                                {/*    <div className="left">*/}
+                                                {/*        {selectedFileCover ? (*/}
+                                                {/*            <div className="mb-4 relative inline-block">*/}
+                                                {/*                <Image*/}
+                                                {/*                    src={URL.createObjectURL(selectedFileCover)}*/}
+                                                {/*                    width={100}*/}
+                                                {/*                    height={100}*/}
+                                                {/*                    alt="Uploaded Preview"*/}
+                                                {/*                    className="w-full h-full object-cover rounded"*/}
+                                                {/*                />*/}
+                                                {/*                <button*/}
+                                                {/*                    className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"*/}
+                                                {/*                    onClick={handleRemoveClickCover}*/}
+                                                {/*                >*/}
+                                                {/*                    <RxCross1 size={15}*/}
+                                                {/*                              className="text-primary group-hover:text-white"/>*/}
+                                                {/*                </button>*/}
+                                                {/*            </div>*/}
+                                                {/*        ) : (*/}
+                                                {/*            <div>*/}
 
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                </div>
+                                                {/*            </div>*/}
+                                                {/*        )}*/}
+                                                {/*    </div>*/}
+                                                {/*</div>*/}
                                                 <div className="image-upload mt-4">
                                                     <div className="flex items-center justify-center mt-3 w-full">
                                                         <label htmlFor="dropzone-file"
@@ -280,13 +281,13 @@ function Page() {
                                                                 className="flex flex-col items-center justify-center pt-5 pb-6">
                                                                 <HiOutlineCloudArrowUp
                                                                     className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>
-                                                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                                                <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span
                                                                     className="font-semibold">Click to upload</span> or
                                                                     drag and
                                                                     drop</p>
-                                                                <p className="text-xs text-gray-500 dark:text-gray-400">SVG,
-                                                                    PNG,
-                                                                    JPG or GIF (MAX. 800x400px)</p>
+                                                                <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
+                                                                    .svg, .png, .jpg, or .gif (max. 800 x 400 px)
+                                                                </h4>
                                                             </div>
                                                             <input id="dropzone-file" type="file" className="hidden"
                                                                    onChange={(event) => handleFileChangeCover(event)}
@@ -349,13 +350,13 @@ function Page() {
                                                                 className="flex flex-col items-center justify-center pt-5 pb-6">
                                                                 <HiOutlineCloudArrowUp
                                                                     className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>
-                                                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                                                <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span
                                                                     className="font-semibold">Click to upload</span> or
                                                                     drag and
                                                                     drop</p>
-                                                                <p className="text-xs text-gray-500 dark:text-gray-400">SVG,
-                                                                    PNG,
-                                                                    JPG or GIF (MAX. 800x400px)</p>
+                                                                <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
+                                                                    .svg, .png, .jpg, or .gif (max. 800 x 400 px)
+                                                                </h4>
                                                             </div>
                                                             <input id="dropzone-files" type="file" className="hidden"
                                                                    onChange={(event) => handleFileChangeLogo(event)}

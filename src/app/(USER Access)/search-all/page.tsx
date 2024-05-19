@@ -384,8 +384,7 @@ export default function Home() {
                         {/* Body Content */}
                         <div className="col">
                             {/* All */}
-                            <div
-                                className={`all_content mx-auto w-full lg:w-[750px] ${activeTab === 'all' ? 'block' : 'hidden'}`}>
+                            <div  className={`all_content mx-auto w-full lg:w-[750px] ${activeTab === 'all' ? 'block' : 'hidden'}`}>
                                 {/* Listing */}
                                 <div className="box py-4 px-6 bg-white rounded">
                                     {loading ? (
