@@ -145,8 +145,8 @@ function Page() {
                                                     Listings
                                                 </h4>
                                                 <h4 className="text-[14px] text-graycolor">
-                                                    View and manage all your listings. You can easily find listing using
-                                                    search.
+                                                    View and manage all your listings effortlessly. Easily find listings
+                                                    using the search feature.
                                                 </h4>
                                             </div>
                                             <button type='button'

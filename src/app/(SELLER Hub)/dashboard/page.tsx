@@ -150,9 +150,8 @@ function Page() {
                                                 <h4 className='text-[14px] text-prgcolor'>Set Up Stripe Account</h4>
                                             </div>
                                             <h4 className='text-[12px] text-graycolor mt-1 ml-[1px]'>
-                                                Before you can sell, you need to have a Stripe account. You can link an
-                                                existing
-                                                account or create a new one.
+                                                Before you can sell on Nosres Marketplace, you need to have a Stripe
+                                                account. You can link an existing account or create a new one.
                                             </h4>
                                         </div>
                                         <button type='button'
