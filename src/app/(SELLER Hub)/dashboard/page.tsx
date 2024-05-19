@@ -147,7 +147,7 @@ function Page() {
                                                         0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
                                                     </svg>
                                                 </div>
-                                                <h4 className='text-[14px] text-prgcolor'>Setup Stripe Account</h4>
+                                                <h4 className='text-[14px] text-prgcolor'>Set Up Stripe Account</h4>
                                             </div>
                                             <h4 className='text-[12px] text-graycolor mt-1 ml-[1px]'>
                                                 Before you can sell, you need to have a Stripe account. You can link an

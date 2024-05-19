@@ -61,10 +61,10 @@ function SellerhubLeftSidebar() {
                             ) : (
                                 <>
                                     <li>
-                                        <Link href="/dashboard01"
+                                        <Link href="/dashboard"
                                               className={`${pathname === '/dashboard' ? 'font-semibold' : 'font-normal'} flex items-center p-2 text-[14px] rounded-lg hover:bg-gray-100 group`}>
                                             <svg
-                                                className={`${pathname === '/dashboard' ? 'stroke-primary' : 'text-gray-500'} w-5 h-5 transition duration-75 group-hover:stroke-primary`}
+                                                className={`${pathname === '/dashboard' ? 'stroke-primary' : 'text-gray-500'} w-[17px] ml-[2px] h-5 transition duration-75 group-hover:stroke-primary`}
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="none" stroke="currentColor" strokeWidth="1.5"
                                                 strokeLinecap="round"
@@ -74,7 +74,7 @@ function SellerhubLeftSidebar() {
                                                 <rect width="7" height="9" x="14" y="12" rx="1"/>
                                                 <rect width="7" height="5" x="3" y="16" rx="1"/>
                                             </svg>
-                                            <span className="ms-3">Dashboard</span>
+                                            <span className="ms-[14px]">Dashboard</span>
                                         </Link>
                                     </li>
                                 </>
@@ -87,7 +87,7 @@ function SellerhubLeftSidebar() {
                                         <Link href="/listings"
                                               className={`${pathname === '/listings' ? 'font-semibold' : 'font-normal'} flex items-center p-2 text-[14px] rounded-lg hover:bg-gray-100 group`}>
                                             <svg
-                                                className={`${pathname === '/listings' ? 'stroke-primary' : 'text-gray-500'} w-5 h-5 transition duration-75 group-hover:stroke-primary`}
+                                                className={`${pathname === '/listings' ? 'stroke-primary' : 'text-gray-500'} w-[17px] ml-[2px] h-5 transition duration-75 group-hover:stroke-primary`}
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="none" stroke="currentColor" strokeWidth="1.5"
                                                 strokeLinecap="round"
@@ -97,7 +97,7 @@ function SellerhubLeftSidebar() {
                                                 <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
                                                 <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
                                             </svg>
-                                            <span className="ms-3">Listings</span>
+                                            <span className="ms-[14px]">Listings</span>
                                         </Link>
                                     </li>
                                 </>
