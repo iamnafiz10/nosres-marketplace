@@ -168,7 +168,7 @@ function Page() {
                                         ) : (
                                             <>
                                                 <div className="block lg:flex pt-1 items-center justify-start gap-2">
-                                                    <h4 className="text-[16px] w-[200px] text-prgcolor">
+                                                    <h4 className="text-[16px] w-[250px] text-prgcolor">
                                                         General Information
                                                     </h4>
                                                     <div className="mt-1 lg:mt-0 w-full h-[1px] bg-gray-100"></div>
@@ -199,7 +199,18 @@ function Page() {
                                                             You have 150 characters left.
                                                         </h4>
                                                     </div>
-                                                    <div className="input_box mt-4">
+                                                    <div className="input_box mt-3">
+                                                        <label htmlFor="location" className="text-[14px]">
+                                                            Refund and Return Policy
+                                                        </label><br/>
+                                                        <textarea cols={30} rows={3}
+                                                                  placeholder="Refund and Return Policy"
+                                                                  className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"></textarea>
+                                                        <h4 className="text-[12px] text-graycolor mt-1">
+                                                            You have 150 characters left.
+                                                        </h4>
+                                                    </div>
+                                                    <div className="input_box mt-3">
                                                         <label htmlFor="carrier" className="text-[14px]">
                                                             Category
                                                         </label><br/>
@@ -400,7 +411,7 @@ function Page() {
 
                                                     <div
                                                         className="mt-6 block lg:flex pt-1 items-center justify-start gap-2">
-                                                        <h4 className="text-[16px] w-[200px] text-prgcolor">
+                                                        <h4 className="text-[16px] w-[110px] text-prgcolor">
                                                             Shipping
                                                         </h4>
                                                         <div className="mt-1 lg:mt-0 w-full h-[1px] bg-gray-100"></div>
@@ -420,10 +431,10 @@ function Page() {
                                                         <label htmlFor="full_name" className="text-[14px]">
                                                             Shipping method
                                                         </label><br/>
-                                                        <Checkbox className="mt-1">
+                                                        <Checkbox className="mt-1 text-graycolor">
                                                             Ship Only
                                                         </Checkbox><br/>
-                                                        <Checkbox className="mt-1">
+                                                        <Checkbox className="mt-1 text-graycolor">
                                                             Click & Collect
                                                         </Checkbox>
                                                     </div>
@@ -498,7 +509,7 @@ function Page() {
                                             <>
                                                 <div className="mt-0 lg:mt-[95px] box pt-4 px-6 bg-white rounded">
                                                     {/* Images */}
-                                                    <div className="images_wrap mt-0">
+                                                    <div className="images_wrap mt-0 pb-4">
                                                         <h4 className="text-[14px] font-500 mb-2">
                                                             Images
                                                         </h4>
@@ -535,32 +546,30 @@ function Page() {
                                                         </div>
                                                         {/* Image View */}
                                                         <div className="flex mt-4 items-center justify-between">
-                                                            <div className="left grid grid-cols-3 gap-2">
-                                                                {selectedFiles.length > 0 ? (
-                                                                    selectedFiles.map((file, index) => (
-                                                                        <div key={index}
-                                                                             className="mb-4 relative inline-block">
-                                                                            <Image
-                                                                                src={URL.createObjectURL(file)}
-                                                                                width={100}
-                                                                                height={100}
-                                                                                alt={`Uploaded Preview ${index}`}
-                                                                                className="w-[110px] h-[110px] object-cover rounded"
-                                                                            />
-                                                                            <button
-                                                                                className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"
-                                                                                onClick={() => handleRemoveClick(index)}
-                                                                            >
-                                                                                <RxCross1 size={15}
-                                                                                          className="text-primary group-hover:text-white"/>
-                                                                            </button>
-                                                                        </div>
-                                                                    ))
-                                                                ) : (
-                                                                    <div>
-
+                                                            <div className="left grid grid-cols-3 gap-2 w-full">
+                                                                {[...Array(6)].map((_, index) => (
+                                                                    <div key={index}
+                                                                         className="box h-[95px] object-cover rounded border border-gray-400 border-dotted bg-gray-100 relative">
+                                                                        {selectedFiles[index] && (
+                                                                            <>
+                                                                                <Image
+                                                                                    src={URL.createObjectURL(selectedFiles[index])}
+                                                                                    width={95}
+                                                                                    height={95}
+                                                                                    alt={`Uploaded Preview ${index}`}
+                                                                                    className="w-[95px] h-[95px] object-cover rounded"
+                                                                                />
+                                                                                <button
+                                                                                    className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"
+                                                                                    onClick={() => handleRemoveClick(index)}
+                                                                                >
+                                                                                    <RxCross1 size={15}
+                                                                                              className="text-primary group-hover:text-white"/>
+                                                                                </button>
+                                                                            </>
+                                                                        )}
                                                                     </div>
-                                                                )}
+                                                                ))}
                                                             </div>
                                                         </div>
                                                     </div>

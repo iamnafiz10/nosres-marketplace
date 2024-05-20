@@ -8,6 +8,8 @@ import useTitle from "@/app/useTitle";
 import useLoading from "@/app/useLoading";
 // @ts-ignore
 import ReactStars from "react-rating-stars-component";
+import {Modal} from "flowbite-react";
+import {Checkbox, Radio, RadioChangeEvent} from "antd";
 
 function Page() {
     useTitle("Order-details")
@@ -56,45 +58,6 @@ function Page() {
         };
     }, []);
 
-    //  ReturnConfirm popup
-    const [openStartReturnConfirmModal, setOpenStartReturnConfirmModal] = useState<boolean>(false);
-    const [openStartReturnConfirmDoneModal, setOpenStartReturnConfirmDoneModal] = useState<boolean>(false);
-    const handleReturnConfirmDoneClick = () => {
-        setOpenStartReturnModal(false);
-        setOpenStartReturnConfirmDoneModal(false);
-        setOpenStartReturnConfirmModal(false);
-    };
-
-    //  ProductReview popup
-    const [openStartProductReviewModal, setOpenStartProductReviewModal] = useState<boolean>(false);
-    // SubmitReview Popup
-    const [openSubmitReviewModal, setOpenSubmitReviewModal] = useState<boolean>(false);
-    const [openSubmitReviewTwoModal, setOpenSubmitReviewTwoModal] = useState<boolean>(false);
-    const handleClickReviewTwoCancel = () => {
-        setOpenSubmitReviewModal(false);
-        setOpenSubmitReviewTwoModal(false);
-        setOpenStartProductReviewModal(false);
-    }
-
-    // --------------- Start Multiple Rating ----------------//
-    const [ratingOne, setRatingOne] = useState(0);
-    const oneExample = {
-        size: 25,
-        count: 5,
-        value: ratingOne,
-        isHalf: true,
-        color: "#DCDDDE",
-        activeColor: "#4D7FB8",
-        // @ts-ignore
-        onChange: newValue => {
-            if (newValue === ratingOne && newValue === 1) {
-                setRatingOne(0);
-            } else {
-                setRatingOne(newValue);
-            }
-        }
-    };
-    // --------------- End Multiple Rating ----------------//
 
     //  CancelOrder popup
     const [openStartCancelOrderModal, setOpenStartCancelOrderModal] = useState<boolean>(false);
@@ -122,23 +85,33 @@ function Page() {
         };
     }, []);
 
+    //  ReturnConfirm popup
+    const [openStartReturnConfirmModal, setOpenStartReturnConfirmModal] = useState<boolean>(false);
+    const [openStartReturnConfirmDoneModal, setOpenStartReturnConfirmDoneModal] = useState<boolean>(false);
+    const handleReturnConfirmDoneClick = () => {
+        setOpenStartReturnModal(false);
+        setOpenStartReturnConfirmDoneModal(false);
+        setOpenStartReturnConfirmModal(false);
+
+        setOpenStartReturnRfdModal(false);
+        setOpenStartReturnConfirmRfdModal(false);
+        setOpenStartReturnConfirmDoneRfdModal(false);
+    };
+
     //  CancelOrder popup
     const [openStartCancelOrderConfirmModal, setOpenStartCancelOrderConfirmModal] = useState<boolean>(false);
     const [openStartCancelOrderConfirmDoneModal, setOpenStartCancelOrderConfirmDoneModal] = useState<boolean>(false);
     const handleCancelOrderConfirmDoneClick = () => {
-        setOpenStartCancelOrderModal(false);
+        setOpenStartReturnConfirmModal(false);
         setOpenStartCancelOrderConfirmDoneModal(false);
         setOpenStartCancelOrderConfirmModal(false);
+        setOpenStartCancelOrderModal(false);
     };
 
-    //  SubmitReviewCrm popup
-    const [openSubmitReviewModalCrm, setOpenSubmitReviewModalCrm] = useState<boolean>(false);
-    const handleClickSubmitReviewModalCrm = () => {
-        setOpenSubmitReviewModalCrm(false);
-        setOpenSubmitReviewModal(false);
-        setOpenStartProductReviewModal(false);
-        setOpenSubmitReviewTwoModal(false);
-    };
+    //  Return popup
+    const [openStartReturnRfdModal, setOpenStartReturnRfdModal] = useState<boolean>(false);
+    const [openStartReturnConfirmRfdModal, setOpenStartReturnConfirmRfdModal] = useState<boolean>(false);
+    const [openStartReturnConfirmDoneRfdModal, setOpenStartReturnConfirmDoneRfdModal] = useState<boolean>(false);
     return (
         <>
             <section id="sorder-details-section">
@@ -150,7 +123,7 @@ function Page() {
                                     {/* Breadcrumb */}
                                     <div className="breadcrumb_wrap">
                                         {loading ? (
-                                            <div className="mb-3">
+                                            <div className="mb-3 mt-4">
                                                 <Skeleton height={20} width={340} count={1}/>
                                             </div>
                                         ) : (
@@ -260,7 +233,8 @@ function Page() {
                                                     </div>
                                                     <div className="grid grid-cols-2 gap-2 lg:flex lg:items-center">
                                                         <div className="col">
-                                                            <button type='button'
+                                                            <button onClick={() => setOpenStartReturnRfdModal(true)}
+                                                                    type='button'
                                                                     className="py-2 px-4 bg-gray-100 rounded text-[12px] border hover:bg-primary hover:text-white transition hover:border-primary">
                                                                 Process Refund
                                                             </button>
@@ -524,6 +498,653 @@ function Page() {
                         </div>
                     </div>
                 </div>
+
+                {/* Start CancelOrder Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartCancelOrderModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartCancelOrderModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Cancel Order</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please select the item(s) you would like to cancel.
+                            </h4>
+                            <div className="mt-4 space-y-3">
+                                <div onClick={handleBoxClick} className="box cursor-pointer py-2 px-4 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <Link href='#'
+                                                  className="show_product group flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple
+                                                        iPhone XS</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$860.00</h4>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                        <div className="check_box">
+                                            <Checkbox
+                                                checked={checked}
+                                                onChange={() => setChecked(!checked)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div onClick={handleBoxClickTwo}
+                                     className="box cursor-pointer py-2 px-4 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <Link href='#'
+                                                  className="show_product group flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple
+                                                        iPhone XS</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$860.00</h4>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                        <div className="check_box">
+                                            <Checkbox
+                                                checked={checkedTwo}
+                                                onChange={() => setCheckedTwo(!checkedTwo)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 className="text-[14px] font-normal mt-6">
+                                Please specify the reason for cancelling this item.
+                            </h4>
+                            <div className="select-box relative mt-2" ref={selectBoxRefAccDtv}>
+                                <div className="select-option flex"
+                                     onClick={toggleOptionsVisibilityAccDtv}>
+                                    <input type="text" placeholder="Select a reason"
+                                           readOnly
+                                           value={selectedOptionAccDtv}
+                                           className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300 "/>
+                                </div>
+                                {isOptionsVisibleAccDtv && (
+                                    <div className="info-content w-full gender_content">
+                                        <ul className="options">
+                                            <li onClick={() => handleOptionClickAccDtv("Item out of stock")}>
+                                                Item out of stock
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Pricing error")}>
+                                                Pricing error
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Payment issue")}>
+                                                Payment issue
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Buyer address invalid")}>
+                                                Buyer address invalid
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Suspected fraud")}>
+                                                Suspected fraud
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Product discontinued")}>
+                                                Product discontinued
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Quality issue")}>
+                                                Quality issue
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Duplicate order")}>
+                                                Duplicate order
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Lost package")}>
+                                                Lost package
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Product defect")}>
+                                                Product defect
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Order duplication")}>
+                                                Order duplication
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Supplier delay")}>
+                                                Supplier delay
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Incorrect listing")}>
+                                                Incorrect listing
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Incorrect")}>
+                                                Incorrect
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Policy violation")}>
+                                                Policy violation
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Policy change")}>
+                                                Policy change
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Customer request")}>
+                                                Customer request
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Inventory mismatch")}>
+                                                Inventory mismatch
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Packaging problem")}>
+                                                Packaging problem
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Recall issued")}>
+                                                Recall issued
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Damage during handling")}>
+                                                Damage during handling
+                                            </li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+
+                            {selectedOptionAccDtv && (
+                                <div className="others-input py-2 mt-3">
+                                    <h4 className="text-[14px] text-prgcolor">
+                                        Please provide more details about your reason (required).
+                                    </h4>
+                                    <textarea cols={30} rows={3}
+                                              className="mt-1 rounded leading-[20px] w-full py-1 px-3 focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                              placeholder="Please explain the issue with the item. Please do not include personal information."
+                                    >
+                                    </textarea>
+                                    <h4 className="text-[12px] text-graycolor mt-0">
+                                        You have 250 characters left.
+                                    </h4>
+                                </div>
+                            )}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartCancelOrderModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartReturnConfirmModal(true)}
+                                    className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Process Refund
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* CancelOrder Pop-Up End */}
+
+                {/* Start ReturnConfirm Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartReturnConfirmModal}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 10%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartReturnConfirmModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Process Refund</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please review the refund details carefully. Once confirmed, the refund
+                                process will be initiated.
+                            </h4>
+
+                            <div className="mt-3 flex items-center gap-2">
+                                <h4 className="text-graycolor text-[14px]">
+                                    Total Refund Amount:
+                                </h4>
+                                <h4 className="text-prgcolor text-[16px]">$199.00</h4>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-prgcolor text-[14px] mb-2">Refund Method</h4>
+                                <div onClick={() => onChange(1)}
+                                     className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <svg
+                                                className="w-4 h-4 mt-1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="#828D9E"
+                                                strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                                            >
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                                                <path d="M12 18V6"/>
+                                            </svg>
+
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Refund to your visa ending in 1234
+                                                </h4>
+                                                <h4 className="mt-1 text-[12px] text-graycolor leading-[17px]">
+                                                    Please send the original item(s) back within 15 days. We will<br/>
+                                                    process your refund once we receive the original item(s).
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div className="mt-3 flex items-start gap-2">
+                                    <Checkbox>
+                                    </Checkbox>
+                                    <h4 className="flex items-start text-graycolor text-[12px]">
+                                        I confirm that I have reviewed the refund details and wish to
+                                        proceed with the refund.
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartReturnConfirmModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenStartCancelOrderConfirmDoneModal(true)}
+                                    className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Confirm Refund
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/*  ReturnConfirm Pop-Up End */}
+
+
+                {/* Start ReturnConfirmDone Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartCancelOrderConfirmDoneModal}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartCancelOrderConfirmDoneModal(false)}>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <svg
+                                        className="w-[50px] h-[50px] text-primary"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+                                        strokeLinejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="m15 9-6 6"/>
+                                        <path d="m9 9 6 6"/>
+                                    </svg>
+                                </div>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    Your order has been cancelled successfully.
+                                </h4>
+                                <button onClick={handleCancelOrderConfirmDoneClick}
+                                        className="mt-6 px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/*  ReturnConfirmDone Pop-Up End */}
+
+                {/* ----------- Refund --------------- */}
+                {/* Start Return Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartReturnRfdModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartReturnRfdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Process Refund</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please select the item(s) you would like to refund.
+                            </h4>
+                            <div className="mt-4 space-y-3">
+                                <div onClick={handleBoxClick} className="box cursor-pointer py-2 px-4 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <Link href='#'
+                                                  className="show_product group flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple
+                                                        iPhone XS</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$860.00</h4>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                        <div className="check_box">
+                                            <Checkbox
+                                                checked={checked}
+                                                onChange={() => setChecked(!checked)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div onClick={handleBoxClickTwo}
+                                     className="box cursor-pointer py-2 px-4 border rounded">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <Link href='#'
+                                                  className="show_product group flex items-start gap-4">
+                                                <div className="p-1 border rounded">
+                                                    <Image src={ProductImg} className="w-16" alt="ProductImg"/>
+                                                </div>
+                                                <div className="product_content">
+                                                    <h4 className="text-[14px] text-prgcolor group-hover:text-primary">Apple
+                                                        iPhone XS</h4>
+                                                    <h4 className="text-[12px] text-graycolor">$860.00</h4>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                        <div className="check_box">
+                                            <Checkbox
+                                                checked={checkedTwo}
+                                                onChange={() => setCheckedTwo(!checkedTwo)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 className="text-[14px] font-normal mt-6">
+                                Please specify the reason for refunding this item.
+                            </h4>
+                            <div className="select-box relative mt-2" ref={selectBoxRefAccDtv}>
+                                <div className="select-option flex"
+                                     onClick={toggleOptionsVisibilityAccDtv}>
+                                    <input type="text" placeholder="Select a reason"
+                                           readOnly
+                                           value={selectedOptionAccDtv}
+                                           className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300 "/>
+                                </div>
+                                {isOptionsVisibleAccDtv && (
+                                    <div className="info-content w-full gender_content">
+                                        <ul className="options">
+                                            <li onClick={() => handleOptionClickAccDtv("Item out of stock")}>
+                                                Item out of stock
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Pricing error")}>
+                                                Pricing error
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Payment issue")}>
+                                                Payment issue
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Buyer address invalid")}>
+                                                Buyer address invalid
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Suspected fraud")}>
+                                                Suspected fraud
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Product discontinued")}>
+                                                Product discontinued
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Quality issue")}>
+                                                Quality issue
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Duplicate order")}>
+                                                Duplicate order
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Lost package")}>
+                                                Lost package
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Product defect")}>
+                                                Product defect
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Order duplication")}>
+                                                Order duplication
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Supplier delay")}>
+                                                Supplier delay
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Incorrect listing")}>
+                                                Incorrect listing
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Incorrect")}>
+                                                Incorrect
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Policy violation")}>
+                                                Policy violation
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Policy change")}>
+                                                Policy change
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Customer request")}>
+                                                Customer request
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Inventory mismatch")}>
+                                                Inventory mismatch
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Packaging problem")}>
+                                                Packaging problem
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Recall issued")}>
+                                                Recall issued
+                                            </li>
+                                            <li onClick={() => handleOptionClickAccDtv("Damage during handling")}>
+                                                Damage during handling
+                                            </li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+
+                            {selectedOptionAccDtv && (
+                                <div className="others-input py-2 mt-3">
+                                    <h4 className="text-[14px] text-prgcolor">
+                                        Please provide more details about your reason (required).
+                                    </h4>
+                                    <textarea cols={30} rows={3}
+                                              className="mt-1 rounded leading-[20px] w-full py-1 px-3 focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                              placeholder="Please explain the issue with the item. Please do not include personal information."
+                                    >
+                                    </textarea>
+                                    <h4 className="text-[12px] text-graycolor mt-0">
+                                        You have 250 characters left.
+                                    </h4>
+                                </div>
+                            )}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartReturnRfdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartReturnConfirmRfdModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Continue
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Return Pop-Up End */}
+
+                {/* Start ReturnConfirm Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartReturnConfirmRfdModal}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 10%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartReturnConfirmRfdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Process Refund</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please review the refund details carefully. Once confirmed, the refund
+                                process will be initiated.
+                            </h4>
+
+                            <div className="mt-3 flex items-center gap-2">
+                                <h4 className="text-graycolor text-[14px]">
+                                    Total Refund Amount:
+                                </h4>
+                                <h4 className="text-prgcolor text-[16px]">$199.00</h4>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-prgcolor text-[14px] mb-2">Refund Method</h4>
+                                <div onClick={() => onChange(1)}
+                                     className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <svg
+                                                className="w-4 h-4 mt-1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="#828D9E"
+                                                strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                                            >
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                                                <path d="M12 18V6"/>
+                                            </svg>
+
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Refund to your visa ending in 1234
+                                                </h4>
+                                                <h4 className="mt-1 text-[12px] text-graycolor leading-[17px]">
+                                                    Please send the original item(s) back within 15 days. We will<br/>
+                                                    process your refund once we receive the original item(s).
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div className="mt-3 flex items-start gap-2">
+                                    <Checkbox>
+                                    </Checkbox>
+                                    <h4 className="flex items-start text-graycolor text-[12px]">
+                                        I confirm that I have reviewed the refund details and wish to
+                                        proceed with the refund.
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartReturnConfirmRfdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenStartReturnConfirmDoneRfdModal(true)}
+                                    className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Confirm Refund
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/*  ReturnConfirm Pop-Up End */}
+
+                {/* Start ReturnConfirmDone Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartReturnConfirmDoneRfdModal}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartReturnConfirmDoneRfdModal(false)}>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <svg
+                                        className="w-[50px] h-[50px] text-primary"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+                                        strokeLinejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                                        <path d="M12 18V6"/>
+                                    </svg>
+                                </div>
+                                <h4 className="text-prgcolor text-[14px] mt-1">
+                                    Your Refund: <b>$199.00</b>
+                                </h4>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    Your refund will be issued to your original payment
+                                    method within 15 business days after we
+                                    receive your return.
+                                </h4>
+                                <button onClick={handleReturnConfirmDoneClick}
+                                        className="mt-6 px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    Continue Shopping
+                                </button>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/*  ReturnConfirmDone Pop-Up End */}
             </section>
         </>
     );
