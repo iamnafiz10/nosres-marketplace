@@ -2,7 +2,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {HiUserCircle} from "react-icons/hi";
 import {HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "react-icons/hi2";
-import {IoCartOutline, IoSearchOutline} from "react-icons/io5";
+import {IoCart, IoCartOutline, IoSearchOutline} from "react-icons/io5";
 import Link from "next/link";
 import Image from "next/image";
 import {GoBell, GoHome, GoHomeFill} from "react-icons/go";
@@ -345,15 +345,18 @@ function Header() {
                                       className="group flex flex-col items-center relative">
                                     <div
                                         className="group-hover: absolute top-[33px] w-[35px] transition"></div>
-                                    {/* Main SVG */}
-                                    <div className="relative">
-                                        <IoCartOutline
-                                            className="w-[25px] h-[24px] c group-hover:text-primary"/>
-                                        <div
-                                            className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                            4
+                                    {pathname === '/shopping-cart' ? (
+                                        <IoCart className="w-[25px] h-[24px] text-primary"/>
+                                    ) : (
+                                        <div className="relative">
+                                            <IoCartOutline
+                                                className="w-[25px] h-[24px] c group-hover:text-primary"/>
+                                            <div
+                                                className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                                4
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </Link>
                             </Tooltip>
 
@@ -1121,8 +1124,12 @@ function Header() {
                 className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-white border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
                 {/* Home */}
                 <Link href='/public' className="group px-[5px] flex flex-col items-center">
-                    <GoHomeFill className="w-full h-[20px] text-primary"/>
-                    <div className="text-primary group-hover:text-primary transition">
+                    {pathname === '/home' ? (
+                        <GoHomeFill className="w-full h-[20px] text-primary"/>
+                    ) : (
+                        <GoHome className="w-full h-[20px] text-prgcolor"/>
+                    )}
+                    <div className="text-prgcolor group-hover:text-primary transition">
                         Home
                     </div>
                 </Link>
@@ -1154,17 +1161,27 @@ function Header() {
 
                 {/* Cart */}
                 <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {/* Main SVG */}
-                    <div className="relative">
-                        <IoCartOutline className="w-full h-[23px] text-prgcolor group-hover:text-primary"/>
-                        <div
-                            className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                            2
+                    {pathname === '/shopping-cart' ? (
+                        <IoCart className="w-[25px] h-[24px] text-primary"/>
+                    ) : (
+                        <div className="relative">
+                            <IoCartOutline
+                                className="w-[25px] h-[24px] c group-hover:text-primary"/>
+                            <div
+                                className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                4
+                            </div>
                         </div>
-                    </div>
-                    <div className="text-prgcolor group-hover:text-primary transition">
-                        Cart
-                    </div>
+                    )}
+                    {pathname === '/shopping-cart' ? (
+                        <div className="text-primary group-hover:text-primary transition">
+                            Cart
+                        </div>
+                    ) : (
+                        <div className="text-prgcolor group-hover:text-primary transition">
+                            Cart
+                        </div>
+                    )}
                 </Link>
 
                 {/* Message */}
