@@ -48,7 +48,7 @@ function SellerhubLeftSidebar() {
                                         <div
                                             className="flex items-center text-[14px] p-2 rounded-lg hover:bg-gray-100 group">
                                             <HiUserCircle
-                                                          className="text-primary w-6 h-6 transition duration-75 group-hover:text-primary"/>
+                                                className="text-primary w-6 h-6 transition duration-75 group-hover:text-primary"/>
                                             <span className="ms-2 font-semibold">UpTown Store</span>
                                         </div>
                                     </>
@@ -87,15 +87,15 @@ function SellerhubLeftSidebar() {
                                         <Link href="/listings"
                                               className={`${pathname === '/listings' ? 'font-semibold' : 'font-normal'} flex items-center p-2 text-[14px] rounded-lg hover:bg-gray-100 group`}>
                                             <svg
-                                                className={`${pathname === '/listings' ? 'stroke-primary' : 'text-gray-500'} w-[17px] ml-[2px] h-5 transition duration-75 group-hover:stroke-primary`}
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <path
-                                                    d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
-                                                <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
-                                                <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+                                                className={`${pathname === '/listings' ? 'stroke-primary' : 'text-gray-500'} w-[20px] ml-[0px] h-5 transition duration-75 group-hover:stroke-primary`}
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M11 12H3"/>
+                                                <path d="M16 6H3"/>
+                                                <path d="M16 18H3"/>
+                                                <path d="M18 9v6"/>
+                                                <path d="M21 12h-6"/>
                                             </svg>
                                             <span className="ms-[14px]">Listings</span>
                                         </Link>
@@ -110,17 +110,15 @@ function SellerhubLeftSidebar() {
                                         <Link href="/sorders"
                                               className={`${pathname === '/sorders' ? 'font-semibold' : 'font-normal'} ${pathname === '/sorder-details' ? 'font-semibold' : 'font-normal'} flex items-center p-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 group`}>
                                             <svg
-                                                className={`text-gray-500 ${pathname === '/sorders' ? 'stroke-primary' : 'text-gray-500'} ${pathname === '/sorder-details' ? 'stroke-primary' : 'text-gray-500'} w-5 h-5 transition duration-75 group-hover:stroke-primary`}
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round">
-                                                <circle cx="8" cy="21" r="1"/>
-                                                <circle cx="19" cy="21" r="1"/>
-                                                <path
-                                                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                                                className={`text-gray-500 ${pathname === '/sorders' ? 'stroke-primary' : 'text-gray-500'} ${pathname === '/sorder-details' ? 'stroke-primary' : 'text-gray-500'} w-4 h-4 transition duration-75 group-hover:stroke-primary`}
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                                                <path d="M3 6h18"/>
+                                                <path d="M16 10a4 4 0 0 1-8 0"/>
                                             </svg>
-                                            <span className="ms-3">Orders</span>
+                                            <span className="ms-4">Orders</span>
                                         </Link>
                                     </li>
                                 </>

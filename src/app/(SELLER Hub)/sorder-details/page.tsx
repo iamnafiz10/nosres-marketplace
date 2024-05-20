@@ -262,7 +262,7 @@ function Page() {
                                                         <div className="col">
                                                             <button type='button'
                                                                     className="py-2 px-4 bg-gray-100 rounded text-[12px] border hover:bg-primary hover:text-white transition hover:border-primary">
-                                                                Refund
+                                                                Process Refund
                                                             </button>
                                                         </div>
                                                         <div className="col">

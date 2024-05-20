@@ -27,7 +27,7 @@ function Page() {
                                             <div className="flex items-start justify-between">
                                                 <div className="wrap">
                                                     <div className="text-[14px] text-prgcolor">
-                                                        Listings quantity
+                                                        Total Listings
                                                     </div>
                                                     <div className="text-[20px] font-semibold">
                                                         <h4>5</h4>
