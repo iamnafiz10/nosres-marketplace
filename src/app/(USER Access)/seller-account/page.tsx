@@ -1,5 +1,5 @@
 "use client";
-import React, {useEffect, useRef, useState} from 'react';
+import React, {ChangeEvent, useEffect, useRef, useState} from 'react';
 import Skeleton from "react-loading-skeleton";
 import {RiArrowDropDownLine} from "react-icons/ri";
 import {HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
@@ -7,6 +7,7 @@ import {FaArrowRight} from "react-icons/fa6";
 import useTitle from "@/app/useTitle";
 import useLoading from "@/app/useLoading";
 import {HiUserCircle} from "react-icons/hi";
+import {ImAttachment} from "react-icons/im";
 
 function Page() {
     useTitle("Seller account")
@@ -43,6 +44,36 @@ function Page() {
     }, []);
     //----------- FilterStoreTab Dropdown End --------------//
 
+
+    //----------- FilterBusinessTab Dropdown Start --------------//
+    const [isOpenDropdownFilterBusinessTab, setIsOpenDropdownFilterBusinessTab] = useState(false);
+    const [selectedOptionFilterBusinessTab, setSelectedOptionFilterBusinessTab] = useState("Select"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownFilterBusinessTab = () => {
+        setIsOpenDropdownFilterBusinessTab(!isOpenDropdownFilterBusinessTab);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectFilterBusinessTab = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilterBusinessTab(option);
+        setIsOpenDropdownFilterBusinessTab(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownFilterBusinessTabRef = useRef(null);
+    const handleClickOutsideFilterBusinessTab = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownFilterBusinessTabRef.current && !dropdownFilterBusinessTabRef.current.contains(event.target)) {
+            setIsOpenDropdownFilterBusinessTab(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideFilterBusinessTab);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideFilterBusinessTab);
+        };
+    }, []);
+    //----------- FilterBusinessTab Dropdown End --------------//
+
     // Cover Image Upload Function
     const fileInputRefCover = useRef<HTMLInputElement | null>(null);
     const [selectedFileCover, setSelectedFileCover] = useState<File | null>(null);
@@ -70,6 +101,21 @@ function Page() {
         // Reset the file input value to allow re-uploading the same file
         if (fileInputRefLogo.current) {
             fileInputRefLogo.current.value = '';
+        }
+    };
+
+    // File Upload Function
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        setSelectedFile(file || null);
+    };
+    const handleRemoveClick = () => {
+        setSelectedFile(null);
+        // Reset the file input value to allow re-uploading the same file
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
         }
     };
     return (
@@ -156,13 +202,13 @@ function Page() {
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="carrier" className="text-[14px]">
-                                                    Business Type
+                                                    Industry
                                                 </label><br/>
                                                 <div className="flex text-[12px] items-center justify-start mt-1">
                                                     {/* FilterStoreTab dropdown */}
                                                     <div ref={dropdownFilterStoreTabRef}
                                                          onClick={toggleDropdownFilterStoreTab}
-                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full">
+                                                         className="filter_dropdown_checkout z-30 cursor-pointer relative w-full">
                                                         <div
                                                             className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
                                                             <input value={selectedOptionFilterStoreTab} name="select"
@@ -177,7 +223,7 @@ function Page() {
 
                                                         {isOpenDropdownFilterStoreTab && (
                                                             <div
-                                                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                                className="absolute w-full h-[100px] overflow-y-auto rounded shadow bg-white overflow-hidden mt-1 border border-gray-200">
                                                                 <div className="cursor-pointer"
                                                                      onClick={() => handleOptionSelectFilterStoreTab("Select")}>
                                                                     <div
@@ -186,17 +232,243 @@ function Page() {
                                                                     </div>
                                                                 </div>
                                                                 <div className="cursor-pointer"
-                                                                     onClick={() => handleOptionSelectFilterStoreTab("Electronics")}>
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Fashion and Apparel")}>
                                                                     <div
                                                                         className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
-                                                                        Electronics
+                                                                        Fashion and Apparel
                                                                     </div>
                                                                 </div>
                                                                 <div className="cursor-pointer"
-                                                                     onClick={() => handleOptionSelectFilterStoreTab("T-Shirt")}>
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Electronics and Gadgets")}>
                                                                     <div
                                                                         className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
-                                                                        T-Shirt
+                                                                        Electronics and Gadgets
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Health and Beauty")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Health and Beauty
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Home Goods and Furniture")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Home Goods and Furniture
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Books and Media")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Books and Media
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Toys and Games")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Toys and Games
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Food and Beverage")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Food and Beverage
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Fitness and Sports Equipment")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Fitness and Sports Equipment
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Pet Supplies")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Pet Supplies
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Automotive Parts and Accessories")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Automotive Parts and Accessories
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Crafts and Handmade Goods")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Crafts and Handmade Goods
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Office Supplies and Equipment")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Office Supplies and Equipment
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Jewelry and Accessories")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Jewelry and Accessories
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Education and E-Learning")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Education and E-Learning
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Art and Collectibles")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Art and Collectibles
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Baby and Kids Products")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Baby and Kids Products
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Gardening and Outdoor Supplies")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Gardening and Outdoor Supplies
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Home Improvement and DIY")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Home Improvement and DIY
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Health and Medical Supplies")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Health and Medical Supplies
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Automotive Services")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Automotive Services
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Gifts and Flowers")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Gifts and Flowers
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Music Instruments and Equipment")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Music Instruments and Equipment
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterStoreTab("Green and Eco-Friendly Products")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Green and Eco-Friendly Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="input_box mt-4">
+                                                <label htmlFor="carrier" className="text-[14px]">
+                                                    Business Type
+                                                </label><br/>
+                                                <div className="flex text-[12px] items-center justify-start mt-1">
+                                                    {/* FilterStoreTab dropdown */}
+                                                    <div ref={dropdownFilterBusinessTabRef}
+                                                         onClick={toggleDropdownFilterBusinessTab}
+                                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full">
+                                                        <div
+                                                            className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
+                                                            <input value={selectedOptionFilterBusinessTab} name="select"
+                                                                   id="select"
+                                                                   className="px-4 cursor-pointer appearance-none outline-none text-gray-800 w-full"
+                                                                   readOnly/>
+                                                            <button type='button'
+                                                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                                <RiArrowDropDownLine size={25}/>
+                                                            </button>
+                                                        </div>
+
+                                                        {isOpenDropdownFilterBusinessTab && (
+                                                            <div
+                                                                className="absolute w-full h-[100px] overflow-y-auto rounded shadow bg-white overflow-hidden mt-1 border border-gray-200">
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Select")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Select
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Sole Proprietorship")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Sole Proprietorship
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Partnership")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Partnership
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Partnership")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Partnership
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Limited Liability Company (LLC)")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Limited Liability Company (LLC)
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Cooperative (Co-op)")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Cooperative (Co-op)
+                                                                    </div>
+                                                                </div>
+                                                                <div className="cursor-pointer"
+                                                                     onClick={() => handleOptionSelectFilterBusinessTab("Nonprofit Organization")}>
+                                                                    <div
+                                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                                        Nonprofit Organization
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -212,74 +484,69 @@ function Page() {
                         <div className="col lg:col-span-5">
                             <div className="sticky">
                                 <div className="mt-0 lg:mt-[9px] box py-4 px-6 bg-white rounded">
-                                    {/* Logo Image */}
-                                    <div className="logo_image_wrap mt-0">
-                                        {loading ? (
+                                    {loading ? (
+                                        <div className="mt-0">
+                                            <Skeleton height={10} count={1}/>
                                             <Skeleton height={20} count={1}/>
-                                        ) : (
-                                            <>
-                                                <h4 className="text-[14px] font-500 mb-2">
-                                                    Logo
-                                                </h4>
-                                            </>
-                                        )}
-                                        <div className="flex mt-2 items-center justify-between">
-                                            {loading ? (
-                                                <div className="flex items-center justify-start gap-2 w-full">
-                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
-                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
-                                                </div>
-                                            ) : (
-                                                <>
-                                                    <div className="left">
-                                                        {selectedFileLogo ? (
-                                                            <img
-                                                                src={URL.createObjectURL(selectedFileLogo)}
-                                                                alt="Uploaded Preview"
-                                                                className="w-20 h-20 object-cover rounded-full"
-                                                            />
+                                            <Skeleton height={200} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="document_box">
+                                                <div className="flex mt-2 items-center justify-between">
+                                                    <div className="left mt-0">
+                                                        {selectedFile ? (
+                                                            <p className="text-primary">{selectedFile.name}</p>
                                                         ) : (
-                                                            <HiUserCircle className="w-20 h-20 text-primary"/>
+                                                            <div className="flex items-center gap-1">
+                                                                <ImAttachment size={15} className="text-gray-400"/>
+                                                                <h6 className="text-[14px]">
+                                                                    Jane Doe_Resume
+                                                                </h6>
+                                                            </div>
                                                         )}
                                                     </div>
-                                                    <div onClick={handleRemoveClickLogo}
-                                                         className="right cursor-pointer flex gap-1 items-center">
+                                                    <div onClick={handleRemoveClick}
+                                                         className="right mt-0 cursor-pointer flex gap-1 items-center">
                                                         <HiOutlineMinusCircle className="text-primary"/>
                                                         <button className="text-primary text-[14px]">Remove</button>
                                                     </div>
-                                                </>
-                                            )}
-                                        </div>
-                                        <div className="image-upload mt-4">
-                                            {loading ? (
-                                                <Skeleton height={200} count={1}/>
-                                            ) : (
-                                                <>
+                                                </div>
+
+                                                <div className="image-upload mt-4">
+                                                    <h4 className="text-[14px]">Document</h4>
+                                                    <h4 className="text-[14px] text-graycolor">
+                                                        Upload your business registration documents.
+                                                    </h4>
                                                     <div className="flex items-center justify-center mt-3 w-full">
-                                                        <label htmlFor="dropzone-files"
+                                                        <label htmlFor="dropzone-file"
                                                                className="flex flex-col items-center justify-center w-full h-28 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100">
                                                             <div
                                                                 className="flex flex-col items-center justify-center pt-5 pb-6">
                                                                 <HiOutlineCloudArrowUp
                                                                     className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>
-                                                                <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span
+                                                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
                                                                     className="font-semibold">Click to upload</span> or
                                                                     drag and
                                                                     drop</p>
-                                                                <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
-                                                                    .svg, .png, .jpg, or .gif (max. 800 x 400 px)
-                                                                </h4>
+                                                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                                                    Supported file formats: .pdf, .doc, .docx, .txt
+                                                                </p>
                                                             </div>
-                                                            <input id="dropzone-files" type="file" className="hidden"
-                                                                   onChange={(event) => handleFileChangeLogo(event)}
-                                                                   ref={fileInputRefLogo}
+                                                            <input
+                                                                id="dropzone-file"
+                                                                type="file"
+                                                                accept=".pdf,.doc,.docx,.txt"
+                                                                className="hidden"
+                                                                onChange={handleFileChange}
+                                                                ref={fileInputRef}
                                                             />
                                                         </label>
                                                     </div>
-                                                </>
-                                            )}
-                                        </div>
-                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -298,7 +565,7 @@ function Page() {
                                     Cancel
                                 </button>
                                 <button type='button'
-                                        className="py-2 px-6 text-white flex items-center gap-2 bg-primary hover:bg-transparent hover:text-primary hover:bg-primary border text-[14px] rounded">
+                                        className="py-2 mt-2 lg:mt-0 px-6 text-white flex items-center gap-2 bg-primary hover:bg-transparent hover:text-primary hover:bg-primary border text-[14px] rounded">
                                     Submit
                                     <FaArrowRight size={15}/>
                                 </button>

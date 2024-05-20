@@ -118,18 +118,24 @@ function Page() {
         }
     };
 
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const handleRemoveClick = (index: number) => {
         const newFiles = [...selectedFiles];
         newFiles.splice(index, 1);
         setSelectedFiles(newFiles);
+        // Reset selectedIndex if the removed image was the selected one
+        if (selectedIndex === index) {
+            setSelectedIndex(null);
+        } else if (selectedIndex !== null && selectedIndex > index) {
+            // Adjust the selectedIndex if the removed image was before the selected one
+            setSelectedIndex(selectedIndex - 1);
+        }
     };
 
-    const handleCancelClick = () => {
-        setSelectedFiles([]);
-    };
-
-    const handleSaveClick = () => {
-        setSelectedFiles([]);
+    const handleImageClick = (index: number) => {
+        if (selectedFiles[index]) {
+            setSelectedIndex(index);
+        }
     };
     return (
         <>
@@ -549,8 +555,11 @@ function Page() {
                                                         <div className="flex mt-4 items-center justify-between">
                                                             <div className="left grid grid-cols-3 gap-2 w-full">
                                                                 {[...Array(6)].map((_, index) => (
-                                                                    <div key={index}
-                                                                         className="box h-[95px] object-cover rounded border border-gray-400 border-dotted bg-gray-100 relative">
+                                                                    <div
+                                                                        key={index}
+                                                                        className={`box w-[95px] h-[99px] object-cover rounded border border-gray-400 bg-gray-100 relative ${selectedIndex === index ? 'border-2 border-primary' : ''}`}
+                                                                        onClick={() => handleImageClick(index)}
+                                                                    >
                                                                         {selectedFiles[index] && (
                                                                             <>
                                                                                 <Image
@@ -558,11 +567,14 @@ function Page() {
                                                                                     width={95}
                                                                                     height={95}
                                                                                     alt={`Uploaded Preview ${index}`}
-                                                                                    className="w-[95px] h-[95px] object-cover rounded"
+                                                                                    className="w-[95px] h-full object-cover rounded-sm"
                                                                                 />
                                                                                 <button
                                                                                     className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"
-                                                                                    onClick={() => handleRemoveClick(index)}
+                                                                                    onClick={(e) => {
+                                                                                        e.stopPropagation(); // Prevent triggering the parent div's onClick
+                                                                                        handleRemoveClick(index);
+                                                                                    }}
                                                                                 >
                                                                                     <RxCross1 size={15}
                                                                                               className="text-primary group-hover:text-white"/>
