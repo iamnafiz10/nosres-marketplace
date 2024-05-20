@@ -22,7 +22,7 @@ function Page() {
                                 <Skeleton height={20} count={1}/>
                             ) : (
                                 <>
-                                    <h4 className="text-[20px] font-semibold">
+                                    <h4 className="text-[20px] font-normal">
                                         Shopping Cart
                                     </h4>
                                 </>
