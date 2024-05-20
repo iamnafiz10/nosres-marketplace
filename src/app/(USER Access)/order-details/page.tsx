@@ -1377,7 +1377,7 @@ function Page() {
                     <Modal.Body>
                         <div className="modal_body">
                             <h4 className="text-graycolor text-[14px]">
-                                Please select the item(s) you would like to return.
+                                Please select the item(s) you would like to cancel.
                             </h4>
                             <div className="mt-4 space-y-3">
                                 <div onClick={handleBoxClick} className="box cursor-pointer py-2 px-4 border rounded">

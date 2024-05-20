@@ -189,7 +189,7 @@ function Page() {
                                                         <input
                                                             type="text"
                                                             className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                                            placeholder="Product Title"
+                                                            placeholder="Product title"
                                                         />
                                                         <h4 className="text-[12px] text-graycolor mt-1">
                                                             You have 150 characters left.
@@ -557,7 +557,7 @@ function Page() {
                                                                 {[...Array(6)].map((_, index) => (
                                                                     <div
                                                                         key={index}
-                                                                        className={`box w-[95px] h-[99px] object-cover rounded border border-gray-400 bg-gray-100 relative ${selectedIndex === index ? 'border-2 border-primary' : ''}`}
+                                                                        className={`box w-[95px] h-[99px] object-cover rounded border border-gray-400 bg-gray-100 relative ${selectedIndex === index ? 'border-2 border-dotted border-primary' : ''}`}
                                                                         onClick={() => handleImageClick(index)}
                                                                     >
                                                                         {selectedFiles[index] && (

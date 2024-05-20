@@ -215,7 +215,7 @@ function Header() {
                                     ref={inputRef}
                                     type="text"
                                     className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpanded ? 'w-60 lg:w-96' : 'w-72'}`}
-                                    placeholder="Search Marketplace"
+                                    placeholder="Search Seller Hub"
                                     value={searchText}
                                     onChange={handleChange}
                                     onFocus={handleSearchExpandedClick}
@@ -325,7 +325,7 @@ function Header() {
                                 <Link href='/' className="group flex flex-col items-center relative">
                                     <div
                                         className=" absolute top-[33px] w-[35px] transition"></div>
-                                    {pathname === '/home' ? (
+                                    {pathname === '/dashboard' ? (
                                         <GoHomeFill className="w-[25px] h-[22px] text-primary"/>
                                     ) : (
                                         <GoHome className="w-[25px] h-[22px] text-prgcolor"/>
@@ -606,7 +606,7 @@ function Header() {
                                         ref={inputRefMobile}
                                         type="text"
                                         className={`border text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpandedMobile ? 'w-52 xl:w-72' : 'w-52'}`}
-                                        placeholder="Search Marketplace"
+                                        placeholder="Search Seller Hub"
                                         value={searchTextMobile}
                                         onChange={handleChangeMobile}
                                         onFocus={handleSearchExpandedClickMobile}

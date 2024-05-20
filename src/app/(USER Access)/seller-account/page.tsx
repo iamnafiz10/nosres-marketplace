@@ -6,7 +6,6 @@ import {HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
 import {FaArrowRight} from "react-icons/fa6";
 import useTitle from "@/app/useTitle";
 import useLoading from "@/app/useLoading";
-import {HiUserCircle} from "react-icons/hi";
 import {ImAttachment} from "react-icons/im";
 
 function Page() {
@@ -133,11 +132,8 @@ function Page() {
                                     Create a Nosres Seller Account
                                 </h4>
                                 <h4 className="text-[14px] text-graycolor">
-                                    Please submit your application using our secure online from below. We regret
-                                    that due to the high volume of submissions, we are unable to respond every
-                                    unsuccessful submission.
-                                    Please bear in the mind that if we believe your application fits our
-                                    criteria, we will get back to you within the next 5 business days,
+                                    Please submit your application using the secure online form below. If your
+                                    application fits our criteria, we will contact you within 5 business days.
                                 </h4>
                             </>
                         )}
@@ -170,12 +166,8 @@ function Page() {
                                                 <input
                                                     type="text"
                                                     className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                                    placeholder="Business name"
+                                                    placeholder="Enter the business name as it appears on the business registration document."
                                                 />
-                                                <h4 className="text-[12px] text-graycolor mt-1">
-                                                    Enter the business name as it appears on business registration
-                                                    document.
-                                                </h4>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="full_name" className="text-[14px]">
@@ -184,11 +176,8 @@ function Page() {
                                                 <input
                                                     type="text"
                                                     className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                                    placeholder="Business Address"
+                                                    placeholder="e.g., 1220 5th Ave, New York, NY"
                                                 />
-                                                <h4 className="text-[12px] text-graycolor mt-1">
-                                                    E.g. 1220 5th Ave, New York, Ny
-                                                </h4>
                                             </div>
                                             <div className="input_box mt-4">
                                                 <label htmlFor="location" className="text-[14px]">
@@ -197,7 +186,7 @@ function Page() {
                                                 <input
                                                     type="text"
                                                     className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                                    placeholder="Company Registration Number"
+                                                    placeholder="Company registration number"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">
