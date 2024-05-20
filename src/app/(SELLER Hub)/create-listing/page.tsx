@@ -557,7 +557,7 @@ function Page() {
                                                                 {[...Array(6)].map((_, index) => (
                                                                     <div
                                                                         key={index}
-                                                                        className={`box w-[95px] h-[99px] object-cover rounded border border-gray-400 bg-gray-100 relative ${selectedIndex === index ? 'border-2 border-dotted border-primary' : ''}`}
+                                                                        className={`box w-[95px] h-[99px] object-cover rounded border border-dashed border-gray-400 bg-gray-100 relative ${selectedIndex === index ? 'border-2 border-dotted border-primary' : ''}`}
                                                                         onClick={() => handleImageClick(index)}
                                                                     >
                                                                         {selectedFiles[index] && (
@@ -587,8 +587,7 @@ function Page() {
                                                         </div>
 
                                                         <h4 className="text-[12px] text-graycolor mt-3">
-                                                            Add 1 to 6 images. Tap a photo to make it the<br/> primary
-                                                            one.
+                                                            Add 1 to 6 images. Tap a photo to make it the primary one.
                                                         </h4>
                                                     </div>
                                                 </div>
