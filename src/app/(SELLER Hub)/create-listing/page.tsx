@@ -193,8 +193,9 @@ function Page() {
                                                         <label htmlFor="location" className="text-[14px]">
                                                             Description
                                                         </label><br/>
-                                                        <textarea cols={30} rows={3} placeholder="Description"
-                                                                  className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"></textarea>
+                                                        <textarea cols={30} rows={4}
+                                                                  placeholder="Please provide a clear and detailed description of your item."
+                                                                  className="mt-1 py-1 leading-[22px] pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"></textarea>
                                                         <h4 className="text-[12px] text-graycolor mt-1">
                                                             You have 150 characters left.
                                                         </h4>
@@ -203,9 +204,9 @@ function Page() {
                                                         <label htmlFor="location" className="text-[14px]">
                                                             Refund and Return Policy
                                                         </label><br/>
-                                                        <textarea cols={30} rows={3}
-                                                                  placeholder="Refund and Return Policy"
-                                                                  className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"></textarea>
+                                                        <textarea cols={30} rows={4}
+                                                                  placeholder="Please write your Refund and Return Policy for details on how to return items and request refunds."
+                                                                  className="mt-1 py-1 pl-4 w-full border leading-[22px] text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"></textarea>
                                                         <h4 className="text-[12px] text-graycolor mt-1">
                                                             You have 150 characters left.
                                                         </h4>
@@ -572,6 +573,11 @@ function Page() {
                                                                 ))}
                                                             </div>
                                                         </div>
+
+                                                        <h4 className="text-[12px] text-graycolor mt-3">
+                                                            Add 1 to 6 images. Tap a photo to make it the<br/> primary
+                                                            one.
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </>

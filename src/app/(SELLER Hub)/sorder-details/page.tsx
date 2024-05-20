@@ -100,15 +100,35 @@ function Page() {
 
     //  CancelOrder popup
     const [openStartCancelOrderConfirmModal, setOpenStartCancelOrderConfirmModal] = useState<boolean>(false);
-    const [openStartCancelOrderConfirmDoneModal, setOpenStartCancelOrderConfirmDoneModal] = useState<boolean>(false);
+    const [openStartCancelOrderConfirmDoneModalCan, setOpenStartCancelOrderConfirmDoneModalCan] = useState<boolean>(false);
     const handleCancelOrderConfirmDoneClick = () => {
-        setOpenStartReturnConfirmModal(false);
-        setOpenStartCancelOrderConfirmDoneModal(false);
         setOpenStartCancelOrderConfirmModal(false);
-        setOpenStartCancelOrderModal(false);
+        setOpenStartCancelOrderConfirmDoneModalCan(false);
     };
 
-    //  Return popup
+    //  ReturnConfirm popup
+    const [openStartReturnConfirmCanModal, setOpenStartReturnConfirmCanModal] = useState<boolean>(false);
+    const [openStartCancelOrderConfirmDoneCanModal, setOpenStartCancelOrderConfirmDoneCanModal] = useState<boolean>(false);
+    const handleReturnConfirmCanDoneClick = () => {
+        setOpenStartReturnModal(false);
+        setOpenStartCancelOrderConfirmDoneCanModal(false);
+        setOpenStartReturnConfirmCanModal(false);
+
+        setOpenStartReturnRfdModal(false);
+        setOpenStartReturnConfirmRfdModal(false);
+        setOpenStartReturnConfirmDoneRfdModal(false);
+    };
+
+
+    // Cancel confirm
+    const [openStartCancelOrderConfirmDoneModal, setOpenStartCancelOrderConfirmDoneModal] = useState<boolean>(false);
+    const handleCancelOrderConfirmDoneClickCan = () => {
+        setOpenStartCancelOrderConfirmDoneModalCan(false);
+        setOpenStartCancelOrderModal(false);
+        setOpenStartReturnConfirmCanModal(false);
+    };
+
+    //  --------------------------------------- Return popup -----------------------------------------//
     const [openStartReturnRfdModal, setOpenStartReturnRfdModal] = useState<boolean>(false);
     const [openStartReturnConfirmRfdModal, setOpenStartReturnConfirmRfdModal] = useState<boolean>(false);
     const [openStartReturnConfirmDoneRfdModal, setOpenStartReturnConfirmDoneRfdModal] = useState<boolean>(false);
@@ -431,13 +451,13 @@ function Page() {
                                 <div className="col lg:col-span-4 right_sidebar hidden lg:block ml-7 mr-[0px]">
                                     <div className="sticky top-[58px]">
                                         {loading ? (
-                                            <div className="mt-0 lg:mt-[70px] py-1">
+                                            <div className="mt-0 lg:mt-[125px] py-1">
                                                 <Skeleton height={30} count={1}/>
                                             </div>
                                         ) : (
                                             <>
                                                 <div
-                                                    className="mt-0 lg:mt-[85px] box border-b-2 bg-white py-1 px-4 rounded rounded-b-none">
+                                                    className="mt-0 lg:mt-[96px] box border-b-2 bg-white py-1 px-4 rounded rounded-b-none">
                                                     {/* Head wrap */}
                                                     <div className="head_wrap">
                                                         <div className="bg-white py-2 px-2">
@@ -499,7 +519,8 @@ function Page() {
                     </div>
                 </div>
 
-                {/* Start CancelOrder Pop-Up Start */}
+                {/*--------------- Cancel Button Popups----------------- */}
+                {/* One */}
                 <Modal size="lg"
                        show={openStartCancelOrderModal}
                        style={{
@@ -625,9 +646,6 @@ function Page() {
                                             <li onClick={() => handleOptionClickAccDtv("Incorrect listing")}>
                                                 Incorrect listing
                                             </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Incorrect")}>
-                                                Incorrect
-                                            </li>
                                             <li onClick={() => handleOptionClickAccDtv("Policy violation")}>
                                                 Policy violation
                                             </li>
@@ -677,24 +695,23 @@ function Page() {
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
-                            <button onClick={() => setOpenStartReturnConfirmModal(true)}
+                            <button onClick={() => setOpenStartReturnConfirmCanModal(true)}
                                     className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Process Refund
                             </button>
                         </div>
                     </Modal.Footer>
                 </Modal>
-                {/* CancelOrder Pop-Up End */}
 
-                {/* Start ReturnConfirm Pop-Up Start */}
+                {/* Two */}
                 <Modal size="lg"
-                       show={openStartReturnConfirmModal}
+                       show={openStartReturnConfirmCanModal}
                        style={{
                            backgroundColor: 'rgb(17 24 39 / 10%)',
                            padding: '0px',
                        }}
                        className="modal_cntrl"
-                       onClose={() => setOpenStartReturnConfirmModal(false)}>
+                       onClose={() => setOpenStartReturnConfirmCanModal(false)}>
                     <Modal.Header
                         style={{
                             height: '50px',
@@ -746,8 +763,7 @@ function Page() {
                                                     Refund to your visa ending in 1234
                                                 </h4>
                                                 <h4 className="mt-1 text-[12px] text-graycolor leading-[17px]">
-                                                    Please send the original item(s) back within 15 days. We will<br/>
-                                                    process your refund once we receive the original item(s).
+                                                    Please review the refund details before confirming the refund.
                                                 </h4>
                                             </div>
                                         </div>
@@ -770,32 +786,32 @@ function Page() {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="flex w-full items-center justify-between">
-                            <button onClick={() => setOpenStartReturnConfirmModal(false)}
+                            <button onClick={() => setOpenStartReturnConfirmCanModal(false)}
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Back
                             </button>
-                            <button onClick={() => setOpenStartCancelOrderConfirmDoneModal(true)}
+                            <button onClick={() => setOpenStartCancelOrderConfirmDoneModalCan(true)}
                                     className="px-8 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                 Confirm Refund
                             </button>
                         </div>
                     </Modal.Footer>
                 </Modal>
-                {/*  ReturnConfirm Pop-Up End */}
 
 
-                {/* Start ReturnConfirmDone Pop-Up Start */}
+                {/* Three */}
                 <Modal size="lg"
-                       show={openStartCancelOrderConfirmDoneModal}
+                       show={openStartCancelOrderConfirmDoneModalCan}
                        style={{
                            backgroundColor: 'rgb(17 24 39 / 30%)',
                            padding: '0px',
                        }}
                        className="modal_cntrl"
-                       onClose={() => setOpenStartCancelOrderConfirmDoneModal(false)}>
+                       onClose={() => setOpenStartCancelOrderConfirmDoneModalCan(false)}>
                     <Modal.Body>
                         <div className="modal_body">
                             <div className="flex flex-col items-center justify-center text-center">
+                                <h4>Cancel</h4>
                                 <div className="icon">
                                     <svg
                                         className="w-[50px] h-[50px] text-primary"
@@ -810,7 +826,7 @@ function Page() {
                                 <h4 className="text-graycolor text-[14px] mt-3">
                                     Your order has been cancelled successfully.
                                 </h4>
-                                <button onClick={handleCancelOrderConfirmDoneClick}
+                                <button onClick={handleCancelOrderConfirmDoneClickCan}
                                         className="mt-6 px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
                                     Close
                                 </button>
@@ -818,10 +834,9 @@ function Page() {
                         </div>
                     </Modal.Body>
                 </Modal>
-                {/*  ReturnConfirmDone Pop-Up End */}
 
-                {/* ----------- Refund --------------- */}
-                {/* Start Return Pop-Up Start */}
+                {/*----------------------- Refund Button Popups -----------------*/}
+                {/* One */}
                 <Modal size="lg"
                        show={openStartReturnRfdModal}
                        style={{
@@ -947,9 +962,6 @@ function Page() {
                                             <li onClick={() => handleOptionClickAccDtv("Incorrect listing")}>
                                                 Incorrect listing
                                             </li>
-                                            <li onClick={() => handleOptionClickAccDtv("Incorrect")}>
-                                                Incorrect
-                                            </li>
                                             <li onClick={() => handleOptionClickAccDtv("Policy violation")}>
                                                 Policy violation
                                             </li>
@@ -1006,9 +1018,8 @@ function Page() {
                         </div>
                     </Modal.Footer>
                 </Modal>
-                {/* Return Pop-Up End */}
 
-                {/* Start ReturnConfirm Pop-Up Start */}
+                {/* Two */}
                 <Modal size="lg"
                        show={openStartReturnConfirmRfdModal}
                        style={{
@@ -1068,8 +1079,7 @@ function Page() {
                                                     Refund to your visa ending in 1234
                                                 </h4>
                                                 <h4 className="mt-1 text-[12px] text-graycolor leading-[17px]">
-                                                    Please send the original item(s) back within 15 days. We will<br/>
-                                                    process your refund once we receive the original item(s).
+                                                    Please review the refund details before confirming the refund.
                                                 </h4>
                                             </div>
                                         </div>
@@ -1103,9 +1113,8 @@ function Page() {
                         </div>
                     </Modal.Footer>
                 </Modal>
-                {/*  ReturnConfirm Pop-Up End */}
 
-                {/* Start ReturnConfirmDone Pop-Up Start */}
+                {/* Three*/}
                 <Modal size="lg"
                        show={openStartReturnConfirmDoneRfdModal}
                        style={{
@@ -1132,19 +1141,17 @@ function Page() {
                                     Your Refund: <b>$199.00</b>
                                 </h4>
                                 <h4 className="text-graycolor text-[14px] mt-3">
-                                    Your refund will be issued to your original payment
-                                    method within 15 business days after we
-                                    receive your return.
+                                    The refund has been successfully issued to the
+                                    customer’s original payment method.
                                 </h4>
                                 <button onClick={handleReturnConfirmDoneClick}
                                         className="mt-6 px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
-                                    Continue Shopping
+                                    Close
                                 </button>
                             </div>
                         </div>
                     </Modal.Body>
                 </Modal>
-                {/*  ReturnConfirmDone Pop-Up End */}
             </section>
         </>
     );
