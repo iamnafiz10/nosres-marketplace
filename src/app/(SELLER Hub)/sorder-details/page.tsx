@@ -811,7 +811,6 @@ function Page() {
                     <Modal.Body>
                         <div className="modal_body">
                             <div className="flex flex-col items-center justify-center text-center">
-                                <h4>Cancel</h4>
                                 <div className="icon">
                                     <svg
                                         className="w-[50px] h-[50px] text-primary"

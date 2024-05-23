@@ -346,11 +346,11 @@ function Header() {
                                     <div
                                         className="group-hover: absolute top-[33px] w-[35px] transition"></div>
                                     {pathname === '/shopping-cart' ? (
-                                        <IoCart className="w-[25px] h-[24px] text-primary"/>
+                                        <IoCart className="w-[26px] h-[25px] text-primary"/>
                                     ) : (
                                         <div className="relative">
                                             <IoCartOutline
-                                                className="w-[25px] h-[24px] c group-hover:text-primary"/>
+                                                className="w-[26px] h-[26px] text-prgcolor group-hover:text-primary"/>
                                             <div
                                                 className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                                 4
