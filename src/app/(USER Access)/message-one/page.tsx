@@ -85,96 +85,100 @@ function Page() {
     };
     return (
         <>
-            <section id="message-section">
-                <div className="container_full sm:container pt-[50px]">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
-                        <div className="col lg:col-span-8 h-full">
-                            <div className="message_box_wrap h-[84vh] lg:h-[505px] overflow-hidden bg-white py-4">
-                                {/* Message Header */}
-                                <div className="px-5">
-                                    {loading ? (
-                                        <div className="pb-3">
-                                            <Skeleton height={30} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <div className="message_header pb-3 flex items-center justify-between">
-                                                <div className="flex items-center gap-2">
-                                                    {/* Message sidebar show Icon */}
-                                                    <div onClick={toggleDrawer}
-                                                         className="block lg:hidden icon group cursor-pointer">
-                                                        <HiArrowLongLeft
-                                                            size={22}
-                                                            className={`${isDrawerOpen ? 'text-primary' : 'text-prgcolor'} group-hover:text-primary`}/>
-                                                    </div>
-                                                    <h4 className="text-prgcolor text-[16px] font-[500]">
-                                                        Messages
-                                                    </h4>
+            <section id="message-section" className="overflow-y-hidden">
+                <div className="container_full sm:container">
+                    <div className="relative h-screen w-auto overflow-y-hidden">
+                        {/* Message Box */}
+                        <div
+                            className="message_box_wrap relative lg:fixed w-full lg:w-[690px] h-full top-[75px] rounded bg-white py-4">
+                            {/* Message Header */}
+                            <div className="px-5">
+                                {loading ? (
+                                    <div className="pb-3">
+                                        <Skeleton height={30} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div
+                                            className="message_header pb-3 flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                {/* Message sidebar show Icon */}
+                                                <div onClick={toggleDrawer}
+                                                     className="block lg:hidden icon group cursor-pointer">
+                                                    <HiArrowLongLeft
+                                                        size={22}
+                                                        className={`${isDrawerOpen ? 'text-primary' : 'text-prgcolor'} group-hover:text-primary`}/>
                                                 </div>
-                                                <div onClick={() => setOpenStartPostMessageModal(true)}
-                                                     className="icon cursor-pointer group">
-                                                    <LuPenSquare size={20}
-                                                                 className="text-graycolor group-hover:text-primary"/>
-                                                </div>
+                                                <h4 className="text-prgcolor text-[16px] font-[500]">
+                                                    Messages
+                                                </h4>
                                             </div>
-                                        </>
-                                    )}
+                                            <div onClick={() => setOpenStartPostMessageModal(true)}
+                                                 className="icon cursor-pointer group">
+                                                <LuPenSquare size={20}
+                                                             className="text-graycolor group-hover:text-primary"/>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+
+                            {/* Border Make */}
+                            <div className="w-full border-b"></div>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-2 pb-4 h-full">
+                                <div className="col hidden lg:block">
+                                    <div
+                                        className="user_box w-full border-r h-full flex items-center justify-center">
+                                        {loading ? (
+                                            <div>
+                                                <Skeleton height={10} width={200} count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                    No Messages
+                                                </h4>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
 
-                                {/* Border Make */}
-                                <div className="w-full border-b"></div>
-
-                                <div className="grid grid-cols-1 lg:grid-cols-2 pb-4 h-full">
-                                    <div className="col hidden lg:block">
+                                <div className="col">
+                                    <div className="box w-full h-full flex items-center justify-center">
                                         <div
-                                            className="user_box w-full border-r h-full flex items-center justify-center">
+                                            className="under_box w-[80%] text-center border rounded p-4">
                                             {loading ? (
                                                 <div>
-                                                    <Skeleton height={10} width={200} count={1}/>
+                                                    <Skeleton height={10} count={2}/>
+                                                    <Skeleton height={20} count={1}/>
                                                 </div>
                                             ) : (
                                                 <>
                                                     <h4 className="text-[14px] font-[500] text-prgcolor">
                                                         No Messages
                                                     </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        You currently have no messages.<br/>
+                                                        Why not start a conversation?
+                                                    </h4>
+                                                    <button onClick={() => setOpenStartPostMessageModal(true)}
+                                                            type='button'
+                                                            className="mt-3 py-2 px-4 border rounded hover:bg-primary hover:text-white text-primary text-[14px] transition">
+                                                        Start a Chat
+                                                    </button>
                                                 </>
                                             )}
-                                        </div>
-                                    </div>
-
-                                    <div className="col">
-                                        <div className="box w-full h-full flex items-center justify-center">
-                                            <div className="under_box w-[80%] text-center border rounded p-4">
-                                                {loading ? (
-                                                    <div>
-                                                        <Skeleton height={10} count={2}/>
-                                                        <Skeleton height={20} count={1}/>
-                                                    </div>
-                                                ) : (
-                                                    <>
-                                                        <h4 className="text-[14px] font-[500] text-prgcolor">
-                                                            No Messages
-                                                        </h4>
-                                                        <h4 className="text-[12px] text-graycolor mt-1">
-                                                            You currently have no messages.<br/>
-                                                            Why not start a conversation?
-                                                        </h4>
-                                                        <button type='button'
-                                                                className="mt-3 py-2 px-4 border rounded hover:bg-primary hover:text-white text-primary text-[14px] transition">
-                                                            Start a Chat
-                                                        </button>
-                                                    </>
-                                                )}
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {/* Right Sidebar */}
-                        <div className="col lg:col-span-4 right_sidebar hidden lg:block">
-                            <div className="sticky top-0">
-                                <div className="box bg-white px-4 py-4 rounded">
+                        {/* Message Right Sidebar */}
+                        <div
+                            className="hidden lg:block absolute top-[75px] right-0 w-[350px] h-screen overflow-y-hidden">
+                            <div className="wrap">
+                                <div className="box bg-white h-full px-4 py-4 rounded">
                                     {loading ? (
                                         <div>
                                             <Skeleton height={20} count={1}/>
@@ -186,8 +190,10 @@ function Page() {
                                                     className="text-gray-500 w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                                                    strokeWidth="1.5" strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path
+                                                        d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
                                                     <path d="M3 6h18"/>
                                                     <path d="M16 10a4 4 0 0 1-8 0"/>
                                                 </svg>
@@ -242,7 +248,8 @@ function Page() {
                                                         <svg
                                                             className="w-3 h-3"
                                                             fill="#6B7280"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 16 16">
                                                             <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                             0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
                                                         </svg>
@@ -252,8 +259,9 @@ function Page() {
                                                                 className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
                                                                 <div className="container py-2">
                                                                     <div className="space-y-1 text-[14px]">
-                                                                        <div onClick={toggleAdBoxRightSideVisibility}
-                                                                             className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <div
+                                                                            onClick={toggleAdBoxRightSideVisibility}
+                                                                            className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                             <svg
                                                                                 className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -268,7 +276,8 @@ function Page() {
                                                                                     d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
                                                                                 <path
                                                                                     d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                                <line x1="2" x2="22" y1="2" y2="22"/>
+                                                                                <line x1="2" x2="22" y1="2"
+                                                                                      y2="22"/>
                                                                             </svg>
                                                                             <h4>
                                                                                 Hide ad
@@ -283,11 +292,13 @@ function Page() {
                                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                                 viewBox="0 0 24
                                                                                  24" fill="none" stroke="#6B7280"
-                                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                                strokeWidth="1.5"
+                                                                                strokeLinecap="round"
                                                                                 strokeLinejoin="round">
                                                                                 <path d="M4 15s1-1 4-1 5 2 8 2
                                                                                 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                                <line x1="4" x2="4" y1="22" y2="15"/>
+                                                                                <line x1="4" x2="4" y1="22"
+                                                                                      y2="15"/>
                                                                             </svg>
                                                                             <h4>
                                                                                 Report ad
@@ -354,7 +365,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                                 <div className="button_right">
-                                                    <button onClick={toggleAdBoxRightSideVisibility} type="button"
+                                                    <button onClick={toggleAdBoxRightSideVisibility}
+                                                            type="button"
                                                             className="py-2 px-6 rounded text-primary text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
                                                         Undo
                                                     </button>
@@ -369,7 +381,8 @@ function Page() {
                                                         className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        strokeWidth="1.5" strokeLinecap="round"
+                                                        strokeLinejoin="round">
                                                         <path
                                                             d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                                                         <path d="M13 8H7"/>
@@ -381,7 +394,9 @@ function Page() {
                                                         Provide feedback
                                                     </h4>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Please provide more information to help us customize your feed.
+                                                        Please provide more information to help us customize
+                                                        your
+                                                        feed.
                                                     </h4>
                                                 </div>
                                             </div>
@@ -425,7 +440,8 @@ function Page() {
                                                     className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                    strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    strokeWidth="1.5" strokeLinecap="round"
+                                                    strokeLinejoin="round">
                                                     <path
                                                         d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                                                     <path d="M13 8H7"/>
@@ -505,7 +521,7 @@ function Page() {
                 <section className="mobile_left_message_box flex lg:hidden">
                     <div className="container">
                         <div id="drawer-navigation"
-                             className={`fixed bg-white lg:bg-transparent top-[127px] lg:visible z-30 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-80 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
+                             className={`fixed bg-white lg:bg-transparent top-[128px] lg:visible z-30 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-80 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
                              tabIndex={-1} aria-labelledby="drawer-navigation-label">
 
                             {/* User Comes Here */}

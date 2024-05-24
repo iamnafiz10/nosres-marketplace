@@ -11,6 +11,10 @@ body {
     background: rgba(164, 164, 164, 0.12);
 }
 
+#message-section {
+    overflow-y: hidden !important;
+}
+
 p {
     color: #39393B !important;
     font-size: 16px !important;
