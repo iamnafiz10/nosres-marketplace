@@ -1,7 +1,7 @@
 'use client';
 import React, {useEffect, useRef, useState} from 'react';
 import {HiUserCircle} from "react-icons/hi";
-import {HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "react-icons/hi2";
+import {HiChatBubbleLeft, HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "react-icons/hi2";
 import {IoCart, IoCartOutline, IoSearchOutline} from "react-icons/io5";
 import Link from "next/link";
 import Image from "next/image";
@@ -332,13 +332,13 @@ function Header() {
                                 className="h-full nav hidden lg:flex text-end items-start justify-end text-[12px] gap-8">
                                 {/* Home */}
                                 <Tooltip content="Home" placement="bottom" style="light" className="tooltip_design">
-                                    <Link href='/' className="group flex flex-col items-center relative">
+                                    <Link href='/' className="group flex flex-col items-center relative mt-[1px]">
                                         <div
                                             className=" absolute top-[33px] w-[35px] transition"></div>
                                         {pathname === '/home' ? (
-                                            <GoHomeFill className="w-[25px] h-[25px] text-primary"/>
+                                            <GoHomeFill className="w-[25px] h-[23px] text-primary"/>
                                         ) : (
-                                            <GoHome className="w-[25px] h-[25px] text-prgcolor"/>
+                                            <GoHome className="w-[25px] h-[23px] text-prgcolor"/>
                                         )}
                                     </Link>
                                 </Tooltip>
@@ -371,15 +371,20 @@ function Header() {
                                           className="group flex flex-col items-center relative">
                                         <div
                                             className="group-hover: absolute top-[33px] w-[35px] transition"></div>
-                                        {/* Main SVG */}
-                                        <div className="relative">
-                                            <HiOutlineChatBubbleLeft
-                                                className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"/>
-                                            <div
-                                                className="flex absolute -top-[3px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                                                3
+                                        {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                                            <HiChatBubbleLeft className="w-[26px] h-[22px] text-primary"/>
+                                        ) : (
+                                            <div className="relative">
+                                                <HiOutlineChatBubbleLeft
+                                                    className="w-[25px] h-[22px] text-prgcolor group-hover:text-primary"
+                                                />
+                                                <div
+                                                    className="flex absolute -top-[3px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center"
+                                                >
+                                                    3
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </Link>
                                 </Tooltip>
                                 {/* Notification */}
