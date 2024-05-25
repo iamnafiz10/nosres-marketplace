@@ -86,8 +86,8 @@ function Page() {
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
-                <div className="container_full sm:container h-[94vh] lg:h-screen">
-                    <div className="pt-[75px] h-full">
+                <div className="container_full sm:container h-screen">
+                    <div className="pt-[75px] pb-[50px] lg:pb-0 h-full">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
                             <div className="col lg:col-span-8 message_box_wrap rounded bg-white py-4">
                                 {/* Message Header */}
