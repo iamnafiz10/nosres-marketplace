@@ -517,11 +517,11 @@ function Page() {
                 <section className="mobile_left_message_box flex lg:hidden">
                     <div className="container">
                         <div id="drawer-navigation"
-                             className={`fixed bg-white lg:bg-transparent top-[128px] lg:visible z-30 h-screen pl-0 pt-0 p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-80 left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
+                             className={`fixed bg-white lg:bg-transparent top-[128px] lg:visible z-30 h-screen pl-0 pt-0 p-0 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-full left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
                              tabIndex={-1} aria-labelledby="drawer-navigation-label">
 
                             {/* User Comes Here */}
-                            <div className="px-3 overflow-y-auto h-[84vh]">
+                            <div className="px-0 overflow-y-auto h-[84vh]">
                                 <div className="user_box w-full h-full border-r flex items-center justify-center">
                                     <h4 className="text-[14px] font-[500] text-prgcolor">
                                         No Messages

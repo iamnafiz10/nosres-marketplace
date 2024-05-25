@@ -14,9 +14,7 @@ import Skeleton from "react-loading-skeleton";
 import useLoading from "@/app/useLoading";
 import {usePathname} from "next/navigation";
 import {Tooltip} from "flowbite-react";
-import {LuShoppingCart} from "react-icons/lu";
 import {BsCart2} from "react-icons/bs";
-import {ShoppingCart} from "phosphor-react";
 
 function Header() {
     const loading = useLoading();
@@ -1182,8 +1180,8 @@ function Header() {
                         <IoCart className="w-[25px] h-[24px] text-primary"/>
                     ) : (
                         <div className="relative">
-                            <IoCartOutline
-                                className="w-[25px] h-[24px] c group-hover:text-primary"/>
+                            <BsCart2
+                                className="w-[22px] h-[21px] c group-hover:text-primary"/>
                             <div
                                 className="flex absolute top-[-2px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                                 4
@@ -1203,17 +1201,27 @@ function Header() {
 
                 {/* Message */}
                 <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {/* Main SVG */}
-                    <div className="relative">
-                        <HiOutlineChatBubbleLeft className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
-                        <div
-                            className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
-                            3
+                    {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                        <HiChatBubbleLeft className="w-full h-[21px] text-primary"/>
+                    ) : (
+                        <div className="relative">
+                            <HiOutlineChatBubbleLeft
+                                className="w-full h-[21px] text-prgcolor group-hover:text-primary"/>
+                            <div
+                                className="flex absolute top-[-1px] -right-[10px] bg-primary rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
+                                3
+                            </div>
                         </div>
-                    </div>
-                    <div className="text-prgcolor group-hover:text-primary transition">
-                        Messages
-                    </div>
+                    )}
+                    {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                        <div className="text-primary group-hover:text-primary transition">
+                            Messages
+                        </div>
+                    ) : (
+                        <div className="text-prgcolor group-hover:text-primary transition">
+                            Messages
+                        </div>
+                    )}
                 </Link>
 
                 {/* Notification */}
