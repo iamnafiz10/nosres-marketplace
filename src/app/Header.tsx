@@ -371,7 +371,7 @@ function Header() {
                                           className="group flex flex-col items-center relative">
                                         <div
                                             className="group-hover: absolute top-[33px] w-[35px] transition"></div>
-                                        {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                                        {['/message-one', '/message-two01', '/message-three'].includes(pathname) ? (
                                             <HiChatBubbleLeft className="w-[26px] h-[22px] text-primary"/>
                                         ) : (
                                             <div className="relative">

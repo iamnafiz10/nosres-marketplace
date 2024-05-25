@@ -12,6 +12,9 @@ import {Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
 import {HiArrowLongLeft} from "react-icons/hi2";
 import {IoSearchOutline} from "react-icons/io5";
+import {GoSmiley} from "react-icons/go";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
 
 function Page() {
     const loading = useLoading();
@@ -83,231 +86,206 @@ function Page() {
     const handleBoxClick = (index: any) => {
         setSelectedBox(index);
     };
+
+    // Popup Start post Emoji Input
+    const [showStartPostEmoji, setShowStartPostEmoji] = useState(false);
+    const [startPostText, setStartPostText] = useState("");
+    const addStartPostEmoji = (e: { unified: string }) => {
+        const hexCodePoint = e.unified.toLowerCase(); // Convert to lowercase for consistency
+        // Check if hexCodePoint is a valid hexadecimal Unicode code point
+        if (/^[0-9a-f]+$/.test(hexCodePoint)) {
+            const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
+            if (!isNaN(codePoint)) {
+                const emoji = String.fromCodePoint(codePoint);
+                setStartPostText(startPostText + emoji);
+            } else {
+                console.error("Invalid Unicode code point:", e.unified);
+            }
+        } else {
+            console.error("Invalid Unicode code point:", e.unified);
+        }
+    };
+    // Function to handle OutSide Click
+    const modalRef = useRef(null);
+    const emojiPickerRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: { target: any; }) => {
+            if (
+                modalRef.current &&
+                // @ts-ignore
+                !modalRef.current.contains(event.target) &&
+                showStartPostEmoji &&
+                emojiPickerRef.current &&
+                // @ts-ignore
+                !emojiPickerRef.current.contains(event.target)
+            ) {
+                setShowStartPostEmoji(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showStartPostEmoji]);
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
-                <div className="container_full sm:container">
-                    <div className="relative h-screen w-auto overflow-y-hidden">
-                        {/* Message Box */}
-                        <div  className="message_box_wrap relative lg:fixed w-full lg:w-[690px] h-full top-[75px] rounded bg-white py-4">
-                            {/* Message Header */}
-                            <div className="px-5">
-                                {loading ? (
-                                    <div className="pb-3">
-                                        <Skeleton height={30} count={1}/>
-                                    </div>
-                                ) : (
-                                    <>
-                                        <div
-                                            className="message_header pb-3 flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                {/* Message sidebar show Icon */}
-                                                <div onClick={toggleDrawer}
-                                                     className="block lg:hidden icon group cursor-pointer">
-                                                    <HiArrowLongLeft
-                                                        size={22}
-                                                        className={`${isDrawerOpen ? 'text-primary' : 'text-prgcolor'} group-hover:text-primary`}/>
-                                                </div>
-                                                <h4 className="text-prgcolor text-[16px] font-[500]">
-                                                    Messages
-                                                </h4>
-                                            </div>
-                                            <div onClick={() => setOpenStartPostMessageModal(true)}
-                                                 className="icon cursor-pointer group">
-                                                <LuPenSquare size={20}
-                                                             className="text-graycolor group-hover:text-primary"/>
-                                            </div>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-
-                            {/* Border Make */}
-                            <div className="w-full border-b"></div>
-
-                            <div className="grid grid-cols-1 lg:grid-cols-2 pb-4 h-full">
-                                <div className="col hidden lg:block">
-                                    <div
-                                        className="user_box w-full border-r h-full flex items-center justify-center">
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={10} width={200} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <h4 className="text-[14px] font-[500] text-prgcolor">
-                                                    No Messages
-                                                </h4>
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="col">
-                                    <div className="box w-full h-full flex items-center justify-center">
-                                        <div
-                                            className="under_box w-[80%] text-center border rounded p-4">
-                                            {loading ? (
-                                                <div>
-                                                    <Skeleton height={10} count={2}/>
-                                                    <Skeleton height={20} count={1}/>
-                                                </div>
-                                            ) : (
-                                                <>
-                                                    <h4 className="text-[14px] font-[500] text-prgcolor">
-                                                        No Messages
-                                                    </h4>
-                                                    <h4 className="text-[12px] text-graycolor mt-1">
-                                                        You currently have no messages.<br/>
-                                                        Why not start a conversation?
-                                                    </h4>
-                                                    <button onClick={() => setOpenStartPostMessageModal(true)}
-                                                            type='button'
-                                                            className="mt-3 py-2 px-4 border rounded hover:bg-primary hover:text-white text-primary text-[14px] transition">
-                                                        Start a Chat
-                                                    </button>
-                                                </>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Message Right Sidebar */}
-                        <div
-                            className="hidden lg:block absolute top-[75px] right-0 w-[350px] h-screen overflow-y-hidden">
-                            <div className="wrap">
-                                <div className="box bg-white h-full px-4 py-4 rounded">
+                <div className="container_full sm:container h-[94vh] lg:h-screen">
+                    <div className="pt-[75px] h-full">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
+                            <div className="col lg:col-span-8 message_box_wrap rounded bg-white py-4">
+                                {/* Message Header */}
+                                <div className="px-5">
                                     {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
+                                        <div className="pb-3">
+                                            <Skeleton height={30} count={1}/>
                                         </div>
                                     ) : (
                                         <>
-                                            <div className="flex gap-2 items-center">
-                                                <svg
-                                                    className="text-gray-500 w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    strokeWidth="1.5" strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path
-                                                        d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-                                                    <path d="M3 6h18"/>
-                                                    <path d="M16 10a4 4 0 0 1-8 0"/>
-                                                </svg>
-                                                <h4 className="text-[14px] font-semibold">
-                                                    Store Inbox
-                                                </h4>
+                                            <div
+                                                className="message_header pb-3 flex items-center justify-between">
+                                                <div className="flex items-center gap-2">
+                                                    {/* Message sidebar show Icon */}
+                                                    <div onClick={toggleDrawer}
+                                                         className="block lg:hidden icon group cursor-pointer">
+                                                        <HiArrowLongLeft
+                                                            size={22}
+                                                            className={`${isDrawerOpen ? 'text-primary' : 'text-prgcolor'} group-hover:text-primary`}/>
+                                                    </div>
+                                                    <h4 className="text-prgcolor text-[16px] font-[500]">
+                                                        Messages
+                                                    </h4>
+                                                </div>
+                                                <div onClick={() => setOpenStartPostMessageModal(true)}
+                                                     className="icon cursor-pointer group">
+                                                    <LuPenSquare size={20}
+                                                                 className="text-graycolor group-hover:text-primary"/>
+                                                </div>
                                             </div>
                                         </>
                                     )}
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <div className="mt-2 flex items-center gap-2">
+                                </div>
+
+                                <div className="grid grid-cols-1 lg:grid-cols-12 border-t pb-4 h-full">
+                                    <div className="col lg:col-span-5 hidden lg:block">
+                                        <div className="user_box space-y-3 w-full border-r h-full">
+                                            <div className="user px-4 mt-2 flex items-center gap-2">
                                                 <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                    Uptown Store
+                                                    Jeff Bently
                                                 </h4>
                                             </div>
-                                        </>
-                                    )}
+                                        </div>
+                                    </div>
 
+                                    <div className="col lg:col-span-7">
+                                        <div className="box w-full h-full relative">
+                                            <div className="user px-4 mt-1 pb-1 flex items-center gap-2">
+                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Jeff Bently
+                                                </h4>
+                                            </div>
+                                            <hr/>
+
+                                            {/* Bottom Section */}
+                                            <div ref={modalRef} className="w-full absolute bottom-0">
+                                                <div className="write_box px-4 w-full border-t">
+                                                   <textarea
+                                                       rows={3}
+                                                       value={startPostText}
+                                                       onChange={(e) => setStartPostText(e.target.value)}
+                                                       className="mt-3 mb-2 rounded w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                                       placeholder="Write a Message..."></textarea>
+                                                </div>
+                                                <div className="icon_box px-4 pb-6 w-full border-t">
+                                                    <div className="flex items-center justify-between mt-3">
+                                                        <div className="relative flex items-center gap-2">
+                                                            <div className="cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24"
+                                                                     fill="#4D7FB8"
+                                                                     className="w-6 h-6">
+                                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                                          clipRule="evenodd"/>
+                                                                </svg>
+                                                            </div>
+
+                                                            <div
+                                                                onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
+                                                                className="cursor-pointer"
+                                                            >
+                                                                <GoSmiley
+                                                                    size={20}
+                                                                    className="text-graycolor hover:text-primary"/>
+                                                            </div>
+
+                                                            {/* Start Post Reactions */}
+                                                            {showStartPostEmoji &&
+                                                                <div ref={emojiPickerRef}
+                                                                     className="comment_emoji z-[999] absolute bottom-[30px] left-0 lg:left-auto right-auto lg:right-0">
+                                                                    <Picker
+                                                                        data={data}
+                                                                        theme="light"
+                                                                        perLine={8}
+                                                                        emojiSize={22}
+                                                                        onEmojiSelect={addStartPostEmoji}
+                                                                        maxFrequentRows={0}
+                                                                        maxEmojiRows={2}
+                                                                    />
+                                                                </div>
+                                                            }
+                                                        </div>
+
+                                                        <div
+                                                            className={`${startPostText ? 'cursor-pointer ' : 'cursor-not-allowed'}`}>
+                                                            <svg
+                                                                className={`w-6 h-6 transition ${startPostText ? 'fill-primary' : ''}`}
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                fill="#828D9E">
+                                                                <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0
+                                                                1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0
+                                                                18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
 
-                                {/* Post Box */}
-                                {currentAdBoxRightSide === 'post_box_right_side' && (
-                                    <div className="post_box-right_side box mt-4 bg-white px-4 py-4 rounded">
+                            <div className="col lg:col-span-4 hidden lg:block">
+                                <div className="wrap">
+                                    <div className="box bg-white h-full px-4 py-4 rounded">
                                         {loading ? (
-                                            <div className="flex items-center justify-start gap-2 w-full">
-                                                <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
-                                                <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                            <div>
+                                                <Skeleton height={20} count={1}/>
                                             </div>
                                         ) : (
                                             <>
-                                                <div className="flex items-center justify-between">
-                                                    <div className="flex items-center gap-2">
-                                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                        <div className="leading-[17px]">
-                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                                Sony Inc.
-                                                            </h4>
-                                                            <span
-                                                                className="text-[12px] text-graycolor font-normal">Sponsored</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div onClick={handleAddDotRightSideClick}
-                                                         ref={AddDotRightSideDropdownRef}
-                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
-                                                        <svg
-                                                            className="w-3 h-3"
-                                                            fill="#6B7280"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 16 16">
-                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                        </svg>
-
-                                                        {addDotRightSideClick &&
-                                                            <div
-                                                                className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                                <div className="container py-2">
-                                                                    <div className="space-y-1 text-[14px]">
-                                                                        <div
-                                                                            onClick={toggleAdBoxRightSideVisibility}
-                                                                            className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path
-                                                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                                                                <path
-                                                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                                                                <path
-                                                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                                                                <line x1="2" x2="22" y1="2"
-                                                                                      y2="22"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Hide ad
-                                                                            </h4>
-                                                                        </div>
-
-                                                                        <div
-                                                                            onClick={() => setOpenReportAdModalRightSide(true)}
-                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                                <line x1="4" x2="4" y1="22"
-                                                                                      y2="15"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Report ad
-                                                                            </h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                    </div>
+                                                <div className="flex gap-2 items-center">
+                                                    <svg
+                                                        className="text-gray-500 w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        strokeWidth="1.5" strokeLinecap="round"
+                                                        strokeLinejoin="round">
+                                                        <path
+                                                            d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                                                        <path d="M3 6h18"/>
+                                                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                                                    </svg>
+                                                    <h4 className="text-[14px] font-semibold">
+                                                        Store Inbox
+                                                    </h4>
                                                 </div>
                                             </>
                                         )}
@@ -317,64 +295,232 @@ function Page() {
                                             </div>
                                         ) : (
                                             <>
-                                                <h4 className="mt-3 text-[12px] text-prgcolor">
-                                                    The SRS-XB100 speaker provides powerful, clear,
-                                                    expansive sound in a small, portable and durable
-                                                    body. Despite its size...
-                                                </h4>
+                                                <div className="mt-2 flex items-center gap-2">
+                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                        Uptown Store
+                                                    </h4>
+                                                </div>
                                             </>
                                         )}
-                                        <div className="post-image mt-3">
+
+                                    </div>
+
+                                    {/* Post Box */}
+                                    {currentAdBoxRightSide === 'post_box_right_side' && (
+                                        <div className="post_box-right_side box mt-4 bg-white px-4 py-4 rounded">
                                             {loading ? (
-                                                <>
-                                                    <div className="box mt-0 bg-white px-0 pt-0 pb-0 rounded">
-                                                        <Skeleton height={183} count={1}/>
-                                                        <Skeleton height={30} count={1}/>
-                                                    </div>
-                                                </>
+                                                <div className="flex items-center justify-start gap-2 w-full">
+                                                    <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                    <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                </div>
                                             ) : (
                                                 <>
-                                                    <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
+                                                    <div className="flex items-center justify-between">
+                                                        <div className="flex items-center gap-2">
+                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                            <div className="leading-[17px]">
+                                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                                    Sony Inc.
+                                                                </h4>
+                                                                <span
+                                                                    className="text-[12px] text-graycolor font-normal">Sponsored</span>
+                                                            </div>
+                                                        </div>
 
-                                                    <div className="flex items-center justify-between mt-3">
-                                                        <h4 className="text-[14px] text-prgcolor font-[500] cursor-pointer hover:underline">Sony
-                                                            SRS-XB13B</h4>
-                                                        <button type="button"
-                                                                className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
-                                                            Learn More
-                                                        </button>
+                                                        <div onClick={handleAddDotRightSideClick}
+                                                             ref={AddDotRightSideDropdownRef}
+                                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotRightSideClick ? 'bg-gray-100' : ''}`}>
+                                                            <svg
+                                                                className="w-3 h-3"
+                                                                fill="#6B7280"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 16 16">
+                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                            </svg>
+
+                                                            {addDotRightSideClick &&
+                                                                <div
+                                                                    className="dots-dropdown-menu w-[300px] absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                    <div className="container py-2">
+                                                                        <div className="space-y-1 text-[14px]">
+                                                                            <div
+                                                                                onClick={toggleAdBoxRightSideVisibility}
+                                                                                className="flex cursos-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                                                    <path
+                                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                                                    <path
+                                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                                                    <line x1="2" x2="22" y1="2"
+                                                                                          y2="22"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Hide ad
+                                                                                </h4>
+                                                                            </div>
+
+                                                                            <div
+                                                                                onClick={() => setOpenReportAdModalRightSide(true)}
+                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24
+                                                                                 24" fill="none" stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path d="M4 15s1-1 4-1 5 2 8 2
+                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                                                    <line x1="4" x2="4" y1="22"
+                                                                                          y2="15"/>
+                                                                                </svg>
+                                                                                <h4>
+                                                                                    Report ad
+                                                                                </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </>
                                             )}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Come Ad Hidden Box */}
-                                {currentAdBoxRightSide === 'add_hidden_box_right_side' && (
-                                    <div className="add_hidden_box">
-                                        <div className="box mt-4 bg-white px-4 py-4 rounded">
-                                            <div className="flex items-start justify-between pb-3">
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor font-[500]">
-                                                        Ad hidden from your feed
-                                                    </h4>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Share more details so we can personalize your feed.
-                                                    </h4>
+                                            {loading ? (
+                                                <div>
+                                                    <Skeleton height={20} count={1}/>
                                                 </div>
-                                                <div className="button_right">
-                                                    <button onClick={toggleAdBoxRightSideVisibility}
-                                                            type="button"
-                                                            className="py-2 px-6 rounded text-primary text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
-                                                        Undo
-                                                    </button>
+                                            ) : (
+                                                <>
+                                                    <h4 className="mt-3 text-[12px] text-prgcolor">
+                                                        The SRS-XB100 speaker provides powerful, clear,
+                                                        expansive sound in a small, portable and durable
+                                                        body. Despite its size...
+                                                    </h4>
+                                                </>
+                                            )}
+                                            <div className="post-image mt-3">
+                                                {loading ? (
+                                                    <>
+                                                        <div className="box mt-0 bg-white px-0 pt-0 pb-0 rounded">
+                                                            <Skeleton height={183} count={1}/>
+                                                            <Skeleton height={30} count={1}/>
+                                                        </div>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Image src={PostImg} className="w-full h-36" alt="PostImg"/>
+
+                                                        <div className="flex items-center justify-between mt-3">
+                                                            <h4 className="text-[14px] text-prgcolor font-[500] cursor-pointer hover:underline">Sony
+                                                                SRS-XB13B</h4>
+                                                            <button type="button"
+                                                                    className="py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                                                Learn More
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Come Ad Hidden Box */}
+                                    {currentAdBoxRightSide === 'add_hidden_box_right_side' && (
+                                        <div className="add_hidden_box">
+                                            <div className="box mt-4 bg-white px-4 py-4 rounded">
+                                                <div className="flex items-start justify-between pb-3">
+                                                    <div className="content">
+                                                        <h4 className="text-[14px] text-prgcolor font-[500]">
+                                                            Ad hidden from your feed
+                                                        </h4>
+                                                        <h4 className="text-[12px] text-graycolor">
+                                                            Share more details so we can personalize your feed.
+                                                        </h4>
+                                                    </div>
+                                                    <div className="button_right">
+                                                        <button onClick={toggleAdBoxRightSideVisibility}
+                                                                type="button"
+                                                                className="py-2 px-6 rounded text-primary text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
+                                                            Undo
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <hr/>
+
+                                                <div onClick={() => setOpenFeedbackAdModalRightSide(true)}
+                                                     className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                                    <div className="icon mt-1">
+                                                        <svg
+                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                            strokeWidth="1.5" strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path
+                                                                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                            <path d="M13 8H7"/>
+                                                            <path d="M17 12H7"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div className="content">
+                                                        <h4 className="text-[14px] text-prgcolor">
+                                                            Provide feedback
+                                                        </h4>
+                                                        <h4 className="text-[12px] text-graycolor">
+                                                            Please provide more information to help us customize
+                                                            your
+                                                            feed.
+                                                        </h4>
+                                                    </div>
+                                                </div>
+
+                                                <div onClick={() => setOpenReportAdModalRightSide(true)}
+                                                     className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                                    <div className="icon mt-1">
+                                                        <svg
+                                                            className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24
+                                                24" fill="none" stroke="#6B7280"
+                                                            strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round">
+                                                            <path d="M4 15s1-1 4-1 5 2 8 2
+                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                                            <line x1="4" x2="4" y1="22"
+                                                                  y2="15"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div className="content">
+                                                        <h4 className="text-[14px] text-prgcolor">
+                                                            Report ad
+                                                        </h4>
+                                                        <h4 className="text-[12px] text-graycolor">
+                                                            Please flag if it violates our community guidelines.
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <hr/>
+                                        </div>
+                                    )}
 
-                                            <div onClick={() => setOpenFeedbackAdModalRightSide(true)}
-                                                 className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
+                                    {/* remove_success div */}
+                                    {currentAdBoxRightSide === 'remove_success_right_side' && (
+                                        <div className="mt-4 remove_success rounded box bg-white px-6 py-4">
+                                            <div className="flex items-start gap-2">
                                                 <div className="icon mt-1">
                                                     <svg
                                                         className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
@@ -390,127 +536,69 @@ function Page() {
                                                 </div>
                                                 <div className="content">
                                                     <h4 className="text-[14px] text-prgcolor">
-                                                        Provide feedback
+                                                        Thank you for your feedback.
                                                     </h4>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Please provide more information to help us customize
-                                                        your
-                                                        feed.
-                                                    </h4>
-                                                </div>
-                                            </div>
-
-                                            <div onClick={() => setOpenReportAdModalRightSide(true)}
-                                                 className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
-                                                <div className="icon mt-1">
-                                                    <svg
-                                                        className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24
-                                                24" fill="none" stroke="#6B7280"
-                                                        strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M4 15s1-1 4-1 5 2 8 2
-                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                        <line x1="4" x2="4" y1="22"
-                                                              y2="15"/>
-                                                    </svg>
-                                                </div>
-                                                <div className="content">
-                                                    <h4 className="text-[14px] text-prgcolor">
-                                                        Report ad
-                                                    </h4>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Please flag if it violates our community guidelines.
+                                                        You won{`'`}t come across this ad again.
                                                     </h4>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
-
-                                {/* remove_success div */}
-                                {currentAdBoxRightSide === 'remove_success_right_side' && (
-                                    <div className="mt-4 remove_success rounded box bg-white px-6 py-4">
-                                        <div className="flex items-start gap-2">
-                                            <div className="icon mt-1">
-                                                <svg
-                                                    className="w-5 h-5 transition duration-75 group-hover:stroke-primary"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24" fill="none" stroke="#6B7280"
-                                                    strokeWidth="1.5" strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path
-                                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                                                    <path d="M13 8H7"/>
-                                                    <path d="M17 12H7"/>
-                                                </svg>
-                                            </div>
-                                            <div className="content">
-                                                <h4 className="text-[14px] text-prgcolor">
-                                                    Thank you for your feedback.
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    You won{`'`}t come across this ad again.
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                <footer className="mt-4">
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
-                                                <li className="hover:text-primary">
-                                                    <Link href='#'>About Nosres</Link>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <LuDot size={12}/>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <Link href='#'>Privacy</Link>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <LuDot size={12}/>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <Link href='#'>Terms</Link>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <LuDot size={12}/>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <Link href='#'>Careers</Link>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <LuDot size={12}/>
-                                                </li>
-                                                <li className="hover:text-primary">
-                                                    <Link href='#'>Support</Link>
-                                                </li>
-                                            </ul>
-                                        </>
                                     )}
 
-                                    {loading ? (
-                                        <div>
-                                            <Skeleton height={20} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <h4 className="mt-[8px] text-graycolor text-[12px]">© {currentYear} Nosres
-                                                Inc. All
-                                                rights
-                                                reserved.</h4>
-                                        </>
-                                    )}
-                                </footer>
+                                    <footer className="mt-4">
+                                        {loading ? (
+                                            <div>
+                                                <Skeleton height={20} count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <ul className="flex items-center gap-0 text-gray-500 text-[12px]">
+                                                    <li className="hover:text-primary">
+                                                        <Link href='#'>About Nosres</Link>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <LuDot size={12}/>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <Link href='#'>Privacy</Link>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <LuDot size={12}/>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <Link href='#'>Terms</Link>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <LuDot size={12}/>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <Link href='#'>Careers</Link>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <LuDot size={12}/>
+                                                    </li>
+                                                    <li className="hover:text-primary">
+                                                        <Link href='#'>Support</Link>
+                                                    </li>
+                                                </ul>
+                                            </>
+                                        )}
+
+                                        {loading ? (
+                                            <div>
+                                                <Skeleton height={20} count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <h4 className="mt-[8px] text-graycolor text-[12px]">© {currentYear} Nosres
+                                                    Inc. All
+                                                    rights
+                                                    reserved.</h4>
+                                            </>
+                                        )}
+                                    </footer>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -525,10 +613,13 @@ function Page() {
 
                             {/* User Comes Here */}
                             <div className="px-3 overflow-y-auto h-[84vh]">
-                                <div className="user_box w-full h-full border-r flex items-center justify-center">
-                                    <h4 className="text-[14px] font-[500] text-prgcolor">
-                                        No Messages
-                                    </h4>
+                                <div className="user_box w-full h-full border-r flex items-start justify-start">
+                                    <div className="user px-4 mt-2 flex items-center gap-2">
+                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                            Jeff Bently
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
