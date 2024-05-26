@@ -2,7 +2,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {HiUserCircle} from "react-icons/hi";
 import {HiChatBubbleLeft, HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "react-icons/hi2";
-import {IoCart, IoCartOutline, IoSearchOutline} from "react-icons/io5";
+import {IoCart, IoSearchOutline} from "react-icons/io5";
 import Link from "next/link";
 import Image from "next/image";
 import {GoBell, GoHome, GoHomeFill} from "react-icons/go";
@@ -338,6 +338,11 @@ function Header() {
                                         ) : (
                                             <GoHome className="w-[25px] h-[23px] text-prgcolor"/>
                                         )}
+                                        {pathname === '/home' ? (
+                                            <div className="absolute w-full bg-primary h-[2px] top-[36px]"></div>
+                                        ) : (
+                                            <div></div>
+                                        )}
                                     </Link>
                                 </Tooltip>
 
@@ -358,6 +363,11 @@ function Header() {
                                                     4
                                                 </div>
                                             </div>
+                                        )}
+                                        {pathname === '/shopping-cart' ? (
+                                            <div className="absolute w-full bg-primary h-[2px] top-[36px]"></div>
+                                        ) : (
+                                            <div></div>
                                         )}
                                     </Link>
                                 </Tooltip>
@@ -383,6 +393,11 @@ function Header() {
                                                 </div>
                                             </div>
                                         )}
+                                        {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                                            <div className="absolute w-full bg-primary h-[2px] top-[36px]"></div>
+                                        ) : (
+                                            <div></div>
+                                        )}
                                     </Link>
                                 </Tooltip>
                                 {/* Notification */}
@@ -401,6 +416,11 @@ function Header() {
                                                 8
                                             </div>
                                         </div>
+                                        {pathname === '/notification' ? (
+                                            <div className="absolute w-full bg-primary h-[2px] top-[36px]"></div>
+                                        ) : (
+                                            <div></div>
+                                        )}
                                     </Link>
                                 </Tooltip>
 
@@ -1138,7 +1158,7 @@ function Header() {
             <div
                 className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-white border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
                 {/* Home */}
-                <Link href='/public' className="group px-[5px] flex flex-col items-center">
+                <Link href='#' className="group px-[5px] flex flex-col items-center">
                     {pathname === '/home' ? (
                         <GoHomeFill className="w-full h-[20px] text-primary"/>
                     ) : (
@@ -1175,7 +1195,8 @@ function Header() {
                 </Link>
 
                 {/* Cart */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
+                <Link href='#'
+                      className={`group px-[5px] sm:px-[10px] flex flex-col items-center ${pathname === '/shopping-cart' ? 'border-b-2 border-primary' : ''}`}>
                     {pathname === '/shopping-cart' ? (
                         <IoCart className="w-[25px] h-[24px] text-primary"/>
                     ) : (
@@ -1200,8 +1221,9 @@ function Header() {
                 </Link>
 
                 {/* Message */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
-                    {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                <Link href='#'
+                      className={`group px-[5px] sm:px-[10px] flex flex-col items-center ${pathname === '/message-one' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-two' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-three' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-four' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-five' ? 'border-b-2 border-primary' : ''}`}>
+                    {['/message-one', '/message-two', '/message-three', '/message-four', '/message-five'].includes(pathname) ? (
                         <HiChatBubbleLeft className="w-full h-[21px] text-primary"/>
                     ) : (
                         <div className="relative">
@@ -1213,7 +1235,7 @@ function Header() {
                             </div>
                         </div>
                     )}
-                    {['/message-one', '/message-two', '/message-three'].includes(pathname) ? (
+                    {['/message-one', '/message-two', '/message-three', '/message-four', '/message-five'].includes(pathname) ? (
                         <div className="text-primary group-hover:text-primary transition">
                             Messages
                         </div>

@@ -1,7 +1,7 @@
 "use client";
 import 'flowbite';
 import Link from "next/link";
-import {GoBell, GoHomeFill} from "react-icons/go";
+import {GoBell, GoHome, GoHomeFill} from "react-icons/go";
 import {IoCartOutline} from "react-icons/io5";
 import {HiOutlineChatBubbleLeft} from "react-icons/hi2";
 import React, {useState} from "react";
@@ -176,13 +176,24 @@ function LeftSidebar() {
 
             {/* Mobile/Tap Bottom Menu */}
             <div
-                className="fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-white border-t border-gray-200 nav items-center justify-center text-[12px] gap-3">
+                className={`fixed z-[999] flex lg:hidden py-1 bottom-0 w-full bg-white border-t border-gray-200 nav items-center justify-center text-[12px] gap-3`}>
                 {/* Home */}
-                <Link href='/public' className="group px-[5px] flex flex-col items-center border-b-2 border-primary">
-                    <GoHomeFill className="w-full h-[20px] text-primary"/>
-                    <div className="text-primary group-hover:text-primary transition">
-                        Home
-                    </div>
+                <Link href='/public'
+                      className={`${pathname === '/home' ? 'border-b-2 border-primary' : ''} group px-[5px] flex flex-col items-center`}>
+                    {pathname === '/home' ? (
+                        <GoHomeFill className="w-full h-[20px] text-primary"/>
+                    ) : (
+                        <GoHome className="w-full h-[20px] text-prgcolor"/>
+                    )}
+                    {pathname === '/home' ? (
+                        <div className="text-primary group-hover:text-primary transition">
+                            Home
+                        </div>
+                    ) : (
+                        <div className="text-prgcolor group-hover:text-primary transition">
+                            Home
+                        </div>
+                    )}
                 </Link>
 
                 {/* Category */}
@@ -235,18 +246,26 @@ function LeftSidebar() {
                 </Link>
 
                 {/* Notification */}
-                <Link href='#' className="group px-[5px] sm:px-[10px] flex flex-col items-center">
+                <Link href='#'
+                      className={`group px-[5px] sm:px-[10px] flex flex-col items-center ${pathname === '/notification' ? 'border-b-2 border-primary' : ''}`}>
                     {/* Main SVG */}
                     <div className="relative">
-                        <GoBell className="w-full h-[20px] text-prgcolor group-hover:text-primary"/>
+                        <GoBell
+                            className={`${pathname === '/notification' ? 'text-primary' : 'text-prgcolor'} w-full h-[20px] group-hover:text-primary`}/>
                         <div
                             className="flex absolute top-[-1px] -right-[10px] bg-red-500 rounded-full text-white text-[10px] w-4 h-4 items-center justify-center">
                             12
                         </div>
                     </div>
-                    <div className="text-prgcolor group-hover:text-primary transition">
-                        Notification
-                    </div>
+                    {pathname === '/notification' ? (
+                        <div className="text-primary group-hover:text-primary transition">
+                            Notification
+                        </div>
+                    ) : (
+                        <div className="text-prgcolor group-hover:text-primary transition">
+                            Notification
+                        </div>
+                    )}
                 </Link>
             </div>
         </>

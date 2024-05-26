@@ -5,7 +5,7 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
 import Link from "next/link";
-import {LuDot, LuPenSquare} from "react-icons/lu";
+import {LuDot, LuPenSquare, LuSendHorizonal} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Modal} from "flowbite-react";
@@ -193,12 +193,11 @@ function Page() {
                                             {/* Bottom Section */}
                                             <div ref={modalRef} className="w-full absolute bottom-0">
                                                 <div className="write_box px-4 w-full border-t">
-                                                   <textarea
-                                                       rows={3}
-                                                       value={startPostText}
-                                                       onChange={(e) => setStartPostText(e.target.value)}
-                                                       className="mt-3 mb-2 rounded w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
-                                                       placeholder="Write a Message..."></textarea>
+                                                    <input type="text"
+                                                           value={startPostText}
+                                                           onChange={(e) => setStartPostText(e.target.value)}
+                                                           className="mt-3 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
+                                                           placeholder="Write a Message..."/>
                                                 </div>
                                                 <div className="icon_box px-4 pb-6 w-full border-t">
                                                     <div className="flex items-center justify-between mt-3">
@@ -245,14 +244,8 @@ function Page() {
 
                                                         <div
                                                             className={`${startPostText ? 'cursor-pointer ' : 'cursor-not-allowed'}`}>
-                                                            <svg
-                                                                className={`w-6 h-6 transition ${startPostText ? 'fill-primary' : ''}`}
-                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                                fill="#828D9E">
-                                                                <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0
-                                                                1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0
-                                                                18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z"/>
-                                                            </svg>
+                                                            <LuSendHorizonal
+                                                                className={`w-[24px] h-[24px] transition text-[#828D9E] ${startPostText ? 'text-primary' : ''}`}/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -279,9 +272,12 @@ function Page() {
                                                         strokeWidth="1.5" strokeLinecap="round"
                                                         strokeLinejoin="round">
                                                         <path
-                                                            d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-                                                        <path d="M3 6h18"/>
-                                                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                                                            d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                                        <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                                                        <path d="M2 7h20"/>
+                                                        <path
+                                                            d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
                                                     </svg>
                                                     <h4 className="text-[14px] font-semibold">
                                                         Store Inbox
@@ -289,21 +285,6 @@ function Page() {
                                                 </div>
                                             </>
                                         )}
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={20} count={1}/>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <div className="mt-2 flex items-center gap-2">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                        Uptown Store
-                                                    </h4>
-                                                </div>
-                                            </>
-                                        )}
-
                                     </div>
 
                                     {/* Post Box */}
