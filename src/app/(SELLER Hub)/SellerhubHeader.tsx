@@ -330,6 +330,11 @@ function Header() {
                                     ) : (
                                         <GoHome className="w-[25px] h-[22px] text-prgcolor"/>
                                     )}
+                                    {pathname === '/dashboard' ? (
+                                        <div className="absolute w-full bg-primary h-[2px] top-[36px]"></div>
+                                    ) : (
+                                        <div></div>
+                                    )}
                                 </Link>
                             </Tooltip>
 

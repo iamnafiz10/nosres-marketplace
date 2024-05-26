@@ -203,17 +203,26 @@ function Page() {
                                                     <div className="flex items-center justify-between mt-3">
                                                         <div className="relative flex items-center gap-2">
                                                             <div className="cursor-pointer">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                     viewBox="0 0 24 24"
-                                                                     fill="#4D7FB8"
-                                                                     className="w-6 h-6">
-                                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
-                                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
-                                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
-                                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
-                                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                                          clipRule="evenodd"/>
-                                                                </svg>
+                                                                <div className="relative cursor-pointer">
+                                                                    <input
+                                                                        type="file"
+                                                                        id="file-upload"
+                                                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                                                    />
+                                                                    <label htmlFor="file-upload">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             viewBox="0 0 24 24"
+                                                                             fill="#4D7FB8"
+                                                                             className="w-6 h-6">
+                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                                            1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                                            16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                                            0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                                            16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                                                  clipRule="evenodd"/>
+                                                                        </svg>
+                                                                    </label>
+                                                                </div>
                                                             </div>
 
                                                             <div
@@ -241,11 +250,17 @@ function Page() {
                                                                 </div>
                                                             }
                                                         </div>
-
                                                         <div
                                                             className={`${startPostText ? 'cursor-pointer ' : 'cursor-not-allowed'}`}>
-                                                            <LuSendHorizonal
-                                                                className={`w-[24px] h-[24px] transition text-[#828D9E] ${startPostText ? 'text-primary' : ''}`}/>
+                                                            <svg
+                                                                className={`w-[24px] h-[24px] transition text-[#828D9E] ${startPostText ? 'text-primary' : ''}`}
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                strokeWidth="1.5" strokeLinecap="round"
+                                                                strokeLinejoin="round">
+                                                                <path d="m3 3 3 9-3 9 19-9Z"/>
+                                                                <path d="M6 12h16"/>
+                                                            </svg>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -279,7 +294,7 @@ function Page() {
                                                         <path
                                                             d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
                                                     </svg>
-                                                    <h4 className="text-[14px] font-semibold">
+                                                    <h4 className="text-[14px] font-semibold cursor-pointer hover:underline">
                                                         Store Inbox
                                                     </h4>
                                                 </div>
@@ -1095,20 +1110,109 @@ function Page() {
                             </div>
 
                             <div className="scroll_content mt-4">
-                                {Array.from({length: 10}).map((_, index) => (
-                                    <div
-                                        key={index}
-                                        onClick={() => handleBoxClick(index)}
-                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === index ? 'border-primary' : ''}`}
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="content">
-                                                <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
-                                            </div>
+                                <div onClick={() => handleBoxClick(1)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 1 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                            <h4 className="text-[12px] text-graycolor">Followee</h4>
                                         </div>
                                     </div>
-                                ))}
+                                </div>
+                                <div onClick={() => handleBoxClick(2)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 2 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jebon Hasan</h4>
+                                            <h4 className="text-[12px] text-graycolor">Follow Each Other</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(3)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 3 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Rakib Islam</h4>
+                                            <h4 className="text-[12px] text-graycolor">Follower</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(4)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 4 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(5)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 5 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(6)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 6 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(7)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 7 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(8)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 8 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(9)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 9 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div onClick={() => handleBoxClick(10)}
+                                     className={`box mt-4 cursor-pointer py-2 px-2 border rounded ${selectedBox === 10 ? 'border-primary bg-gray-100' : ''}`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </Modal.Body>
@@ -1125,8 +1229,7 @@ function Page() {
                         </div>
                     </Modal.Footer>
                 </Modal>
-                {/* Start Message Pop-Up End */
-                }
+                {/* Start Message Pop-Up End */}
             </section>
         </>
     )
