@@ -742,12 +742,204 @@ function Page() {
 
                             {/* User Comes Here */}
                             <div className="px-0 overflow-y-auto h-[84vh]">
-                                <div className="user_box w-full h-full border-r flex items-start justify-start">
-                                    <div className="user px-4 mt-2 flex items-center gap-2">
-                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                            Jeff Bently
-                                        </h4>
+                                <div className="user_box space-y-3 w-full h-[76vh] border-r overflow-y-auto">
+                                    <div className="mt-3 user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Jeff Bently
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    Did you get it?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                2:07 PM
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Roshan Nafiz
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    Brother, Excellent idea..
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                May 18
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    Sojib Hasnat
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    What is this?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    John doe
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    Are you okay?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                1m ago
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="user flex items-center justify-between">
+                                        <div className="px-4 mt-2 flex items-center gap-2">
+                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <div className="wrap">
+                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                    David Kolor
+                                                </h4>
+                                                <h4 className="text-[12px] text-graycolor">
+                                                    How are you?
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="date -mt-2 mr-4">
+                                            <h4 className="text-[12px] text-graycolor">
+                                                3d ago
+                                            </h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
