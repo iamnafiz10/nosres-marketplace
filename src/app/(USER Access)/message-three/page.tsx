@@ -170,13 +170,14 @@ function Page() {
 
                                 <div className="grid grid-cols-1 lg:grid-cols-12 border-t pb-4 h-full">
                                     <div className="col lg:col-span-5 hidden lg:block border-r">
-                                        <div className="user_box space-y-3 w-full h-[76vh] overflow-y-auto">
-                                            <div className="mt-3 user flex items-center justify-between">
+                                        <div className="user_box space-y-2 w-full h-[76vh] overflow-y-auto">
+                                            <div
+                                                className="mt-3 user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
                                                         <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                            Jeff Bently
+                                                            Somic Roy Vorak R...
                                                         </h4>
                                                         <h4 className="text-[12px] text-graycolor">
                                                             Did you get it?
@@ -189,7 +190,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -197,7 +199,7 @@ function Page() {
                                                             Roshan Nafiz
                                                         </h4>
                                                         <h4 className="text-[12px] text-graycolor">
-                                                            Brother, Excellent idea..
+                                                            Brother, Excellent idea...
                                                         </h4>
                                                     </div>
                                                 </div>
@@ -207,7 +209,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -225,7 +228,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -243,7 +247,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -261,7 +266,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -279,7 +285,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -297,7 +304,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -315,7 +323,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -333,7 +342,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -351,7 +361,8 @@ function Page() {
                                                     </h4>
                                                 </div>
                                             </div>
-                                            <div className="user flex items-center justify-between">
+                                            <div
+                                                className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                                 <div className="px-4 mt-2 flex items-center gap-2">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="wrap">
@@ -742,8 +753,8 @@ function Page() {
 
                             {/* User Comes Here */}
                             <div className="px-0 overflow-y-auto h-[84vh]">
-                                <div className="user_box space-y-3 w-full h-[76vh] border-r overflow-y-auto">
-                                    <div className="mt-3 user flex items-center justify-between">
+                                <div className="user_box space-y-2 w-full h-[76vh] border-r overflow-y-auto">
+                                    <div className="mt-3 user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -761,7 +772,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -779,7 +790,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -797,7 +808,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -815,7 +826,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -833,7 +844,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -851,7 +862,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -869,7 +880,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -887,7 +898,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -905,7 +916,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
@@ -923,7 +934,7 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="user flex items-center justify-between">
+                                    <div className="user cursor-pointer hover:bg-gray-100 pb-2 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
                                             <div className="wrap">
