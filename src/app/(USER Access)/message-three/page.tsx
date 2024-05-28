@@ -187,7 +187,7 @@ function Page() {
                                                         </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Brothers, It is Excellent ideas for this to...
+                                                        Brothers, It is Excellent ideas for got...
                                                     </h4>
                                                 </div>
                                             </div>
