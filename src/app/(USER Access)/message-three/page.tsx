@@ -218,7 +218,7 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor hover:underline cursor-pointer">
-                                                            Muhammad Sojibn Saiham
+                                                            Muhammd Sojib Saiham
                                                         </h4>
                                                         <div className="date">
                                                             <h4 className="text-[12px] text-graycolor">
