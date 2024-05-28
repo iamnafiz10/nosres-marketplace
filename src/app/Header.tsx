@@ -1222,8 +1222,8 @@ function Header() {
 
                 {/* Message */}
                 <Link href='#'
-                      className={`group px-[5px] sm:px-[10px] flex flex-col items-center ${pathname === '/message-one' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-two' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-three' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-four' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-five' ? 'border-b-2 border-primary' : ''}`}>
-                    {['/message-one', '/message-two', '/message-three', '/message-four', '/message-five'].includes(pathname) ? (
+                      className={`group px-[5px] sm:px-[10px] flex flex-col items-center ${pathname === '/message-one' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-two' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-three' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-four01' ? 'border-b-2 border-primary' : ''} ${pathname === '/message-five' ? 'border-b-2 border-primary' : ''}`}>
+                    {['/message-one', '/message-two', '/message-three', '/message-four01', '/message-five'].includes(pathname) ? (
                         <HiChatBubbleLeft className="w-full h-[21px] text-primary"/>
                     ) : (
                         <div className="relative">
@@ -1235,7 +1235,7 @@ function Header() {
                             </div>
                         </div>
                     )}
-                    {['/message-one', '/message-two', '/message-three', '/message-four', '/message-five'].includes(pathname) ? (
+                    {['/message-one', '/message-two', '/message-three', '/message-four01', '/message-five'].includes(pathname) ? (
                         <div className="text-primary group-hover:text-primary transition">
                             Messages
                         </div>
