@@ -171,9 +171,9 @@ function Page() {
                                 <div className="grid grid-cols-1 lg:grid-cols-12 border-t pb-4 h-full">
                                     <div className="col lg:col-span-5 hidden lg:block border-r">
                                         <div className="user_box space-y-3 w-full h-full">
-                                            <div className="user px-4 mt-2 flex items-center gap-2">
+                                            <div className="user px-4 mt-2 flex items-center gap-1">
                                                 <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                                <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
                                                 </h4>
                                             </div>
