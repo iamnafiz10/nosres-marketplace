@@ -172,7 +172,7 @@ function Page() {
                                     <div className="col lg:col-span-5 hidden lg:block border-r">
                                         <div className="user_box space-y-3 w-full h-full">
                                             <div className="user px-4 mt-2 flex items-center gap-1">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
                                                 </h4>
@@ -183,7 +183,7 @@ function Page() {
                                     <div className="col lg:col-span-7">
                                         <div className="box w-full h-full relative">
                                             <div className="user px-4 mt-1 pb-1 flex items-center gap-2">
-                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                     Jeff Bently
                                                 </h4>
@@ -314,7 +314,7 @@ function Page() {
                                                 <>
                                                     <div className="flex items-center justify-between">
                                                         <div className="flex items-center gap-2">
-                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                             <div className="leading-[17px]">
                                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                                     Sony Inc.
@@ -611,8 +611,8 @@ function Page() {
                             <div className="px-0 overflow-y-auto h-[84vh]">
                                 <div className="user_box w-full h-full border-r flex items-start justify-start">
                                     <div className="user px-4 mt-2 flex items-center gap-2">
-                                        <HiUserCircle size={35} className="text-[#6B7280]"/>
-                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                        <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                        <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                             Jeff Bently
                                         </h4>
                                     </div>

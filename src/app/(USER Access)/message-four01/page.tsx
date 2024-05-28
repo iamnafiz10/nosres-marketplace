@@ -15,6 +15,7 @@ import {IoSearchOutline} from "react-icons/io5";
 import {GoSmiley} from "react-icons/go";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
+import {PiHandsPrayingLight} from "react-icons/pi";
 
 function Page() {
     const loading = useLoading();
@@ -152,6 +153,37 @@ function Page() {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
+
+    // Notification Mute / Unmute
+    const [isMuted, setIsMuted] = useState(false);
+    const handleToggleMute = () => {
+        setIsMuted(!isMuted);
+    };
+
+    // Delete Conversation Modal
+    const [openDeleteConModal, setOpenDeleteConModal] = useState<boolean>(false);
+    // Block Message Modal
+    const [openBlockMesModal, setOpenBlockMesModal] = useState<boolean>(false);
+    const [isBlocked, setIsBlocked] = useState(false);
+    const handleBlockClick = () => {
+        setOpenBlockMesModal(false);
+        setIsBlocked(true);
+    };
+    const [openBlockMesConfirmModal, setOpenBlockMesConfirmModal] = useState<boolean>(false);
+    const handleUnblockClick = () => {
+        setOpenBlockMesConfirmModal(false);
+        setIsBlocked(false);
+    };
+
+    // Feedback Ad / Report Ad popup
+    const [openReportAdModal, setOpenReportAdModal] = useState<boolean>(false);
+    const [openReportAdSubmitModal, setOpenReportAdSubmitModal] = useState<boolean>(false);
+    const [openReportAdSubmitConfirmModal, setOpenReportAdSubmitConfirmModal] = useState<boolean>(false);
+    const handleAdSubmitButtonClick = () => {
+        setOpenReportAdSubmitModal(false);
+        setOpenReportAdModal(false);
+        setOpenReportAdSubmitConfirmModal(false);
+    }
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -197,7 +229,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -206,14 +238,14 @@ function Page() {
                                                         </h4>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Brothers, It is Excellent ideas for got...
+                                                        Brothers, It is Excellent idea for got...
                                                     </h4>
                                                 </div>
                                             </div>
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-blue-50">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -229,12 +261,12 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Muhammd Sojib Saiham
+                                                            Muhamd Sojib Saiham
                                                         </h4>
                                                         <div className="date">
                                                             <h4 className="text-[12px] text-graycolor">
@@ -250,7 +282,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -266,7 +298,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -282,7 +314,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -298,7 +330,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -314,7 +346,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -330,7 +362,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -346,7 +378,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -362,7 +394,7 @@ function Page() {
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
@@ -382,7 +414,7 @@ function Page() {
                                         <div className="box w-full h-full relative">
                                             <div className="px-4 flex items-center justify-between">
                                                 <div className="user flex items-center gap-2">
-                                                    <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                     <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                         Jeff Bently
                                                     </h4>
@@ -405,26 +437,48 @@ function Page() {
                                                                 className="dots-dropdown-menu w-[300px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
                                                                 <div className="container py-2">
                                                                     <div className="space-y-1 text-[14px]">
-                                                                        <div
-                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path
-                                                                                    d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
-                                                                                <path
-                                                                                    d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
-                                                                            </svg>
+
+                                                                        <div onClick={handleToggleMute}
+                                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                            {isMuted ? (
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M8.7 3A6 6 0 0 1 18 8a21.3 21.3 0 0 0 .6 5"/>
+                                                                                    <path
+                                                                                        d="M17 17H3s3-2 3-9a4.67 4.67 0 0 1 .3-1.7"/>
+                                                                                    <path
+                                                                                        d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                                                                                    <path d="m2 2 20 20"/>
+                                                                                </svg>
+                                                                            ) : (
+                                                                                <svg
+                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#6B7280"
+                                                                                    strokeWidth="1.5"
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round">
+                                                                                    <path
+                                                                                        d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                                                                                    <path
+                                                                                        d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                                                                                </svg>
+                                                                            )}
                                                                             <h4>
                                                                                 Mute notifications
                                                                             </h4>
                                                                         </div>
+
                                                                         <div
+                                                                            onClick={() => setOpenDeleteConModal(true)}
                                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                             <svg
                                                                                 className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
@@ -446,8 +500,8 @@ function Page() {
                                                                                 Delete conversation
                                                                             </h4>
                                                                         </div>
-                                                                        <div
-                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <div onClick={() => setOpenBlockMesModal(true)}
+                                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                             <svg
                                                                                 className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -463,8 +517,8 @@ function Page() {
                                                                                 Block
                                                                             </h4>
                                                                         </div>
-                                                                        <div
-                                                                            className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <div onClick={() => setOpenReportAdModal(true)}
+                                                                             className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                             <svg
                                                                                 className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -549,82 +603,100 @@ function Page() {
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {/* Bottom Section */}
-                                            <div ref={modalRef} className="w-full absolute z-30 bg-white bottom-4">
-                                                <div className="write_box px-4 w-full border-t">
-                                                    <input type="text"
-                                                           value={startPostText}
-                                                           onChange={(e) => setStartPostText(e.target.value)}
-                                                           className="mt-3 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
-                                                           placeholder="Write a Message..."/>
+                                            {isBlocked ? (
+                                                <div className="w-full absolute z-30 bg-white bottom-4">
+                                                    <div className="px-6 py-6">
+                                                        <h4 className="text-[16px] text-prgcolor">
+                                                            You blocked messages from Jeff.
+                                                        </h4>
+                                                        <h4 className="text-[14px] text-graycolor mt-1">
+                                                            You are unable to send messages within this conversation,
+                                                            and you will not receive any messages either
+                                                        </h4>
+                                                        <button onClick={() => setOpenBlockMesConfirmModal(true)}
+                                                                type='button'
+                                                                className="mt-2 text-[14px] py-2 px-6 hover:bg-primary hover:text-white border bg-gray-100 rounded">
+                                                            Unblock
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div className="icon_box px-4 pb-6 w-full border-t">
-                                                    <div className="flex items-center justify-between mt-3">
-                                                        <div className="relative flex items-center gap-2">
-                                                            <div className="cursor-pointer">
-                                                                <div className="relative cursor-pointer">
-                                                                    <input
-                                                                        type="file"
-                                                                        id="file-upload"
-                                                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                                                    />
-                                                                    <label htmlFor="file-upload">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             viewBox="0 0 24 24"
-                                                                             fill="#4D7FB8"
-                                                                             className="w-6 h-6">
-                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                            ) : (
+                                                <div ref={modalRef} className="w-full absolute z-30 bg-white bottom-4">
+                                                    <div className="write_box px-4 w-full border-t">
+                                                        <input type="text"
+                                                               value={startPostText}
+                                                               onChange={(e) => setStartPostText(e.target.value)}
+                                                               className="mt-3 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
+                                                               placeholder="Write a Message..."/>
+                                                    </div>
+                                                    <div className="icon_box px-4 pb-6 w-full border-t">
+                                                        <div className="flex items-center justify-between mt-3">
+                                                            <div className="relative flex items-center gap-2">
+                                                                <div className="cursor-pointer">
+                                                                    <div className="relative cursor-pointer">
+                                                                        <input
+                                                                            type="file"
+                                                                            id="file-upload"
+                                                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                                                        />
+                                                                        <label htmlFor="file-upload">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 viewBox="0 0 24 24"
+                                                                                 fill="#4D7FB8"
+                                                                                 className="w-6 h-6">
+                                                                                <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
                                                                             1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
                                                                             16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
                                                                             0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
                                                                             16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                                                  clipRule="evenodd"/>
-                                                                        </svg>
-                                                                    </label>
+                                                                                      clipRule="evenodd"/>
+                                                                            </svg>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
+                                                                <div
+                                                                    onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
+                                                                    className="cursor-pointer"
+                                                                >
+                                                                    <GoSmiley
+                                                                        size={20}
+                                                                        className="text-graycolor hover:text-primary"/>
+                                                                </div>
+
+                                                                {/* Start Post Reactions */}
+                                                                {showStartPostEmoji &&
+                                                                    <div ref={emojiPickerRef}
+                                                                         className="comment_emoji z-[999] absolute bottom-[30px] left-0 lg:left-auto right-auto lg:right-0">
+                                                                        <Picker
+                                                                            data={data}
+                                                                            theme="light"
+                                                                            perLine={8}
+                                                                            emojiSize={22}
+                                                                            onEmojiSelect={addStartPostEmoji}
+                                                                            maxFrequentRows={0}
+                                                                            maxEmojiRows={2}
+                                                                        />
+                                                                    </div>
+                                                                }
+                                                            </div>
                                                             <div
-                                                                onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
-                                                                className="cursor-pointer"
-                                                            >
-                                                                <GoSmiley
-                                                                    size={20}
-                                                                    className="text-graycolor hover:text-primary"/>
+                                                                className={`${startPostText ? 'cursor-pointer ' : 'cursor-not-allowed'}`}>
+                                                                <svg
+                                                                    className={`w-[24px] h-[24px] transition text-[#828D9E] ${startPostText ? 'text-primary' : ''}`}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="none"
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="1.5" strokeLinecap="round"
+                                                                    strokeLinejoin="round">
+                                                                    <path d="m3 3 3 9-3 9 19-9Z"/>
+                                                                    <path d="M6 12h16"/>
+                                                                </svg>
                                                             </div>
-
-                                                            {/* Start Post Reactions */}
-                                                            {showStartPostEmoji &&
-                                                                <div ref={emojiPickerRef}
-                                                                     className="comment_emoji z-[999] absolute bottom-[30px] left-0 lg:left-auto right-auto lg:right-0">
-                                                                    <Picker
-                                                                        data={data}
-                                                                        theme="light"
-                                                                        perLine={8}
-                                                                        emojiSize={22}
-                                                                        onEmojiSelect={addStartPostEmoji}
-                                                                        maxFrequentRows={0}
-                                                                        maxEmojiRows={2}
-                                                                    />
-                                                                </div>
-                                                            }
-                                                        </div>
-                                                        <div
-                                                            className={`${startPostText ? 'cursor-pointer ' : 'cursor-not-allowed'}`}>
-                                                            <svg
-                                                                className={`w-[24px] h-[24px] transition text-[#828D9E] ${startPostText ? 'text-primary' : ''}`}
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                                strokeWidth="1.5" strokeLinecap="round"
-                                                                strokeLinejoin="round">
-                                                                <path d="m3 3 3 9-3 9 19-9Z"/>
-                                                                <path d="M6 12h16"/>
-                                                            </svg>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -674,7 +746,7 @@ function Page() {
                                                 <>
                                                     <div className="flex items-center justify-between">
                                                         <div className="flex items-center gap-2">
-                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                             <div className="leading-[17px]">
                                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                                     Sony Inc.
@@ -973,7 +1045,7 @@ function Page() {
                                     <div
                                         className="mt-3 user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -992,7 +1064,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer bg-blue-50 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1011,7 +1083,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Sojib Hasan
@@ -1030,7 +1102,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1049,7 +1121,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1068,7 +1140,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1087,7 +1159,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1106,7 +1178,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1125,7 +1197,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1144,7 +1216,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1163,7 +1235,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1182,7 +1254,7 @@ function Page() {
                                     <div
                                         className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
                                                 <h4 className="text-[14px] text-prgcolor cursor-pointer">
                                                     Jeff Bently
@@ -1812,6 +1884,483 @@ function Page() {
                     </Modal.Footer>
                 </Modal>
                 {/* Start Message Pop-Up End */}
+
+                {/* Start Delete Conversation Pop-Up Start */}
+                <Modal size="lg"
+                       show={openDeleteConModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenDeleteConModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Delete Conversation</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-[14px] text-graycolor">
+                                Deleting a conversation only removes it from your account; the other person
+                                will still have access to it on their account. Once you delete this
+                                conversation, the action is irreversible.
+                            </h4>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenDeleteConModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenDeleteConModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Delete
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Delete Conversation Pop-Up End */}
+                {/* Start Block Message Pop-Up Start */}
+                <Modal size="lg"
+                       show={openBlockMesModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenBlockMesModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Block Messages</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-[14px] text-graycolor">
+                                Once you block this person, you will no longer receive messages from them.
+                                However, their account will still remain active on Marketplace.
+                            </h4>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenBlockMesModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={handleBlockClick}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Block
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Block Message Pop-Up End */}
+                {/* Start Block Message Confirm Pop-Up Start */}
+                <Modal size="lg"
+                       show={openBlockMesConfirmModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenBlockMesConfirmModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Unblock Messages</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-[14px] text-graycolor">
+                                Once you unblock this person, you will start receiving messages from them
+                                again. However, you won’t receive any messages that were sent while they
+                                were blocked.
+                            </h4>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenBlockMesConfirmModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={handleUnblockClick}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Unblock
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Block Message Confirm Pop-Up End */}
+
+                {/* Start ReportAdd Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report User</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this user. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harassment
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Bullying, verbal abuse, threats, etc.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Hate speech
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Encouraging derogatory remarks targeting a
+                                                particular group.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harmful behavior
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Spreading false information or conspiracy theories
+                                                that incite fear.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Violence
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Promoting violence, including self-harm or intending
+                                                harm to others.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(6)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={6}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Inappropriate Content
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Posting offensive, obscene, or rule-breaking content.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(7)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={7}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Impersonation
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Pretending to be someone else.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(8)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={8}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Defamation
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Damaging the good reputation of someone.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                                <div onClick={() => onChange(9)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={9}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Stalking
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Following, contacting, or monitoring in an intrusive or threatening way.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Next
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Pop-Up End */}
+
+                {/* Start ReportAdd Submit Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report User</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="mt-0 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                            <h4 className="text-[14px] text-prgcolor mt-4">
+                                Elaborate on your report (optional)
+                            </h4>
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a
+                                    crucial role in creating a safer and more trustworthy community for
+                                    everyone."
+                            >
+                            </textarea>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdSubmitModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitConfirmModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Submit Pop-Up End */}
+                {/* Start ReportAdd Submit confirm Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitConfirmModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitConfirmModal(false)}>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <PiHandsPrayingLight className="w-[50px] h-[50px] text-primary"/>
+                                </div>
+                                <h4 className="text-prgcolor text-[18px] mt-3">
+                                    Thank You for Your Feedback!
+                                </h4>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    We will review it and take appropriate action.
+                                </h4>
+                            </div>
+                        </div>
+                        <div className="mt-4 flex items-center justify-center w-full">
+                            <button onClick={handleAdSubmitButtonClick}
+                                    className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Close
+                            </button>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* Start ReportAdd Submit confirm Pop-Up End */}
             </section>
         </>
     )

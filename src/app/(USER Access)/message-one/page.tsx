@@ -215,7 +215,7 @@ function Page() {
                                                 <>
                                                     <div className="flex items-center justify-between">
                                                         <div className="flex items-center gap-2">
-                                                            <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                             <div className="leading-[17px]">
                                                                 <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
                                                                     Sony Inc.
