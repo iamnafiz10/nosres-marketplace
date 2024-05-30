@@ -652,8 +652,8 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="messages_wrap absolute top-[50px] h-[70%] pt-[5px] pb-[80px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
-                                                <div className="message w-[85%]">
+                                                className="messages_wrap absolute top-[41px] h-[70%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
+                                                <div className="message w-[85%] pt-[10px]">
                                                     <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
                                                         <h4 className="text-[14px] text-prgcolor">
                                                             Hello, John! How are you?
