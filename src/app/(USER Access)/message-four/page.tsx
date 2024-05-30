@@ -236,6 +236,11 @@ function Page() {
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
                                                             Roshan Nafiz
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Brothers, It is Excellent idea for got...
@@ -252,6 +257,11 @@ function Page() {
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
                                                             John Doe
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -287,8 +297,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -303,8 +318,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -319,8 +339,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -335,8 +360,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -351,8 +381,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -367,8 +402,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -383,8 +423,13 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -399,8 +444,55 @@ function Page() {
                                                 <div className="wrap w-full mr-4">
                                                     <div className="flex items-center justify-between gap-2">
                                                         <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
+                                                            Rikto Hossen
                                                         </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-graycolor">
+                                                        Excellent idea.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
+                                                <div className="icon">
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                </div>
+                                                <div className="wrap w-full mr-4">
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                            Rikto Hossen
+                                                        </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <h4 className="text-[12px] text-graycolor">
+                                                        Excellent idea.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
+                                                <div className="icon">
+                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                </div>
+                                                <div className="wrap w-full mr-4">
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                            Rikto Hossen
+                                                        </h4>
+                                                        <div className="date">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                May 17
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
                                                         Excellent idea.
@@ -472,9 +564,15 @@ function Page() {
                                                                                         d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
                                                                                 </svg>
                                                                             )}
-                                                                            <h4>
-                                                                                Mute notifications
-                                                                            </h4>
+                                                                            {isMuted ? (
+                                                                                <h4>
+                                                                                    Unmute notifications
+                                                                                </h4>
+                                                                            ) : (
+                                                                                <h4>
+                                                                                    Mute notifications
+                                                                                </h4>
+                                                                            )}
                                                                         </div>
 
                                                                         <div
@@ -500,8 +598,8 @@ function Page() {
                                                                                 Delete conversation
                                                                             </h4>
                                                                         </div>
-                                                                        <div onClick={() => setOpenBlockMesModal(true)}
-                                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                        <div
+                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                             <svg
                                                                                 className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
                                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -513,9 +611,17 @@ function Page() {
                                                                                 <circle cx="12" cy="12" r="10"/>
                                                                                 <path d="m4.9 4.9 14.2 14.2"/>
                                                                             </svg>
-                                                                            <h4>
-                                                                                Block
-                                                                            </h4>
+                                                                            {isBlocked ? (
+                                                                                <h4 onClick={() => setOpenBlockMesConfirmModal(true)}
+                                                                                    className="w-full text-left">
+                                                                                    Unblock
+                                                                                </h4>
+                                                                            ) : (
+                                                                                <h4 onClick={() => setOpenBlockMesModal(true)}
+                                                                                    className="w-full text-left">
+                                                                                    Block
+                                                                                </h4>
+                                                                            )}
                                                                         </div>
                                                                         <div onClick={() => setOpenReportAdModal(true)}
                                                                              className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
@@ -546,12 +652,12 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="messages_wrap absolute top-[50px] h-[70%] pt-[5px] pb-[80px] bg-white z-20 w-[95%] px-6 overflow-y-auto">
+                                                className="messages_wrap absolute top-[50px] h-[70%] pt-[5px] pb-[80px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
                                                 <div className="message w-[85%]">
                                                     <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
-                                                        <p className="text-[14px] text-prgcolor">
+                                                        <h4 className="text-[14px] text-prgcolor">
                                                             Hello, John! How are you?
-                                                        </p>
+                                                        </h4>
                                                     </div>
                                                     <span className="text-[12px] text-graycolor leading-none">
                                                         Oct 20, 2017, 1:22 AM
@@ -562,11 +668,11 @@ function Page() {
                                                     className="message flex w-[85%] mt-4 space-x-3 ml-auto justify-end">
                                                     <div className="wrap w-[220px]">
                                                         <div
-                                                            className="bg-gray-100 py-2 px-4 rounded-2xl rounded-br-none">
-                                                            <p className="text-[14px] text-prgcolor">
+                                                            className="bg-[#3197f5] py-2 px-4 rounded-2xl rounded-br-none">
+                                                            <h4 className="text-[14px] text-white">
                                                                 Hello, John! I’m good<br/>
                                                                 thanks.
-                                                            </p>
+                                                            </h4>
                                                         </div>
                                                         <span className="text-[12px] text-graycolor leading-none">
                                                             Oct 20, 2017, 1:23 AM
@@ -576,11 +682,11 @@ function Page() {
 
                                                 <div className="message w-[85%] mt-4">
                                                     <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
-                                                        <p className="text-[14px] text-prgcolor">
+                                                        <h4 className="text-[14px] text-prgcolor">
                                                             As a matter of security, we are unable to
                                                             assist with Account Security Issues. Please
                                                             reach out to the link we provided.
-                                                        </p>
+                                                        </h4>
                                                     </div>
                                                     <span className="text-[12px] text-graycolor leading-none">
                                                         Oct 20, 2017, 1:27 AM
@@ -591,11 +697,11 @@ function Page() {
                                                     className="message flex w-[85%] mt-4 space-x-3 ml-auto justify-end">
                                                     <div className="wrap w-[220px]">
                                                         <div
-                                                            className="bg-gray-100 py-2 px-4 rounded-2xl rounded-br-none">
-                                                            <p className="text-[14px] text-prgcolor">
+                                                            className="bg-[#3197f5] py-2 px-4 rounded-2xl rounded-br-none">
+                                                            <h4 className="text-[14px] text-white">
                                                                 Okay I will do<br/>
                                                                 As soon as possible.
-                                                            </p>
+                                                            </h4>
                                                         </div>
                                                         <span className="text-[12px] text-graycolor leading-none">
                                                             Oct 20, 2017, 1:29 AM
@@ -605,11 +711,11 @@ function Page() {
                                             </div>
                                             {isBlocked ? (
                                                 <div className="w-full absolute z-30 bg-white bottom-4">
-                                                    <div className="px-6 py-6">
-                                                        <h4 className="text-[16px] text-prgcolor">
+                                                    <div className="px-6 py-4">
+                                                        <h4 className="text-[14px] text-prgcolor">
                                                             You blocked messages from Jeff.
                                                         </h4>
-                                                        <h4 className="text-[14px] text-graycolor mt-1">
+                                                        <h4 className="text-[12px] text-graycolor mt-0">
                                                             You are unable to send messages within this conversation,
                                                             and you will not receive any messages either
                                                         </h4>
@@ -626,10 +732,10 @@ function Page() {
                                                         <input type="text"
                                                                value={startPostText}
                                                                onChange={(e) => setStartPostText(e.target.value)}
-                                                               className="mt-3 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
+                                                               className="mt-2 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
                                                                placeholder="Write a Message..."/>
                                                     </div>
-                                                    <div className="icon_box px-4 pb-6 w-full border-t">
+                                                    <div className="icon_box px-4 pb-4 w-full border-t">
                                                         <div className="flex items-center justify-between mt-3">
                                                             <div className="relative flex items-center gap-2">
                                                                 <div className="cursor-pointer">

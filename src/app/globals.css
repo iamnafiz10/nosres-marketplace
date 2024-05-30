@@ -11,6 +11,30 @@ body {
     background: rgba(164, 164, 164, 0.12);
 }
 
+/* Scrollbar Color */
+.messages_wrap {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.messages_wrap::-webkit-scrollbar {
+    width: 12px;
+}
+
+.messages_wrap::-webkit-scrollbar-track {
+    background: #ffffff !important;
+}
+
+.messages_wrap::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+
+.messages_wrap::-webkit-scrollbar-thumb:hover {
+    background: #ffffff !important;
+}
+
 p {
     color: #39393B !important;
     font-size: 16px !important;
