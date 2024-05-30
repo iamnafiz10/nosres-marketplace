@@ -248,7 +248,7 @@ function Page() {
                                                 </div>
                                             </div>
                                             <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-blue-50">
+                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
                                                     <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
@@ -508,7 +508,7 @@ function Page() {
                                                 <div className="user flex items-center gap-2">
                                                     <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                     <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                        Jeff Bently
+                                                        Brad Pitt
                                                     </h4>
                                                 </div>
 
@@ -652,7 +652,18 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="messages_wrap absolute top-[41px] h-[70%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
+                                                className="profile_box flex flex-col items-center justify-center absolute top-[50px] bg-white z-20 w-[100%]">
+                                                <div className="icon">
+                                                    <HiUserCircle size={60} className="text-[#6B7280]"/>
+                                                </div>
+                                                <h4 className="text-[16px] text-prgcolor">Brad Pitt</h4>
+                                                <h4 className="text-[12px] text-graycolor mt-1">
+                                                    You follow each other on Marketplace.
+                                                </h4>
+                                            </div>
+
+                                            <div
+                                                className="messages_wrap absolute top-[47%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
                                                 <div className="message w-[85%] pt-[10px]">
                                                     <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
                                                         <h4 className="text-[14px] text-prgcolor">
@@ -662,51 +673,6 @@ function Page() {
                                                     <span className="text-[10px] text-graycolor leading-none">
                                                         Oct 20, 2017, 1:22 AM
                                                     </span>
-                                                </div>
-
-                                                <div
-                                                    className="message flex w-[85%] mt-4 space-x-3 ml-auto justify-end">
-                                                    <div className="wrap w-[220px]">
-                                                        <div
-                                                            className="bg-[#3197f5] py-2 px-4 rounded-2xl rounded-br-none">
-                                                            <h4 className="text-[14px] text-white">
-                                                                Hello, John! I’m good<br/>
-                                                                thanks.
-                                                            </h4>
-                                                        </div>
-                                                        <span className="text-[10px] text-graycolor leading-none">
-                                                            Oct 20, 2017, 1:23 AM
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div className="message w-[85%] mt-4">
-                                                    <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
-                                                        <h4 className="text-[14px] text-prgcolor">
-                                                            As a matter of security, we are unable to
-                                                            assist with Account Security Issues. Please
-                                                            reach out to the link we provided.
-                                                        </h4>
-                                                    </div>
-                                                    <span className="text-[10px] text-graycolor leading-none">
-                                                        Oct 20, 2017, 1:27 AM
-                                                    </span>
-                                                </div>
-
-                                                <div
-                                                    className="message flex w-[85%] mt-4 space-x-3 ml-auto justify-end">
-                                                    <div className="wrap w-[220px]">
-                                                        <div
-                                                            className="bg-[#3197f5] py-2 px-4 rounded-2xl rounded-br-none">
-                                                            <h4 className="text-[14px] text-white">
-                                                                Okay I will do<br/>
-                                                                As soon as possible.
-                                                            </h4>
-                                                        </div>
-                                                        <span className="text-[10px] text-graycolor leading-none">
-                                                            Oct 20, 2017, 1:29 AM
-                                                        </span>
-                                                    </div>
                                                 </div>
                                             </div>
                                             {isBlocked ? (
@@ -1168,7 +1134,7 @@ function Page() {
                                         </div>
                                     </div>
                                     <div
-                                        className="user cursor-pointer bg-blue-50 pt-2 pb-4 flex items-center justify-between">
+                                        className="user cursor-pointer bg-white hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
                                         <div className="px-4 mt-2 flex items-center gap-2">
                                             <HiUserCircle size={40} className="text-[#6B7280]"/>
                                             <div className="wrap">
