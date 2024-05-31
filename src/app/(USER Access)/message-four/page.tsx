@@ -653,7 +653,7 @@ function Page() {
 
                                             <div
                                                 className="messages_wrap absolute top-[41px] h-[70%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
-                                                <div className="message w-[85%] pt-[10px]">
+                                                <div className="message w-[49%] pt-[10px]">
                                                     <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
                                                         <h4 className="text-[14px] text-prgcolor">
                                                             Hello, John! How are you?
@@ -680,7 +680,7 @@ function Page() {
                                                     </div>
                                                 </div>
 
-                                                <div className="message w-[85%] mt-4">
+                                                <div className="message w-[83%] mt-4">
                                                     <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
                                                         <h4 className="text-[14px] text-prgcolor">
                                                             As a matter of security, we are unable to
@@ -2201,7 +2201,7 @@ function Page() {
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
                                                 Encouraging derogatory remarks targeting a
-                                                particular group.
+                                                particular group
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -2225,7 +2225,7 @@ function Page() {
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
                                                 Spreading false information or conspiracy theories
-                                                that incite fear.
+                                                that incite fear
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -2249,7 +2249,7 @@ function Page() {
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
                                                 Promoting violence, including self-harm or intending
-                                                harm to others.
+                                                harm to others
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -2269,10 +2269,10 @@ function Page() {
                                         </div>
                                         <div className="content">
                                             <h4 className="text-[14px] font-[500] text-prgcolor">
-                                                Inappropriate Content
+                                                Inappropriate content
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Posting offensive, obscene, or rule-breaking content.
+                                                Posting offensive, obscene, or rule-breaking content
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -2295,7 +2295,7 @@ function Page() {
                                                 Impersonation
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Pretending to be someone else.
+                                                Pretending to be someone else
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -2318,7 +2318,7 @@ function Page() {
                                                 Defamation
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Damaging the good reputation of someone.
+                                                Damaging the good reputation of someone
                                             </h4>
                                         </div>
                                     </Radio.Group>
@@ -2340,7 +2340,7 @@ function Page() {
                                                 Stalking
                                             </h4>
                                             <h4 className="text-[12px] text-graycolor">
-                                                Following, contacting, or monitoring in an intrusive or threatening way.
+                                                Following, contacting, or monitoring in an intrusive or threatening way
                                             </h4>
                                         </div>
                                     </Radio.Group>
