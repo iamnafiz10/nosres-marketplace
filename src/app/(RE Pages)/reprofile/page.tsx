@@ -641,7 +641,7 @@ function Page() {
                                             Edit Profile
                                         </button>
 
-                                        <Link href='/profile-view'
+                                        <Link href='#'
                                               className="py-2 px-4 group rounded bg-gray-100 flex items-center gap-2 text-[14px] text-primary hover:text-white hover:bg-primary">
                                             <svg
                                                 className="w-4 h-4 group-hover:stroke-white"
