@@ -352,7 +352,7 @@ function Header() {
                                           className="group flex flex-col items-center relative">
                                         <div
                                             className="group-hover: absolute top-[33px] w-[35px] transition"></div>
-                                        {pathname === '/shopping-cart' ? (
+                                        {pathname === '/shopping-cart' || pathname === '/empty-cart' ? (
                                             <IoCart className="w-[26px] h-[22px] text-primary"/>
                                         ) : (
                                             <div className="relative">
@@ -364,7 +364,7 @@ function Header() {
                                                 </div>
                                             </div>
                                         )}
-                                        {pathname === '/shopping-cart' ? (
+                                        {pathname === '/shopping-cart' || pathname === '/empty-cart' ? (
                                             <div className="absolute w-full bg-primary h-[2px] top-[36px]"></div>
                                         ) : (
                                             <div></div>

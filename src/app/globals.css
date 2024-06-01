@@ -121,6 +121,10 @@ button {
     background: white !important;
 }
 
+.border-input {
+    border: none !important;
+}
+
 .filter_dropdown_checkout input {
     background-color: rgba(250, 250, 250, 0.73) !important;
 }

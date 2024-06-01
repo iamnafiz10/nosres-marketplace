@@ -17,10 +17,7 @@ import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
 import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {IoCameraOutline, IoSearchOutline} from "react-icons/io5";
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
 import {HiArrowLongLeft, HiArrowLongRight, HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
-import {FaStar} from "react-icons/fa";
 import {RxPlus} from "react-icons/rx";
 import {Checkbox} from "antd";
 import classnames from "classnames";
@@ -338,6 +335,35 @@ function Page() {
 
     // Review Popup
     const [openReviewModal, setOpenReviewModal] = useState<boolean>(false);
+
+    //----------- FilterStoreTab Dropdown Start --------------//
+    const [isOpenDropdownFilterStoreTab, setIsOpenDropdownFilterStoreTab] = useState(false);
+    const [selectedOptionFilterStoreTab, setSelectedOptionFilterStoreTab] = useState("Select"); // State to store the selected option
+    // Function to toggle the dropdown visibility
+    const toggleDropdownFilterStoreTab = () => {
+        setIsOpenDropdownFilterStoreTab(!isOpenDropdownFilterStoreTab);
+    };
+    // Function to handle selection of an option
+    const handleOptionSelectFilterStoreTab = (option: React.SetStateAction<string>) => {
+        setSelectedOptionFilterStoreTab(option);
+        setIsOpenDropdownFilterStoreTab(false); // Close the dropdown after selection
+    };
+    // Function to handle clicks outside the dropdown to close it
+    const dropdownFilterStoreTabRef = useRef(null);
+    const handleClickOutsideFilterStoreTab = (event: { target: any; }) => {
+        // @ts-ignore
+        if (dropdownFilterStoreTabRef.current && !dropdownFilterStoreTabRef.current.contains(event.target)) {
+            setIsOpenDropdownFilterStoreTab(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideFilterStoreTab);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideFilterStoreTab);
+        };
+    }, []);
+    //----------- FilterStoreTab Dropdown End --------------//
 
     return (
         <>
@@ -4523,6 +4549,14 @@ function Page() {
 
                             <div className="mt-[50px]">
                                 <h4 className="text-[14px] text-prgcolor">
+                                    Store Name
+                                </h4>
+                                <input type="text" placeholder="Store Name"
+                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <h4 className="text-[14px] text-prgcolor">
                                     Bio
                                 </h4>
                                 <textarea
@@ -4536,36 +4570,55 @@ function Page() {
                                 </h4>
                             </div>
 
-                            <div className="mt-4">
-                                <h4 className="text-[14px] text-prgcolor">
-                                    Current Position
-                                </h4>
-                                <input type="text" placeholder="Software Engineer"
-                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
-                            </div>
+                            <div className="input_box mt-4">
+                                <label htmlFor="carrier" className="text-[14px]">
+                                    Category
+                                </label><br/>
+                                <div className="flex text-[12px] items-center justify-start mt-1">
+                                    {/* FilterStoreTab dropdown */}
+                                    <div ref={dropdownFilterStoreTabRef}
+                                         onClick={toggleDropdownFilterStoreTab}
+                                         className="filter_dropdown_checkout z-20 cursor-pointer relative w-full">
+                                        <div
+                                            className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
+                                            <input value={selectedOptionFilterStoreTab} name="select"
+                                                   id="select"
+                                                   className="px-4 cursor-pointer border-input appearance-none outline-none text-gray-800 w-full"
+                                                   readOnly/>
+                                            <button type='button'
+                                                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300">
+                                                <RiArrowDropDownLine size={25}/>
+                                            </button>
+                                        </div>
 
-                            <div className="mt-4">
-                                <h4 className="text-[14px] text-prgcolor">
-                                    Degree
-                                </h4>
-                                <input type="text" placeholder="BSc in Computer Science"
-                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
-                            </div>
-
-                            <div className="mt-4">
-                                <h4 className="text-[14px] text-prgcolor">
-                                    School
-                                </h4>
-                                <input type="text" placeholder="Rice University"
-                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
-                            </div>
-
-                            <div className="mt-4">
-                                <h4 className="text-[14px] text-prgcolor">
-                                    Interests
-                                </h4>
-                                <input type="text" placeholder="Photography"
-                                       className="rounded mt-1 w-full py-1 px-3 border focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"/>
+                                        {isOpenDropdownFilterStoreTab && (
+                                            <div
+                                                className="absolute rounded shadow bg-white overflow-hidden w-full mt-1 border border-gray-200">
+                                                <div className="cursor-pointer"
+                                                     onClick={() => handleOptionSelectFilterStoreTab("Select")}>
+                                                    <div
+                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                        Select
+                                                    </div>
+                                                </div>
+                                                <div className="cursor-pointer"
+                                                     onClick={() => handleOptionSelectFilterStoreTab("Electronics")}>
+                                                    <div
+                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                        Electronics
+                                                    </div>
+                                                </div>
+                                                <div className="cursor-pointer"
+                                                     onClick={() => handleOptionSelectFilterStoreTab("T-Shirt")}>
+                                                    <div
+                                                        className="block p-2 border-transparent border-l-4 hover:border-primary hover:bg-gray-100">
+                                                        T-Shirt
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="mt-4">
@@ -4764,7 +4817,7 @@ function Page() {
                             <div className="sticky -top-[25px] z-10 bg-white pt-2 pb-4">
                                 <div className="review_filter">
                                     <h4 className="text-[14px] text-graycolor">
-                                        Here’s what customers say about this Store:
+                                        Here’s what customers say about this store:
                                     </h4>
                                     <div className="flex items-center gap-2 mt-2">
                                         <button type='button'
@@ -4793,7 +4846,7 @@ function Page() {
                                 </div>
                                 {/* Rating Filter */}
                                 <h4 className="text-[14px] text-graycolor mt-4">
-                                    Here’s how customers rate this product:
+                                    Here’s how customers rate this store:
                                 </h4>
                                 <div className="flex items-center gap-3 mt-1">
                                     <div className="flex items-center gap-2">
