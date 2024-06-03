@@ -133,7 +133,7 @@ function Page() {
                                 </h4>
                                 <h4 className="text-[14px] text-graycolor">
                                     Please submit your application using the secure online form below. If your
-                                    application fits our criteria, we will contact you within 5 business days.
+                                    application fits<br/> our criteria, we will contact you within 5 business days.
                                 </h4>
                             </>
                         )}
@@ -166,7 +166,7 @@ function Page() {
                                                 <input
                                                     type="text"
                                                     className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                                    placeholder="Enter the business name as it appears on the business registration document."
+                                                    placeholder="e.g., Acme LLC"
                                                 />
                                             </div>
                                             <div className="input_box mt-4">

@@ -1525,7 +1525,7 @@ export default function Home() {
                                                     <div
                                                         className="flex items-center text-[12px] text-graycolor justify-between px-2">
                                                         <div
-                                                            className={`c_icons flex items-center gap-6 ${hideComment ? 'cursor-not-allow' : 'cursor-pointer'}`}>
+                                                            className={`c_icons flex items-center gap-6 ${hideComment ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                                                             <div
                                                                 className="left flex items-center gap-0 group">
                                                                 <h4 className="group-hover:text-primary">Like</h4>

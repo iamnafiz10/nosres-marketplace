@@ -290,7 +290,7 @@ function Page() {
                             </div>
 
                             <div className="user_details mt-[50px] text-start pt-0 text-white">
-                                <div className="ml-[43px]">
+                                <div className="ml-[28px]">
                                     <h4 className='mt-3 text-[24px] font-semibold'>
                                         Robert Johnson
                                     </h4>
@@ -300,7 +300,7 @@ function Page() {
                                 </div>
 
                                 <div className="block md:flex w-full items-end justify-between">
-                                    <div className="ml-[40px] wrap">
+                                    <div className="ml-[26px] wrap">
                                         <div className="flex items-center gap-0 mt-4 text-[14px]">
                                             <div className="flex items-center gap-1">
                                                 <div className="icon">
@@ -319,7 +319,7 @@ function Page() {
                                                 </h4>
                                             </div>
                                             <div>
-                                                <LuDot size={17}/>
+                                                <LuDot size={15}/>
                                             </div>
                                             <div className="flex items-center gap-1">
                                                 <div className="icon">
@@ -354,7 +354,7 @@ function Page() {
                                                 className="cursor-pointer hover:underline">
                                                 26K followers
                                             </h4>
-                                            <LuDot size={17}/>
+                                            <LuDot size={15}/>
                                             <h4 onClick={() => setOpenStartFolloweesModal(true)}
                                                 className="cursor-pointer hover:underline">
                                                 26K followees
@@ -461,7 +461,7 @@ function Page() {
 
                             {/* Profile photo */}
                             <div onClick={() => setOpenStartProfileViewModal(true)}
-                                 className="absolute top-[105px] ml-[45px] w-[120px] profile_photo cursor-pointer">
+                                 className="absolute top-[105px] ml-[32px] w-[120px] profile_photo cursor-pointer">
                                 <Image src={ProfileImg}
                                        className="w-[120px] h-[120px] ring ring-white rounded-full"
                                        alt="ProfileImg"/>

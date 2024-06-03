@@ -664,15 +664,16 @@ function Page() {
 
                                             <div
                                                 className="messages_wrap absolute top-[47%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
-                                                <div className="message w-[49%] pt-[10px]">
-                                                    <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-none">
+                                                <div className="message pt-[10px]">
+                                                    <div
+                                                        className="bg-gray-100 inline-block p-3 rounded-2xl rounded-bl-none">
                                                         <h4 className="text-[14px] text-prgcolor">
                                                             Hello, John! How are you?
                                                         </h4>
                                                     </div>
-                                                    <span className="text-[10px] text-graycolor leading-none">
+                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
                                                         Oct 20, 2017, 1:22 AM
-                                                    </span>
+                                                    </h6>
                                                 </div>
                                             </div>
                                             {isBlocked ? (
@@ -1854,7 +1855,7 @@ function Page() {
                                         <HiUserCircle size={40} className="text-[#6B7280]"/>
                                         <div className="content">
                                             <h4 className="text-[14px] text-prgcolor">Jebon Hasan</h4>
-                                            <h4 className="text-[12px] text-graycolor">Follow Each Other</h4>
+                                            <h4 className="text-[12px] text-graycolor">Follow each Other</h4>
                                         </div>
                                     </div>
                                 </div>

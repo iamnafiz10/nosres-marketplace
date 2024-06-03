@@ -24,7 +24,7 @@ function Page() {
                         </h4>
                         <div className="block items-center justify-center w-full mt-4">
                             <button type='button'
-                                    className="text-[14px] py-2 px-6 w-full bg-transparent border text-primary rounded hover:bg-primary hover:text-white">
+                                    className="text-[14px] py-2 px-6 w-full bg-primary border text-white rounded hover:bg-transparent hover:text-primary">
                                 Browse Categories
                             </button>
                         </div>

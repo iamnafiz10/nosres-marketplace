@@ -16,14 +16,17 @@ import useLoading from "@/app/useLoading";
 import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
 import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
-import {IoCameraOutline, IoSearchOutline} from "react-icons/io5";
+import {IoCameraOutline, IoLockClosed, IoSearchOutline} from "react-icons/io5";
 import {HiArrowLongLeft, HiArrowLongRight, HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
-import {RxPlus} from "react-icons/rx";
-import {Checkbox} from "antd";
+import {RxCross1, RxPlus} from "react-icons/rx";
+import {Checkbox, Radio, RadioChangeEvent} from "antd";
 import classnames from "classnames";
 import {RiArrowDropDownLine} from "react-icons/ri";
 import ProductImg from "../../../../public/assets/images/product.png";
 import {TiStarFullOutline} from "react-icons/ti";
+import {FaAngleDown, FaUsers} from "react-icons/fa6";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
 
 function Page() {
     const loading = useLoading();
@@ -365,6 +368,94 @@ function Page() {
     }, []);
     //----------- FilterStoreTab Dropdown End --------------//
 
+    // Popup Start post Emoji Input
+    const [showStartPostEmoji, setShowStartPostEmoji] = useState(false);
+    const [startPostText, setStartPostText] = useState("");
+    const addStartPostEmoji = (e: { unified: string }) => {
+        const hexCodePoint = e.unified.toLowerCase(); // Convert to lowercase for consistency
+        // Check if hexCodePoint is a valid hexadecimal Unicode code point
+        if (/^[0-9a-f]+$/.test(hexCodePoint)) {
+            const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
+            if (!isNaN(codePoint)) {
+                const emoji = String.fromCodePoint(codePoint);
+                setStartPostText(startPostText + emoji);
+            } else {
+                console.error("Invalid Unicode code point:", e.unified);
+            }
+        } else {
+            console.error("Invalid Unicode code point:", e.unified);
+        }
+    };
+    // Function to handle OutSide Click
+    const modalRef = useRef(null);
+    const emojiPickerRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: { target: any; }) => {
+            if (
+                modalRef.current &&
+                // @ts-ignore
+                !modalRef.current.contains(event.target) &&
+                showStartPostEmoji &&
+                emojiPickerRef.current &&
+                // @ts-ignore
+                !emojiPickerRef.current.contains(event.target)
+            ) {
+                setShowStartPostEmoji(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showStartPostEmoji]);
+
+    //-------------------------- Popup Area ------------------//
+    const [openStartPostModal, setOpenStartPostModal] = useState<boolean>(false);
+    const handleWritePostPopUpClickCancel = () => {
+        setOpenStartPostModal(false)
+        setStartPostText("")
+    }
+
+    // Image Upload Function
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+    const fileInputRefMe = useRef<HTMLInputElement | null>(null);
+    // Profile image Popup
+    const [openProfileImageMeModal, setOpenProfileImageMeModal] = useState<boolean>(false);
+
+    const handleFileChangeMe = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files: FileList | null = event.target.files;
+        if (files) {
+            const fileList = Array.from(files);
+            setSelectedFiles([...selectedFiles, ...fileList]);
+        }
+    };
+
+    const handleRemoveClickMe = (index: number) => {
+        const newFiles = [...selectedFiles];
+        newFiles.splice(index, 1);
+        setSelectedFiles(newFiles);
+    };
+
+    const handleCancelClickMe = () => {
+        setSelectedFiles([]);
+        setOpenProfileImageMeModal(false);
+    };
+
+    const handleSaveClickMe = () => {
+        setSelectedFiles([]);
+        setOpenProfileImageMeModal(false);
+    };
+
+    //  Audience popup
+    const [openStartAudienceModal, setOpenStartAudienceModal] = useState<boolean>(false);
+    // Radio
+    const [value, setValue] = useState(1);
+    const onChange = (newValue: number) => {
+        setValue(newValue);
+    };
+
     return (
         <>
             <section id="profile-section">
@@ -401,7 +492,7 @@ function Page() {
                     </div>
                 </div>
 
-                <div className="user_top_details mt-[0px] h-[480px] md:h-[400px]">
+                <div className="user_top_details mt-[0px] h-[580px] md:h-[400px]">
                     <div className="container">
                         <div className="relative">
                             {/* Cover photo */}
@@ -423,7 +514,7 @@ function Page() {
 
                                 <div className="block md:flex w-full items-end justify-between">
                                     <div className="ml-[40px] wrap">
-                                        <div className="flex items-center gap-0 mt-4 text-[14px]">
+                                        <div className="block md:flex items-center gap-0 mt-4 text-[14px]">
                                             <div className="flex items-center gap-1">
                                                 <div className="icon">
                                                     <svg
@@ -440,18 +531,19 @@ function Page() {
                                                     Taipei, Taiwan
                                                 </h4>
                                             </div>
-                                            <div>
+                                            <div className="hidden md:block">
                                                 <LuDot size={17}/>
                                             </div>
-                                            <div className="flex items-center gap-1">
+                                            <div className="flex items-center gap-1 mt-2 md:mt-0">
                                                 <div className="icon">
                                                     <svg
                                                         className="w-4 h-4"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                            24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"
+                                                        24" fill="none" stroke="#ffffff" strokeWidth="1.5"
+                                                        strokeLinecap="round"
                                                         strokeLinejoin="round">
                                                         <path d="M8
-                                            2v4"/>
+                                                        2v4"/>
                                                         <path d="M16 2v4"/>
                                                         <rect width="18" height="18" x="3" y="4" rx="2"/>
                                                         <path
@@ -459,24 +551,23 @@ function Page() {
                                                         <path d="M8 14h.01"/>
                                                         <path d="M12 14h.01"/>
                                                         <path d="M16
-                                            14h.01"/>
+                                                         14h.01"/>
                                                         <path d="M8 18h.01"/>
                                                         <path d="M12 18h.01"/>
                                                         <path d="M16
-                                            18h.01"/>
+                                                        18h.01"/>
                                                     </svg>
                                                 </div>
                                                 <h4>
-                                                    Opened
+                                                    Opened May 2024
                                                 </h4>
                                             </div>
-
-                                            <div>
+                                            <div className="hidden md:block">
                                                 <LuDot size={17}/>
                                             </div>
 
-                                            <div className="relative flex items-center gap-1">
-                                                <div className="star_wrap mt-1 flex items-center gap-1">
+                                            <div className="relative block md:flex items-center gap-1">
+                                                <div className="star_wrap flex items-center gap-1">
                                                     <TiStarFullOutline className="w-4 h-4 text-white"/>
                                                     <TiStarFullOutline className="w-4 h-4 text-white"/>
                                                     <TiStarFullOutline className="w-4 h-4 text-white"/>
@@ -486,12 +577,12 @@ function Page() {
                                                         (5)
                                                     </h4>
                                                 </div>
-                                                <div className="icon mt-1">
+                                                <div className="icon hidden md:block">
                                                     <LuDot size={15} className='text-white'/>
                                                 </div>
                                                 <div ref={ratingRef}>
                                                     <h4 onClick={handleRatingClick}
-                                                        className="mt-1 hover:underline cursor-pointer text-[14px] text-white">
+                                                        className="hover:underline cursor-pointer text-[14px] text-white">
                                                         223 Ratings
                                                     </h4>
                                                     {/* Rating dropdown */}
@@ -631,11 +722,11 @@ function Page() {
                                                         </div>
                                                     }
                                                 </div>
-                                                <div className="icon mt-1">
+                                                <div className="icon hidden md:block">
                                                     <LuDot size={15} className='text-white'/>
                                                 </div>
                                                 <h4 onClick={() => setOpenReviewModal(true)}
-                                                    className="mt-1 hover:underline cursor-pointer text-[14px] text-white">
+                                                    className="hover:underline cursor-pointer text-[14px] text-white">
                                                     23 Reviews
                                                 </h4>
                                             </div>
@@ -840,6 +931,60 @@ function Page() {
                                                 </ul>
                                             </div>
                                             <div className="post_wrap mt-6 lg:mt-0 w-full lg:w-[495px]">
+
+                                                <div className="write_post mb-4 box py-2 px-4 bg-white rounded">
+                                                    {loading ? (
+                                                        <div className="flex items-center justify-start gap-2 w-full">
+                                                            <Skeleton width={50} height={50} borderRadius="100%"
+                                                                      count={1}/>
+                                                            <Skeleton containerClassName="flex-1" height={50}
+                                                                      count={1}/>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <div className="flex items-center justify-between gap-4">
+                                                                <div className="w-full flex items-center whats_new">
+                                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                                    <input
+                                                                        onClick={() => setOpenStartPostModal(true)}
+                                                                        readOnly
+                                                                        className="mt-1 rounded w-full py-1 px-1 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                                                        type="text"
+                                                                        placeholder="What’s new, UpTown Store?"
+                                                                    />
+                                                                </div>
+
+                                                                <div className="flex items-center gap-4">
+                                                                    <div className="cursor-pointer">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             viewBox="0 0 24 24"
+                                                                             fill="#4D7FB8"
+                                                                             className="w-5 h-5">
+                                                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                                                  clipRule="evenodd"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div className="cursor-pointer">
+                                                                        <svg
+                                                                            className="w-5 h-5 hover:fill-primary transition"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24"
+                                                                            fill="#828D9E">
+                                                                            <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0
+                                                        1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0
+                                                        18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
+
                                                 {/* Post Box Profile One */}
                                                 <div className="post_box_wrap">
                                                     <div className="box bg-white px-4 py-4 rounded rounded-b-none">
@@ -5168,6 +5313,352 @@ function Page() {
                     {/*</Modal.Footer>*/}
                 </Modal>
                 {/* Review Pop-Up End */}
+
+                {/*----------------------- Modal Show Area  ---------------*/}
+                {/* Start Post Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartPostModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartPostModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Start a Post</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex items-center gap-1">
+                                <HiUserCircle size={50} className="text-graycolor"/>
+                                <h4 className="text-[14px] text-prgcolor font-[500] hover:underline">John Doe</h4>
+
+                                <div onClick={() => setOpenStartAudienceModal(true)}
+                                     className="dropdown_menu ml-2">
+                                    <button type='button'
+                                            className="py-1 px-6 rounded relative text-[14px] bg-gray-100">
+                                        <IoMdGlobe size={15}
+                                                   className="text-graycolor absolute left-1 top-1/2 transform -translate-y-1/2"/>
+                                        Anyone
+                                        <FaAngleDown size={13}
+                                                     className="text-prgcolor absolute right-1 top-1/2 transform -translate-y-1/2"/>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div ref={modalRef} className="mt-4 px-0">
+                                <div className="whats_new">
+                                    <textarea
+                                        rows={2}
+                                        value={startPostText}
+                                        onChange={(e) => setStartPostText(e.target.value)}
+                                        className="rounded w-full py-1 px-0 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                        placeholder="What’s new, UpTown Store?">
+                                    </textarea>
+                                </div>
+
+                                <div className="flex items-center gap-2 mt-2">
+                                    <div onClick={() => setOpenProfileImageMeModal(true)}
+                                         className="cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                             fill="#4D7FB8"
+                                             className="w-6 h-6">
+                                            <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
+                                                        1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
+                                                        16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
+                                                        0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
+                                                        16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                                  clipRule="evenodd"/>
+                                        </svg>
+                                    </div>
+
+                                    <div onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
+                                         className="cursor-pointer"
+                                    >
+                                        <GoSmiley
+                                            size={20}
+                                            className="text-graycolor hover:text-primary"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="relative flex w-full items-center justify-between">
+                            <button onClick={handleWritePostPopUpClickCancel}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartPostModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Post
+                            </button>
+
+                            {/* Start Post Reactions */}
+                            {showStartPostEmoji &&
+                                <div ref={emojiPickerRef}
+                                     className="comment_emoji z-[999] absolute -top-[70px] right-0">
+                                    <Picker
+                                        data={data}
+                                        theme="light"
+                                        perLine={8}
+                                        emojiSize={22}
+                                        onEmojiSelect={addStartPostEmoji}
+                                        maxFrequentRows={0}
+                                        maxEmojiRows={2}
+                                    />
+                                </div>
+                            }
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Post Pop-Up End */}
+
+                {/* Profile Picture Post Pop-Up Start */}
+                <Modal size="lg" show={openProfileImageMeModal}
+                       onClose={() => setOpenProfileImageMeModal(false)}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 10%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                >
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Upload photos</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body box">
+                            <div className="flex items-center justify-between">
+                                <div className="left">
+                                    {selectedFiles.length > 0 ? (
+                                        selectedFiles.map((file, index) => (
+                                            <div key={index} className="mb-4 relative inline-block">
+                                                <Image
+                                                    src={URL.createObjectURL(file)}
+                                                    width={100}
+                                                    height={100}
+                                                    alt={`Uploaded Preview ${index}`}
+                                                    className="w-full h-full object-cover rounded"
+                                                />
+                                                <button
+                                                    className="absolute top-0 right-0 -mt-2 -mr-2 p-1 bg-gray-100 hover:bg-red-600 group rounded-full"
+                                                    onClick={() => handleRemoveClickMe(index)}
+                                                >
+                                                    <RxCross1 size={15}
+                                                              className="text-primary group-hover:text-white"/>
+                                                </button>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div>
+
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="image-upload">
+                                <div className="flex items-center justify-center w-full">
+                                    <label
+                                        htmlFor="dropzone-file"
+                                        className="flex flex-col items-center justify-center w-full h-28 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100"
+                                    >
+                                        <div
+                                            className="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <HiOutlineCloudArrowUp
+                                                className="w-8 h-8 mb-4 text-gray-500"/>
+                                            <p className="mb-2 text-sm text-gray-500">
+                                                                    <span
+                                                                        className="font-semibold">Click to upload</span> or
+                                                drag and drop
+                                            </p>
+                                            <p className="text-xs text-gray-500">
+                                                SVG, PNG, JPG or GIF (MAX. 800x400px)
+                                            </p>
+                                        </div>
+                                        <input
+                                            id="dropzone-file"
+                                            type="file"
+                                            className="hidden"
+                                            onChange={(event) => handleFileChangeMe(event)}
+                                            ref={fileInputRefMe}
+                                            multiple // Allow multiple file selection
+                                        />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button
+                                onClick={handleCancelClickMe}
+                                className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded"
+                            >
+                                Back
+                            </button>
+                            <button
+                                onClick={handleSaveClickMe}
+                                className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded"
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Profile Picture Post Pop-Up End */}
+
+                {/* Start Audience Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartAudienceModal}
+                       style={{
+                           backgroundColor: 'rgb(17 24 39 / 10%)',
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartAudienceModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Select Your Audience</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div ref={modalRef} className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Choose who can see your post. Your posy will appear on the feed,
+                                your profile,
+                                and in search results.
+                            </h4>
+
+                            <div className="mt-4">
+                                <div onClick={() => onChange(1)}
+                                     className="box cursor-pointer py-2 px-4 border rounded">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <IoMdGlobe
+                                                className="w-[17px] h-[17px] text-graycolor mt-1"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Anyone
+                                                </h4>
+                                                <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                    Anyone on or off Nosres Marketplace
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <FaUsers
+                                                className="w-[16px] h-[17px] text-graycolor mt-1"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    Followers only
+                                                </h4>
+                                                <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                    Your followers on Nosres Marketplace
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+
+                                <div onClick={() => onChange(3)}
+                                     className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-center justify-between">
+                                        <div className="flex items-start gap-2">
+                                            <IoLockClosed
+                                                className="w-[17px] h-[17px] text-graycolor mt-1"/>
+                                            <div className="content">
+                                                <h4 className="text-[14px] text-prgcolor">
+                                                    No one
+                                                </h4>
+                                                <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                    Only you
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartAudienceModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenStartAudienceModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">Save
+                            </button>
+
+                            {/* Start Post Reactions */}
+                            {showStartPostEmoji &&
+                                <div ref={emojiPickerRef}
+                                     className="comment_emoji z-[999] fixed top-[60%] lg:top-1/2 right-4 lg:right-20 transform -translate-y-1/2">
+                                    <Picker
+                                        data={data}
+                                        theme="light"
+                                        perLine={8}
+                                        emojiSize={22}
+                                        onEmojiSelect={addStartPostEmoji}
+                                        maxFrequentRows={0}
+                                        maxEmojiRows={2}
+                                    />
+                                </div>
+                            }
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Audience Pop-Up End */}
             </section>
         </>
     );

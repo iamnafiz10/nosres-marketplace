@@ -523,9 +523,9 @@ function Header() {
                                             className="group-hover: absolute top-[33px] w-[35px] transition"></div>
                                         <div className="dropdown inline-block relative">
                                             <div
-                                                className="text-center cursor-pointer text-prgcolor transition relative">
+                                                className="text-center -mt-[3px] cursor-pointer text-prgcolor transition relative">
                                                 <HiUserCircle
-                                                    className={`w-[25px] h-[26px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
+                                                    className={`w-[29px] h-[29px] profile_icon ${isAccountVisible ? 'text-primary' : 'text-gray-500'}`}/>
                                             </div>
                                             {isAccountVisible &&
                                                 <div

@@ -272,7 +272,7 @@ function Page() {
 
                                                     <div className="input_box mt-4">
                                                         <label htmlFor="carrier" className="text-[14px]">
-                                                            Sub Category
+                                                            Subcategory
                                                         </label><br/>
                                                         <div
                                                             className="flex text-[12px] items-center justify-start mt-1">
