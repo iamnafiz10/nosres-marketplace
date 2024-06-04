@@ -5690,7 +5690,7 @@ function Page() {
                                 <br/>
                                 <br/>
                                 UpTown Store will no longer be able to to view your posts on your timeline,
-                                tag you, initiate a conversation with you, or re-follow you
+                                tag you, initiate a conversation with you, or re-follow you.
                             </h4>
                         </div>
                     </Modal.Body>
