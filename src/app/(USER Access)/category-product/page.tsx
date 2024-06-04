@@ -1,6 +1,6 @@
 "use client";
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Checkbox} from "antd";
+import {Checkbox, Radio, RadioChangeEvent} from "antd";
 import ProductImg from '@/../public/assets/images/product.png';
 import {RxPlus} from "react-icons/rx";
 import "@/app/multiRangeSlider/multiRangeSlider.css";
@@ -24,7 +24,8 @@ import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {LuDot} from "react-icons/lu";
 import {TiStarFullOutline} from "react-icons/ti";
-import {IoCartOutline} from "react-icons/io5";
+import {IoCartOutline, IoSearchOutline} from "react-icons/io5";
+import {PiHandsPrayingLight} from "react-icons/pi";
 
 function Page() {
     const loading = useLoading();
@@ -181,6 +182,42 @@ function Page() {
     const [openStartProductViewModal, setOpenStartProductViewModal] = useState<boolean>(false);
     // Review Popup
     const [openReviewModal, setOpenReviewModal] = useState<boolean>(false);
+
+    // Post Message Popup
+    const [openStartPostMessageModal, setOpenStartPostMessageModal] = useState<boolean>(false);
+
+    const [checkedItems, setCheckedItems] = useState<CheckedItems>({});
+
+    interface CheckedItems {
+        [key: string]: boolean;
+    }
+
+    const handleBoxClick = (itemName: string) => {
+        setCheckedItems((prevState: CheckedItems) => {
+            const updatedState: CheckedItems = {...prevState};
+            updatedState[itemName] = !prevState[itemName];
+            return updatedState;
+        });
+    };
+
+    // Feedback Ad / Report Ad popup
+    const [openFeedbackAdModal, setOpenFeedbackAdModal] = useState<boolean>(false);
+    const [openReportAdModal, setOpenReportAdModal] = useState<boolean>(false);
+    const [openReportAdSubmitModal, setOpenReportAdSubmitModal] = useState<boolean>(false);
+    const [openReportAdSubmitDoneModal, setOpenReportAdSubmitDoneModal] = useState<boolean>(false);
+    const handleAdSubmitButtonClick = () => {
+        setOpenReportAdSubmitModal(false);
+        setOpenReportAdModal(false);
+        setOpenReportAdSubmitDoneModal(false);
+    }
+    const handleFeedbackSubmitButtonClick = () => {
+        setOpenFeedbackAdModal(false);
+    }
+    // Radio
+    const [value, setValue] = useState(1);
+    const onChange = (newValue: number) => {
+        setValue(newValue);
+    };
     return (
         <>
             <section id="category-product-section">
@@ -739,7 +776,8 @@ function Page() {
                         <div className="modal_body">
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                                 <div className="col md:col-span-7">
-                                    <div className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
+                                    <div
+                                        className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                         <Carousel slide={false} indicators={false}>
                                             <Image src={SliderOneImg} className="slider_image"
                                                    alt="SliderOneImg"/>
@@ -966,6 +1004,7 @@ function Page() {
                                                                     <div className="container py-2">
                                                                         <div className="space-y-1 text-[14px]">
                                                                             <div
+                                                                                onClick={() => setOpenStartPostMessageModal(true)}
                                                                                 className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <GoSync
                                                                                     className="w-[14px] h-[14px] transition duration-75 text-[#6B7280] group-hover:text-primary"/>
@@ -975,6 +1014,7 @@ function Page() {
                                                                             </div>
 
                                                                             <div
+                                                                                onClick={() => setOpenReportAdModal(true)}
                                                                                 className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
@@ -1546,6 +1586,648 @@ function Page() {
                     {/*</Modal.Footer>*/}
                 </Modal>
                 {/* Review Pop-Up End */}
+
+                {/* Start Post Message Pop-Up Start */}
+                <Modal size="lg"
+                       show={openStartPostMessageModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenStartPostMessageModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Share Product</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="top_content sticky z-[999] -top-[25px] bg-white">
+                                <div className="w-full px-2 flex items-center whats_new">
+                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                    <input
+                                        className="mt-1 rounded w-full py-1 px-1 border-transparent focus:border-transparent focus:ring focus:ring-transparent text-[#ABABAB] text-[14px] focus:outline-none"
+                                        type="text"
+                                        placeholder="Write a message..."
+                                    />
+                                </div>
+
+                                <div className="px-2 py-2 mt-4 flex items-center gap-4 bg-gray-100 rounded">
+                                    <div className="flex items-center gap-1">
+                                        <Image src={SliderOneImg} className="w-12" alt="ProductImg"/>
+                                        <h4 className="text-[14px] font-semibold text-prgcolor">
+                                            Playstation X - Best Gaming Experience (Black)
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div className="px-0 pb-2 bg-white mt-4">
+                                    <div className="relative w-full">
+                                        <input
+                                            type="text"
+                                            className="border w-full text-[14px] text-prgcolor border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                            placeholder="Search name"
+                                        />
+
+                                        <div className="absolute left-0 inset-y-0 flex items-center justify-between">
+                                            <IoSearchOutline
+                                                className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="scroll_content mt-4">
+                                <label onClick={() => handleBoxClick('item1')}>
+                                    <div
+                                        className={`box cursor-pointer py-2 px-2 border rounded ${checkedItems['item1'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item1'] ? ['1'] : []}
+                                            onChange={(values) => handleBoxClick('item1')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Robert Johnson</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="1"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item2')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item2'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item2'] ? ['2'] : []}
+                                            onChange={(values) => handleBoxClick('item2')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Jeff Bently</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="2"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item3')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item3'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item3'] ? ['3'] : []}
+                                            onChange={(values) => handleBoxClick('item3')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Cindy Summerfield</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="3"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item4')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item4'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item4'] ? ['4'] : []}
+                                            onChange={(values) => handleBoxClick('item4')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Cindy Summerfield</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="4"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                                <label onClick={() => handleBoxClick('item5')}>
+                                    <div
+                                        className={`box mt-4 cursor-pointer py-2 px-2 border rounded${checkedItems['item5'] ? ' border-primary' : ''}`}>
+                                        <Checkbox.Group
+                                            className="flex items-center justify-between"
+                                            value={checkedItems['item5'] ? ['5'] : []}
+                                            onChange={(values) => handleBoxClick('item5')}
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <HiUserCircle size={40} className="text-[#6B7280]"/>
+                                                <div className="content">
+                                                    <h4 className="text-[14px] text-prgcolor">Cindy Summerfield</h4>
+                                                </div>
+                                            </div>
+                                            <div className="radio_box">
+                                                <Checkbox value="5"/>
+                                            </div>
+                                        </Checkbox.Group>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenStartPostMessageModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenStartPostMessageModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Send
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start Post Message Pop-Up End */}
+
+                {/* Start ReportAdd Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Product</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this product. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Illegal goods
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is prohibited by law.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Counterfeit products
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is described with false or deceptive information, images, or
+                                                claims.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Misleading information
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Misleading descriptions, images, or claims about products.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Poor quality
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is significantly lower in quality than advertised.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Expired goods
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is past its expiration date.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(6)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={6}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Inappropriate content
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product includes offensive, obscene, or inappropriate content.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(7)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={7}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Incorrect category
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is listed under the wrong category, making it difficult to
+                                                find.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(8)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={8}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Unauthorized use
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product description or images use copyrighted material without
+                                                permission.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(9)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={9}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Fraudulent claims
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                he product is advertised with false claims about its benefits or
+                                                features.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(10)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={10}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Overpricing
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is significantly overpriced compared to similar items.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(11)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={11}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Unavailable product
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is listed but not actually available for purchase.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(12)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={12}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Duplicate listing
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The same product is listed multiple times to manipulate search results.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(13)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={13}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Incorrect information
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product details are incorrect, such as wrong dimensions or
+                                                materials.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(14)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={14}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Safety concerns
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product poses a risk to health or safety.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Next
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Pop-Up End */}
+
+                {/* Start ReportAdd Submit Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report Store</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="mt-0 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Illegal goods
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                The product is prohibited by law.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                            <h4 className="text-[14px] text-prgcolor mt-4">
+                                Elaborate on your report (optional)
+                            </h4>
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a crucial role in creating a safer and more trustworthy community for everyone.">
+                            </textarea>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdSubmitModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitDoneModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Submit Pop-Up End */}
+
+                {/* Start ReportAdd Submit Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitDoneModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitDoneModal(false)}>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <PiHandsPrayingLight className="w-[50px] h-[50px] text-primary"/>
+                                </div>
+                                <h4 className="text-prgcolor text-[18px] mt-3">
+                                    Thank You for Your Feedback!
+                                </h4>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    We will review it and take appropriate action.
+                                </h4>
+                                <button onClick={handleAdSubmitButtonClick}
+                                        className="px-10 mt-6 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* Start ReportAdd Submit Pop-Up End */}
             </section>
         </>
     );
