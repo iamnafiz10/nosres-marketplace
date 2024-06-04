@@ -20,6 +20,8 @@ import {IoCameraOutline, IoSearchOutline} from "react-icons/io5";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import {HiOutlineChatBubbleLeft, HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
+import {Radio, RadioChangeEvent} from "antd";
+import {PiHandsPrayingLight} from "react-icons/pi";
 
 function Page() {
     const loading = useLoading();
@@ -243,6 +245,24 @@ function Page() {
         };
     }, []);
 
+    // Block Message Modal
+    const [openBlockMesModal, setOpenBlockMesModal] = useState<boolean>(false);
+
+    // Radio
+    const [value, setValue] = useState(1);
+    const onChange = (newValue: number) => {
+        setValue(newValue);
+    };
+    
+    // Feedback Ad / Report Ad popup
+    const [openReportAdModal, setOpenReportAdModal] = useState<boolean>(false);
+    const [openReportAdSubmitModal, setOpenReportAdSubmitModal] = useState<boolean>(false);
+    const [openReportAdSubmitConfirmModal, setOpenReportAdSubmitConfirmModal] = useState<boolean>(false);
+    const handleAdSubmitButtonClick = () => {
+        setOpenReportAdSubmitModal(false);
+        setOpenReportAdModal(false);
+        setOpenReportAdSubmitConfirmModal(false);
+    }
     return (
         <>
             <section id="profile-section">
@@ -464,8 +484,8 @@ function Page() {
                                                         className="dots-dropdown-menu w-[300px] absolute top-[15px] right-0 bg-white rounded shadow border">
                                                         <div className="container py-2">
                                                             <div className="space-y-1 text-[14px]">
-                                                                <div
-                                                                    className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                <div onClick={() => setOpenReportAdModal(true)}
+                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                     <div className="icon">
                                                                         <svg
                                                                             className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
@@ -485,8 +505,8 @@ function Page() {
                                                                         Report profile
                                                                     </h4>
                                                                 </div>
-                                                                <div
-                                                                    className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                <div onClick={() => setOpenBlockMesModal(true)}
+                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                     <div className="icon">
                                                                         <svg
                                                                             className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
@@ -4022,7 +4042,7 @@ function Page() {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                    <div className="flex w-full items-center justify-between">
+                        <div className="flex w-full items-center justify-between">
                             <button onClick={() => setOpenStartEditProfileModal(false)}
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
@@ -4181,6 +4201,403 @@ function Page() {
                     </Modal.Footer>
                 </Modal>
                 {/* Cover Picture Pop-Up End */}
+
+                {/* Start Block Message Pop-Up Start */}
+                <Modal size="lg"
+                       show={openBlockMesModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenBlockMesModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Block User</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-[14px] text-graycolor">
+                                Are you sure you want to block Robert Johnson?
+                                <br/>
+                                <br/>
+                                Robert Johnson will no longer be able to to view your posts on your timeline,
+                                tag you, initiate a conversation with you, or re-follow you.
+                            </h4>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenBlockMesModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenBlockMesModal(false)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Block
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Block Message Pop-Up End */}
+
+                {/* Start ReportAdd Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdModal}
+                       style={{
+                           padding: '0px',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report User</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <h4 className="text-graycolor text-[14px]">
+                                Please share your reasons for reporting this user. Your feedback is crucial
+                                for maintaining a safer and more trustworthy environment for all.
+                            </h4>
+
+                            <div className="mt-4 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(2)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={2}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harassment
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Bullying, verbal abuse, threats, etc.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(3)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={3}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Hate speech
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Encouraging derogatory remarks targeting a
+                                                particular group
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(4)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={4}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Harmful behavior
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Spreading false information or conspiracy theories
+                                                that incite fear
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(5)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={5}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Violence
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Promoting violence, including self-harm or intending
+                                                harm to others
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(6)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={6}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Inappropriate content
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Posting offensive, obscene, or rule-breaking content
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(7)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={7}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Impersonation
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Pretending to be someone else
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+
+                                <div onClick={() => onChange(8)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={8}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Defamation
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Damaging the good reputation of someone
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                                <div onClick={() => onChange(9)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={9}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Stalking
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Following, contacting, or monitoring in an intrusive or threatening way
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Cancel
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Next
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Pop-Up End */}
+
+                {/* Start ReportAdd Submit Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitModal(false)}>
+                    <Modal.Header
+                        style={{
+                            height: '50px',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h4 className="text-[16px]">Report User</h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="mt-0 space-y-3">
+                                <div onClick={() => onChange(1)}
+                                     className="cursor-pointer">
+                                    <Radio.Group
+                                        onChange={(e: RadioChangeEvent) => {
+                                            // Handle radio button change here
+                                            // onChange(newValue);
+                                        }}
+                                        value={value}
+                                        className="flex items-start justify-start">
+                                        <div className="radio_box">
+                                            <Radio value={1}></Radio>
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="text-[14px] font-[500] text-prgcolor">
+                                                Spam, suspicion, or fake
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Selling illegal goods, engaging in monetary scams,
+                                                etc.
+                                            </h4>
+                                        </div>
+                                    </Radio.Group>
+                                </div>
+                            </div>
+                            <h4 className="text-[14px] text-prgcolor mt-4">
+                                Elaborate on your report (optional)
+                            </h4>
+                            <textarea
+                                rows={3}
+                                className="rounded mt-4 w-full py-2 px-4 border border-gray-100 focus:border-primary focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"
+                                placeholder="Please provide further details about your report. Your feedback plays a crucial role in creating a safer and more trustworthy community for everyone.">
+                            </textarea>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="flex w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdSubmitModal(false)}
+                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                Back
+                            </button>
+                            <button onClick={() => setOpenReportAdSubmitConfirmModal(true)}
+                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Submit
+                            </button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+                {/* Start ReportAdd Submit Pop-Up End */}
+                {/* Start ReportAdd Submit confirm Pop-Up Start */}
+                <Modal size="lg"
+                       show={openReportAdSubmitConfirmModal}
+                       style={{
+                           padding: '0px',
+                           backgroundColor: 'rgb(17 24 39 / 30%)',
+                       }}
+                       className="modal_cntrl"
+                       onClose={() => setOpenReportAdSubmitConfirmModal(false)}>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <PiHandsPrayingLight className="w-[50px] h-[50px] text-primary"/>
+                                </div>
+                                <h4 className="text-prgcolor text-[18px] mt-3">
+                                    Thank You for Your Feedback!
+                                </h4>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    We will review it and take appropriate action.
+                                </h4>
+                            </div>
+                        </div>
+                        <div className="mt-4 flex items-center justify-center w-full">
+                            <button onClick={handleAdSubmitButtonClick}
+                                    className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                Close
+                            </button>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+                {/* Start ReportAdd Submit confirm Pop-Up End */}
             </section>
         </>
     );
