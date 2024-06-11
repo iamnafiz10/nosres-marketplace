@@ -774,7 +774,7 @@ function Page() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
                                 <div className="col md:col-span-7">
                                     <div
                                         className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
@@ -791,7 +791,7 @@ function Page() {
                                 <div className="col md:col-span-5">
                                     <div className="h-[450px] overflow-y-scroll overflow-x-hidden">
                                         <div
-                                            className="bg-white px-4 pb-4 pt-0 rounded rounded-b-none sticky top-[0px] z-[999]">
+                                            className="bg-white px-3 pb-4 pt-0 rounded rounded-b-none sticky top-[0px] z-[999]">
                                             <h1 className="text-[20px] font-semibold text-prgcolor">
                                                 Playstation X - Best Gaming<br/>
                                                 Experience
@@ -1045,7 +1045,7 @@ function Page() {
 
                                         {/* Post Box */}
                                         <div className="post_box_wrap h-full">
-                                            <div className="box bg-white px-4 pb-4 rounded rounded-b-none">
+                                            <div className="box bg-white px-3 pb-4 rounded rounded-b-none">
                                                 <div className="description mt-6">
                                                     {loading ? (
                                                         <Skeleton height={10} count={1}/>
