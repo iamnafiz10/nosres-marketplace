@@ -26,7 +26,7 @@ function Page() {
                                         Shopping Cart
                                     </h4>
                                     <h4 className="text-[14px] font-normal text-prgcolor">
-                                        Review and manage the items you've selected before proceeding to checkout.
+                                        Review and manage the items you{`'`}ve selected before proceeding to checkout.
                                     </h4>
                                 </>
                             )}
