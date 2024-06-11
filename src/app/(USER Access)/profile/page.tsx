@@ -437,7 +437,7 @@ function Page() {
                                             <LuDot size={15}/>
                                             <h4 onClick={() => setOpenStartFolloweesModal(true)}
                                                 className="cursor-pointer hover:underline">
-                                                26K followees
+                                                26K following
                                             </h4>
                                         </div>
                                     </div>
@@ -2381,7 +2381,7 @@ function Page() {
                             alignItems: 'center'
                         }}
                     >
-                        <h4 className="text-[16px]">26,000 followees</h4>
+                        <h4 className="text-[16px]">26,000 following</h4>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">

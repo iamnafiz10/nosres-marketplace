@@ -19,11 +19,14 @@ function Page() {
                     <div className="cart_content mt-4 mx-auto w-full lg:w-[750px] ">
                         <div className="header_wrap">
                             {loading ? (
-                                <Skeleton height={20} count={1}/>
+                                <Skeleton height={20} count={2}/>
                             ) : (
                                 <>
                                     <h4 className="text-[20px] font-normal">
                                         Shopping Cart
+                                    </h4>
+                                    <h4 className="text-[14px] font-normal text-prgcolor">
+                                        Review and manage the items you've selected before proceeding to checkout.
                                     </h4>
                                 </>
                             )}

@@ -1243,7 +1243,7 @@ export default function Home() {
                                                 <div className="mt-3">
                                                     <button type='button'
                                                             className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
-                                                        Clear Settings
+                                                        Clear Filters
                                                     </button>
                                                 </div>
                                             </details>
@@ -1840,7 +1840,7 @@ export default function Home() {
                                                 <div className="mt-3">
                                                     <button type='button'
                                                             className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
-                                                        Clear Settings
+                                                        Clear Filters
                                                     </button>
                                                 </div>
                                             </div>
@@ -2216,7 +2216,7 @@ export default function Home() {
                                                 <div className="mt-3">
                                                     <button type='button'
                                                             className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
-                                                        Clear Settings
+                                                        Clear Filters
                                                     </button>
                                                 </div>
                                             </div>
@@ -2506,7 +2506,7 @@ export default function Home() {
                                                 <div className="mt-3">
                                                     <button type='button'
                                                             className="py-2 px-4 bg-gray-50 hover:bg-primary hover:text-white hover:border-primary rounded text-[14px] border">
-                                                        Clear Settings
+                                                        Clear Filters
                                                     </button>
                                                 </div>
                                             </div>

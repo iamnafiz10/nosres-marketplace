@@ -248,7 +248,7 @@ function Page() {
                                                 </div>
                                             </div>
                                             <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-blue-50">
+                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-[#D3DFED]">
                                                 <div className="icon">
                                                     <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>

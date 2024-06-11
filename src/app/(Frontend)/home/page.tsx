@@ -3509,11 +3509,11 @@ export default function Home() {
                     <Modal.Footer>
                         <div className="relative flex w-full items-center justify-between">
                             <button onClick={handleWritePostPopUpClickCancel}
-                                    className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
+                                    className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
                                 Cancel
                             </button>
                             <button onClick={() => setOpenStartPostModal(false)}
-                                    className="px-10 text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
                                 Post
                             </button>
 
@@ -3717,7 +3717,6 @@ export default function Home() {
                                         </div>
                                     </Radio.Group>
                                 </div>
-
 
                                 <div onClick={() => onChange(3)}
                                      className="mt-4 box cursor-pointer py-2 px-4 border rounded">
@@ -5853,7 +5852,8 @@ export default function Home() {
                         <div className="modal_body">
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                                 <div className="col md:col-span-7">
-                                    <div className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
+                                    <div
+                                        className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                         <Carousel slide={false} indicators={false}>
                                             <Image src={SliderOneImg} className="slider_image"
                                                    alt="SliderOneImg"/>
