@@ -373,7 +373,7 @@ function Page() {
                                             <details className="group py-3">
                                                 <summary
                                                     className="relative flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px] font-[500] focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
-                                                    Price Range
+                                                    Price range
                                                     <RxPlus
                                                         className="absolute hover:text-primary right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:text-primary group-open:rotate-45"/>
                                                 </summary>

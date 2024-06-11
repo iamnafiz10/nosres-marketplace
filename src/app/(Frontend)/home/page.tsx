@@ -5850,7 +5850,7 @@ export default function Home() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-1">
                                 <div className="col md:col-span-7">
                                     <div
                                         className="mt-2 slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
@@ -5867,7 +5867,7 @@ export default function Home() {
                                 <div className="col md:col-span-5">
                                     <div className="h-[450px] overflow-y-scroll overflow-x-hidden">
                                         <div
-                                            className="bg-white px-4 pb-4 pt-2 rounded rounded-b-none sticky top-[0px] z-[999]">
+                                            className="bg-white px-1 pb-4 pt-2 rounded rounded-b-none sticky top-[0px] z-[999]">
                                             <div className="flex items-center justify-between">
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -5960,7 +5960,7 @@ export default function Home() {
 
                                         {/* Post Box */}
                                         <div className="post_box_wrap h-full">
-                                            <div className="box bg-white px-4 pb-4 rounded rounded-b-none">
+                                            <div className="box bg-white px-2 pb-4 rounded rounded-b-none">
                                                 <h4 className="mt-0 text-[14px] text-prgcolor">
                                                     The SRS-XB100 speaker provides powerful, clear,
                                                     expansive sound in a small, portable and durable
@@ -5970,8 +5970,11 @@ export default function Home() {
 
                                             {/* Post Icons */}
                                             <div className="post_icons mt-0">
+                                                <div className="px-2">
+                                                    <hr/>
+                                                </div>
                                                 <div
-                                                    className="flex items-center justify-between bg-white border-t px-4 py-3 mt-0">
+                                                    className="flex items-center justify-between bg-white px-2 py-3 mt-0">
                                                     <div className="flex items-center gap-1">
                                                         <div className="cursor-pointer"
                                                              onClick={() => setIsClickedLikePostTwo(!isClickedLikePostTwo)}>
@@ -6013,7 +6016,7 @@ export default function Home() {
                                             {/* Post Write Comment */}
                                             <div className="post_write_comment mt-0">
                                                 <div
-                                                    className="flex items-center justify-between box bg-white px-4 py-2 rounded rounded-b-none">
+                                                    className="flex items-center justify-between box bg-white px-1 py-2 rounded rounded-b-none">
                                                     <div className="relative w-full flex items-center gap-1">
                                                         <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                         <input
@@ -6067,7 +6070,7 @@ export default function Home() {
 
                                             {/* Post User Comments (One) */}
                                             <div className="post_user_comments">
-                                                <div className="box bg-white px-4 py-3 rounded rounded-b-none">
+                                                <div className="box bg-white px-1 py-3 rounded rounded-b-none">
                                                     <div className="flex items-start justify-start gap-1 w-full">
                                                         <Link href='#'
                                                               className={`flex items-center gap-2 ${hideComment ? 'opacity-50' : ''}`}>
@@ -6303,7 +6306,7 @@ export default function Home() {
                                                 </div>
 
                                                 {/* Comment Replay */}
-                                                <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                                <div className="box bg-white px-1 pt-0 pb-3 rounded rounded-b-none">
                                                     <div className="ml-9 flex items-start justify-start gap-1">
                                                         <Link href='#' className="flex items-center gap-">
                                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6419,7 +6422,7 @@ export default function Home() {
 
                                                 {/* Comment Replay */}
                                                 {showCommentReplyTwo && (
-                                                    <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                                    <div className="box bg-white px-1 pt-2 pb-5 rounded rounded-b-none">
                                                         <div className="ml-[70px] flex items-start justify-start gap-1">
                                                             <Link href='#' className="flex items-center gap-">
                                                                 <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6482,7 +6485,7 @@ export default function Home() {
                                                 )}
 
                                                 {/* Sub Comment Replay */}
-                                                <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                                <div className="box bg-white px-1 pt-0 pb-3 rounded rounded-b-none">
                                                     <div className="ml-[70px] flex items-start justify-start gap-1">
                                                         <Link href='#' className="flex items-center gap-">
                                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6546,7 +6549,7 @@ export default function Home() {
 
                                             {/* Post User Comments (Two) */}
                                             <div className="post_user_comments">
-                                                <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                                <div className="box bg-white px-1 pt-0 pb-3 rounded rounded-b-none">
                                                     <div className="flex items-start justify-start gap-1 w-full">
                                                         <Link href='#' className="flex items-center gap-2">
                                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6608,7 +6611,7 @@ export default function Home() {
 
                                                 {/* Comment Replay */}
                                                 {showCommentReplyThree && (
-                                                    <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                                    <div className="box bg-white px-1 pt-2 pb-5 rounded rounded-b-none">
                                                         <div className="ml-9 flex items-start justify-start gap-1">
                                                             <Link href='#' className="flex items-center gap-">
                                                                 <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6674,7 +6677,7 @@ export default function Home() {
                                             {/* Post User Comments (Load more) */}
                                             <div className="post_user_comments"
                                                  style={{display: showLoadComments ? 'block' : 'none'}}>
-                                                <div className="box bg-white px-4 pt-0 pb-3 rounded rounded-b-none">
+                                                <div className="box bg-white px-1 pt-0 pb-3 rounded rounded-b-none">
                                                     <div className="flex items-start justify-start gap-1 w-full">
                                                         <Link href='#' className="flex items-center gap-2">
                                                             <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6734,7 +6737,7 @@ export default function Home() {
 
                                                 {/* Comment Replay */}
                                                 {showCommentReplyLoadMore && (
-                                                    <div className="box bg-white px-4 pt-2 pb-5 rounded rounded-b-none">
+                                                    <div className="box bg-white px-1 pt-2 pb-5 rounded rounded-b-none">
                                                         <div className="ml-9 flex items-start justify-start gap-1">
                                                             <Link href='#' className="flex items-center gap-">
                                                                 <HiUserCircle size={35} className="text-[#6B7280]"/>
@@ -6797,7 +6800,7 @@ export default function Home() {
                                                 )}
                                             </div>
 
-                                            <div className="box bg-white px-4 pt-2 pb-4 rounded">
+                                            <div className="box bg-white px-2 pt-2 pb-4 rounded">
                                                 <button onClick={toggleComments} type="button"
                                                         className="text-[14px] text-primary hover:underline cursor-pointer">
                                                     View more comments
