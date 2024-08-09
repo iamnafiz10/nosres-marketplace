@@ -296,6 +296,10 @@ em-emoji-picker {
     color: #39393b !important;
 }
 
+.modal_body .dropdown_box input {
+    border: none !important;
+}
+
 .options {
     max-height: 100px;
     overflow-y: auto;
