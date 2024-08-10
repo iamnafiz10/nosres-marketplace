@@ -415,7 +415,7 @@ function Page() {
                                                     Click or drag and drop to upload.
                                                 </h4>
                                                 <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
-                                                    .svg, .png, .jpg, or .gif (max. 800 x 400 px)
+                                                    .svg, .png, .jpg, or .gif
                                                 </h4>
                                             </div>
                                             <input
