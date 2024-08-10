@@ -161,7 +161,7 @@ function Page() {
                                 <p className="mt-3 text-[16px]">
                                     Our application is a work in progress. Consequently, if you encounter any
                                     issues or have suggestions for improvements, please report them here. Your
-                                    feedback is valuable in helping us make our application better
+                                    feedback is valuable in helping us make our application better.
                                 </p>
                                 <button onClick={() => setOpenReportAdModal(true)}
                                         className="text-white bg-primary hover:bg-[#3A5F8A] hover:text-white rounded px-6 py-2 mt-3 border text-[14px]">
@@ -186,7 +186,6 @@ function Page() {
                        onClose={() => setOpenReportAdModal(false)}>
                     <Modal.Header
                         style={{
-                            height: '50px',
                             display: 'flex',
                             alignItems: 'center'
                         }}
@@ -211,85 +210,101 @@ function Page() {
                             <h4 className="text-[14px] mt-3">
                                 Issue Type
                             </h4>
-                            <div className="mt-2 space-y-2">
+                            <div className="space-y-[-7px]">
                                 <div className="input_box">
-                                    <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            Bug
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Something not working as expected
-                                        </h4>
+                                    <Checkbox className="flex items-start">
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                Bug
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Something not working as expected
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            Feature Request
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Suggestions for a new feature or improvement
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                Feature Request
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Suggestions for a new feature or improvement
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            User Interface
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Issues related to the look and feel of the application
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                User Interface
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Issues related to the look and feel of the application
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            User Experience
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Issues related to navigation problems and usability
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                User Experience
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Issues related to navigation problems and usability
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            Performance
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Slow or unresponsive application
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                Performance
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Slow or unresponsive application
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            Security
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Issues related to security or concerns
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                Security
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Issues related to security or concerns
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            Wording
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Issues related to text, labels, or instructions
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                Wording
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Issues related to text, labels, or instructions
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                                 <div className="input_box">
                                     <Checkbox className="mt-1 flex items-center">
-                                        <h4 className="text-[14px] font-normal">
-                                            Other
-                                        </h4>
-                                        <h4 className="text-[12px] text-graycolor">
-                                            Any other type of issue not listed above
-                                        </h4>
+                                        <div className="mt-4">
+                                            <h4 className="text-[14px] font-normal">
+                                                Other
+                                            </h4>
+                                            <h4 className="text-[12px] text-graycolor">
+                                                Any other type of issue not listed above
+                                            </h4>
+                                        </div>
                                     </Checkbox>
                                 </div>
                             </div>
@@ -396,10 +411,9 @@ function Page() {
                                                 className="flex flex-col items-center justify-center pt-5 pb-6">
                                                 <HiOutlineCloudArrowUp
                                                     className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>
-                                                <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span
-                                                    className="font-semibold">Click to upload</span> or
-                                                    drag and
-                                                    drop</p>
+                                                <h4 className="text-[12px] text-prgcolor">
+                                                    Click or drag and drop to upload.
+                                                </h4>
                                                 <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
                                                     .svg, .png, .jpg, or .gif (max. 800 x 400 px)
                                                 </h4>
@@ -455,7 +469,6 @@ function Page() {
                        onClose={() => setOpenReportAdSubmitModal(false)}>
                     <Modal.Header
                         style={{
-                            height: '50px',
                             display: 'flex',
                             alignItems: 'center'
                         }}
@@ -811,7 +824,6 @@ function Page() {
                        onClose={() => setOpenReportAdContactModal(false)}>
                     <Modal.Header
                         style={{
-                            height: '50px',
                             display: 'flex',
                             alignItems: 'center'
                         }}
@@ -852,9 +864,9 @@ function Page() {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="flex w-full items-center justify-between">
-                            <button onClick={() => setOpenReportAdModal(false)}
+                            <button onClick={() => setOpenReportAdContactModal(false)}
                                     className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
-                                Cancel
+                                Back
                             </button>
                             <button onClick={handleAdSubmitButtonClickTwo}
                                     className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
