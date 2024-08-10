@@ -12,7 +12,7 @@ import {ImAttachment} from "react-icons/im";
 import {RiArrowDropDownLine} from "react-icons/ri";
 
 function Page() {
-    useTitle("Report Issue")
+    useTitle("Report an Issue")
     const loading = useLoading();
 
     // Radio
@@ -151,7 +151,7 @@ function Page() {
         <>
             <section id="report-section">
                 <div className="container">
-                    <div className="w-full pt-[80px] pb-20">
+                    <div className="w-full pt-[160px] pb-14">
                         <div className="grid grid-cols-1 lg:grid-cols-2">
                             <div className="col text_box">
                                 <h1 className="text-2xl md:text-[38px] leading-0 md:leading-10 text-[#263F5C] font-bold md:font-medium mb-4">
@@ -208,7 +208,7 @@ function Page() {
                                 Check all that apply.
                             </h4>
 
-                            <h4 className="text-[16px] mt-3">
+                            <h4 className="text-[14px] mt-3">
                                 Issue Type
                             </h4>
                             <div className="mt-2 space-y-2">
@@ -295,14 +295,14 @@ function Page() {
                             </div>
 
                             {/* Priority Buttons */}
-                            <h4 className="text-[16px] mt-3">
+                            <h4 className="text-[14px] mt-3">
                                 Priority
                             </h4>
-                            <div className="flex items-center gap-2 mt-2">
+                            <div className="flex items-center justify-between mt-2">
                                 <button
                                     type="button"
                                     onClick={() => setSelectedButton('low')}
-                                    className={`py-1 px-8 rounded text-[12px] border ${
+                                    className={`py-1 px-10 rounded text-[12px] border ${
                                         selectedButton === 'low'
                                             ? 'bg-[#FDD555] text-[#FAB92B] border-[#FAB92B]'
                                             : 'text-[#FAB92B] bg-transparent border-[#FAB92B] hover:bg-[#FDD555]'
@@ -324,7 +324,7 @@ function Page() {
                                 <button
                                     type="button"
                                     onClick={() => setSelectedButton('high')}
-                                    className={`py-1 px-8 rounded text-[12px] border ${
+                                    className={`py-1 px-10 rounded text-[12px] border ${
                                         selectedButton === 'high'
                                             ? 'bg-[#F96E4B] text-[#F0381B] border-[#F0381B]'
                                             : 'text-[#F0381B] border-[#F0381B] bg-transparent hover:bg-[#F96E4B]'
@@ -352,7 +352,7 @@ function Page() {
                                 <input
                                     type="text"
                                     className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                    placeholder="Please briefly describe the issue or request"
+                                    placeholder="Please briefly describe the issue or request."
                                 />
                             </div>
 
@@ -396,11 +396,12 @@ function Page() {
                                                 className="flex flex-col items-center justify-center pt-5 pb-6">
                                                 <HiOutlineCloudArrowUp
                                                     className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"/>
-                                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                                                    Drag and drop here or click to upload.
-                                                </p>
+                                                <p className="mb-1 text-sm text-gray-500 dark:text-gray-400"><span
+                                                    className="font-semibold">Click to upload</span> or
+                                                    drag and
+                                                    drop</p>
                                                 <h4 className="text-[12px] text-gray-500 dark:text-gray-400">
-                                                    You can upload up to 3 images and/or videos.
+                                                    .svg, .png, .jpg, or .gif (max. 800 x 400 px)
                                                 </h4>
                                             </div>
                                             <input
@@ -720,7 +721,7 @@ function Page() {
                                     {/* FilterStoreTab dropdown */}
                                     <div ref={dropdownFilterMobileTabRef}
                                          onClick={toggleDropdownFilterMobileTab}
-                                         className="filter_dropdown_checkout z-30 cursor-pointer relative w-full">
+                                         className="filter_dropdown_checkout cursor-pointer relative w-full">
                                         <div
                                             className="w-full bg-gray-50 h-8 flex border border-gray-300 rounded items-center">
                                             <input value={selectedOptionFilterMobileTab} name="select"
@@ -891,7 +892,7 @@ function Page() {
                         </div>
                         <div className="mt-4 flex items-center justify-center w-full">
                             <button onClick={handleAdSubmitButtonClick}
-                                    className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-black hover:bg-transparent hover:border-primary text-white rounded">
+                                    className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-white hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
                                 Close
                             </button>
                         </div>

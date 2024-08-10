@@ -12,7 +12,7 @@ const BlogPageFooter = () => {
                 <div className="container pt-4">
                     <footer>
                         {/* Copyright */}
-                        <div className="copyright md:flex justify-between pt-4 mt-10">
+                        <div className="copyright md:flex justify-between py-4 mt-10">
                             <li className="flex md:hidden hover:text-primary pt-2 pb-3">
                                 <Link href='/' className='flex items-center gap-1'>
                                     <Image src={LogoImg} className="w-4" alt="LogoImg"/>

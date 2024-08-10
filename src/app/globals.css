@@ -11,6 +11,14 @@ body {
     background: rgba(164, 164, 164, 0.12);
 }
 
+body #report-section {
+    background: white !important;
+}
+
+.copyright {
+    border-top: .5px solid #9999998f;
+}
+
 /* Scrollbar Color */
 .messages_wrap {
     scrollbar-width: thin;
