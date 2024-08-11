@@ -388,10 +388,6 @@ function HeaderRe() {
                 {/* Start ReportAdd Pop-Up Start (1) */}
                 <Modal size="lg"
                        show={openReportAdModal}
-                       style={{
-                           padding: '0px',
-                       }}
-                       className="modal_cntrl"
                        onClose={() => setOpenReportAdModal(false)}>
                     <Modal.Header
                         style={{
@@ -670,11 +666,6 @@ function HeaderRe() {
                 {/* Start ReportAdd Submit Pop-Up Start (2) */}
                 <Modal size="lg"
                        show={openReportAdSubmitModal}
-                       style={{
-                           padding: '0px',
-                           backgroundColor: 'rgb(17 24 39 / 30%)',
-                       }}
-                       className="modal_cntrl"
                        onClose={() => setOpenReportAdSubmitModal(false)}>
                     <Modal.Header
                         style={{
@@ -1026,10 +1017,6 @@ function HeaderRe() {
                 {/* Start ReportAdd Pop-Up Start (3) */}
                 <Modal size="lg"
                        show={openReportAdContactModal}
-                       style={{
-                           padding: '0px',
-                       }}
-                       className="modal_cntrl"
                        onClose={() => setOpenReportAdContactModal(false)}>
                     <Modal.Header
                         style={{
@@ -1090,11 +1077,6 @@ function HeaderRe() {
                 <Modal size="lg"
                        dismissible={true}
                        show={openReportAdSubmitConfirmModal}
-                       style={{
-                           padding: '0px',
-                           backgroundColor: 'rgb(17 24 39 / 30%)',
-                       }}
-                       className="modal_cntrl"
                        onClose={() => setOpenReportAdSubmitConfirmModal(false)}>
                     <Modal.Body>
                         <div className="modal_body">
