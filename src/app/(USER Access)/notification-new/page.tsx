@@ -251,6 +251,9 @@ function Page() {
 
     // Filter sidebar mobile
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+    // All Read Unread
+    const [isRead, setIsRead] = useState(false);
     return (
         <>
             <section id="message-section">
@@ -319,7 +322,7 @@ function Page() {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href='#'
+                                            <Link href='/price-drops'
                                                   className="text-graycolor hover:text-prgcolor transition">
                                                 Price Drops
                                             </Link>
@@ -415,7 +418,7 @@ function Page() {
                                                             </Link>
                                                         </li>
                                                         <li>
-                                                            <Link href='#'
+                                                            <Link href='/price-drops'
                                                                   className="text-graycolor hover:text-prgcolor transition">
                                                                 Price Drops
                                                             </Link>
@@ -467,8 +470,9 @@ function Page() {
                                                             </h4>
                                                         </div>
                                                         <div className="text_wrap">
-                                                            <h4 className="text-graycolor text-[14px]">
-                                                                Mark all as read/unread
+                                                            <h4 onClick={() => !isRead && setIsRead(true)}
+                                                                className="text-graycolor cursor-pointer text-[14px]">
+                                                                Mark all as read
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -478,10 +482,120 @@ function Page() {
 
                                         {/*Notification User*/}
                                         <div className="notification_users_wrap">
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
+                                                                    any
+                                                                    help<br/>
+                                                                    getting started, please let us know.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1s
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
                                             {/*Two*/}
                                             {currentNotiBox === 'current_noti_box' && (
                                                 <div
-                                                    className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                    className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
                                                     {loading ? (
                                                         <div className="flex items-center justify-start gap-2 w-full">
                                                             <Skeleton width={50} height={50} borderRadius="100%"
@@ -626,7 +740,7 @@ function Page() {
 
                                             {/*Three*/}
                                             <div
-                                                className={`user pl-4 py-3 ${isReadThree ? "bg-white" : "bg-[#F1F6FF]"} flex items-center gap-2 hover:bg-gray-100`}>
+                                                className={`user border-b pl-4 py-3 ${isRead || isReadThree ? "bg-white" : "bg-[#F1F6FF]"} flex items-center gap-2 hover:bg-gray-100`}>
                                                 {loading ? (
                                                     <div className="flex items-center justify-start gap-2 w-full">
                                                         <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
@@ -735,9 +849,9 @@ function Page() {
                                                 )}
                                             </div>
 
-                                            {/*Four*/}
+                                            {/*User*/}
                                             <div
-                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                className={`user ${isRead ? "bg-white" : "bg-[#F1F6FF]"} border-b pl-4 py-3 flex items-center gap-2 hover:bg-gray-100`}>
                                                 {loading ? (
                                                     <div className="flex items-center justify-start gap-2 w-full">
                                                         <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
@@ -751,10 +865,7 @@ function Page() {
                                                         <div className="wrap w-full mr-4">
                                                             <div className="flex items-center justify-between gap-2">
                                                                 <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
-                                                                    any
-                                                                    help<br/>
-                                                                    getting started, please let us know.
+                                                                    You have a new message from <b>Ina Karina.</b>
                                                                 </h4>
                                                                 <div className="dot_icon">
                                                                     <div
@@ -838,16 +949,16 @@ function Page() {
                                                                 </div>
                                                             </div>
                                                             <h4 className="time text-[12px] text-graycolor">
-                                                                1s
+                                                                1d
                                                             </h4>
                                                         </div>
                                                     </>
                                                 )}
                                             </div>
 
-                                            {/*Five two*/}
+                                            {/*User*/}
                                             <div
-                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
                                                 {loading ? (
                                                     <div className="flex items-center justify-start gap-2 w-full">
                                                         <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
@@ -861,10 +972,7 @@ function Page() {
                                                         <div className="wrap w-full mr-4">
                                                             <div className="flex items-center justify-between gap-2">
                                                                 <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
-                                                                    any
-                                                                    help<br/>
-                                                                    getting started, please let us know.
+                                                                    <b>Brad Pitt</b> started following you!
                                                                 </h4>
                                                                 <div className="dot_icon">
                                                                     <div
@@ -948,16 +1056,16 @@ function Page() {
                                                                 </div>
                                                             </div>
                                                             <h4 className="time text-[12px] text-graycolor">
-                                                                1s
+                                                                1w
                                                             </h4>
                                                         </div>
                                                     </>
                                                 )}
                                             </div>
 
-                                            {/*Five three*/}
+                                            {/*User*/}
                                             <div
-                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                className={`user ${isRead ? "bg-white" : "bg-[#F1F6FF]"} border-b pl-4 py-3 flex items-center gap-2 hover:bg-gray-100`}>
                                                 {loading ? (
                                                     <div className="flex items-center justify-start gap-2 w-full">
                                                         <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
@@ -971,10 +1079,9 @@ function Page() {
                                                         <div className="wrap w-full mr-4">
                                                             <div className="flex items-center justify-between gap-2">
                                                                 <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
-                                                                    any
-                                                                    help<br/>
-                                                                    getting started, please let us know.
+                                                                    You and <b>Jack Dorsay</b> are now following each
+                                                                    other. Start a
+                                                                    conversation!
                                                                 </h4>
                                                                 <div className="dot_icon">
                                                                     <div
@@ -1058,16 +1165,16 @@ function Page() {
                                                                 </div>
                                                             </div>
                                                             <h4 className="time text-[12px] text-graycolor">
-                                                                1s
+                                                                5w
                                                             </h4>
                                                         </div>
                                                     </>
                                                 )}
                                             </div>
 
-                                            {/*Five*/}
+                                            {/*User*/}
                                             <div
-                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
                                                 {loading ? (
                                                     <div className="flex items-center justify-start gap-2 w-full">
                                                         <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
@@ -1081,10 +1188,8 @@ function Page() {
                                                         <div className="wrap w-full mr-4">
                                                             <div className="flex items-center justify-between gap-2">
                                                                 <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
-                                                                    any
-                                                                    help<br/>
-                                                                    getting started, please let us know.
+                                                                    <b>Peter Pan</b> tagged you in their
+                                                                    comment—go<br/> check it out!
                                                                 </h4>
                                                                 <div className="dot_icon">
                                                                     <div
@@ -1168,13 +1273,890 @@ function Page() {
                                                                 </div>
                                                             </div>
                                                             <h4 className="time text-[12px] text-graycolor">
-                                                                1s
+                                                                1w
                                                             </h4>
                                                         </div>
                                                     </>
                                                 )}
                                             </div>
-                                            {/*Six*/}
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    <b>Beverly Hayes</b> likes your post: “Just scored
+                                                                    an amazing
+                                                                    deal on a like-new Bluetooth Speaker for half the
+                                                                    price!
+                                                                    Loving the crystal-clear sound and sleek design.
+                                                                    Blends...
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    Happy Birthday, <b>Jane Doe!</b> The Nosres team
+                                                                    sends you
+                                                                    our warmest wishes.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                5w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    <b>Peter Pan</b> has joined the platform! Say hi!
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                5w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    It’s <b>John Doe’s</b> birthday today! Send a
+                                                                    message or gift!
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                5w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    <b>Beverly Hayes</b> shared your post: “Just scored
+                                                                    an amazing
+                                                                    deal on a like-new Bluetooth Speaker for half the
+                                                                    price!
+                                                                    Loving the crystal-clear sound and sleek design.
+                                                                    Blends...
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                5w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    <b>Peter Pan</b> tagged you in their post—go check
+                                                                    it out!
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    <b>Beverly Hayes</b> replied to your comment! “Just
+                                                                    scored an
+                                                                    amazing deal on a like-new Bluetooth Speaker for
+                                                                    half the
+                                                                    price! Loving the crystal-clear sound and sleek
+                                                                    Blends...
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*User*/}
+                                            <div
+                                                className="user border-b pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    <b>Megastore</b> just listed [Item Name].
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1w
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*Six Load More*/}
                                             {showUserSix && (
                                                 <div
                                                     className="user_six pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
