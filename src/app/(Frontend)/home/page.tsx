@@ -2296,8 +2296,8 @@ export default function Home() {
                                         </>
                                     ) : (
                                         <>
-                                            <div className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
-                                                <Image src={SliderOneImg} className="w-[18%]" alt="PostImg"/>
+                                            <div className="flex items-center cursor-pointer gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                <Image src={SliderOneImg} className="w-[18%] rounded" alt="PostImg"/>
                                                 <div className="content_area">
                                                     <h4 className="text-[14px] text-black font-[500]">
                                                         Experience the cutting-edge technology of the iPhone
@@ -2465,7 +2465,7 @@ export default function Home() {
                                         </>
                                     ) : (
                                         <>
-                                            <div className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                            <div className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
                                                 <div className="content_area">
                                                     <h4 className="text-[14px] text-black font-[500]">
                                                         Experience the cutting-edge technology of the iPhone

@@ -5,20 +5,13 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
 import Link from "next/link";
-import {LuDot, LuMessageSquareLock} from "react-icons/lu";
+import {LuDot, LuMail, LuMailOpen, LuRotateCcw, LuSlidersHorizontal, LuTrash2} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
-import {HiArrowLongLeft} from "react-icons/hi2";
 import {IoSearchOutline} from "react-icons/io5";
-import {GoSmiley} from "react-icons/go";
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
 import {PiHandsPrayingLight} from "react-icons/pi";
-import {FiEdit} from "react-icons/fi";
-import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
-import {GrAttachment} from "react-icons/gr";
 
 function Page() {
     const loading = useLoading();
@@ -134,35 +127,6 @@ function Page() {
         };
     }, [showStartPostEmoji]);
 
-    // 👇️ Add 3 dots
-    const [addDotClick, setAddDotClick] = useState(false);
-    const AddDotDropdownRef = useRef(null);
-    const handleAddDotClick = () => {
-        setAddDotClick(!addDotClick);
-    };
-    useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            // @ts-ignore
-            if (AddDotDropdownRef.current && !AddDotDropdownRef.current.contains(event.target)) {
-                // Click occurred outside of dropdown menu, so close it
-                setAddDotClick(false);
-            }
-        };
-        // Add event listener to detect clicks out-Side of the dropdown menu
-        document.addEventListener('mousedown', handleOutsideClick);
-
-        // Remove event listener on component unmount
-        return () => {
-            document.removeEventListener('mousedown', handleOutsideClick);
-        };
-    }, []);
-
-    // Notification Mute / Unmute
-    const [isMuted, setIsMuted] = useState(false);
-    const handleToggleMute = () => {
-        setIsMuted(!isMuted);
-    };
-
     // Delete Conversation Modal
     const [openDeleteConModal, setOpenDeleteConModal] = useState<boolean>(false);
     // Block Message Modal
@@ -187,693 +151,1173 @@ function Page() {
         setOpenReportAdModal(false);
         setOpenReportAdSubmitConfirmModal(false);
     }
+
+
+    // 👇️ Add 3 dots One
+    const [addDotClickOne, setAddDotClickOne] = useState(false);
+    const AddDotDropdownRefOne = useRef(null);
+    const handleAddDotClickOne = () => {
+        setAddDotClickOne(!addDotClickOne);
+    };
+    useEffect(() => {
+        const handleOutsideClickOne = (event: { target: any; }) => {
+            // @ts-ignore
+            if (AddDotDropdownRefOne.current && !AddDotDropdownRefOne.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setAddDotClickOne(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClickOne);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClickOne);
+        };
+    }, []);
+
+    // 👇️ Add 3 dots Two
+    const [addDotClickTwo, setAddDotClickTwo] = useState(false);
+    const AddDotDropdownRefTwo = useRef(null);
+    const handleAddDotClickTwo = () => {
+        setAddDotClickTwo(!addDotClickTwo);
+    };
+    useEffect(() => {
+        const handleOutsideClickTwo = (event: { target: any; }) => {
+            // @ts-ignore
+            if (AddDotDropdownRefTwo.current && !AddDotDropdownRefTwo.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setAddDotClickTwo(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClickTwo);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClickTwo);
+        };
+    }, []);
+
+    // 👇️ Add 3 dots Three
+    const [addDotClickThree, setAddDotClickThree] = useState(false);
+    const AddDotDropdownRefThree = useRef(null);
+    const handleAddDotClickThree = () => {
+        setAddDotClickThree(!addDotClickThree);
+    };
+    useEffect(() => {
+        const handleOutsideClickThree = (event: { target: any; }) => {
+            // @ts-ignore
+            if (AddDotDropdownRefThree.current && !AddDotDropdownRefThree.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setAddDotClickThree(false);
+            }
+        };
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClickThree);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClickThree);
+        };
+    }, []);
+
+    // Notification Read / UnRead One
+    const [isReadOne, setIsReadOne] = useState(false);
+    const handleToggleReadOne = () => {
+        setIsReadOne(!isReadOne);
+    };
+
+    // Notification Read / UnRead Two
+    const [isReadTwo, setIsReadTwo] = useState(false);
+    const handleToggleReadTwo = () => {
+        setIsReadTwo(!isReadTwo);
+    };
+
+    // Notification Read / UnRead Three
+    const [isReadThree, setIsReadThree] = useState(false);
+    const handleToggleReadThree = () => {
+        setIsReadThree(!isReadThree);
+    };
+
+    // Notification hide/show
+    const [currentNotiBox, setCurrentNotiBox] = useState('current_noti_box');
+    const toggleNotiBoxVisibility = () => {
+        setCurrentNotiBox(currentNotiBox === 'current_noti_box' ? 'hidden_noti_box' : 'current_noti_box');
+    };
+
+    // Load more user six notification
+    const [showUserSix, setShowUserSix] = useState(false);
+
+    // Filter sidebar mobile
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
     return (
         <>
-            <section id="message-section" className="overflow-y-hidden">
-                <div className="container_full sm:container h-screen">
+            <section id="message-section">
+                <div className="container_full sm:container">
                     <div className="pt-[75px] pb-[50px] lg:pb-0 h-full">
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
-                            <div className="col lg:col-span-8 message_box_wrap rounded bg-white py-4">
-                                {/* Message Header */}
-                                <div className="px-5">
-                                    {loading ? (
-                                        <div className="pb-3">
-                                            <Skeleton height={30} count={1}/>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <div
-                                                className="message_header pb-3 flex items-center justify-between">
-                                                <div className="flex items-center gap-2">
-                                                    {/* Message sidebar show Icon */}
-                                                    <div onClick={toggleDrawer}
-                                                         className="block lg:hidden icon group cursor-pointer">
-                                                        <HiArrowLongLeft
-                                                            size={22}
-                                                            className={`${isDrawerOpen ? 'text-primary' : 'text-prgcolor'} group-hover:text-primary`}/>
-                                                    </div>
-                                                    <h4 className="text-prgcolor text-[16px] font-[500]">
-                                                        Messages
-                                                    </h4>
-                                                </div>
-                                                <div onClick={() => setOpenStartPostMessageModal(true)}
-                                                     className="icon cursor-pointer group">
-                                                    <FiEdit size={20}
-                                                            className="text-graycolor group-hover:text-primary"/>
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full relative">
+
+                            {/*Mobile Filter Icon*/}
+                            <div className="block md:hidden bg-white p-3 rounded">
+                                <div onClick={() => setIsFilterOpen(!isFilterOpen)}
+                                     className="cursor-pointer flex items-center gap-1">
+                                    <LuSlidersHorizontal className="text-graycolor" size={15}/>
+                                    <h4 className="text-[14px] text-black font-[500]">Filters</h4>
                                 </div>
+                            </div>
 
-                                <div className="grid grid-cols-1 lg:grid-cols-12 border-t pb-4 h-full">
-                                    <div className="col lg:col-span-5 hidden lg:block border-r">
-                                        <div className="user_box space-y-0 w-full h-[76vh] overflow-y-auto">
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Roshan Nafiz
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Brothers, It is Excellent idea for got to...
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            John Doe
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Muhamd Sojib Saiham J...
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
-                                                <div className="icon">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                </div>
-                                                <div className="wrap w-full mr-4">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
-                                                            Rikto Hossen
-                                                        </h4>
-                                                        <div className="date">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                May 17
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h4 className="text-[12px] text-graycolor">
-                                                        Excellent idea.
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            {/*Mobile Filter Sidebar*/}
+                            {isFilterOpen && (
+                                <div
+                                    className="absolute top-[48px] w-full filter_sidebar_wrap block md:hidden bg-white z-20 p-4">
+                                    <ul className="text-[14px] space-y-2">
+                                        <li>
+                                            <Link href='#' className="text-primary">All Notifications</Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Platform Announcements
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Birthdays
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                New Listings
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Personalized
+                                                Recommendations
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Mentions and Tags
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Followers Activities
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Messages
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Price Drops
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Stores
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Your Store
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Your Content
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href='#'
+                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                Shared Listings
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            )}
 
-                                    <div className="col lg:col-span-7">
-                                        <div className="box w-full h-full relative">
-                                            <div className="px-4 flex items-center justify-between">
-                                                <div className="user flex items-center gap-2">
-                                                    <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                    <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                        Brad Pitt
-                                                    </h4>
-                                                </div>
-
-                                                <div className="flex items-center justify-end text-end">
-                                                    <div onClick={handleAddDotClick}
-                                                         ref={AddDotDropdownRef}
-                                                         className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClick ? 'bg-gray-100' : ''}`}>
-                                                        <svg
-                                                            className="w-3 h-3"
-                                                            fill="#828D9E"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
-                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                                                        </svg>
-
-                                                        {addDotClick &&
-                                                            <div
-                                                                className="dots-dropdown-menu w-[300px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
-                                                                <div className="container py-2">
-                                                                    <div className="space-y-1 text-[14px]">
-
-                                                                        <div onClick={handleToggleMute}
-                                                                             className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            {isMuted ? (
-                                                                                <svg
-                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="#6B7280"
-                                                                                    strokeWidth="1.5"
-                                                                                    strokeLinecap="round"
-                                                                                    strokeLinejoin="round">
-                                                                                    <path
-                                                                                        d="M8.7 3A6 6 0 0 1 18 8a21.3 21.3 0 0 0 .6 5"/>
-                                                                                    <path
-                                                                                        d="M17 17H3s3-2 3-9a4.67 4.67 0 0 1 .3-1.7"/>
-                                                                                    <path
-                                                                                        d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
-                                                                                    <path d="m2 2 20 20"/>
-                                                                                </svg>
-                                                                            ) : (
-                                                                                <svg
-                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="#6B7280"
-                                                                                    strokeWidth="1.5"
-                                                                                    strokeLinecap="round"
-                                                                                    strokeLinejoin="round">
-                                                                                    <path
-                                                                                        d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
-                                                                                    <path
-                                                                                        d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
-                                                                                </svg>
-                                                                            )}
-                                                                            {isMuted ? (
-                                                                                <h4>
-                                                                                    Unmute notifications
-                                                                                </h4>
-                                                                            ) : (
-                                                                                <h4>
-                                                                                    Mute notifications
-                                                                                </h4>
-                                                                            )}
-                                                                        </div>
-
-                                                                        <div
-                                                                            onClick={() => setOpenDeleteConModal(true)}
-                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path d="M3 6h18"/>
-                                                                                <path
-                                                                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                                                <path
-                                                                                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
-                                                                                <line x1="10" x2="10" y1="11" y2="17"/>
-                                                                                <line x1="14" x2="14" y1="11" y2="17"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Delete conversation
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div
-                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" fill="none"
-                                                                                stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <circle cx="12" cy="12" r="10"/>
-                                                                                <path d="m4.9 4.9 14.2 14.2"/>
-                                                                            </svg>
-                                                                            {isBlocked ? (
-                                                                                <h4 onClick={() => setOpenBlockMesConfirmModal(true)}
-                                                                                    className="w-full text-left">
-                                                                                    Unblock
-                                                                                </h4>
-                                                                            ) : (
-                                                                                <h4 onClick={() => setOpenBlockMesModal(true)}
-                                                                                    className="w-full text-left">
-                                                                                    Block
-                                                                                </h4>
-                                                                            )}
-                                                                        </div>
-                                                                        <div onClick={() => setOpenReportAdModal(true)}
-                                                                             className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                            <svg
-                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24
-                                                                                 24" fill="none" stroke="#6B7280"
-                                                                                strokeWidth="1.5"
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round">
-                                                                                <path d="M4 15s1-1 4-1 5 2 8 2
-                                                                                4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                                                                <line x1="4" x2="4" y1="22"
-                                                                                      y2="15"/>
-                                                                            </svg>
-                                                                            <h4>
-                                                                                Report
-                                                                            </h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr/>
-
-                                            <div
-                                                className="profile_box flex flex-col items-center justify-center absolute top-[50px] bg-white z-20 w-[100%]">
-                                                <div className="icon">
-                                                    <HiUserCircle size={60} className="text-[#6B7280]"/>
-                                                </div>
-                                                <h4 className="text-[16px] text-prgcolor">Brad Pitt</h4>
-                                                <h4 className="text-[12px] text-graycolor mt-1">
-                                                    You follow each other on Marketplace.
-                                                </h4>
-                                            </div>
-
-                                            <div
-                                                className="messages_wrap absolute h-[44%] top-[35%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
-                                                <div className="message pt-[10px]">
-                                                    <div
-                                                        className="bg-gray-100 inline-block p-3 rounded-2xl rounded-bl-none">
-                                                        <h4 className="text-[14px] text-prgcolor">
-                                                            Hello, John! How are you?
-                                                        </h4>
-                                                    </div>
-                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
-                                                        Oct 20, 2017, 1:22 AM
-                                                    </h6>
-                                                </div>
-
-                                                <div
-                                                    className="message flex mt-4 space-x-3 ml-auto justify-end">
-                                                    <div className="wrap">
-                                                        <div
-                                                            className="bg-[#3197f5] inline-block py-2 px-3 rounded-2xl rounded-br-none">
-                                                            <h4 className="text-[14px] text-white">
-                                                                https://nosres-marketplace.vercel.<br/>
-                                                                app/message-five
-                                                            </h4>
-                                                        </div>
-                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
-                                                            Oct 20, 2017, 1:23 AM
-                                                        </h6>
-                                                    </div>
-                                                </div>
-
-                                                <div className="message mt-4">
-                                                    <div
-                                                        className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
-                                                        <Image src={SliderOneImg} className="w-[18%] h-[55px]"
-                                                               alt="PostImg"/>
-                                                        <div className="content_area">
-                                                            <h4 className="text-[14px] text-black font-[500]">
-                                                                Experience the cutting-edge techn
-                                                                ology of the iPhone 16 Pro, now...
-                                                            </h4>
-                                                            <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="message mt-4">
-                                                    <div
-                                                        className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
-                                                        <div className="content_area">
-                                                            <h4 className="text-[14px] text-black font-[500]">
-                                                                Experience the cutting-edge technology of the iPhone 16
-                                                                Pro, now...
-                                                            </h4>
-                                                            <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div
-                                                    className="protected_message mt-3 bg-[#F6FAFF] rounded p-2 flex items-start gap-1">
-                                                    <div className="icon_wrap">
-                                                        <LuMessageSquareLock className="text-gray-500" size={18}/>
-                                                    </div>
-                                                    <div className="text_wrap">
-                                                        <h4 className="text-[12px] text-graycolor">
-                                                            Your messages are fully protected with end-to-end
-                                                            encryption.
-                                                        </h4>
-                                                        <Link href="#" className="text-primary text-[12px]">
-                                                            Learn more
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {isBlocked ? (
-                                                <div className="w-full absolute z-30 bg-white bottom-4">
-                                                    <div className="px-6 py-4">
-                                                        <h4 className="text-[14px] text-prgcolor">
-                                                            You blocked messages from Jeff.
-                                                        </h4>
-                                                        <h4 className="text-[12px] text-graycolor mt-0">
-                                                            You are unable to send messages within this conversation,
-                                                            and you will not receive any messages either.
-                                                        </h4>
-                                                        <button onClick={() => setOpenBlockMesConfirmModal(true)}
-                                                                type='button'
-                                                                className="mt-2 text-[14px] py-2 px-6 hover:bg-primary hover:text-white border bg-gray-100 rounded">
-                                                            Unblock
-                                                        </button>
-                                                    </div>
+                            <div className="col lg:col-span-8">
+                                <div className="grid grid-cols-1 md:grid-cols-12">
+                                    <div className="hidden md:block col md:col-span-4">
+                                        <div className="filter_sidebar_wrap fixed">
+                                            {loading ? (
+                                                <div className="">
+                                                    <Skeleton height={10} count={13}/>
                                                 </div>
                                             ) : (
-                                                <div ref={modalRef} className="w-full absolute z-30 bg-white bottom-4">
-                                                    <div className="write_box px-4 w-full border-t">
-                                                        <input type="text"
-                                                               value={startPostText}
-                                                               onChange={(e) => setStartPostText(e.target.value)}
-                                                               className="mt-2 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
-                                                               placeholder="Write a Message..."/>
+                                                <>
+                                                    <div className="flex items-center gap-1">
+                                                        <LuSlidersHorizontal className="text-graycolor" size={15}/>
+                                                        <h4 className="text-[14px] text-black font-[500]">Filters</h4>
                                                     </div>
-                                                    <div className="icon_box px-4 pb-4 w-full border-t">
-                                                        <div className="flex items-center justify-between mt-3">
-                                                            <div className="relative flex items-center gap-2">
-                                                                <div className="cursor-pointer">
-                                                                    <div className="relative cursor-pointer">
-                                                                        <input
-                                                                            type="file"
-                                                                            id="file-upload"
-                                                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                                                        />
-                                                                        <label htmlFor="file-upload">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                 viewBox="0 0 24 24"
-                                                                                 fill="#4D7FB8"
-                                                                                 className="w-6 h-6">
-                                                                                <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0
-                                                                            1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3
-                                                                            16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0
-                                                                            0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3
-                                                                            16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                                                      clipRule="evenodd"/>
-                                                                            </svg>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
+                                                    <ul className="mt-4 text-[14px] space-y-2">
+                                                        <li>
+                                                            <Link href='#' className="text-primary">All
+                                                                Notifications</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Platform Announcements
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Birthdays
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                New Listings
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Personalized
+                                                                Recommendations
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Mentions and Tags
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Followers Activities
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Messages
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Price Drops
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Stores
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Your Store
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Your Content
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link href='#'
+                                                                  className="text-graycolor hover:text-prgcolor transition">
+                                                                Shared Listings
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="-mt-[20px] md:mt-0 col-span-12 md:col-span-8 rounded bg-white border py-4">
+                                        {/* Notification Header */}
+                                        <div className="px-0">
+                                            {loading ? (
+                                                <div className="px-4 pb-3">
+                                                    <Skeleton height={30} count={1}/>
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    <div
+                                                        className="notification_new_header px-4 border-b pb-3 flex items-center justify-between">
+                                                        <div className="flex items-center gap-2">
+                                                            <h4 className="text-prgcolor text-[16px] font-[500]">
+                                                                Notifications
+                                                            </h4>
+                                                        </div>
+                                                        <div className="text_wrap">
+                                                            <h4 className="text-graycolor text-[14px]">
+                                                                Mark all as read/unread
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
 
-                                                                <div className="attac cursor-pointer">
-                                                                    <GrAttachment size={18}
-                                                                                  className="text-graycolor hover:text-primary"/>
-                                                                </div>
-
-                                                                <div
-                                                                    onClick={() => setShowStartPostEmoji(!showStartPostEmoji)}
-                                                                    className="cursor-pointer"
-                                                                >
-                                                                    <GoSmiley
-                                                                        size={20}
-                                                                        className="text-graycolor hover:text-primary"/>
-                                                                </div>
-
-                                                                {/* Start Post Reactions */}
-                                                                {showStartPostEmoji &&
-                                                                    <div ref={emojiPickerRef}
-                                                                         className="comment_emoji z-[999] absolute bottom-[30px] left-0 lg:left-auto right-auto lg:right-0">
-                                                                        <Picker
-                                                                            data={data}
-                                                                            theme="light"
-                                                                            perLine={8}
-                                                                            emojiSize={22}
-                                                                            onEmojiSelect={addStartPostEmoji}
-                                                                            maxFrequentRows={0}
-                                                                            maxEmojiRows={2}
-                                                                        />
-                                                                    </div>
-                                                                }
+                                        {/*Notification User*/}
+                                        <div className="notification_users_wrap">
+                                            {/*Two*/}
+                                            {currentNotiBox === 'current_noti_box' && (
+                                                <div
+                                                    className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                    {loading ? (
+                                                        <div className="flex items-center justify-start gap-2 w-full">
+                                                            <Skeleton width={50} height={50} borderRadius="100%"
+                                                                      count={1}/>
+                                                            <Skeleton containerClassName="flex-1" height={50}
+                                                                      count={1}/>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <div className="icon">
+                                                                <HiUserCircle size={55} className="text-[#6B7280]"/>
                                                             </div>
-                                                            <div
-                                                                className={`${startPostText ? 'cursor-pointer ' : 'cursor-not-allowed'}`}>
-                                                                <svg
-                                                                    className={`w-[24px] h-[24px] transition text-[#828D9E] ${startPostText ? 'text-primary' : ''}`}
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor"
-                                                                    strokeWidth="1.5" strokeLinecap="round"
-                                                                    strokeLinejoin="round">
-                                                                    <path d="m3 3 3 9-3 9 19-9Z"/>
-                                                                    <path d="M6 12h16"/>
-                                                                </svg>
+                                                            <div className="wrap w-full mr-4">
+                                                                <div
+                                                                    className="flex items-center justify-between gap-2">
+                                                                    <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                        Your order <b>#12345</b> has been confirmed! You
+                                                                        can
+                                                                        track
+                                                                        its
+                                                                        status in your orders section.
+                                                                    </h4>
+                                                                    <div className="dot_icon">
+                                                                        <div
+                                                                            className="flex items-center justify-end text-end">
+                                                                            <div onClick={handleAddDotClickTwo}
+                                                                                 ref={AddDotDropdownRefTwo}
+                                                                                 className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickTwo ? 'bg-gray-100' : ''}`}>
+                                                                                <svg
+                                                                                    className="w-3 h-3"
+                                                                                    fill="#828D9E"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 16 16">
+                                                                                    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                                </svg>
+
+                                                                                {addDotClickTwo &&
+                                                                                    <div
+                                                                                        className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                        <div className="container py-2">
+                                                                                            <div
+                                                                                                className="space-y-1 text-[14px]">
+
+                                                                                                <div
+                                                                                                    onClick={handleToggleReadTwo}
+                                                                                                    className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                    {isReadTwo ? (
+                                                                                                        <LuMailOpen
+                                                                                                            size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                    ) : (
+                                                                                                        <LuMail
+                                                                                                            size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                    )}
+                                                                                                    {isReadTwo ? (
+                                                                                                        <h4>
+                                                                                                            Mark as
+                                                                                                            unread
+                                                                                                        </h4>
+                                                                                                    ) : (
+                                                                                                        <h4>
+                                                                                                            Mark as read
+                                                                                                        </h4>
+                                                                                                    )}
+                                                                                                </div>
+
+                                                                                                <div
+                                                                                                    onClick={toggleNotiBoxVisibility}
+                                                                                                    className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                    <svg
+                                                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                        viewBox="0 0 24 24"
+                                                                                                        fill="none"
+                                                                                                        stroke="#6B7280"
+                                                                                                        strokeWidth="1.5"
+                                                                                                        strokeLinecap="round"
+                                                                                                        strokeLinejoin="round">
+                                                                                                        <path
+                                                                                                            d="M3 6h18"/>
+                                                                                                        <path
+                                                                                                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                        <path
+                                                                                                            d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                        <line x1="10"
+                                                                                                              x2="10"
+                                                                                                              y1="11"
+                                                                                                              y2="17"/>
+                                                                                                        <line x1="14"
+                                                                                                              x2="14"
+                                                                                                              y1="11"
+                                                                                                              y2="17"/>
+                                                                                                    </svg>
+                                                                                                    <h4>
+                                                                                                        Delete
+                                                                                                        notification
+                                                                                                    </h4>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <h4 className="time text-[12px] text-graycolor">
+                                                                    1m
+                                                                </h4>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
+                                            )}
+                                            {/* (Two) Come Ad Hidden Box */}
+                                            {currentNotiBox === 'hidden_noti_box' && (
+                                                <div className="add_hidden_box">
+                                                    <div className="box bg-white border m-4 px-4 py-3 rounded">
+                                                        <div className="flex items-center justify-between">
+                                                            <div className="content flex gap-1 items-center">
+                                                                <div className="icon">
+                                                                    <LuTrash2 size={20} className="text-graycolor"/>
+                                                                </div>
+                                                                <h4 className="text-[14px] text-prgcolor">
+                                                                    Notification deleted.
+                                                                </h4>
+                                                            </div>
+                                                            <div className="button_right">
+                                                                <button onClick={toggleNotiBoxVisibility}
+                                                                        type="button"
+                                                                        className="py-1 px-4 flex items-center gap-2 rounded text-prgcolor text-[14px] bg-gray-100 hover:bg-primary hover:text-white">
+                                                                    <LuRotateCcw size={15}/>
+                                                                    Undo
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             )}
+
+                                            {/*Three*/}
+                                            <div
+                                                className={`user pl-4 py-3 ${isReadThree ? "bg-white" : "bg-[#F1F6FF]"} flex items-center gap-2 hover:bg-gray-100`}>
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    You have a new message from UpTown Store about your
+                                                                    order <b>#12345.</b> Click
+                                                                    <Link href='#'
+                                                                          className="text-primary"> here</Link> to
+                                                                    read and reply.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div onClick={handleAddDotClickThree}
+                                                                             ref={AddDotDropdownRefThree}
+                                                                             className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickThree ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickThree &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadThree}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadThree ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadThree ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1h
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*Four*/}
+                                            <div
+                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
+                                                                    any
+                                                                    help<br/>
+                                                                    getting started, please let us know.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1s
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*Five two*/}
+                                            <div
+                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
+                                                                    any
+                                                                    help<br/>
+                                                                    getting started, please let us know.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1s
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*Five three*/}
+                                            <div
+                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
+                                                                    any
+                                                                    help<br/>
+                                                                    getting started, please let us know.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1s
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/*Five*/}
+                                            <div
+                                                className="user pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-start gap-2 w-full">
+                                                        <Skeleton width={50} height={50} borderRadius="100%" count={1}/>
+                                                        <Skeleton containerClassName="flex-1" height={50} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="icon">
+                                                            <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                        </div>
+                                                        <div className="wrap w-full mr-4">
+                                                            <div className="flex items-center justify-between gap-2">
+                                                                <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                    Hi <b>John Doe,</b> welcome to Blends! If you need
+                                                                    any
+                                                                    help<br/>
+                                                                    getting started, please let us know.
+                                                                </h4>
+                                                                <div className="dot_icon">
+                                                                    <div
+                                                                        className="flex items-center justify-end text-end">
+                                                                        <div
+                                                                            ref={AddDotDropdownRefOne}
+                                                                            className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                            <svg
+                                                                                className="w-3 h-3"
+                                                                                fill="#828D9E"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                            </svg>
+
+                                                                            {addDotClickOne &&
+                                                                                <div
+                                                                                    className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                    <div className="container py-2">
+                                                                                        <div
+                                                                                            className="space-y-1 text-[14px]">
+
+                                                                                            <div
+                                                                                                onClick={handleToggleReadOne}
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                {isReadOne ? (
+                                                                                                    <LuMailOpen
+                                                                                                        size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                                ) : (
+                                                                                                    <LuMail size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                                )}
+                                                                                                {isReadOne ? (
+                                                                                                    <h4>
+                                                                                                        Mark as unread
+                                                                                                    </h4>
+                                                                                                ) : (
+                                                                                                    <h4>
+                                                                                                        Mark as read
+                                                                                                    </h4>
+                                                                                                )}
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                                <svg
+                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="#6B7280"
+                                                                                                    strokeWidth="1.5"
+                                                                                                    strokeLinecap="round"
+                                                                                                    strokeLinejoin="round">
+                                                                                                    <path d="M3 6h18"/>
+                                                                                                    <path
+                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                    <path
+                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                    <line x1="10"
+                                                                                                          x2="10"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                    <line x1="14"
+                                                                                                          x2="14"
+                                                                                                          y1="11"
+                                                                                                          y2="17"/>
+                                                                                                </svg>
+                                                                                                <h4>
+                                                                                                    Delete notification
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h4 className="time text-[12px] text-graycolor">
+                                                                1s
+                                                            </h4>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                            {/*Six*/}
+                                            {showUserSix && (
+                                                <div
+                                                    className="user_six pl-4 py-3 flex items-center gap-2 bg-white hover:bg-gray-100">
+                                                    <div className="icon">
+                                                        <HiUserCircle size={55} className="text-[#6B7280]"/>
+                                                    </div>
+                                                    <div className="wrap w-full mr-4">
+                                                        <div className="flex items-center justify-between gap-2">
+                                                            <h4 className="text-[14px] font-normal text-prgcolor cursor-pointer">
+                                                                A new item has been added: [Item Name] in [Category].
+                                                                Check it out now!
+                                                            </h4>
+                                                            <div className="dot_icon">
+                                                                <div className="flex items-center justify-end text-end">
+                                                                    <div
+                                                                        ref={AddDotDropdownRefOne}
+                                                                        className={`relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100 ${addDotClickOne ? 'bg-gray-100' : ''}`}>
+                                                                        <svg
+                                                                            className="w-3 h-3"
+                                                                            fill="#828D9E"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                                        </svg>
+
+                                                                        {addDotClickOne &&
+                                                                            <div
+                                                                                className="dots-dropdown-menu w-[200px] z-40 absolute top-[30px] right-[4px] bg-white rounded shadow border">
+                                                                                <div className="container py-2">
+                                                                                    <div
+                                                                                        className="space-y-1 text-[14px]">
+
+                                                                                        <div
+                                                                                            onClick={handleToggleReadOne}
+                                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                            {isReadOne ? (
+                                                                                                <LuMailOpen size={18}
+                                                                                                            className="text-graycolor group-hover:text-primary"/>
+                                                                                            ) : (
+                                                                                                <LuMail size={18}
+                                                                                                        className="text-graycolor group-hover:text-primary"/>
+                                                                                            )}
+                                                                                            {isReadOne ? (
+                                                                                                <h4>
+                                                                                                    Mark as unread
+                                                                                                </h4>
+                                                                                            ) : (
+                                                                                                <h4>
+                                                                                                    Mark as read
+                                                                                                </h4>
+                                                                                            )}
+                                                                                        </div>
+
+                                                                                        <div
+                                                                                            className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                                            <svg
+                                                                                                className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                viewBox="0 0 24 24"
+                                                                                                fill="none"
+                                                                                                stroke="#6B7280"
+                                                                                                strokeWidth="1.5"
+                                                                                                strokeLinecap="round"
+                                                                                                strokeLinejoin="round">
+                                                                                                <path d="M3 6h18"/>
+                                                                                                <path
+                                                                                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                                                                <path
+                                                                                                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                                                                <line x1="10" x2="10"
+                                                                                                      y1="11" y2="17"/>
+                                                                                                <line x1="14" x2="14"
+                                                                                                      y1="11" y2="17"/>
+                                                                                            </svg>
+                                                                                            <h4>
+                                                                                                Delete notification
+                                                                                            </h4>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h4 className="time text-[12px] text-graycolor">
+                                                            1w
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            <div className="load_notification">
+                                                {loading ? (
+                                                    <div className="flex items-center justify-center">
+                                                        <Skeleton height={10} width={200} count={1}/>
+                                                    </div>
+                                                ) : (
+                                                    <h4 onClick={() => setShowUserSix(true)}
+                                                        className="text-[14px] text-primary text-center cursor-pointer">
+                                                        View more notifications
+                                                    </h4>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="col lg:col-span-4 hidden lg:block">
-                                <div className="wrap">
-                                    <div className="box bg-white h-full px-4 py-4 rounded">
-                                        {loading ? (
-                                            <div>
-                                                <Skeleton height={20} count={1}/>
+                            {/*Right Side*/}
+                            <div className="col lg:col-span-4 right_sidebar hidden lg:block">
+                                <div className="box bg-white px-4 py-4 rounded">
+                                    {loading ? (
+                                        <div>
+                                            <Skeleton height={20} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="flex gap-2 items-center">
+                                                <svg
+                                                    className="text-gray-500 w-4 h-4 transition duration-75 group-hover:stroke-primary"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    strokeWidth="1.5" strokeLinecap="round"
+                                                    strokeLinejoin="round">
+                                                    <path
+                                                        d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                                    <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                                                    <path d="M2 7h20"/>
+                                                    <path
+                                                        d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
+                                                </svg>
+                                                <h4 className="text-[14px] font-semibold cursor-pointer hover:underline">
+                                                    Store Inbox
+                                                </h4>
                                             </div>
-                                        ) : (
-                                            <>
-                                                <div className="flex gap-2 items-center">
-                                                    <svg
-                                                        className="text-gray-500 w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        strokeWidth="1.5" strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path
-                                                            d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
-                                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                                        <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
-                                                        <path d="M2 7h20"/>
-                                                        <path
-                                                            d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
-                                                    </svg>
-                                                    <h4 className="text-[14px] font-semibold cursor-pointer hover:underline">
-                                                        Store Inbox
-                                                    </h4>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
+                                        </>
+                                    )}
+                                </div>
+
+                                <div className="sticky top-16">
 
                                     {/* Post Box */}
                                     {currentAdBoxRightSide === 'post_box_right_side' && (
@@ -1172,252 +1616,6 @@ function Page() {
                         </div>
                     </div>
                 </div>
-
-                {/* Mobile/Tap Left message Menu */}
-                <section className="mobile_left_message_box flex lg:hidden">
-                    <div className="container">
-                        <div id="drawer-navigation"
-                             className={`fixed bg-white lg:bg-transparent top-[128px] lg:visible z-30 h-screen pl-0 pt-0 p-0 overflow-y-auto transition-transform ${isDrawerOpen ? 'w-full left-0 sm:left-auto' : 'w-0 left-auto invisible'}`}
-                             tabIndex={-1} aria-labelledby="drawer-navigation-label">
-
-                            {/* User Comes Here */}
-                            <div className="px-0 overflow-y-auto h-[84vh]">
-                                <div className="user_box space-y-2 w-full h-[76vh] border-r overflow-y-auto">
-                                    <div
-                                        className="mt-3 user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    Did you get it?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer bg-white hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Sojib Hasan
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    Are you okay?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="user cursor-pointer hover:bg-gray-100 pt-2 pb-4 flex items-center justify-between">
-                                        <div className="px-4 mt-2 flex items-center gap-2">
-                                            <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                            <div className="wrap">
-                                                <h4 className="text-[14px] text-prgcolor cursor-pointer">
-                                                    Jeff Bently
-                                                </h4>
-                                                <h4 className="text-[12px] text-graycolor">
-                                                    What are you doing?
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div className="date -mt-2 mr-4">
-                                            <h4 className="text-[12px] text-graycolor">
-                                                2:07 PM
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
                 {/*---------------- Right Side Popups Start -------------- */}
                 {/* Start FeedbackAd Pop-Up Start (Right Side) */}
                 <Modal size="lg"

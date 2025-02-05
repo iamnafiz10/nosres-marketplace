@@ -698,8 +698,8 @@ function Page() {
 
                                                 <div className="message mt-4">
                                                     <div
-                                                        className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
-                                                        <Image src={SliderOneImg} className="w-[18%] h-[55px]"
+                                                        className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                        <Image src={SliderOneImg} className="w-[18%] h-[55px] rounded"
                                                                alt="PostImg"/>
                                                         <div className="content_area">
                                                             <h4 className="text-[14px] text-black font-[500]">
@@ -713,7 +713,7 @@ function Page() {
 
                                                 <div className="message mt-4">
                                                     <div
-                                                        className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                        className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
                                                         <div className="content_area">
                                                             <h4 className="text-[14px] text-black font-[500]">
                                                                 Experience the cutting-edge technology of the iPhone 16
@@ -732,11 +732,12 @@ function Page() {
                                                     <div className="text_wrap">
                                                         <h4 className="text-[12px] text-graycolor">
                                                             Your messages are fully protected with end-to-end
-                                                            encryption.
+                                                            encryption.<br/>
+                                                            <Link href="#"
+                                                                  className="-mt-[2px] text-primary text-[12px]">
+                                                                Learn more
+                                                            </Link>
                                                         </h4>
-                                                        <Link href="#" className="text-primary text-[12px]">
-                                                            Learn more
-                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
