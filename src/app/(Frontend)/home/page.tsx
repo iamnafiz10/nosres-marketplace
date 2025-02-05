@@ -269,6 +269,8 @@ export default function Home() {
     const [isClickedLikePostTwo, setIsClickedLikePostTwo] = useState(false);
     const [isClickedLikePostThree, setIsClickedLikePostThree] = useState(false);
     const [isClickedLikePostFour, setIsClickedLikePostFour] = useState(false);
+    const [isClickedLikePostVictoria, setIsClickedLikePostVictoria] = useState(false);
+    const [isClickedLikePostVictoriaTwo, setIsClickedLikePostVictoriaTwo] = useState(false);
 
     // Load comment
     const [showLoadComments, setShowLoadComments] = useState(false);
@@ -2190,6 +2192,343 @@ export default function Home() {
                                 </div>
                             </div>
 
+                            {/* Post Box Victoria */}
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex pb-4 items-center justify-between">
+                                        {loading ? (
+                                            <div className="flex items-center justify-start gap-2 w-full">
+                                                <Skeleton width={50} height={50} borderRadius="100%"
+                                                          count={1}/>
+                                                <Skeleton containerClassName="flex-1" height={50}
+                                                          count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    {loading ? (
+                                                        <div
+                                                            className="flex items-center justify-start gap-2 w-full">
+                                                            <Skeleton width={50} height={50} borderRadius="100%"
+                                                                      count={1}/>
+                                                            <Skeleton containerClassName="flex-1" width={200}
+                                                                      height={50}
+                                                                      count={1}/>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <Link href='#' className="flex items-center gap-1">
+                                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                                <div className="leading-[17px]">
+                                                                    <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
+                                                                        Victoria Stewart
+                                                                    </h4>
+                                                                    <div
+                                                                        className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            6d ago
+                                                        </span>
+                                                                        <LuDot size={12}/>
+                                                                        <IoMdGlobe size={13}/>
+                                                                    </div>
+                                                                </div>
+                                                            </Link>
+                                                        </>
+                                                    )}
+                                                </div>
+
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div
+                                                        className="relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div
+                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 16 16">
+                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                Could anyone please tell me where to find a good deal on the<br/> iPhone
+                                                16
+                                                Pro?
+                                            </h4>
+                                            <Link href='#' className="text-primary text-[14px]">
+                                                https://support.nosres.com/
+                                            </Link>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="post_image mt-0 px-4 bg-white">
+                                    {loading ? (
+                                        <>
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                <Skeleton height={200} count={1}/>
+                                                <Skeleton height={30} count={1}/>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                <Image src={SliderOneImg} className="w-[18%]" alt="PostImg"/>
+                                                <div className="content_area">
+                                                    <h4 className="text-[14px] text-black font-[500]">
+                                                        Experience the cutting-edge technology of the iPhone
+                                                        16 Pro, now available in pristine, like-new condition...
+                                                    </h4>
+                                                    <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    {loading ? (
+                                        <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                            <Skeleton height={40} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer"
+                                                         onClick={() => setIsClickedLikePostVictoria(!isClickedLikePostVictoria)}>
+                                                        {isClickedLikePostVictoria ? (
+                                                            <GoHeartFill
+                                                                className="w-4 h-4 text-primary hover:text-primary"/>
+                                                        ) : (
+                                                            <GoHeart
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        )}
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoComment
+                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div
+                                                        className="relative cursor-pointer">
+                                                        <GoSync
+                                                            className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">36</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Post Box VictoriaTwo */}
+                            <div className="post_box_wrap">
+                                <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                    <div className="flex pb-4 items-center justify-between">
+                                        {loading ? (
+                                            <div className="flex items-center justify-start gap-2 w-full">
+                                                <Skeleton width={50} height={50} borderRadius="100%"
+                                                          count={1}/>
+                                                <Skeleton containerClassName="flex-1" height={50}
+                                                          count={1}/>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center justify-between">
+                                                    {loading ? (
+                                                        <div
+                                                            className="flex items-center justify-start gap-2 w-full">
+                                                            <Skeleton width={50} height={50} borderRadius="100%"
+                                                                      count={1}/>
+                                                            <Skeleton containerClassName="flex-1" width={200}
+                                                                      height={50}
+                                                                      count={1}/>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <Link href='#' className="flex items-center gap-1">
+                                                                <HiUserCircle size={35} className="text-[#6B7280]"/>
+                                                                <div className="leading-[17px]">
+                                                                    <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
+                                                                        Victoria Stewart
+                                                                    </h4>
+                                                                    <div
+                                                                        className="flex items-center text-graycolor font-normal">
+                                                          <span
+                                                              className="text-[12px]">
+                                                            6d ago
+                                                        </span>
+                                                                        <LuDot size={12}/>
+                                                                        <IoMdGlobe size={13}/>
+                                                                    </div>
+                                                                </div>
+                                                            </Link>
+                                                        </>
+                                                    )}
+                                                </div>
+
+                                                <div className="flex items-center justify-end text-end">
+                                                    <div
+                                                        className="relative cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-3 h-3"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 16 16">
+                                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
+                                                            0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div
+                                                        className="cursor-pointer py-2 px-2 rounded-full hover:bg-gray-100">
+                                                        <svg
+                                                            className="w-4 h-4"
+                                                            fill="#828D9E"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 16 16">
+                                                            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0
+                                                    0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326
+                                                    1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751
+                                                    0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                Could anyone please tell me where to find a good deal on the<br/> iPhone
+                                                16
+                                                Pro?
+                                            </h4>
+                                            <Link href='#' className="text-primary text-[14px]">
+                                                https://support.nosres.com/
+                                            </Link>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="post_image mt-0 px-4 bg-white">
+                                    {loading ? (
+                                        <>
+                                            <div className="box mt-0 bg-white px-4 pt-0 pb-0 rounded">
+                                                <Skeleton height={200} count={1}/>
+                                                <Skeleton height={30} count={1}/>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                <div className="content_area">
+                                                    <h4 className="text-[14px] text-black font-[500]">
+                                                        Experience the cutting-edge technology of the iPhone
+                                                        16 Pro, now available in pristine, like-new condition...
+                                                    </h4>
+                                                    <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                                {/* Post Icons */}
+                                <div className="post_icons mt-0">
+                                    {loading ? (
+                                        <div className="box mt-0 bg-white px-4 pt-0 pb-4 rounded">
+                                            <Skeleton height={40} count={1}/>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="flex items-center justify-between bg-white rounded rounded-t-none px-4 py-3 mt-0">
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer"
+                                                         onClick={() => setIsClickedLikePostVictoriaTwo(!isClickedLikePostVictoriaTwo)}>
+                                                        {isClickedLikePostVictoriaTwo ? (
+                                                            <GoHeartFill
+                                                                className="w-4 h-4 text-primary hover:text-primary"/>
+                                                        ) : (
+                                                            <GoHeart
+                                                                className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                        )}
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">112</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div className="cursor-pointer">
+                                                        <GoComment
+                                                            className="w-4 h-4 text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">852</h4>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-1">
+                                                    <div
+                                                        className="relative cursor-pointer">
+                                                        <GoSync
+                                                            className="w-full h-[14px] text-[#6B7280] hover:text-primary"/>
+                                                    </div>
+                                                    <div className="count">
+                                                        <h4 className="text-[12px] cursor-pointer text-prgcolor hover:underline">36</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+
                             {/* Post Box */}
                             <div className="post_box_wrap">
                                 <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
@@ -2751,7 +3090,6 @@ export default function Home() {
                                     </div>
                                 </div>
                             )}
-
 
                             {/* Post Box Extra */}
                             <div className="post_box_wrap">

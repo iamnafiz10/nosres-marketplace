@@ -5,13 +5,14 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
 import Link from "next/link";
-import {LuDot, LuPenSquare} from "react-icons/lu";
+import {LuDot} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
 import {HiArrowLongLeft} from "react-icons/hi2";
 import {IoSearchOutline} from "react-icons/io5";
+import {FiEdit} from "react-icons/fi";
 
 function Page() {
     const loading = useLoading();
@@ -114,7 +115,7 @@ function Page() {
                                                 </div>
                                                 <div onClick={() => setOpenStartPostMessageModal(true)}
                                                      className="icon cursor-pointer group">
-                                                    <LuPenSquare size={20}
+                                                    <FiEdit size={20}
                                                                  className="text-graycolor group-hover:text-primary"/>
                                                 </div>
                                             </div>

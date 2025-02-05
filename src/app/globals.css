@@ -11,6 +11,9 @@ body {
     background: rgba(164, 164, 164, 0.12);
 }
 
+/*------------------------------------------------------*/
+
+/*------------------------------------------------------*/
 body #report-section {
     background: white !important;
 }
@@ -248,6 +251,15 @@ button {
     right: 0;
     width: 315px;
     height: 145px;
+    overflow: hidden;
+}
+
+/*------------------- Language -------------------*/
+#language_dropdown_menu {
+    top: 36px;
+    right: 0;
+    width: 140px;
+    height: 83px;
     overflow: hidden;
 }
 

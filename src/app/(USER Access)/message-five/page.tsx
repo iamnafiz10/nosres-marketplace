@@ -5,7 +5,7 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
 import Link from "next/link";
-import {LuDot, LuPenSquare} from "react-icons/lu";
+import {LuDot, LuMessageSquareLock} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Modal} from "flowbite-react";
@@ -16,6 +16,9 @@ import {GoSmiley} from "react-icons/go";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import {PiHandsPrayingLight} from "react-icons/pi";
+import {FiEdit} from "react-icons/fi";
+import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
+import {GrAttachment} from "react-icons/gr";
 
 function Page() {
     const loading = useLoading();
@@ -215,8 +218,8 @@ function Page() {
                                                 </div>
                                                 <div onClick={() => setOpenStartPostMessageModal(true)}
                                                      className="icon cursor-pointer group">
-                                                    <LuPenSquare size={20}
-                                                                 className="text-graycolor group-hover:text-primary"/>
+                                                    <FiEdit size={20}
+                                                            className="text-graycolor group-hover:text-primary"/>
                                                 </div>
                                             </div>
                                         </>
@@ -652,19 +655,20 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="profile_box flex flex-col items-center justify-center absolute top-[50px] bg-white z-20 w-[100%]">
-                                                <div className="icon">
-                                                    <HiUserCircle size={60} className="text-[#6B7280]"/>
-                                                </div>
-                                                <h4 className="text-[16px] text-prgcolor">Brad Pitt</h4>
-                                                <h4 className="text-[12px] text-graycolor mt-1">
-                                                    You follow each other on Marketplace.
-                                                </h4>
-                                            </div>
+                                                className="messages_wrap absolute h-[53%] top-[12%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
 
-                                            <div
-                                                className="messages_wrap absolute top-[47%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
-                                                <div className="message pt-[10px]">
+                                                <div
+                                                    className="profile_box flex flex-col items-center justify-center bg-white z-20 w-[100%]">
+                                                    <div className="icon">
+                                                        <HiUserCircle size={60} className="text-[#6B7280]"/>
+                                                    </div>
+                                                    <h4 className="text-[16px] text-prgcolor">Brad Pitt</h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        You follow each other on Marketplace.
+                                                    </h4>
+                                                </div>
+
+                                                <div className="message pt-[25px]">
                                                     <div
                                                         className="bg-gray-100 inline-block p-3 rounded-2xl rounded-bl-none">
                                                         <h4 className="text-[14px] text-prgcolor">
@@ -674,6 +678,66 @@ function Page() {
                                                     <h6 className="text-[10px] mt-2 text-graycolor leading-none">
                                                         Oct 20, 2017, 1:22 AM
                                                     </h6>
+                                                </div>
+
+                                                <div
+                                                    className="message flex mt-4 space-x-3 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#3197f5] inline-block py-2 px-3 rounded-2xl rounded-br-none">
+                                                            <h4 className="text-[14px] text-white">
+                                                                https://nosres-marketplace.vercel.<br/>
+                                                                app/message-five
+                                                            </h4>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:23 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                <div className="message mt-4">
+                                                    <div
+                                                        className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                        <Image src={SliderOneImg} className="w-[18%] h-[55px]"
+                                                               alt="PostImg"/>
+                                                        <div className="content_area">
+                                                            <h4 className="text-[14px] text-black font-[500]">
+                                                                Experience the cutting-edge techn
+                                                                ology of the iPhone 16 Pro, now...
+                                                            </h4>
+                                                            <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="message mt-4">
+                                                    <div
+                                                        className="flex items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                        <div className="content_area">
+                                                            <h4 className="text-[14px] text-black font-[500]">
+                                                                Experience the cutting-edge technology of the iPhone 16
+                                                                Pro, now...
+                                                            </h4>
+                                                            <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    className="protected_message absolute mt-3 bg-[#F6FAFF] rounded p-2 flex items-start gap-1">
+                                                    <div className="icon_wrap">
+                                                        <LuMessageSquareLock className="text-gray-500" size={18}/>
+                                                    </div>
+                                                    <div className="text_wrap">
+                                                        <h4 className="text-[12px] text-graycolor">
+                                                            Your messages are fully protected with end-to-end
+                                                            encryption.
+                                                        </h4>
+                                                        <Link href="#" className="text-primary text-[12px]">
+                                                            Learn more
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                             {isBlocked ? (
@@ -726,6 +790,11 @@ function Page() {
                                                                             </svg>
                                                                         </label>
                                                                     </div>
+                                                                </div>
+
+                                                                <div className="attac cursor-pointer">
+                                                                    <GrAttachment size={18}
+                                                                                  className="text-graycolor hover:text-primary"/>
                                                                 </div>
 
                                                                 <div

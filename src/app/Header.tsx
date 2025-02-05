@@ -5,9 +5,11 @@ import {HiChatBubbleLeft, HiOutlineChatBubbleLeft, HiOutlineSquaresPlus} from "r
 import {IoCart, IoSearchOutline} from "react-icons/io5";
 import Link from "next/link";
 import Image from "next/image";
-import {GoBell, GoHome, GoHomeFill} from "react-icons/go";
+import {GoBell, GoGlobe, GoHome, GoHomeFill} from "react-icons/go";
 import {CiClock2} from "react-icons/ci";
 import LogoImg from '@/../public/assets/images/logo.svg';
+import EnglishImg from '@/../public/assets/images/english.png';
+import FranceImg from '@/../public/assets/images/france.png';
 import ProductOneImg from '@/../public/assets/images/product-1.png';
 import {RxCross1} from "react-icons/rx";
 import Skeleton from "react-loading-skeleton";
@@ -56,6 +58,30 @@ function Header() {
             if (dropdownBusinessRef.current && !dropdownBusinessRef.current.contains(event.target)) {
                 // Click occurred outside of dropdown menu, so close it
                 setBusinessVisible(false);
+            }
+        };
+
+        // Add event listener to detect clicks out-Side of the dropdown menu
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        // Remove event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // 👇️ Toggle class on click Show And Hide Language Dropdown (Icon)
+    const [isLanguageVisible, setLanguageVisible] = useState(false);
+    const dropdownLanguageRef = useRef(null);
+    const handleLanguageClick = () => {
+        setLanguageVisible(!isLanguageVisible);
+    };
+    useEffect(() => {
+        const handleOutsideClick = (event: { target: any; }) => {
+            // @ts-ignore
+            if (dropdownLanguageRef.current && !dropdownLanguageRef.current.contains(event.target)) {
+                // Click occurred outside of dropdown menu, so close it
+                setLanguageVisible(false);
             }
         };
 
@@ -503,6 +529,50 @@ function Header() {
                                                                     Advertise with Nosres
                                                                     <span
                                                                         className="absolute -right-8 -top-1 text-[12px] text-primary">BETA</span>
+                                                                </h4>
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </Link>
+                                </Tooltip>
+
+                                {/* Language Icon */}
+                                <Tooltip content="Language" placement="bottom" style="light"
+                                         className="tooltip_design">
+                                    <Link href='#' onClick={handleLanguageClick}
+                                          ref={dropdownLanguageRef}
+                                          className="last_business_icon cursor-pointer flex flex-col items-center relative">
+                                        <div
+                                            className="group-hover: absolute top-[33px] w-[35px] transition"></div>
+                                        <div className="dropdown inline-block relative">
+                                            {/* Main SVG */}
+                                            <div className="relative">
+                                                <GoGlobe
+                                                    className={`w-[24px] h-[24px] profile_icon ${isLanguageVisible ? 'text-primary' : 'text-prgcolor'}`}/>
+                                            </div>
+                                            {isLanguageVisible &&
+                                                <div
+                                                    id="language_dropdown_menu"
+                                                    className="language-dropdown-menu cursor-auto absolute text-gray-700 pt-1 for-account transition-all ease-linear duration-300 bg-white rounded shadow border">
+                                                    <div className="container">
+                                                        <div className="mt-0 space-y-0 text-[14px]">
+                                                            <Link href='#'
+                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                <Image src={EnglishImg} className="w-[20px] h-[18px]"
+                                                                       alt="EnglishImg"/>
+                                                                <h4 className="relative">
+                                                                    English
+                                                                </h4>
+                                                            </Link>
+                                                            <Link href='#'
+                                                                  className="flex gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
+                                                                <Image src={FranceImg} className="w-[20px] h-[18px]"
+                                                                       alt="FranceImg"/>
+                                                                <h4 className="relative">
+                                                                    French
                                                                 </h4>
                                                             </Link>
                                                         </div>

@@ -5,7 +5,7 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
 import Link from "next/link";
-import {LuDot, LuPenSquare} from "react-icons/lu";
+import {LuDot} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Modal} from "flowbite-react";
@@ -16,6 +16,7 @@ import {GoSmiley} from "react-icons/go";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import {PiHandsPrayingLight} from "react-icons/pi";
+import {FiEdit} from "react-icons/fi";
 
 function Page() {
     const loading = useLoading();
@@ -215,7 +216,7 @@ function Page() {
                                                 </div>
                                                 <div onClick={() => setOpenStartPostMessageModal(true)}
                                                      className="icon cursor-pointer group">
-                                                    <LuPenSquare size={20}
+                                                    <FiEdit size={20}
                                                                  className="text-graycolor group-hover:text-primary"/>
                                                 </div>
                                             </div>
@@ -651,8 +652,7 @@ function Page() {
                                             </div>
                                             <hr/>
 
-                                            <div
-                                                className="messages_wrap absolute top-[41px] h-[70%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
+                                            <div className="messages_wrap absolute top-[41px] h-[70%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
                                                 <div className="message pt-[10px]">
                                                     <div
                                                         className="bg-gray-100 inline-block p-3 rounded-2xl rounded-bl-none">
