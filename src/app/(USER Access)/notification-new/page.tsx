@@ -12,6 +12,7 @@ import {Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
 import {IoSearchOutline} from "react-icons/io5";
 import {PiHandsPrayingLight} from "react-icons/pi";
+import {CiSettings} from "react-icons/ci";
 
 function Page() {
     const loading = useLoading();
@@ -453,7 +454,7 @@ function Page() {
                                         </div>
                                     </div>
                                     <div
-                                        className="-mt-[20px] md:mt-0 col-span-12 md:col-span-8 rounded bg-white border py-4">
+                                        className="-mt-[20px] md:mt-0 col-span-12 md:col-span-8 rounded bg-white py-4">
                                         {/* Notification Header */}
                                         <div className="px-0">
                                             {loading ? (
@@ -667,30 +668,8 @@ function Page() {
                                                                                                 <div
                                                                                                     onClick={toggleNotiBoxVisibility}
                                                                                                     className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                                                    <svg
-                                                                                                        className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                        viewBox="0 0 24 24"
-                                                                                                        fill="none"
-                                                                                                        stroke="#6B7280"
-                                                                                                        strokeWidth="1.5"
-                                                                                                        strokeLinecap="round"
-                                                                                                        strokeLinejoin="round">
-                                                                                                        <path
-                                                                                                            d="M3 6h18"/>
-                                                                                                        <path
-                                                                                                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                                                                        <path
-                                                                                                            d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
-                                                                                                        <line x1="10"
-                                                                                                              x2="10"
-                                                                                                              y1="11"
-                                                                                                              y2="17"/>
-                                                                                                        <line x1="14"
-                                                                                                              x2="14"
-                                                                                                              y1="11"
-                                                                                                              y2="17"/>
-                                                                                                    </svg>
+                                                                                                    <LuTrash2 size={18}
+                                                                                                              className="text-graycolor group-hover:text-primary"/>
                                                                                                     <h4>
                                                                                                         Delete
                                                                                                         notification
@@ -806,29 +785,8 @@ function Page() {
 
                                                                                             <div
                                                                                                 className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
-                                                                                                <svg
-                                                                                                    className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 0 24 24"
-                                                                                                    fill="none"
-                                                                                                    stroke="#6B7280"
-                                                                                                    strokeWidth="1.5"
-                                                                                                    strokeLinecap="round"
-                                                                                                    strokeLinejoin="round">
-                                                                                                    <path d="M3 6h18"/>
-                                                                                                    <path
-                                                                                                        d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                                                                                                    <path
-                                                                                                        d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
-                                                                                                    <line x1="10"
-                                                                                                          x2="10"
-                                                                                                          y1="11"
-                                                                                                          y2="17"/>
-                                                                                                    <line x1="14"
-                                                                                                          x2="14"
-                                                                                                          y1="11"
-                                                                                                          y2="17"/>
-                                                                                                </svg>
+                                                                                                <LuTrash2 size={18}
+                                                                                                          className="text-graycolor group-hover:text-primary"/>
                                                                                                 <h4>
                                                                                                     Delete notification
                                                                                                 </h4>
@@ -2610,25 +2568,15 @@ function Page() {
                                         </div>
                                     ) : (
                                         <>
-                                            <div className="flex gap-2 items-center">
-                                                <svg
-                                                    className="text-gray-500 w-4 h-4 transition duration-75 group-hover:stroke-primary"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    strokeWidth="1.5" strokeLinecap="round"
-                                                    strokeLinejoin="round">
-                                                    <path
-                                                        d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
-                                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                                    <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
-                                                    <path d="M2 7h20"/>
-                                                    <path
-                                                        d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
-                                                </svg>
+                                            <div className="flex gap-1 items-center">
+                                                <CiSettings size={20} className="text-graycolor"/>
                                                 <h4 className="text-[14px] font-semibold cursor-pointer hover:underline">
-                                                    Store Inbox
+                                                    Notification Settings
                                                 </h4>
                                             </div>
+                                            <h4 className="text-[12px] text-primary mt-1 ml-[25px]">
+                                                Manage Notifications
+                                            </h4>
                                         </>
                                     )}
                                 </div>

@@ -455,7 +455,7 @@ function Page() {
                                         </div>
                                     </div>
                                     <div
-                                        className="-mt-[20px] md:mt-0 col-span-12 md:col-span-8 rounded bg-white border py-4">
+                                        className="-mt-[20px] md:mt-0 col-span-12 md:col-span-8 rounded bg-white py-4">
                                         {/* Notification Header */}
                                         <div className="px-0">
                                             {loading ? (

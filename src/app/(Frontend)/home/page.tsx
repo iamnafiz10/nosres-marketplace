@@ -2296,7 +2296,8 @@ export default function Home() {
                                         </>
                                     ) : (
                                         <>
-                                            <div className="flex items-center cursor-pointer gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                            <div
+                                                className="flex items-center cursor-pointer gap-3 bg-[#F3F4F6] rounded px-4 py-3">
                                                 <Image src={SliderOneImg} className="w-[18%] rounded" alt="PostImg"/>
                                                 <div className="content_area">
                                                     <h4 className="text-[14px] text-black font-[500]">
@@ -2465,7 +2466,8 @@ export default function Home() {
                                         </>
                                     ) : (
                                         <>
-                                            <div className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                            <div
+                                                className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
                                                 <div className="content_area">
                                                     <h4 className="text-[14px] text-black font-[500]">
                                                         Experience the cutting-edge technology of the iPhone
@@ -3478,6 +3480,34 @@ export default function Home() {
                                                 className="mt-3 py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
                                             Learn More
                                         </button>
+                                    </>
+                                )}
+                            </div>
+
+                            <div className="box mt-4 bg-white px-4 py-4 rounded">
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={20} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="flex gap-2 items-center">
+                                            <h4 className="relative text-[14px] font-semibold">
+                                                Advertise on Nosres
+                                            </h4>
+                                        </div>
+                                    </>
+                                )}
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={20} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <h4 className="text-graycolor mt-1 text-[12px]">
+                                            Reach your audience with targeted ads in a seamless and engaging
+                                            marketplace.
+                                        </h4>
                                     </>
                                 )}
                             </div>
