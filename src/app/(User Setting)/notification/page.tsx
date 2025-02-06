@@ -5,6 +5,10 @@ import Link from "next/link";
 import {HiOutlineMenuAlt3, HiUserCircle} from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 import useLoading from "@/app/useLoading";
+import {FiEdit} from "react-icons/fi";
+import {Modal} from "flowbite-react";
+import {Radio, RadioChangeEvent} from "antd";
+import {Checkbox} from 'antd';
 
 function Page() {
     useTitle("Notifications")
@@ -33,6 +37,20 @@ function Page() {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
+
+    //----------------------- Modal Area ------------------------//
+    // Radio
+    const [value, setValue] = useState(1);
+    const onChange = (newValue: number) => {
+        setValue(newValue);
+    };
+
+    // popup
+    const [openStartOneModal, setOpenStartOneModal] = useState<boolean>(false);
+    const [openStartTwoModal, setOpenStartTwoModal] = useState<boolean>(false);
+    const [openStartThreeModal, setOpenStartThreeModal] = useState<boolean>(false);
+    const [openStartFourModal, setOpenStartFourModal] = useState<boolean>(false);
+
     return (
         <>
             <section id="account-page-section">
@@ -515,6 +533,134 @@ function Page() {
                                         </>
                                     )}
                                 </div>
+
+                                {/* Main Box */}
+                                <div className="box mt-4 px-6 py-4 bg-white rounded">
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={30} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="box_header pb-2">
+                                                <h4 className="text-[16px] text-prgcolor">More Options</h4>
+                                            </div>
+                                        </>
+                                    )}
+                                    <hr/>
+
+                                    {/*One*/}
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Notification Frequency
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Choose how often you’d like to be updated about your activities
+                                                        and interests.
+                                                    </h4>
+                                                </div>
+
+                                                <div onClick={() => setOpenStartOneModal(true)}
+                                                     className="icon_wrap cursor-pointer flex items-center gap-1">
+                                                    <FiEdit size={15}
+                                                            className="text-graycolor group-hover:text-primary"/>
+                                                    <h4 className="text-[14px] text-primary">Edit</h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                    {/*Two*/}
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Notification Channels
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Select how you’d like to receive notifications.
+                                                    </h4>
+                                                </div>
+
+                                                <div onClick={() => setOpenStartTwoModal(true)}
+                                                     className="icon_wrap cursor-pointer flex items-center gap-1">
+                                                    <FiEdit size={15}
+                                                            className="text-graycolor group-hover:text-primary"/>
+                                                    <h4 className="text-[14px] text-primary">Edit</h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                    {/*Three*/}
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Notification Priority
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Control the importance of notifications and ensure you don’t
+                                                        miss what <br/>matters most.
+                                                    </h4>
+                                                </div>
+
+                                                <div onClick={() => setOpenStartThreeModal(true)}
+                                                     className="icon_wrap cursor-pointer flex items-center gap-1">
+                                                    <FiEdit size={15}
+                                                            className="text-graycolor group-hover:text-primary"/>
+                                                    <h4 className="text-[14px] text-primary">Edit</h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                    {/*Four*/}
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Notification Sound
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Control the importance of notifications and ensure you don’t
+                                                        miss what <br/>matters most.
+                                                    </h4>
+                                                </div>
+
+                                                <div onClick={() => setOpenStartFourModal(true)}
+                                                     className="icon_wrap cursor-pointer flex items-center gap-1">
+                                                    <FiEdit size={15}
+                                                            className="text-graycolor group-hover:text-primary"/>
+                                                    <h4 className="text-[14px] text-primary">Edit</h4>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
 
@@ -524,6 +670,304 @@ function Page() {
                     </div>
                 </div>
             </section>
+
+            {/* One */}
+            <Modal size="lg"
+                   dismissible
+                   show={openStartOneModal}
+                   className="modal_cntrl"
+                   onClose={() => setOpenStartOneModal(false)}>
+                <Modal.Header
+                    style={{
+                        height: '50px',
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}
+                >
+                    <h4 className="text-[16px]">Notification Frequency</h4>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <h4 className="text-graycolor text-[14px]">
+                            Please select one option.
+                        </h4>
+
+                        <div className="mt-4">
+                            <div onClick={() => onChange(1)}
+                                 className="box cursor-pointer py-2 px-4 border rounded">
+                                <Radio.Group
+                                    onChange={(e: RadioChangeEvent) => {
+                                        // Handle radio button change here
+                                        // onChange(newValue);
+                                    }}
+                                    value={value}
+                                    className="flex gap-1 items-center justify-start">
+                                    <div className="radio_box">
+                                        <Radio value={1}></Radio>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                Instant
+                                            </h4>
+                                            <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                Get notified immediately when something happens
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </Radio.Group>
+                            </div>
+
+                            <div onClick={() => onChange(2)}
+                                 className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                <Radio.Group
+                                    onChange={(e: RadioChangeEvent) => {
+                                        // Handle radio button change here
+                                        // onChange(newValue);
+                                    }}
+                                    value={value}
+                                    className="flex items-center gap-1 justify-start">
+                                    <div className="radio_box">
+                                        <Radio value={2}></Radio>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                Daily Digest
+                                            </h4>
+                                            <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                Receive a summary of notifications daily
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </Radio.Group>
+                            </div>
+
+                            <div onClick={() => onChange(3)}
+                                 className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                <Radio.Group
+                                    onChange={(e: RadioChangeEvent) => {
+                                        // Handle radio button change here
+                                        // onChange(newValue);
+                                    }}
+                                    value={value}
+                                    className="flex items-center gap-1 justify-start">
+                                    <div className="radio_box">
+                                        <Radio value={3}></Radio>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                Weekly Summary
+                                            </h4>
+                                            <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                Get a consolidated weekly report
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </Radio.Group>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="flex w-full items-center justify-between">
+                        <button onClick={() => setOpenStartOneModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
+                            Cancel
+                        </button>
+                        <button onClick={() => setOpenStartOneModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#4D7FB8] hover:bg-[#3A5F8A] text-white rounded">
+                            Save
+                        </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+            {/*Two*/}
+            <Modal size="lg" dismissible show={openStartTwoModal}
+                   onClose={() => setOpenStartTwoModal(false)}>
+                <Modal.Header>
+                    <div className="head text-[16px] flex items-start gap-2">
+                        <h6>Notification Channels</h6>
+                    </div>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body box">
+                        <h4 className="text-graycolor text-[14px]">
+                            You can choose more than one option.
+                        </h4>
+                        <div id="checkbox" className="-space-y-2">
+                            <Checkbox defaultChecked className="flex items-start gap-1">
+                                <h4 className="text-[14px] mt-4">Push</h4>
+                                <h4 className="text-gray-500 font-normal text-[14px]">
+                                    Receive instant updates on your device.
+                                </h4>
+                            </Checkbox>
+                            <Checkbox className="flex items-start gap-1">
+                                <h4 className="text-[14px] mt-4">Email</h4>
+                                <h4 className="text-gray-500 font-normal text-[14px]">
+                                    Get notifications sent to your email inbox.
+                                </h4>
+                            </Checkbox>
+                            <Checkbox defaultChecked className="flex items-start gap-1">
+                                <h4 className="text-[14px] mt-4">SMS</h4>
+                                <h4 className="text-gray-500 font-normal text-[14px]">
+                                    Receive updates via text messages.
+                                </h4>
+                            </Checkbox>
+                            <Checkbox className="flex items-start gap-1">
+                                <h4 className="text-[14px] mt-4">In-app</h4>
+                                <h4 className="text-gray-500 font-normal text-[14px]">
+                                    Stay informed with alerts directly in the app.
+                                </h4>
+                            </Checkbox>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="flex w-full items-center justify-between">
+                        <button onClick={() => setOpenStartTwoModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
+                            Cancel
+                        </button>
+                        <button onClick={() => setOpenStartTwoModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#4D7FB8] hover:bg-[#3A5F8A] text-white rounded">
+                            Save
+                        </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+            {/* Three */}
+            <Modal size="lg"
+                   dismissible
+                   show={openStartThreeModal}
+                   className="modal_cntrl"
+                   onClose={() => setOpenStartThreeModal(false)}>
+                <Modal.Header
+                    style={{
+                        height: '50px',
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}
+                >
+                    <h4 className="text-[16px]">Notification Priority</h4>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <h4 className="text-graycolor text-[14px]">
+                            Please select one option.
+                        </h4>
+
+                        <div className="mt-4">
+                            <div onClick={() => onChange(1)}
+                                 className="box cursor-pointer py-2 px-4 border rounded">
+                                <Radio.Group
+                                    onChange={(e: RadioChangeEvent) => {
+                                        // Handle radio button change here
+                                        // onChange(newValue);
+                                    }}
+                                    value={value}
+                                    className="flex gap-1 items-center justify-start">
+                                    <div className="radio_box">
+                                        <Radio value={1}></Radio>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                High Priority
+                                            </h4>
+                                            <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                Immediate action is needed for critical updates like messages,
+                                                inquiries,
+                                                or purchases.
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </Radio.Group>
+                            </div>
+
+                            <div onClick={() => onChange(2)}
+                                 className="mt-4 box cursor-pointer py-2 px-4 border rounded">
+                                <Radio.Group
+                                    onChange={(e: RadioChangeEvent) => {
+                                        // Handle radio button change here
+                                        // onChange(newValue);
+                                    }}
+                                    value={value}
+                                    className="flex items-center gap-1 justify-start">
+                                    <div className="radio_box">
+                                        <Radio value={2}></Radio>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <div className="content">
+                                            <h4 className="text-[14px] text-prgcolor">
+                                                Low Priority
+                                            </h4>
+                                            <h4 className="-mt-1 text-[12px] text-graycolor">
+                                                General updates like price drops, new listings, or recommendations.
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </Radio.Group>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="flex w-full items-center justify-between">
+                        <button onClick={() => setOpenStartThreeModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
+                            Cancel
+                        </button>
+                        <button onClick={() => setOpenStartThreeModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#4D7FB8] hover:bg-[#3A5F8A] text-white rounded">
+                            Save
+                        </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+            {/*Four*/}
+            <Modal size="lg" dismissible show={openStartFourModal}
+                   onClose={() => setOpenStartFourModal(false)}>
+                <Modal.Header>
+                    <div className="head text-[16px] flex items-start gap-2">
+                        <h6>Notification Sound</h6>
+                    </div>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body box">
+                        <h4 className="text-graycolor text-[14px]">
+                            You can choose more than one option.
+                        </h4>
+                        <div id="checkbox" className="-space-y-2">
+                            <Checkbox defaultChecked className="flex items-start gap-1">
+                                <h4 className="text-[14px] mt-4">New Notification</h4>
+                                <h4 className="text-gray-500 font-normal text-[14px]">
+                                    Play a sound whenever a new notification is received.
+                                </h4>
+                            </Checkbox>
+                            <Checkbox className="flex items-start gap-1">
+                                <h4 className="text-[14px] mt-4">New Message</h4>
+                                <h4 className="text-gray-500 font-normal text-[14px]">
+                                    Play a sound whenever a new message is received.
+                                </h4>
+                            </Checkbox>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="flex w-full items-center justify-between">
+                        <button onClick={() => setOpenStartFourModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
+                            Cancel
+                        </button>
+                        <button onClick={() => setOpenStartFourModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#4D7FB8] hover:bg-[#3A5F8A] text-white rounded">
+                            Save
+                        </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }
