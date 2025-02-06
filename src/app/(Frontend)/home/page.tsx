@@ -3484,6 +3484,7 @@ export default function Home() {
                                 )}
                             </div>
 
+
                             <div className="box mt-4 bg-white px-4 py-4 rounded">
                                 {loading ? (
                                     <div>
@@ -3492,8 +3493,19 @@ export default function Home() {
                                 ) : (
                                     <>
                                         <div className="flex gap-2 items-center">
+                                            <svg
+                                                className="w-[18px] h-[18px] transition duration-75 group-hover:stroke-primary"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="#6B7280"
+                                                strokeWidth="1.5" strokeLinecap="round"
+                                                strokeLinejoin="round">
+                                                <path d="m3 11 18-5v12L3 14v-3z"/>
+                                                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+                                            </svg>
                                             <h4 className="relative text-[14px] font-semibold">
                                                 Advertise on Nosres
+                                                <span
+                                                    className="absolute -right-8 -top-1 text-[12px] font-normal text-primary">BETA</span>
                                             </h4>
                                         </div>
                                     </>
@@ -3504,10 +3516,22 @@ export default function Home() {
                                     </div>
                                 ) : (
                                     <>
-                                        <h4 className="text-graycolor mt-1 text-[12px]">
+                                        <h4 className="text-graycolor mt-3 text-[12px]">
                                             Reach your audience with targeted ads in a seamless and engaging
                                             marketplace.
                                         </h4>
+                                    </>
+                                )}
+                                {loading ? (
+                                    <div>
+                                        <Skeleton height={30} width={120} count={1}/>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <button type="button"
+                                                className="mt-3 py-2 px-4 rounded text-primary hover:bg-primary transition hover:text-white bg-gray-100 text-[12px]">
+                                            Learn More
+                                        </button>
                                     </>
                                 )}
                             </div>
