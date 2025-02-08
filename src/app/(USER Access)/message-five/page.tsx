@@ -145,16 +145,25 @@ function Page() {
         };
     }, [showStartPostEmoji]);
 
+// Input dinamic
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const [textareaHeight, setTextareaHeight] = useState(40); // Initial height
+    const defaultMessageHeight = 56; // Default height percentage
+
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setStartPostText(e.target.value);
-        // Auto-expand height
+
         if (textareaRef.current) {
-            textareaRef.current.style.height = "auto"; // Reset height first
-            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set new height
+            textareaRef.current.style.height = "auto"; // Reset height
+            const newHeight = textareaRef.current.scrollHeight;
+            textareaRef.current.style.height = `${newHeight}px`; // Expand
+
+            // Only update if height is greater than 40px
+            if (newHeight > 40) {
+                setTextareaHeight(newHeight > 160 ? 160 : newHeight); // Limit max height to 160px
+            }
         }
     };
-
 
     // 👇️ Add 3 dots
     const [addDotClick, setAddDotClick] = useState(false);
@@ -681,7 +690,11 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="messages_wrap absolute h-[53%] top-[12%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
+                                                className="messages_wrap absolute top-[12%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto"
+                                                style={{
+                                                    height: `calc(${defaultMessageHeight}% - ${textareaHeight > 40 ? textareaHeight - 40 : 0}px)`,
+                                                }}
+                                            >
 
                                                 <div
                                                     className="profile_box flex flex-col items-center justify-center bg-white z-20 w-[100%]">
@@ -1171,19 +1184,14 @@ function Page() {
                                             ) : (
                                                 <div ref={modalRef} className="w-full absolute z-30 bg-white bottom-4">
                                                     <div className="write_box px-4 w-full border-t">
-                                                        {/*<input type="text"*/}
-                                                        {/*       value={startPostText}*/}
-                                                        {/*       onChange={(e) => setStartPostText(e.target.value)}*/}
-                                                        {/*       className="mt-2 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"*/}
-                                                        {/*       placeholder="Write a Message..."/>*/}
-                                                        <textarea
-                                                            ref={textareaRef}
-                                                            value={startPostText}
-                                                            onChange={(e) => setStartPostText(e.target.value)}
-                                                            className="block mt-2 mb-2 rounded w-full pb-2 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none resize-none"
-                                                            placeholder="Write a Message..."
-                                                            rows={2}
-                                                        />
+                                                      <textarea
+                                                          ref={textareaRef}
+                                                          value={startPostText}
+                                                          onChange={handleInput}
+                                                          className="block mt-2 mb-2 rounded w-full pb-2 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none resize-none max-h-40 overflow-y-auto"
+                                                          placeholder="Write a Message..."
+                                                          rows={2}
+                                                      />
                                                     </div>
                                                     <div className="icon_box px-4 pb-4 w-full border-t">
                                                         <div className="flex items-center justify-between mt-3">
