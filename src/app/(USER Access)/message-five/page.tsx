@@ -4,6 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
+import MessageImg from "../../../../public/assets/images/message-photo.jpg";
 import Link from "next/link";
 import {LuDot, LuMessageSquareLock} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
@@ -19,6 +20,17 @@ import {PiHandsPrayingLight} from "react-icons/pi";
 import {FiEdit} from "react-icons/fi";
 import SliderOneImg from "../../../../public/assets/images/slider1.jpg";
 import {GrAttachment} from "react-icons/gr";
+import {
+    AiOutlineFilePdf,
+    AiOutlineFilePpt,
+    AiOutlineFileExcel,
+    AiOutlineFileZip,
+    AiOutlineFile,
+} from "react-icons/ai";
+import {PiFileVideo, PiFileAudio} from "react-icons/pi";
+import {MdOutlineFileDownload} from "react-icons/md";
+import {BsFiletypeDocx} from "react-icons/bs";
+
 
 function Page() {
     const loading = useLoading();
@@ -723,6 +735,390 @@ function Page() {
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                {/*Preview Message One*/}
+                                                <div className="message mt-4">
+                                                    <div
+                                                        className="bg-[#FECACA] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                        <div className="flex items-center gap-1 relative">
+                                                            <div className="icon_wrap">
+                                                                <AiOutlineFilePdf size={37} className="text-[#EF4444]"/>
+                                                            </div>
+                                                            <div className="text_wrap">
+                                                                <h4 className="main_text text-[#DC2626] text-[14px]">
+                                                                    Project-Brief.pdf
+                                                                </h4>
+                                                                <h4 className="sub_text text-[#F87171] text-[12px]">
+                                                                    177 KB
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                <MdOutlineFileDownload size={22}
+                                                                                       className="text-[#DC2626]"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                        Oct 20, 2017, 1:22 AM
+                                                    </h6>
+                                                </div>
+
+                                                {/*Preview Message Two*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#BFDBFE] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <BsFiletypeDocx size={32}
+                                                                                    className="text-[#1D4ED8]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#1D4ED8] text-[14px]">
+                                                                        Project-Brief.docx
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#60A5FA] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#1D4ED8]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Three*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#FEF3C7] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFileZip size={32}
+                                                                                      className="text-[#F59E0B]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#B45309] text-[14px]">
+                                                                        Project-Brief for tomoro...
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#FBBF24] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#B45309]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Four*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#D1FAE5] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFileExcel size={32}
+                                                                                        className="text-[#047857]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#064E3B] text-[14px]">
+                                                                        Project-Brief.xlsx
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#6EE7B7] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#064E3B]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Five*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#FEE2B3] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFilePpt size={32}
+                                                                                      className="text-[#F97316]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#C2410C] text-[14px]">
+                                                                        Project-Brief.pptx
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#FDBA74] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#C2410C]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Six*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#F3F4F6] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFile size={32}
+                                                                                   className="text-[#4B5563]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#374151] text-[14px]">
+                                                                        Project-Brief.txt
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#9CA3AF] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#374151]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Seven*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#F3F4F6] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFile size={32}
+                                                                                   className="text-[#4B5563]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#374151] text-[14px]">
+                                                                        Project-Brief.rtf
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#9CA3AF] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#374151]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Eight*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="w-[200px] h-[191px] cursor-pointer">
+                                                            <Image src={MessageImg} className="rounded"
+                                                                   alt="MessageImg"/>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Nine*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#F3E8FF] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <PiFileVideo size={32}
+                                                                                 className="text-[#6B21A8]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#9D4EDD] text-[14px]">
+                                                                        Screen recording.mov
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#D8B4FE] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#9D4EDD]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Ten*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#D1FAE5] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <PiFileAudio size={32}
+                                                                                 className="text-[#10B981]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#047857] text-[14px]">
+                                                                        Audio recording.mp3
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#34D399] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#047857]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Eleven*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#E5E5E5] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFile size={32}
+                                                                                   className="text-[#A3A3A3]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#4D4D4D] text-[14px]">
+                                                                        Project-Brief.html
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#B3B3B3] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#4D4D4D]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Twelve*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#E5E5E5] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFile size={32}
+                                                                                   className="text-[#A3A3A3]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#4D4D4D] text-[14px]">
+                                                                        Project-Brief.psd
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#B3B3B3] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#4D4D4D]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
+                                                {/*Preview Message Thirteen*/}
+                                                <div className="message flex mt-4 ml-auto justify-end">
+                                                    <div className="wrap">
+                                                        <div
+                                                            className="bg-[#E5E5E5] inline-block p-3 rounded w-[220px] cursor-pointer">
+                                                            <div className="flex items-center gap-1 relative">
+                                                                <div className="icon_wrap">
+                                                                    <AiOutlineFile size={32}
+                                                                                   className="text-[#A3A3A3]"/>
+                                                                </div>
+                                                                <div className="text_wrap">
+                                                                    <h4 className="main_text text-[#4D4D4D] text-[14px]">
+                                                                        Project-Brief.ai
+                                                                    </h4>
+                                                                    <h4 className="sub_text text-[#B3B3B3] text-[12px]">
+                                                                        177 KB
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    className="icon_wrap absolute right-0 bottom-0 cursor-pointer">
+                                                                    <MdOutlineFileDownload size={22}
+                                                                                           className="text-[#4D4D4D]"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                            Oct 20, 2017, 1:22 AM
+                                                        </h6>
+                                                    </div>
+                                                </div>
+
 
                                                 <div
                                                     className="protected_message absolute mt-3 bg-[#F6FAFF] rounded p-2 flex items-start gap-1">
