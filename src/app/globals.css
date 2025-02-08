@@ -10,8 +10,14 @@ body {
     padding: 0;
     background: rgba(164, 164, 164, 0.12);
 }
+
 body #report-section {
     background: white !important;
+}
+
+.message_slider_image {
+    width: 280px !important;
+    height: 360px !important;
 }
 
 .copyright {
@@ -453,5 +459,12 @@ em-emoji-picker {
 
     .react-international-phone-country-selector-button__button-content {
         padding: 0 3px !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .message_slider_image {
+        width: 200px !important;
+        height: 280px !important;
     }
 }

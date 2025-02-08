@@ -9,7 +9,7 @@ import Link from "next/link";
 import {LuDot, LuMessageSquareLock} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
-import {Modal} from "flowbite-react";
+import {Carousel, Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
 import {HiArrowLongLeft} from "react-icons/hi2";
 import {IoSearchOutline} from "react-icons/io5";
@@ -25,12 +25,11 @@ import {
     AiOutlineFilePpt,
     AiOutlineFileExcel,
     AiOutlineFileZip,
-    AiOutlineFile,
+    AiOutlineFile, AiOutlineFileWord,
 } from "react-icons/ai";
 import {PiFileVideo, PiFileAudio} from "react-icons/pi";
 import {MdOutlineFileDownload} from "react-icons/md";
-import {BsFiletypeDocx} from "react-icons/bs";
-
+import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 
 function Page() {
     const loading = useLoading();
@@ -146,6 +145,26 @@ function Page() {
         };
     }, [showStartPostEmoji]);
 
+// Input dinamic
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const [textareaHeight, setTextareaHeight] = useState(40); // Initial height
+    const defaultMessageHeight = 56; // Default height percentage
+
+    const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setStartPostText(e.target.value);
+
+        if (textareaRef.current) {
+            textareaRef.current.style.height = "auto"; // Reset height
+            const newHeight = textareaRef.current.scrollHeight;
+            textareaRef.current.style.height = `${newHeight}px`; // Expand
+
+            // Only update if height is greater than 40px
+            if (newHeight > 40) {
+                setTextareaHeight(newHeight > 160 ? 160 : newHeight); // Limit max height to 160px
+            }
+        }
+    };
+
     // 👇️ Add 3 dots
     const [addDotClick, setAddDotClick] = useState(false);
     const AddDotDropdownRef = useRef(null);
@@ -199,6 +218,10 @@ function Page() {
         setOpenReportAdModal(false);
         setOpenReportAdSubmitConfirmModal(false);
     }
+
+
+    // Message Image Modal
+    const [openStartMessageImageModal, setOpenStartMessageImageModal] = useState<boolean>(false);
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -667,7 +690,11 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="messages_wrap absolute h-[53%] top-[12%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto">
+                                                className="messages_wrap absolute top-[12%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto"
+                                                style={{
+                                                    height: `calc(${defaultMessageHeight}% - ${textareaHeight > 40 ? textareaHeight - 40 : 0}px)`,
+                                                }}
+                                            >
 
                                                 <div
                                                     className="profile_box flex flex-col items-center justify-center bg-white z-20 w-[100%]">
@@ -742,7 +769,7 @@ function Page() {
                                                         className="bg-[#FECACA] inline-block p-3 rounded w-[220px] cursor-pointer">
                                                         <div className="flex items-center gap-1 relative">
                                                             <div className="icon_wrap">
-                                                                <AiOutlineFilePdf size={37} className="text-[#EF4444]"/>
+                                                                <AiOutlineFilePdf size={32} className="text-[#EF4444]"/>
                                                             </div>
                                                             <div className="text_wrap">
                                                                 <h4 className="main_text text-[#DC2626] text-[14px]">
@@ -771,8 +798,8 @@ function Page() {
                                                             className="bg-[#BFDBFE] inline-block p-3 rounded w-[220px] cursor-pointer">
                                                             <div className="flex items-center gap-1 relative">
                                                                 <div className="icon_wrap">
-                                                                    <BsFiletypeDocx size={32}
-                                                                                    className="text-[#1D4ED8]"/>
+                                                                    <AiOutlineFileWord size={32}
+                                                                                       className="text-[#1D4ED8]"/>
                                                                 </div>
                                                                 <div className="text_wrap">
                                                                     <h4 className="main_text text-[#1D4ED8] text-[14px]">
@@ -953,8 +980,8 @@ function Page() {
                                                 {/*Preview Message Eight*/}
                                                 <div className="message flex mt-4 ml-auto justify-end">
                                                     <div className="wrap">
-                                                        <div
-                                                            className="w-[200px] h-[191px] cursor-pointer">
+                                                        <div onClick={() => setOpenStartMessageImageModal(true)}
+                                                             className="w-[200px] h-[191px] cursor-pointer">
                                                             <Image src={MessageImg} className="rounded"
                                                                    alt="MessageImg"/>
                                                         </div>
@@ -1157,11 +1184,14 @@ function Page() {
                                             ) : (
                                                 <div ref={modalRef} className="w-full absolute z-30 bg-white bottom-4">
                                                     <div className="write_box px-4 w-full border-t">
-                                                        <input type="text"
-                                                               value={startPostText}
-                                                               onChange={(e) => setStartPostText(e.target.value)}
-                                                               className="mt-2 mb-2 rounded w-full pb-10 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none"
-                                                               placeholder="Write a Message..."/>
+                                                      <textarea
+                                                          ref={textareaRef}
+                                                          value={startPostText}
+                                                          onChange={handleInput}
+                                                          className="block mt-2 mb-2 rounded w-full pb-2 px-4 border border-none focus:border-none focus:ring focus:ring-transparent text-prgcolor text-[12px] focus:outline-none resize-none max-h-40 overflow-y-auto"
+                                                          placeholder="Write a Message..."
+                                                          rows={2}
+                                                      />
                                                     </div>
                                                     <div className="icon_box px-4 pb-4 w-full border-t">
                                                         <div className="flex items-center justify-between mt-3">
@@ -2898,6 +2928,40 @@ function Page() {
                 </Modal>
                 {/* Start ReportAdd Submit confirm Pop-Up End */}
             </section>
+
+            {/* Start Message Image Pop-Up Start */}
+            <Modal size="5xl"
+                   dismissible
+                   show={openStartMessageImageModal}
+                   style={{
+                       padding: '0px',
+                   }}
+                   className="modal_cntrl"
+                   onClose={() => setOpenStartMessageImageModal(false)}>
+                <Modal.Header
+                    className="flex lg:hidden"
+                    style={{
+                        height: '50px',
+                        alignItems: 'center'
+                    }}
+                >
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <div className="slide_wrapper">
+                            <div className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
+                                <Carousel slide={false} indicators={false}>
+                                    <Image src={MessageImg} className="message_slider_image py-10 md:py-0"
+                                           alt="MessageImg"/>
+                                    <Image src={SliderThreeImg}
+                                           className="message_slider_image py-10 md:py-0"
+                                           alt="SliderThreeImg"/>
+                                </Carousel>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </>
     )
         ;

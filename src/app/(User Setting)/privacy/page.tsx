@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import useTitle from "@/app/useTitle";
 import Link from "next/link";
 import {HiOutlineMenuAlt3, HiUserCircle} from "react-icons/hi";
-import {IoMdGlobe} from "react-icons/io";
+import {IoMdCheckmark, IoMdGlobe} from "react-icons/io";
 import {Modal} from "flowbite-react";
 import {Radio, RadioChangeEvent} from "antd";
 import {FaUsers} from "react-icons/fa6";
@@ -12,6 +12,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Skeleton from "react-loading-skeleton";
 import useLoading from "@/app/useLoading";
+import {FiEdit} from "react-icons/fi";
 
 function Page() {
     useTitle("Privacy")
@@ -192,31 +193,18 @@ function Page() {
     };
 
     const handleCopyText = () => {
-        // Select the text inside the <h4> element
         const textToCopy = document.querySelector('.text-copy');
         if (textToCopy) {
-            // Create a range object to select the text
             const range = document.createRange();
             range.selectNode(textToCopy);
 
-            // Select the text
-            // @ts-ignore
-            window.getSelection().removeAllRanges();
-            // @ts-ignore
-            window.getSelection().addRange(range);
+            window.getSelection()?.removeAllRanges();
+            window.getSelection()?.addRange(range);
 
-            // Copy the selected text to the clipboard
             document.execCommand('copy');
+            window.getSelection()?.removeAllRanges();
 
-            // Deselect the text
-            // @ts-ignore
-            window.getSelection().removeAllRanges();
-
-            // Set copied state to true and reset after 2 seconds
-            setCopied(true);
-            setTimeout(() => {
-                setCopied(false);
-            }, 2000);
+            setCopied(true); // Now it stays as checkmark
         }
         notifyCopy();
     };
@@ -764,16 +752,8 @@ function Page() {
 
                                                 <div onClick={() => setOpenStartWhoBlockingModal(true)}
                                                      className="who_wrap cursor-pointer flex items-center gap-1">
-                                                    <svg
-                                                        className="w-[17px] h-[17px] text-graycolor"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                                 24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round">
-                                                        <path d="M17 3a2.85 2.83 0 1 1
-                                                4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                                                        <path d="m15 5 4 4"/>
-                                                    </svg>
+                                                    <FiEdit size={15}
+                                                            className="text-graycolor group-hover:text-primary"/>
                                                     <h4 className="text-[14px] text-primary">
                                                         Edit
                                                     </h4>
@@ -822,16 +802,22 @@ function Page() {
                                                         </h4>
                                                         <div onClick={handleCopyText}
                                                              className="icon cursor-pointer group">
-                                                            <svg
-                                                                className="w-4 h-4 group-hover:stroke-primary"
-                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                stroke="#828D9E" strokeWidth="1.5"
-                                                                strokeLinecap="round" strokeLinejoin="round">
-                                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                                                                <path
-                                                                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                                                            </svg>
+                                                            {copied ? (
+                                                                <IoMdCheckmark className="w-5 h-5 text-green-500"/>
+                                                            ) : (
+                                                                <svg
+                                                                    className="w-4 h-4 group-hover:stroke-primary"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="#828D9E" strokeWidth="1.5"
+                                                                    strokeLinecap="round" strokeLinejoin="round">
+                                                                    <rect width="14" height="14" x="8" y="8" rx="2"
+                                                                          ry="2"/>
+                                                                    <path
+                                                                        d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                                                </svg>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 </div>
