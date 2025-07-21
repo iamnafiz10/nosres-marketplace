@@ -30,6 +30,7 @@ import {
 import {PiFileVideo, PiFileAudio} from "react-icons/pi";
 import {MdOutlineFileDownload} from "react-icons/md";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
+import {FcPrivacy} from "react-icons/fc";
 
 function Page() {
     const loading = useLoading();
@@ -222,6 +223,11 @@ function Page() {
 
     // Message Image Modal
     const [openStartMessageImageModal, setOpenStartMessageImageModal] = useState<boolean>(false);
+
+
+    //--------------------------------------------------------------------------------------------//
+    // Powered Modal (Learn more button clicked)
+    const [openPoweredModal, setopenPoweredModal] = useState<boolean>(false);
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -1156,7 +1162,8 @@ function Page() {
                                                         <h4 className="text-[12px] text-graycolor">
                                                             Your messages are fully protected with end-to-end
                                                             encryption.<br/>
-                                                            <Link href="#"
+                                                            <Link onClick={() => setopenPoweredModal(true)}
+                                                                  href="#"
                                                                   className="-mt-[2px] text-primary text-[12px]">
                                                                 Learn more
                                                             </Link>
@@ -2962,6 +2969,44 @@ function Page() {
                     </div>
                 </Modal.Body>
             </Modal>
+
+            {/* Start Powered Pop-Up Start (Learn more button clicked) */}
+            <Modal size="lg"
+                   show={openPoweredModal}
+                   onClose={() => setopenPoweredModal(false)}>
+                <Modal.Header
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: '50px'
+                    }}
+                >
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <div className="icon w-full flex justify-center items-center">
+                            <FcPrivacy size={80}/>
+                        </div>
+                        <h4 className="text-[16px] font-[500] text-center mt-3">
+                            Privacy, powered by end-to-end encryption
+                        </h4>
+                        <h4 className="text-graycolor text-center text-[14px] mt-4">
+                            Your messages are encrypted from the moment they leave your
+                            device until they reach your recipient — no one else, not even
+                            Nosres, can read them.
+                            <Link href='#' className="text-primary"> Learn more</Link>
+                        </h4>
+                    </div>
+
+                    <div className="flex mt-4 w-full items-center justify-between">
+                        <button onClick={() => setopenPoweredModal(false)}
+                                className="block px-10 w-full text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                            Got it
+                        </button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Start Powered Pop-Up End */}
         </>
     )
         ;

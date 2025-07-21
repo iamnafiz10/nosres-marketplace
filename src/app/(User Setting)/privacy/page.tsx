@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Skeleton from "react-loading-skeleton";
 import useLoading from "@/app/useLoading";
 import {FiEdit} from "react-icons/fi";
+import {LuCircleCheck, LuRotateCw} from "react-icons/lu";
 
 function Page() {
     useTitle("Privacy")
@@ -208,6 +209,15 @@ function Page() {
         }
         notifyCopy();
     };
+
+    // Reset Modal (1)
+    const [openResetModal, setopenResetModal] = useState<boolean>(false);
+    // Reset Modal (2)
+    const [openResetConfirmModal, setopenResetConfirmModal] = useState<boolean>(false);
+    const handleAdSubmitButtonClick = () => {
+        setopenResetModal(false);
+        setopenResetConfirmModal(false);
+    }
     return (
         <>
             <section id="privacy-page-section">
@@ -820,6 +830,34 @@ function Page() {
                                                             )}
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {loading ? (
+                                        <>
+                                            <Skeleton height={60} count={1}/>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="under_box rounded mt-4 border py-2 px-4 flex items-start justify-between">
+                                                <div className="content_wrap">
+                                                    <h4 className="text-[14px] text-prgcolor">
+                                                        Reset Your Passphrase?
+                                                    </h4>
+                                                    <h4 className="text-[12px] text-graycolor mt-1">
+                                                        Resetting your passphrase will generate a new encryption key.
+                                                    </h4>
+                                                </div>
+
+                                                <div onClick={() => setopenResetModal(true)}
+                                                     className="who_wrap cursor-pointer flex items-center gap-1">
+                                                    <LuRotateCw className="w-[17px] h-[17px] text-graycolor"/>
+                                                    <h4 className="text-[14px] text-primary">
+                                                        Reset
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </>
@@ -2093,6 +2131,100 @@ function Page() {
                 </Modal>
                 {/* Delete confirm modal End*/}
             </section>
+
+
+            {/* Start Reset (1) */}
+            <Modal size="lg"
+                   show={openResetModal}
+                   onClose={() => setopenResetModal(false)}>
+                <Modal.Header
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: '50px'
+                    }}
+                >
+                    <h4 className="text-[16px]">Reset Your Passphrase?</h4>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <h4 className="text-graycolor text-[14px]">
+                            Resetting your passphrase will generate a new encryption key.
+                            This means you will no longer be able to read any of your old
+                            messages.
+                        </h4>
+
+                        <h4 className="text-graycolor text-[14px] mt-3">
+                            <b>This action is permanent and cannot be undone.</b>
+                        </h4>
+
+                        <div className="w-full">
+                            <h4 className="text-[14px] mt-4">
+                                Enter New Passphrase
+                            </h4>
+                            <input
+                                type="password"
+                                className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                placeholder="*****"
+                            />
+                        </div>
+
+                        <div className="w-full">
+                            <h4 className="text-[14px] mt-4">
+                                Confirm Passphrase
+                            </h4>
+                            <input
+                                type="password"
+                                className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                placeholder="*****"
+                            />
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="flex w-full items-center justify-between">
+                        <button onClick={handleAdSubmitButtonClick}
+                                className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
+                            Cancel
+                        </button>
+                        <button onClick={() => setopenResetConfirmModal(true)}
+                                className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                            Reset Passphrase
+                        </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+            {/* Reset End */}
+
+            {/* Start Reset (2) */}
+            <Modal size="lg"
+                   dismissible={true}
+                   show={openResetConfirmModal}
+                   onClose={() => setopenResetConfirmModal(false)}>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <div className="flex flex-col items-center justify-center text-center">
+                            <div className="icon">
+                                <LuCircleCheck className="w-[50px] h-[50px] text-primary"/>
+                            </div>
+                            <h4 className="text-prgcolor text-[18px] mt-3">
+                                Your Passphrase Has Been Reset Successfully
+                            </h4>
+                            <h4 className="text-graycolor text-[14px] mt-3">
+                                A new key has been created successfully. Previous messages are
+                                no longer accessible.
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="mt-4 flex items-center justify-center w-full">
+                        <button onClick={handleAdSubmitButtonClick}
+                                className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-white hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                            Continue to Chat
+                        </button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Reset (2) End */}
         </>
     );
 }

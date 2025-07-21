@@ -5,14 +5,16 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import PostImg from "../../../../public/assets/images/post-image.jpg";
 import Link from "next/link";
-import {LuDot} from "react-icons/lu";
+import {LuCircleCheck, LuDot} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Modal} from "flowbite-react";
-import {Radio, RadioChangeEvent} from "antd";
+import {Checkbox, Radio, RadioChangeEvent} from "antd";
 import {HiArrowLongLeft} from "react-icons/hi2";
 import {IoSearchOutline} from "react-icons/io5";
 import {FiEdit} from "react-icons/fi";
+import {PiWarningFill} from "react-icons/pi";
+import {FcPrivacy} from "react-icons/fc";
 
 function Page() {
     const loading = useLoading();
@@ -50,11 +52,11 @@ function Page() {
 
     // Feedback Ad / Report Ad popup (Right Side)
     const [openFeedbackAdModalRightSide, setOpenFeedbackAdModalRightSide] = useState<boolean>(false);
-    const [openReportAdModalRightSide, setOpenReportAdModalRightSide] = useState<boolean>(false);
+    const [openPoweredModalRightSide, setopenPoweredModalRightSide] = useState<boolean>(false);
     const [openReportAdSubmitModalRightSide, setOpenReportAdSubmitModalRightSide] = useState<boolean>(false);
     const handleAdSubmitButtonClickRightSide = () => {
         setOpenReportAdSubmitModalRightSide(false);
-        setOpenReportAdModalRightSide(false);
+        setopenPoweredModalRightSide(false);
         // Hide the add_hidden_box div and show the remove_success div
         setCurrentAdBoxRightSide('remove_success_right_side');
     }
@@ -84,6 +86,24 @@ function Page() {
     const handleBoxClick = (index: any) => {
         setSelectedBox(index);
     };
+
+
+    //--------------------------------------------------------------------------------------------------------//
+    // Powered Modal (1)
+    const [openPoweredModal, setopenPoweredModal] = useState<boolean>(false);
+    useEffect(() => {
+        // Show modal when the page is loaded
+        setopenPoweredModal(true);
+    }, []);
+    // Powered Modal (2)
+    const [openReportAdSubmitModal, setOpenReportAdSubmitModal] = useState<boolean>(false);
+    // Powered Modal (3)
+    const [openReportAdContactModal, setOpenReportAdContactModal] = useState<boolean>(false);
+    const handleAdSubmitButtonClick = () => {
+        setOpenReportAdSubmitModal(false);
+        setopenPoweredModal(false);
+        setOpenReportAdContactModal(false);
+    }
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -116,7 +136,7 @@ function Page() {
                                                 <div onClick={() => setOpenStartPostMessageModal(true)}
                                                      className="icon cursor-pointer group">
                                                     <FiEdit size={20}
-                                                                 className="text-graycolor group-hover:text-primary"/>
+                                                            className="text-graycolor group-hover:text-primary"/>
                                                 </div>
                                             </div>
                                         </>
@@ -269,7 +289,7 @@ function Page() {
                                                                             </div>
 
                                                                             <div
-                                                                                onClick={() => setOpenReportAdModalRightSide(true)}
+                                                                                onClick={() => setopenPoweredModalRightSide(true)}
                                                                                 className="flex cursor-pointer gap-2 items-center py-2 px-2 rounded hover:bg-gray-100 group">
                                                                                 <svg
                                                                                     className="w-4 h-4 transition duration-75 group-hover:stroke-primary"
@@ -385,7 +405,7 @@ function Page() {
                                                     </div>
                                                 </div>
 
-                                                <div onClick={() => setOpenReportAdModalRightSide(true)}
+                                                <div onClick={() => setopenPoweredModalRightSide(true)}
                                                      className="box cursor-pointer flex items-start gap-2 border mt-4 bg-white px-4 py-4 rounded">
                                                     <div className="icon mt-1">
                                                         <svg
@@ -669,12 +689,12 @@ function Page() {
 
                 {/* Start ReportAdd Pop-Up Start (Right Side) */}
                 <Modal size="lg"
-                       show={openReportAdModalRightSide}
+                       show={openPoweredModalRightSide}
                        style={{
                            padding: '0px',
                        }}
                        className="modal_cntrl"
-                       onClose={() => setOpenReportAdModalRightSide(false)}>
+                       onClose={() => setopenPoweredModalRightSide(false)}>
                     <Modal.Header
                         style={{
                             height: '50px',
@@ -886,7 +906,7 @@ function Page() {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="flex w-full items-center justify-between">
-                            <button onClick={() => setOpenReportAdModalRightSide(false)}
+                            <button onClick={() => setopenPoweredModalRightSide(false)}
                                     className="px-10 text-[14px] py-2 bg-blue-100 hover:bg-primary hover:text-white text-black rounded">
                                 Cancel
                             </button>
@@ -1130,6 +1150,159 @@ function Page() {
                 </Modal>
                 {/* Start Message Pop-Up End */}
             </section>
+
+            {/* Start Powered Pop-Up Start (1) */}
+            {openPoweredModal && (
+                <Modal size="lg"
+                       show={openPoweredModal}
+                       onClose={() => setopenPoweredModal(false)}>
+                    <Modal.Header
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            height: '50px'
+                        }}
+                    >
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal_body">
+                            <div className="icon w-full flex justify-center items-center">
+                                <FcPrivacy size={80}/>
+                            </div>
+                            <h4 className="text-[16px] font-[500] text-center mt-3">
+                                Privacy, powered by end-to-end encryption
+                            </h4>
+                            <h4 className="text-graycolor text-center text-[14px] mt-4">
+                                Your messages will be encrypted from the moment they leave your
+                                device until they reach your recipient — no one else, not even
+                                Nosres, will be able to read them.
+
+                                <br/>
+                                <br/>
+                                To get started, create a secure passphrase and keep it safe.
+                            </h4>
+                        </div>
+                        <div className="flex mt-4 w-full items-center justify-between">
+                            <button onClick={() => setOpenReportAdSubmitModal(true)}
+                                    className="block px-10 w-full text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                                Get Started
+                            </button>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            )}
+            {/* Start Powered Pop-Up End */}
+
+            {/* Start ReportAdd Submit Pop-Up Start (2) */}
+            <Modal size="lg"
+                   show={openReportAdSubmitModal}
+                   onClose={() => setOpenReportAdSubmitModal(false)}>
+                <Modal.Header
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: '50px'
+                    }}
+                >
+                    <h4 className="text-[16px]">Create Your Encryption Passphrase</h4>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <h4 className="text-graycolor text-[14px]">
+                            A passphrase is a longer, more secure version of a password. It
+                            protects your encryption key and messages. Only you know it, do
+                            not share it with anyone.
+                        </h4>
+
+                        <div className="box flex items-center bg-yellow-50 px-4 py-2 border gap-2 rounded mt-4">
+                            <div className="icon">
+                                <PiWarningFill size={20} className="text-yellow-300"/>
+                            </div>
+                            <h4 className="text-graycolor text-[12px]">
+                                If you forget your passphrase, you will permanently lose access
+                                to all your old messages. Please save it somewhere safe.
+                            </h4>
+                        </div>
+
+                        <div className="w-full">
+                            <h4 className="text-[14px] mt-4">
+                                Enter Passphrase
+                            </h4>
+                            <input
+                                type="password"
+                                className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                placeholder="*****"
+                            />
+                        </div>
+
+
+                        <div className="w-full">
+                            <h4 className="text-[14px] mt-4">
+                                Confirm Passphrase
+                            </h4>
+                            <input
+                                type="password"
+                                className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                placeholder="*****"
+                            />
+                        </div>
+
+                        <div className="input_box">
+                            <Checkbox className="flex items-start">
+                                <div className="mt-4">
+                                    <h4 className="text-[12px] text-graycolor">
+                                        I understand that I’m responsible for remembering this passphrase and
+                                        that it cannot be recovered.
+                                    </h4>
+                                </div>
+                            </Checkbox>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="flex w-full items-center justify-between">
+                        <button onClick={() => setOpenReportAdSubmitModal(false)}
+                                className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
+                            Back
+                        </button>
+                        <button onClick={() => setOpenReportAdContactModal(true)}
+                                className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                            Create Passphrase
+                        </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+            {/* Start ReportAdd Submit Pop-Up End */}
+
+            {/* Start ReportAdd Submit confirm Pop-Up Start (3) */}
+            <Modal size="lg"
+                   dismissible={true}
+                   show={openReportAdContactModal}
+                   onClose={() => setOpenReportAdContactModal(false)}>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <div className="flex flex-col items-center justify-center text-center">
+                            <div className="icon">
+                                <LuCircleCheck className="w-[50px] h-[50px] text-primary"/>
+                            </div>
+                            <h4 className="text-prgcolor text-[18px] mt-3">
+                                Passphrase Created Successfully
+                            </h4>
+                            <h4 className="text-graycolor text-[14px] mt-3">
+                                Your messages will now be end-to-end encrypted. Only you can
+                                unlock them.
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="mt-4 flex items-center justify-center w-full">
+                        <button onClick={handleAdSubmitButtonClick}
+                                className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-white hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                            Ok
+                        </button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Start ReportAdd Submit confirm Pop-Up End */}
         </>
     )
         ;
