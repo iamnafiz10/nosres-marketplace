@@ -2985,7 +2985,7 @@ function Page() {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="modal_body">
-                        <div className="icon w-full flex justify-center items-center">
+                        <div className="icon w-full -mt-[30px] flex justify-center items-center">
                             <FcPrivacy size={80}/>
                         </div>
                         <h4 className="text-[16px] font-[500] text-center mt-3">
@@ -2995,7 +2995,8 @@ function Page() {
                             Your messages are encrypted from the moment they leave your
                             device until they reach your recipient — no one else, not even
                             Nosres, can read them.
-                            <Link href='https://www.nosres.com/' target='_blank' className="hover:underline text-primary"> Learn
+                            <Link href='https://www.nosres.com/' target='_blank'
+                                  className="hover:underline text-primary"> Learn
                                 more</Link>
                         </h4>
                     </div>
