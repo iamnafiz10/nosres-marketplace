@@ -1179,7 +1179,7 @@ function Page() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="icon w-full flex justify-center items-center">
+                            <div className="icon -mt-[30px] w-full flex justify-center items-center">
                                 <FcLock size={80}/>
                             </div>
                             <h4 className="text-[16px] font-[500] text-center mt-3">
@@ -1230,9 +1230,9 @@ function Page() {
                                 className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
                                 placeholder="*************************"
                             />
-                            <div className="mt-1">
+                            <div className="mt-0">
                                 <Link onClick={() => setopenResetModal(true)} href='#'
-                                      className="text-[14px] text-primary cursor-pointer">
+                                      className="text-[12px] text-primary cursor-pointer">
                                     Forgot passphrase?
                                 </Link>
                             </div>
@@ -1241,7 +1241,7 @@ function Page() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="flex w-full items-center justify-between">
-                        <button onClick={handleAdSubmitButtonClick}
+                        <button onClick={() => setOpenReportAdSubmitModal(false)}
                                 className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
                             Cancel
                         </button>
@@ -1269,7 +1269,7 @@ function Page() {
                     <div className="modal_body">
                         <div className="flex flex-col items-center justify-center text-center">
                             <div className="icon">
-                                <FcUnlock className="w-[50px] h-[50px] text-primary"/>
+                                <FcUnlock size={80} className="text-primary"/>
                             </div>
                             <h4 className="text-prgcolor text-[18px] mt-3">
                                 Messages Unlocked

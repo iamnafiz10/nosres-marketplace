@@ -1173,7 +1173,7 @@ function Page() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="modal_body">
-                            <div className="icon w-full flex justify-center items-center">
+                            <div className="icon w-full -mt-[30px] flex justify-center items-center">
                                 <FcPrivacy size={80}/>
                             </div>
                             <h4 className="text-[16px] font-[500] text-center mt-3">
