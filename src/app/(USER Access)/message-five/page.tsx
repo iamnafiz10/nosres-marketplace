@@ -2978,7 +2978,8 @@ function Page() {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
-                        height: '50px'
+                        height: '50px',
+                        borderBottom: 'none'
                     }}
                 >
                 </Modal.Header>
@@ -2994,14 +2995,15 @@ function Page() {
                             Your messages are encrypted from the moment they leave your
                             device until they reach your recipient — no one else, not even
                             Nosres, can read them.
-                            <Link href='#' className="text-primary"> Learn more</Link>
+                            <Link href='https://www.nosres.com/' target='_blank' className="hover:underline text-primary"> Learn
+                                more</Link>
                         </h4>
                     </div>
 
                     <div className="flex mt-4 w-full items-center justify-between">
                         <button onClick={() => setopenPoweredModal(false)}
                                 className="block px-10 w-full text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
-                            Got it
+                            Got It
                         </button>
                     </div>
                 </Modal.Body>

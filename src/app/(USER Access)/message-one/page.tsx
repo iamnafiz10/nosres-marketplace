@@ -104,6 +104,12 @@ function Page() {
         setopenPoweredModal(false);
         setOpenReportAdContactModal(false);
     }
+
+    // Password Showing Fuction
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const handleToggle = () => {
+        setShowPassword((prev) => !prev);
+    };
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -1160,7 +1166,8 @@ function Page() {
                         style={{
                             display: 'flex',
                             alignItems: 'center',
-                            height: '50px'
+                            height: '50px',
+                            borderBottom: 'none'
                         }}
                     >
                     </Modal.Header>
@@ -1214,9 +1221,10 @@ function Page() {
                             not share it with anyone.
                         </h4>
 
-                        <div className="box flex items-center bg-yellow-50 px-4 py-2 border gap-2 rounded mt-4">
+                        <div
+                            className="box flex items-center bg-yellow-50 px-4 py-2 border border-[#F7E0B9] gap-2 rounded mt-4">
                             <div className="icon">
-                                <PiWarningFill size={20} className="text-yellow-300"/>
+                                <PiWarningFill size={30} className="text-yellow-300"/>
                             </div>
                             <h4 className="text-graycolor text-[12px]">
                                 If you forget your passphrase, you will permanently lose access
@@ -1228,11 +1236,21 @@ function Page() {
                             <h4 className="text-[14px] mt-4">
                                 Enter Passphrase
                             </h4>
-                            <input
-                                type="password"
-                                className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                placeholder="*****"
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                    placeholder={showPassword ? "11111" : "*************************"}
+                                />
+                                <div className="absolute top-[30%] right-2">
+                                    <h4
+                                        className="text-[12px] text-primary cursor-pointer"
+                                        onClick={handleToggle}
+                                    >
+                                        {showPassword ? "Hide" : "Show"}
+                                    </h4>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -1243,7 +1261,7 @@ function Page() {
                             <input
                                 type="password"
                                 className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                placeholder="*****"
+                                placeholder="*************************"
                             />
                         </div>
 
@@ -1265,8 +1283,14 @@ function Page() {
                                 className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
                             Back
                         </button>
-                        <button onClick={() => setOpenReportAdContactModal(true)}
-                                className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                        <button
+                            onClick={() => {
+                                setOpenReportAdContactModal(true);
+                                setopenPoweredModal(false);
+                                setOpenReportAdSubmitModal(false);
+                            }}
+                            className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded"
+                        >
                             Create Passphrase
                         </button>
                     </div>
@@ -1276,7 +1300,6 @@ function Page() {
 
             {/* Start ReportAdd Submit confirm Pop-Up Start (3) */}
             <Modal size="lg"
-                   dismissible={true}
                    show={openReportAdContactModal}
                    onClose={() => setOpenReportAdContactModal(false)}>
                 <Modal.Body>
@@ -1297,7 +1320,7 @@ function Page() {
                     <div className="mt-4 flex items-center justify-center w-full">
                         <button onClick={handleAdSubmitButtonClick}
                                 className="px-10 w-full text-[14px] py-2 border border-primary bg-primary hover:text-white hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
-                            Ok
+                            OK
                         </button>
                     </div>
                 </Modal.Body>

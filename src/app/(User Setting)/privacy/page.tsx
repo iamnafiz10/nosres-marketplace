@@ -2187,8 +2187,12 @@ function Page() {
                                 className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
                             Cancel
                         </button>
-                        <button onClick={() => setopenResetConfirmModal(true)}
-                                className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                        <button
+                            onClick={() => {
+                                setopenResetConfirmModal(true);
+                                setopenResetModal(false);
+                            }}
+                            className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
                             Reset Passphrase
                         </button>
                     </div>

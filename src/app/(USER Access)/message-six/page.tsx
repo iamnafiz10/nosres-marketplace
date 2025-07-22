@@ -110,6 +110,12 @@ function Page() {
     const [openResetModal, setopenResetModal] = useState<boolean>(false);
     // Reset Modal (2)
     const [openResetConfirmModal, setopenResetConfirmModal] = useState<boolean>(false);
+
+    // Password Showing Fuction
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const handleToggle = () => {
+        setShowPassword((prev) => !prev);
+    };
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -1166,7 +1172,8 @@ function Page() {
                         style={{
                             display: 'flex',
                             alignItems: 'center',
-                            height: '50px'
+                            height: '50px',
+                            borderBottom: 'none'
                         }}
                     >
                     </Modal.Header>
@@ -1221,7 +1228,7 @@ function Page() {
                             <input
                                 type="password"
                                 className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                placeholder="*****"
+                                placeholder="*************************"
                             />
                             <div className="mt-1">
                                 <Link onClick={() => setopenResetModal(true)} href='#'
@@ -1238,8 +1245,14 @@ function Page() {
                                 className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
                             Cancel
                         </button>
-                        <button onClick={() => setOpenReportAdContactModal(true)}
-                                className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                        <button
+                            onClick={() => {
+                                setOpenReportAdContactModal(true);
+                                setOpenReportAdSubmitModal(false);
+                                setopenPoweredModal(false);
+                            }}
+
+                            className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
                             Unlock Messages
                         </button>
                     </div>
@@ -1303,15 +1316,23 @@ function Page() {
                             <b>This action is permanent and cannot be undone.</b>
                         </h4>
 
-                        <div className="w-full">
-                            <h4 className="text-[14px] mt-4">
-                                Enter New Passphrase
-                            </h4>
+                        <h4 className="text-[14px] mt-4">
+                            Enter New Passphrase
+                        </h4>
+                        <div className="relative">
                             <input
-                                type="password"
-                                className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                placeholder="*****"
+                                type={showPassword ? "text" : "password"}
+                                className="mt-1 py-1 pl-4 w-full border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
+                                placeholder={showPassword ? "11111" : "*************************"}
                             />
+                            <div className="absolute top-[30%] right-2">
+                                <h4
+                                    className="text-[12px] text-primary cursor-pointer"
+                                    onClick={handleToggle}
+                                >
+                                    {showPassword ? "Hide" : "Show"}
+                                </h4>
+                            </div>
                         </div>
 
                         <div className="w-full">
@@ -1321,7 +1342,7 @@ function Page() {
                             <input
                                 type="password"
                                 className="mt-1 py-1 pl-4 w-full  border text-[12px] text-prgcolor border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300"
-                                placeholder="*****"
+                                placeholder="*************************"
                             />
                         </div>
                     </div>
@@ -1332,8 +1353,14 @@ function Page() {
                                 className="px-10 text-[14px] py-2 bg-[#E5E5E8] hover:bg-[#C6C6C6] text-black rounded">
                             Cancel
                         </button>
-                        <button onClick={() => setopenResetConfirmModal(true)}
-                                className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
+                        <button
+                            onClick={() => {
+                                setopenResetConfirmModal(true);
+                                setopenResetModal(false);
+                                setOpenReportAdSubmitModal(false);
+                                setopenPoweredModal(false);
+                            }}
+                            className="px-10 text-[14px] py-2 border border-primary bg-[#4D7FB8] hover:bg-[#3A5F8A] hover:border-primary text-white rounded">
                             Reset Passphrase
                         </button>
                     </div>
