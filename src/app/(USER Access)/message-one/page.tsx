@@ -1216,10 +1216,11 @@ function Page() {
                 <Modal.Body>
                     <div className="modal_body">
                         <h4 className="text-graycolor text-[14px]">
-                            A passphrase is a longer, more secure version of a password. It
-                            protects your encryption key and messages. Only you know it, do
-                            not share it with anyone.
+                            A passphrase is a short phrase that protects your encryption key and messages. You’ll need
+                            it to access your old messages when signing in on a new device or browser. Do not share it
+                            with anyone.
                         </h4>
+
 
                         <div
                             className="box flex items-center bg-yellow-50 px-4 py-2 border border-[#F7E0B9] gap-2 rounded mt-4">

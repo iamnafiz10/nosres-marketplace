@@ -1186,7 +1186,7 @@ function Page() {
                                 Messages are locked
                             </h4>
                             <h4 className="text-graycolor text-center text-[14px] mt-4">
-                                Enter your passphrase to view encrypted conversations.
+                                This device or browser isn’t recognized. Please unlock your messages to proceed.
                             </h4>
                         </div>
                         <div className="mt-4 flex w-full items-center justify-between">
