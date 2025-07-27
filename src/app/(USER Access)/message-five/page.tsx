@@ -29,7 +29,7 @@ import {
 import {PiFileVideo, PiFileAudio} from "react-icons/pi";
 import {MdOutlineFileDownload} from "react-icons/md";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
-import {FcAbout, FcPrivacy} from "react-icons/fc";
+import {FcPrivacy} from "react-icons/fc";
 
 function Page() {
     const loading = useLoading();
@@ -648,7 +648,7 @@ function Page() {
                                             <hr/>
 
                                             <div
-                                                className="messages_wrap absolute top-[12%] pt-[5px] pb-[65px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto"
+                                                className="messages_wrap absolute top-[12%] pt-[5px] pb-[5px] bg-white z-20 w-[100%] pl-5 pr-3 overflow-y-auto"
                                                 style={{
                                                     height: `calc(${defaultMessageHeight}% - ${textareaHeight > 40 ? textareaHeight - 40 : 0}px)`,
                                                 }}
@@ -663,6 +663,23 @@ function Page() {
                                                     <h4 className="text-[12px] text-graycolor mt-1">
                                                         You follow each other on Marketplace.
                                                     </h4>
+                                                    <div
+                                                        className="protected_message w-full mx-4 mt-1 rounded p-2 flex justify-center items-center gap-1">
+                                                        <div className="icon_wrap">
+                                                            <LuMessageSquareLock className="text-gray-500" size={18}/>
+                                                        </div>
+                                                        <div className="text_wrap flex items-center gap-1">
+                                                            <h4 className="text-[12px] text-graycolor">
+                                                                Your messages are fully protected with end-to-end
+                                                                encryption.
+                                                            </h4>
+                                                            <Link onClick={() => setopenPoweredModal(true)}
+                                                                  href="#"
+                                                                  className="-mt-[2px] text-primary text-[12px]">
+                                                                Learn more
+                                                            </Link>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <div className="message pt-[25px]">
@@ -751,15 +768,15 @@ function Page() {
                                                     <div
                                                         className="flex text-center rounded w-full cursor-pointer">
                                                         <div
-                                                            className="protected_message bg-[#F6FAFF] rounded-full p-2 border">
+                                                            className="protected_message flex gap-1 items-center bg-[#F6FAFF] rounded-full p-2 border">
                                                             <h4 className="text-[12px] text-graycolor">
                                                                 This message can{`'`}t be decrypted.
-                                                                <Link onClick={() => setopenPoweredModalNew(true)}
-                                                                      href="#"
-                                                                      className="-mt-[2px] text-primary text-[12px]">
-                                                                    Learn more
-                                                                </Link>
                                                             </h4>
+                                                            <Link onClick={() => setopenPoweredModalNew(true)}
+                                                                  href="#"
+                                                                  className="-mt-[2px] text-primary text-[12px]">
+                                                                Learn more
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -769,15 +786,15 @@ function Page() {
                                                     <div
                                                         className="text-center rounded cursor-pointer">
                                                         <div
-                                                            className="protected_message bg-[#F6FAFF] rounded-full p-2 border">
+                                                            className="protected_message flex gap-1 items-center bg-[#F6FAFF] rounded-full p-2 border">
                                                             <h4 className="text-[12px] text-graycolor">
                                                                 This message can{`'`}t be decrypted.
-                                                                <Link onClick={() => setopenPoweredModalNew(true)}
-                                                                      href="#"
-                                                                      className="-mt-[2px] text-primary text-[12px]">
-                                                                    Learn more
-                                                                </Link>
                                                             </h4>
+                                                            <Link onClick={() => setopenPoweredModalNew(true)}
+                                                                  href="#"
+                                                                  className="-mt-[2px] text-primary text-[12px]">
+                                                                Learn more
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1133,26 +1150,6 @@ function Page() {
                                                         <h6 className="text-[10px] mt-2 text-graycolor leading-none">
                                                             Oct 20, 2017, 1:22 AM
                                                         </h6>
-                                                    </div>
-                                                </div>
-
-                                                <div className="relative w-full">
-                                                    <div
-                                                        className="protected_message w-full mx-4 absolute -right-[12px] mt-3 bg-[#F6FAFF] rounded p-2 flex items-start gap-1">
-                                                        <div className="icon_wrap">
-                                                            <LuMessageSquareLock className="text-gray-500" size={18}/>
-                                                        </div>
-                                                        <div className="text_wrap">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                Your messages are fully protected with end-to-end
-                                                                encryption.<br/>
-                                                                <Link onClick={() => setopenPoweredModal(true)}
-                                                                      href="#"
-                                                                      className="-mt-[2px] text-primary text-[12px]">
-                                                                    Learn more
-                                                                </Link>
-                                                            </h4>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2233,7 +2230,16 @@ function Page() {
                 <Modal.Body>
                     <div className="modal_body">
                         <div className="icon w-full -mt-[30px] flex justify-center items-center">
-                            <FcAbout size={80} className="text-[#4D7FB8]"/>
+                            <svg stroke="currentColor" fill="currentColor" strokeWidth="0" version="1"
+                                 viewBox="0 0 48 48" enableBackground="new 0 0 48 48" color="#4D7FB8"
+                                 className="text-[#4D7FB8]" height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#4D7FB8"
+                                      d="M37,40H11l-6,6V12c0-3.3,2.7-6,6-6h26c3.3,0,6,2.7,6,6v22C43,37.3,40.3,40,37,40z"></path>
+                                <g fill="#fff">
+                                    <rect x="22" y="20" width="4" height="11"></rect>
+                                    <circle cx="24" cy="15" r="2"></circle>
+                                </g>
+                            </svg>
                         </div>
                         <h4 className="text-[16px] font-[500] text-center mt-3">
                             Privacy, powered by end-to-end encryption
