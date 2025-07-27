@@ -692,7 +692,7 @@ function Page() {
                                                     </div>
                                                 </div>
 
-                                                <div className="message mt-4 w-[62%]">
+                                                <div className="message mt-4 w-[82%] sm:w-[62%]">
                                                     <div
                                                         className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded pl-4 py-3">
                                                         <Image src={SliderOneImg} className="w-[18%] h-[55px] rounded"
@@ -706,7 +706,7 @@ function Page() {
                                                     </div>
                                                 </div>
 
-                                                <div className="message mt-4 w-[62%] ml-auto">
+                                                <div className="message mt-4 w-[82%] sm:w-[62%] ml-auto">
                                                     <div
                                                         className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
                                                         <div className="content_area">
