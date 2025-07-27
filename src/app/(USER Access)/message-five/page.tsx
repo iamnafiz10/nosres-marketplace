@@ -220,7 +220,7 @@ function Page() {
                                 </div>
 
                                 <div className="grid grid-cols-1 lg:grid-cols-12 border-t pb-4 h-full">
-                                    <div className="col lg:col-span-5 hidden lg:block border-r">
+                                    <div className="col lg:col-span-4 hidden lg:block border-r">
                                         <div className="user_box space-y-0 w-full h-[76vh] overflow-y-auto">
                                             <div
                                                 className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
@@ -239,7 +239,7 @@ function Page() {
                                                         </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Brothers, It is Excellent idea for got to...
+                                                        Brothers, It is Excellent idea for got to the new...
                                                     </h4>
                                                 </div>
                                             </div>
@@ -498,7 +498,7 @@ function Page() {
                                         </div>
                                     </div>
 
-                                    <div className="col lg:col-span-7">
+                                    <div className="col lg:col-span-8">
                                         <div className="box w-full h-full relative">
                                             <div className="px-4 flex items-center justify-between">
                                                 <div className="user flex items-center gap-2">
@@ -667,8 +667,8 @@ function Page() {
 
                                                 <div className="message pt-[25px]">
                                                     <div
-                                                        className="bg-gray-100 inline-block p-3 rounded-2xl rounded-bl-none">
-                                                        <h4 className="text-[14px] text-prgcolor">
+                                                        className="bg-gray-100 inline-block py-3 pl-4 pr-14 rounded-2xl rounded-bl-none">
+                                                        <h4 className="text-[14px] text-prgcolor text-left">
                                                             Hello, John! How are you?
                                                         </h4>
                                                     </div>
@@ -681,10 +681,9 @@ function Page() {
                                                     className="message flex mt-4 space-x-3 ml-auto justify-end">
                                                     <div className="wrap">
                                                         <div
-                                                            className="bg-[#3197f5] inline-block py-2 px-3 rounded-2xl rounded-br-none">
+                                                            className="bg-[#3197f5] inline-block py-2 pl-4 pr-10 rounded-2xl rounded-br-none">
                                                             <h4 className="text-[14px] text-white">
-                                                                https://nosres-marketplace.vercel.<br/>
-                                                                app/message-five
+                                                                https://nosres-marketplace.vercel.app <br/>message-five
                                                             </h4>
                                                         </div>
                                                         <h6 className="text-[10px] mt-2 text-graycolor leading-none">
@@ -693,28 +692,27 @@ function Page() {
                                                     </div>
                                                 </div>
 
-                                                <div className="message mt-4">
+                                                <div className="message mt-4 w-[62%]">
                                                     <div
-                                                        className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
+                                                        className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded pl-4 py-3">
                                                         <Image src={SliderOneImg} className="w-[18%] h-[55px] rounded"
                                                                alt="PostImg"/>
                                                         <div className="content_area">
                                                             <h4 className="text-[14px] text-black font-[500]">
-                                                                Experience the cutting-edge techn
-                                                                ology of the iPhone 16 Pro, now...
+                                                                Experience cutting-edge of technology Iphone...
                                                             </h4>
                                                             <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div className="message mt-4">
+                                                <div className="message mt-4 w-[62%] ml-auto">
                                                     <div
                                                         className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded px-4 py-3">
                                                         <div className="content_area">
                                                             <h4 className="text-[14px] text-black font-[500]">
-                                                                Experience the cutting-edge technology of the iPhone 16
-                                                                Pro, now...
+                                                                Experience the cutting-edge technology of the iPhone
+                                                                and...
                                                             </h4>
                                                             <h4 className="text-graycolor text-[14px]">blends.nosres.com</h4>
                                                         </div>
