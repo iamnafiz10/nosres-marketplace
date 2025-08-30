@@ -186,6 +186,13 @@ button {
     border-radius: 3px !important;
 }
 
+.tooltip_design_new {
+    color: #4D7FB8;
+    font-size: 12px;
+    font-weight: 400 !important;
+    border-radius: 3px !important;
+}
+
 /*-- Phone dropdown design ----------*/
 .react-international-phone-input-container .react-international-phone-input {
     font-size: 12px !important;
@@ -370,7 +377,8 @@ em-emoji-picker {
 
 /*------------------ Profile page design -------------*/
 .user_top_details {
-    background: linear-gradient(#e0e0e0, #505050);
+    /*background: linear-gradient(#e0e0e0, #505050);*/
+    background: white;
 }
 
 .left_side_profile_tab button {

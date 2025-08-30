@@ -5,9 +5,9 @@ import ProfileImg from '@/../public/assets/images/profile/profile-photo.jpg';
 import CoverImg from '@/../public/assets/images/profile/cover-photo.jpg';
 import LogoImg from '@/../public/assets/images/logo.svg';
 import Image from "next/image";
-import {LuDot} from "react-icons/lu";
+import {LuDot, LuShieldCheck} from "react-icons/lu";
 import {GoComment, GoHeart, GoHeartFill, GoSmiley, GoSync} from "react-icons/go";
-import {Carousel, Modal, Tabs} from "flowbite-react";
+import {Carousel, Modal, Tabs, Tooltip} from "flowbite-react";
 import {HiUserCircle} from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
@@ -18,6 +18,8 @@ import SliderTwoImg from "../../../../public/assets/images/slider2.jpg";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {IoCameraOutline, IoSearchOutline} from "react-icons/io5";
 import {HiOutlineChatBubbleLeft, HiOutlineCloudArrowUp, HiOutlineMinusCircle} from "react-icons/hi2";
+import {PiHandsPrayingLight} from "react-icons/pi";
+import {RxCross1} from "react-icons/rx";
 
 function Page() {
     const loading = useLoading();
@@ -239,6 +241,8 @@ function Page() {
         };
     }, []);
 
+    const [openVerifiModal, setOpenVerifiModal] = useState<boolean>(false);
+    const [show, setShow] = useState(true);
     return (
         <>
             <section id="profile-section">
@@ -291,15 +295,23 @@ function Page() {
 
                             <div className="user_details mt-[50px] text-start pt-0 text-white">
                                 <div className="ml-[28px]">
-                                    <h4 className='mt-3 text-[24px] font-semibold'>
-                                        Robert Johnson
-                                    </h4>
-                                    <h4 className="text-[14px] mt-0 mr-[20px]">
+                                    <div className="flex mt-3 items-center gap-2">
+                                        <h4 className='text-[24px] font-semibold text-black'>
+                                            Robert Johnson
+                                        </h4>
+                                        <div onClick={() => setOpenVerifiModal(true)} className="icon">
+                                            <Tooltip content="Verified Account" placement="top" style="light"
+                                                     className="tooltip_design_new">
+                                                <LuShieldCheck size={20} className="text-primary cursor-pointer"/>
+                                            </Tooltip>
+                                        </div>
+                                    </div>
+                                    <h4 className="text-[14px] mt-0 mr-[20px] text-graycolor">
                                         Dura lex, sed lex.
                                     </h4>
                                 </div>
 
-                                <div className="block md:flex w-full items-end justify-between">
+                                <div className="block md:flex w-full items-end justify-between text-graycolor">
                                     <div className="ml-[26px] wrap">
                                         <div className="flex items-center gap-0 mt-4 text-[14px]">
                                             <div className="flex items-center gap-1">
@@ -307,7 +319,7 @@ function Page() {
                                                     <svg
                                                         className="w-4 h-4"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                    24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"
+                                    24" fill="none" stroke="#828D9E" strokeWidth="1.5" strokeLinecap="round"
                                                         strokeLinejoin="round">
                                                         <path d="M20 10c0 6-8 12-8
                                         12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
@@ -326,7 +338,7 @@ function Page() {
                                                     <svg
                                                         className="w-4 h-4"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24
-                                            24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"
+                                            24" fill="none" stroke="#828D9E" strokeWidth="1.5" strokeLinecap="round"
                                                         strokeLinejoin="round">
                                                         <path d="M8
                                             2v4"/>
@@ -351,13 +363,13 @@ function Page() {
                                         </div>
                                         <div className="ml-[3px] mt-2 flex items-center gap-0 text-[14px]">
                                             <h4 onClick={() => setOpenStartFollowersModal(true)}
-                                                className="cursor-pointer hover:underline">
-                                                26K followers
+                                                className="cursor-pointer hover:underline text-graycolor">
+                                                <span className="text-black">26K</span> followers
                                             </h4>
                                             <LuDot size={15}/>
                                             <h4 onClick={() => setOpenStartFolloweesModal(true)}
-                                                className="cursor-pointer hover:underline">
-                                                26K following
+                                                className="cursor-pointer hover:underline text-graycolor">
+                                                <span className="text-black">26K</span> following
                                             </h4>
                                         </div>
                                     </div>
@@ -399,7 +411,7 @@ function Page() {
                                                  className="relative cursor-pointer">
                                                 <svg
                                                     className="w-3 h-3"
-                                                    fill="#ffffff"
+                                                    fill="#828D9E"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                                                     <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0
                                                             0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
@@ -471,7 +483,35 @@ function Page() {
                 </div>
 
                 {/* Body Content */}
-                <div className="container pt-8">
+                <div className="container pt-4">
+                    {show && (
+                        <div className="apply_box bg-white border rounded-lg p-4 w-full lg:w-1/2">
+                            <div className="flex items-center justify-between">
+                                <h4 className="text-prgcolor text-[18px] font-semibold">
+                                    John, your account isn’t verified yet.
+                                </h4>
+                                <div className="icon">
+                                    <RxCross1
+                                        size={20}
+                                        className="text-graycolor hover:text-primary cursor-pointer"
+                                        onClick={() => setShow(false)} // Close when clicked
+                                    />
+                                </div>
+                            </div>
+                            <h4 className="text-graycolor text-[14px] mt-1">
+                                Get verified like <b className="text-black">Peter</b> to build trust
+                                and show others you’re authentic.
+                            </h4>
+                            <div className="block lg:flex mt-3">
+                                <button
+                                    type="button"
+                                    className="text-[14px] py-2 px-4 bg-primary border border-primary text-white rounded hover:bg-[#3A5F8A]"
+                                >
+                                    Apply for Verification
+                                </button>
+                            </div>
+                        </div>
+                    )}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                         <div className="col lg:col-span-8">
                             <div className="left_side_profile_tab">
@@ -612,10 +652,14 @@ function Page() {
                                                                             </h4>
                                                                             <div
                                                                                 className="flex items-center text-graycolor font-normal">
-                                                          <span
-                                                              className="text-[12px]">
-                                                            1m ago
-                                                        </span>
+                                                                                <Tooltip
+                                                                                    content="Monday, August 25, 2025"
+                                                                                    placement="top" style="light"
+                                                                                    className="tooltip_design_new">
+                                                                                 <span className="text-[12px]">
+                                                                                    1m ago
+                                                                                </span>
+                                                                                </Tooltip>
                                                                                 <LuDot size={12}/>
                                                                                 <IoMdGlobe size={13}/>
                                                                             </div>
@@ -3751,6 +3795,48 @@ function Page() {
                 </Modal>
                 {/* Cover Picture Pop-Up End */}
             </section>
+
+            <Modal size="lg"
+                   dismissible
+                   show={openVerifiModal}
+                   className="modal_cntrl"
+                   onClose={() => setOpenVerifiModal(false)}>
+                <Modal.Header
+                    className="flex lg:hidden"
+                    style={{
+                        height: '50px',
+                        alignItems: 'center'
+                    }}
+                >
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="modal_body">
+                        <div className="thank_you_box bg-white rounded-lg text-center">
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <div className="icon">
+                                    <LuShieldCheck className="w-[50px] h-[50px] text-primary"/>
+                                </div>
+                                <h4 className="text-prgcolor text-[18px] mt-3">
+                                    Verified Account
+                                </h4>
+                                <h4 className="text-graycolor text-[14px] mt-3">
+                                    Account verified through official association with<br/>
+                                    Nosres. <Link href='#' className="text-primary hover:underline">Learn more</Link>
+                                    <br/>
+                                    <br/>
+                                    Verified by Nosres since October 11, 2021.
+                                </h4>
+                            </div>
+                            <div className="block items-center justify-center gap-4 mt-6">
+                                <button onClick={() => setOpenVerifiModal(false)} type='button'
+                                        className="text-[14px] w-full py-2 px-6 bg-primary border border-primary text-white rounded hover:bg-[#3A5F8A]">
+                                    Got It
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </>
     );
 }
