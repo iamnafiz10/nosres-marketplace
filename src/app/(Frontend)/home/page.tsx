@@ -12,7 +12,7 @@ import {GoComment, GoHeart, GoHeartFill, GoHistory, GoPackage, GoReply, GoSmiley
 import {IoMdGlobe} from "react-icons/io";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
-import {LuDot} from "react-icons/lu";
+import {LuDot, LuShieldCheck} from "react-icons/lu";
 import SliderOneImg from '../../../../public/assets/images/slider1.jpg';
 import SliderTwoImg from '../../../../public/assets/images/slider2.jpg';
 import SliderThreeImg from '../../../../public/assets/images/slider3.jpg';
@@ -1163,15 +1163,19 @@ export default function Home() {
                                                 <Link href='#' className="flex items-center gap-1">
                                                     <HiUserCircle size={35} className="text-[#6B7280]"/>
                                                     <div className="leading-[17px]">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
-                                                            John Doe
-                                                        </h4>
+                                                        <div className="flex items-center gap-1">
+                                                            <h4 className="text-[14px] font-semibold text-prgcolor hover:underline">
+                                                                John Doe
+                                                            </h4>
+                                                            <div className="icon">
+                                                                <LuShieldCheck size={17} className="text-primary"/>
+                                                            </div>
+                                                        </div>
 
                                                         <div className="flex items-center text-graycolor font-normal">
-                                                          <span
-                                                              className="text-[12px]">
-                                                            2h ago
-                                                        </span>
+                                                            <span className="text-[12px]">
+                                                                2h ago8
+                                                            </span>
                                                             <LuDot size={12}/>
                                                             <IoMdGlobe size={13}/>
                                                         </div>
@@ -1405,9 +1409,14 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className={`wrap ${hideComment ? 'opacity-50' : ''}`}>
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
-                                                                Kathy Erickson
-                                                            </h4>
+                                                            <div className="flex items-center gap-1">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
+                                                                    Kathy Erickson
+                                                                </h4>
+                                                                <div className="icon">
+                                                                    <LuShieldCheck size={17} className="text-primary"/>
+                                                                </div>
+                                                            </div>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
                                                                 Congratulations on your new smartphone! eSquare indeed
                                                                 offers a
@@ -1634,9 +1643,14 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
-                                                                John Doe
-                                                            </h4>
+                                                            <div className="flex items-center gap-1">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
+                                                                    John Doe
+                                                                </h4>
+                                                                <div className="icon">
+                                                                    <LuShieldCheck size={17} className="text-primary"/>
+                                                                </div>
+                                                            </div>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
                                                                 Thank you, <Link href='#'
                                                                                  className="text-primary hover:underline">Kathy
@@ -1829,9 +1843,14 @@ export default function Home() {
                                                     <div
                                                         className="comment_text rounded bg-gray-100 py-2 px-3 flex items-start justify-between w-full">
                                                         <div className="wrap">
-                                                            <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
-                                                                Kathy Erickson
-                                                            </h4>
+                                                            <div className="flex items-center gap-1">
+                                                                <h4 className="text-[12px] font-semibold text-prgcolor cursor-pointer hover:underline">
+                                                                    Kathy Erickson
+                                                                </h4>
+                                                                <div className="icon">
+                                                                    <LuShieldCheck size={17} className="text-primary"/>
+                                                                </div>
+                                                            </div>
                                                             <h4 className="mt-1 text-[14px] text-prgcolor font-normal">
                                                                 Thank you, <Link href='#'
                                                                                  className="text-primary hover:underline">John
