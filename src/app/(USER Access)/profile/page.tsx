@@ -775,7 +775,7 @@ function Page() {
                                                                             <div
                                                                                 className="flex items-center text-graycolor font-normal">
                                                                                 <Tooltip
-                                                                                    content="Monday, August 25, 2025"
+                                                                                    content="Monday, August 25, 2025 at 3:35 PM"
                                                                                     placement="top" style="light"
                                                                                     className="tooltip_design_new">
                                                                                  <span className="text-[12px]">
@@ -1265,10 +1265,13 @@ function Page() {
                                                             <h4 className="text-[14px] text-prgcolor">Robert
                                                                 Johnson</h4>
                                                         </div>
+                                                        <div className="icon">
+                                                            <LuShieldCheck size={17} className="text-primary"/>
+                                                        </div>
                                                     </div>
                                                     {isFollowingOne ? (
                                                         <div onClick={handleToggleFollowingOne}
-                                                             className="following_box border py-1 px-4 rounded flex items-center gap-1">
+                                                             className="following_box border py-1 px-2 rounded flex items-center gap-1">
                                                             <div className="icon">
                                                                 <svg
                                                                     className="w-4 h-4"
