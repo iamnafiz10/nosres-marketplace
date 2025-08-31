@@ -1222,7 +1222,7 @@ function Page() {
                                             )}
                                         </div>
                                     </Tabs.Item>
-                                    <Tabs.Item title="Repiles">
+                                    <Tabs.Item title="Replies">
                                         <div className="block lg:flex items-start justify-between gap-0">
                                             <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
                                                 {loading ? (
@@ -1852,7 +1852,7 @@ function Page() {
                                             <div className="post_wrap mt-6 lg:mt-0 w-full lg:w-[495px]">
                                                 {/* Post Box Profile One */}
                                                 <div className="post_box_wrap">
-                                                    <div className="box mt-4 bg-white px-4 py-4 rounded rounded-b-none">
+                                                    <div className="box bg-white px-4 py-4 rounded rounded-b-none">
 
                                                         <div className="flex pb-4 items-center justify-between">
                                                             {loading ? (
