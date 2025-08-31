@@ -283,13 +283,13 @@ function Page() {
                     </div>
                 </div>
 
-                <div className="user_top_details pt-[100px] h-[550px] md:h-[480px]">
+                <div className="user_top_details pt-[100px] h-[550px] md:h-[480px] bg-[#F4F4F4]">
                     <div className="container">
-                        <div className="relative">
+                        <div className="relative bg-white pb-6 rounded-b">
                             {/* Cover photo */}
                             <div onClick={() => setOpenStartCoverViewModal(true)}
                                  className="cover_photo cursor-pointer">
-                                <Image src={CoverImg} className="w-full h-[180px] rounded rounded-t-none"
+                                <Image src={CoverImg} className="w-full h-[180px]"
                                        alt="CoverImg"/>
                             </div>
 
@@ -373,7 +373,8 @@ function Page() {
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className="mt-6 md:mt-0 ml-[40px] md:ml-0 buttons flex items-center gap-3">
+                                    <div
+                                        className="mt-6 md:mt-0 ml-[40px] md:ml-0 mr-0 lg:mr-[30px] buttons flex items-center gap-3">
                                         <div className="first">
                                             <button type='button'
                                                     className="cursor-not-allowed py-2 px-4 group rounded bg-gray-100 opacity-60 flex items-center gap-2 text-[14px] text-primary ">
@@ -419,7 +420,7 @@ function Page() {
 
                                                 {profileDotClick &&
                                                     <div
-                                                        className="dots-dropdown-menu w-[300px] absolute top-[15px] right-0 bg-white rounded shadow border">
+                                                        className="dots-dropdown-menu w-[300px] absolute top-[28px] right-0 bg-white rounded shadow border">
                                                         <div className="container py-2">
                                                             <div className="space-y-1 text-[14px]">
                                                                 <div
@@ -483,9 +484,9 @@ function Page() {
                 </div>
 
                 {/* Body Content */}
-                <div className="container pt-4">
+                <div className="container">
                     {show && (
-                        <div className="apply_box bg-white border rounded-lg p-4 w-full lg:w-1/2">
+                        <div className="mt-4 apply_box bg-white border rounded-lg p-4 w-full lg:w-1/2">
                             <div className="flex items-center justify-between">
                                 <h4 className="text-prgcolor text-[18px] font-semibold">
                                     John, your account isn’t verified yet.
@@ -512,7 +513,7 @@ function Page() {
                             </div>
                         </div>
                     )}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-2">
                         <div className="col lg:col-span-8">
                             <div className="left_side_profile_tab">
                                 <Tabs aria-label="Tabs with underline" style="underline">

@@ -378,7 +378,7 @@ em-emoji-picker {
 /*------------------ Profile page design -------------*/
 .user_top_details {
     /*background: linear-gradient(#e0e0e0, #505050);*/
-    background: white;
+    /*background: white;*/
 }
 
 .left_side_profile_tab button {
