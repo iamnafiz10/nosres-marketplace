@@ -585,7 +585,7 @@ function Page() {
                         <div className="col lg:col-span-8">
                             <div className="left_side_profile_tab">
                                 <Tabs aria-label="Tabs with underline" style="underline">
-                                    <Tabs.Item active title="Posts">
+                                    <Tabs.Item active title="Posts" className="text-prgcolor">
                                         <div className="block lg:flex items-start justify-between gap-0">
                                             <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
                                                 {loading ? (
@@ -1157,7 +1157,7 @@ function Page() {
                                             </div>
                                         </div>
                                     </Tabs.Item>
-                                    <Tabs.Item title="Media">
+                                    <Tabs.Item title="Media" className="text-prgcolor">
                                         <div className="post_image w-full mt-0">
                                             {loading ? (
                                                 <>
@@ -1222,7 +1222,7 @@ function Page() {
                                             )}
                                         </div>
                                     </Tabs.Item>
-                                    <Tabs.Item title="Replies">
+                                    <Tabs.Item title="Replies" className="text-prgcolor">
                                         <div className="block lg:flex items-start justify-between gap-0">
                                             <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
                                                 {loading ? (
@@ -1740,7 +1740,7 @@ function Page() {
                                             </div>
                                         </div>
                                     </Tabs.Item>
-                                    <Tabs.Item title="Shares">
+                                    <Tabs.Item title="Shares" className="text-prgcolor">
                                         <div className="block lg:flex items-start justify-between gap-0">
                                             <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
                                                 {loading ? (
@@ -2034,7 +2034,7 @@ function Page() {
                                             </div>
                                         </div>
                                     </Tabs.Item>
-                                    <Tabs.Item title="Likes">
+                                    <Tabs.Item title="Likes" className="text-prgcolor">
                                         <div className="block lg:flex items-start justify-between gap-0">
                                             <div className="box py-4 px-4 w-full lg:w-[185px] bg-white rounded">
                                                 {loading ? (

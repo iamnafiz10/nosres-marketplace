@@ -384,6 +384,7 @@ em-emoji-picker {
 .left_side_profile_tab button {
     box-shadow: none !important;
     padding: 10px 15px;
+    color: #39393b;
 }
 
 .left_side_profile_tab .border-cyan-600 {
