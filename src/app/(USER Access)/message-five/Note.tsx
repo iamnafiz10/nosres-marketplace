@@ -5,16 +5,7 @@ import {HiUserCircle} from "react-icons/hi";
 import Image from "next/image";
 import MessageImg from "../../../../public/assets/images/message-photo.jpg";
 import Link from "next/link";
-import {
-    LuCopy,
-    LuCornerUpLeft,
-    LuCornerUpRight,
-    LuMessageSquareLock,
-    LuMessageSquareX,
-    LuPen, LuShieldCheck,
-    LuSmile,
-    LuTrash2
-} from "react-icons/lu";
+import {LuMessageSquareLock} from "react-icons/lu";
 import useLoading from "@/app/useLoading";
 import useTitle from "@/app/useTitle";
 import {Carousel, Modal} from "flowbite-react";
@@ -39,7 +30,6 @@ import {PiFileVideo, PiFileAudio} from "react-icons/pi";
 import {MdOutlineFileDownload} from "react-icons/md";
 import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {FcPrivacy} from "react-icons/fc";
-import {BiDotsHorizontalRounded} from "react-icons/bi";
 
 function Page() {
     const loading = useLoading();
@@ -190,60 +180,6 @@ function Page() {
     // Powered Modal (Learn more button clicked)
     const [openPoweredModal, setopenPoweredModal] = useState<boolean>(false);
     const [openPoweredModalNew, setopenPoweredModalNew] = useState<boolean>(false);
-
-    // Three Dots Dropdown
-    const [open, setOpen] = useState(false);
-    const menuRef = useRef<HTMLDivElement>(null);
-
-    // Close dropdown if clicked outside
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-                setOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
-
-    // Toggle dropdown
-    const handleToggleDropdown = () => {
-        setOpen(prev => !prev);
-        setShowPickerOne(false); // close emoji picker if it's open
-    };
-
-    // --------------- Emoji picker One -----------------------//
-    const [showPickerOne, setShowPickerOne] = useState(false); // click open/close
-    const [hoveringPicker, setHoveringPicker] = useState(false); // hover
-
-    const pickerOneRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (pickerOneRef.current && !pickerOneRef.current.contains(e.target as Node)) {
-                setShowPickerOne(false);
-                setHoveringPicker(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
-    // Toggle emoji picker
-    const handleToggleEmojiPicker = () => {
-        setShowPickerOne(prev => !prev);
-        setOpen(false); // close dropdown if it's open
-    };
-
-    // This callback will set both refs
-    const setRefs = (el: HTMLDivElement | null) => {
-        if (el) {
-            menuRef.current = el;
-        }
-        if (el) {
-            pickerOneRef.current = el;
-        }
-    };
-
     return (
         <>
             <section id="message-section" className="overflow-y-hidden">
@@ -308,7 +244,7 @@ function Page() {
                                                 </div>
                                             </div>
                                             <div
-                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-gray-100">
+                                                className="user pl-4 py-4 flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-100">
                                                 <div className="icon">
                                                     <HiUserCircle size={40} className="text-[#6B7280]"/>
                                                 </div>
@@ -324,7 +260,7 @@ function Page() {
                                                         </div>
                                                     </div>
                                                     <h4 className="text-[12px] text-graycolor">
-                                                        Sandy reacts🔥to “Excellent. Can you please...
+                                                        Excellent idea.
                                                     </h4>
                                                 </div>
                                             </div>
@@ -567,14 +503,9 @@ function Page() {
                                             <div className="px-4 flex items-center justify-between">
                                                 <div className="user flex items-center gap-2">
                                                     <HiUserCircle size={40} className="text-[#6B7280]"/>
-                                                    <div className="flex items-center gap-1">
-                                                        <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
-                                                            Brad Pitt
-                                                        </h4>
-                                                        <div className="icon">
-                                                            <LuShieldCheck size={17} className="text-primary"/>
-                                                        </div>
-                                                    </div>
+                                                    <h4 className="text-[14px] font-semibold text-prgcolor hover:underline cursor-pointer">
+                                                        Brad Pitt
+                                                    </h4>
                                                 </div>
 
                                                 <div className="flex items-center justify-end text-end">
@@ -752,114 +683,11 @@ function Page() {
                                                 </div>
 
                                                 <div className="message pt-[25px]">
-                                                    <div className="relative w-fit group" ref={setRefs}>
-                                                        {/* Message Bubble */}
-                                                        <div
-                                                            className="bg-gray-100 inline-block py-3 pl-4 pr-14 rounded-2xl rounded-bl-none">
-                                                            <h4 className="text-[14px] text-prgcolor text-left">
-                                                                Hello, John! How are you?
-                                                            </h4>
-                                                        </div>
-
-                                                        {/* Emoji Reaction Box */}
-                                                        <div
-                                                            className={`absolute -top-[2rem] right-0 ${
-                                                                open || showPickerOne || hoveringPicker
-                                                                    ? "flex"
-                                                                    : "hidden group-hover:flex hover:flex"
-                                                            } items-center gap-2 bg-white rounded border px-3 py-1 transition-all duration-300`}
-                                                        >
-                                                          <span
-                                                              className="cursor-pointer text-xl transform transition-transform duration-200 hover:scale-125">
-                                                            ❤️
-                                                          </span>
-                                                            <span
-                                                                className="cursor-pointer text-xl transform transition-transform duration-200 hover:scale-125">
-                                                                🔥
-                                                              </span>
-                                                            <span
-                                                                className="cursor-pointer text-xl transform transition-transform duration-200 hover:scale-125">
-                                                                😂
-                                                              </span>
-
-                                                            <div className="relative inline-block">
-                                                                {/* Emoji Button */}
-                                                                <span
-                                                                    onClick={handleToggleEmojiPicker}
-                                                                    className={`cursor-pointer text-xl ${showPickerOne ? "text-primary" : "text-gray-500"}`}
-                                                                >
-                                                              <GoSmiley size={22}/>
-                                                            </span>
-
-                                                                {/* Emoji Picker */}
-                                                                {(showPickerOne || hoveringPicker) && (
-                                                                    <div
-                                                                        ref={pickerOneRef}
-                                                                        className="absolute top-8 left-0 z-50"
-                                                                        onMouseEnter={() => setHoveringPicker(true)}
-                                                                        onMouseLeave={() => setHoveringPicker(false)}
-                                                                    >
-                                                                        <Picker
-                                                                            data={data}
-                                                                            theme="light"
-                                                                            onEmojiSelect={(emoji: any) => {
-                                                                                console.log("Selected emoji:", emoji.native);
-                                                                            }}
-                                                                        />
-                                                                    </div>
-                                                                )}
-                                                            </div>
-
-                                                            <span className="cursor-pointer">
-                                                                <LuCornerUpLeft size={20} className="text-graycolor"/>
-                                                              </span>
-
-                                                            {/* Three Dots Icon */}
-                                                            <span onClick={handleToggleDropdown}
-                                                                  className="cursor-pointer">
-                                                                <BiDotsHorizontalRounded
-                                                                    size={20}
-                                                                    className={open ? "text-primary" : "text-graycolor"}
-                                                                />
-                                                              </span>
-
-                                                            {/* Dots Dropdown Menu */}
-                                                            {open && (
-                                                                <div
-                                                                    className="absolute top-[37px] right-0 w-40 bg-white shadow-lg rounded-md py-2 z-50">
-                                                                    <ul className="flex flex-col text-sm text-gray-700">
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuPen className="text-graycolor"
-                                                                                   size={16}/> Edit
-                                                                        </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuMessageSquareX className="text-graycolor"
-                                                                                              size={16}/> Unsend
-                                                                        </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuCornerUpLeft className="text-graycolor"
-                                                                                            size={16}/> Reply
-                                                                        </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuCopy className="text-graycolor"
-                                                                                    size={16}/> Copy
-                                                                        </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuSmile className="text-graycolor"
-                                                                                     size={16}/> React
-                                                                        </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuCornerUpRight className="text-graycolor"
-                                                                                             size={16}/> Forward
-                                                                        </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuTrash2 className="text-graycolor"
-                                                                                      size={16}/> Delete
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            )}
-                                                        </div>
+                                                    <div
+                                                        className="bg-gray-100 inline-block py-3 pl-4 pr-14 rounded-2xl rounded-bl-none">
+                                                        <h4 className="text-[14px] text-prgcolor text-left">
+                                                            Hello, John! How are you?
+                                                        </h4>
                                                     </div>
                                                     <h6 className="text-[10px] mt-2 text-graycolor leading-none">
                                                         Oct 20, 2017, 1:22 AM
@@ -1324,52 +1152,6 @@ function Page() {
                                                         </h6>
                                                     </div>
                                                 </div>
-
-                                                <div className="message flex flex-col items-center justify-center mt-4">
-                                                    <div
-                                                        className="flex text-center justify-center rounded">
-                                                        <div
-                                                            className="protected_message bg-[#F6FAFF] rounded-full p-2 border">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                You unsent a message.
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
-                                                        Oct 20, 2017, 1:22 AM
-                                                    </h6>
-                                                </div>
-
-                                                <div className="message flex flex-col items-center justify-center mt-4">
-                                                    <div
-                                                        className="flex text-center justify-center rounded">
-                                                        <div
-                                                            className="protected_message bg-[#F6FAFF] rounded-full p-2 border">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                Jane unsent a message.
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
-                                                        Oct 21, 2017, 1:22 AM
-                                                    </h6>
-                                                </div>
-
-                                                <div className="message flex flex-col items-center justify-center mt-4">
-                                                    <div
-                                                        className="flex text-center justify-center rounded">
-                                                        <div
-                                                            className="protected_message bg-[#F6FAFF] rounded-full p-2 border">
-                                                            <h4 className="text-[12px] text-graycolor">
-                                                                You deleted a message.
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
-                                                        Oct 22, 2017, 1:22 AM
-                                                    </h6>
-                                                </div>
-
                                             </div>
                                             {isBlocked ? (
                                                 <div className="w-full absolute z-30 bg-white bottom-4">

@@ -1179,7 +1179,7 @@ export default function Home() {
 
                                                         <div className="flex items-center text-graycolor font-normal">
                                                             <span className="text-[12px]">
-                                                                2h ago8
+                                                                2h ago
                                                             </span>
                                                             <LuDot size={12}/>
                                                             <IoMdGlobe size={13}/>
