@@ -191,7 +191,7 @@ function Page() {
     const [openPoweredModal, setopenPoweredModal] = useState<boolean>(false);
     const [openPoweredModalNew, setopenPoweredModalNew] = useState<boolean>(false);
 
-    // Three Dots Dropdown
+    // ------------------ Three Dots Dropdown One ------------------//
     const [open, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -211,6 +211,28 @@ function Page() {
         setOpen(prev => !prev);
         setShowPickerOne(false); // close emoji picker if it's open
     };
+
+    // ------------------ Three Dots Dropdown Two ------------------//
+    const [openTwo, setOpenTwo] = useState(false);
+    const menuRefTwo = useRef<HTMLDivElement>(null);
+
+    // Close dropdown if clicked outside
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (menuRefTwo.current && !menuRefTwo.current.contains(e.target as Node)) {
+                setOpenTwo(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    // Toggle dropdown
+    const handleToggleDropdownTwo = () => {
+        setOpenTwo(prev => !prev);
+        setShowPickerTwo(false); // close emoji picker if it's open
+    };
+
 
     // --------------- Emoji picker One -----------------------//
     const [showPickerOne, setShowPickerOne] = useState(false); // click open/close
@@ -240,6 +262,37 @@ function Page() {
         if (el) {
             (menuRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
             (pickerOneRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        }
+    };
+
+    // --------------- Emoji picker Two -----------------------//
+    const [showPickerTwo, setShowPickerTwo] = useState(false); // click open/close
+    const [hoveringPickerTwo, setHoveringPickerTwo] = useState(false); // hover
+
+    const pickerTwoRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (pickerTwoRef.current && !pickerTwoRef.current.contains(e.target as Node)) {
+                setShowPickerTwo(false);
+                setHoveringPickerTwo(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+    // Toggle emoji picker
+    const handleToggleEmojiPickerTwo = () => {
+        setShowPickerTwo(prev => !prev);
+        setOpen(false); // close dropdown if it's open
+    };
+
+    // This callback will set both refs
+    const setRefsTwo = (el: HTMLDivElement | null) => {
+        // Assign only if element exists
+        if (el) {
+            (menuRefTwo as React.MutableRefObject<HTMLDivElement | null>).current = el;
+            (pickerTwoRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
         }
     };
 
@@ -760,7 +813,7 @@ function Page() {
                                                             </h4>
                                                         </div>
 
-                                                        {/* Emoji Reaction Box */}
+                                                        {/* Emoji Reaction Box One */}
                                                         <div
                                                             className={`absolute -top-[2rem] right-0 ${
                                                                 open || showPickerOne || hoveringPicker
@@ -865,14 +918,115 @@ function Page() {
                                                     </h6>
                                                 </div>
 
-                                                <div
-                                                    className="message flex mt-4 space-x-3 ml-auto justify-end">
+                                                <div className="message flex mt-4 space-x-3 ml-auto justify-end">
                                                     <div className="wrap">
-                                                        <div
-                                                            className="bg-[#3197f5] inline-block py-2 pl-4 pr-10 rounded-2xl rounded-br-none">
-                                                            <h4 className="text-[14px] text-white">
-                                                                https://nosres-marketplace.vercel.app <br/>message-five
-                                                            </h4>
+                                                        <div className="relative w-fit group" ref={setRefsTwo}>
+                                                            <div
+                                                                className="bg-[#3197f5] inline-block py-2 pl-4 pr-10 rounded-2xl rounded-br-none">
+                                                                <h4 className="text-[14px] text-white">
+                                                                    https://nosres-marketplace.vercel.app <br/>message-five
+                                                                </h4>
+                                                            </div>
+                                                            {/* Emoji Reaction Box Two */}
+                                                            <div
+                                                                className={`absolute -top-[2rem] right-0 ${
+                                                                    openTwo || showPickerTwo || hoveringPickerTwo
+                                                                        ? "flex"
+                                                                        : "hidden group-hover:flex hover:flex"
+                                                                } items-center gap-2 bg-white rounded border px-3 py-1 transition-all duration-300`}
+                                                            >
+                                                                <div className="relative inline-block">
+                                                                    {/* Emoji Button */}
+                                                                    <span
+                                                                        onClick={handleToggleEmojiPickerTwo}
+                                                                        className={`cursor-pointer text-xl ${showPickerTwo ? "text-primary" : "text-gray-500"}`}
+                                                                    >
+                                                                    <GoSmiley size={22}/>
+                                                                </span>
+
+                                                                    {/* Emoji Picker */}
+                                                                    {(showPickerTwo || hoveringPickerTwo) && (
+                                                                        <div
+                                                                            ref={pickerOneRef}
+                                                                            className="absolute top-8 right-0 z-50"
+                                                                            onMouseEnter={() => setHoveringPickerTwo(true)}
+                                                                            onMouseLeave={() => setHoveringPickerTwo(false)}
+                                                                        >
+                                                                            <Picker
+                                                                                data={data}
+                                                                                theme="light"
+                                                                                onEmojiSelect={(emoji: any) => {
+                                                                                    console.log("Selected emoji:", emoji.native);
+                                                                                }}
+                                                                            />
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+
+                                                                <span className="cursor-pointer">
+                                                                <LuCornerUpLeft size={20} className="text-graycolor"/>
+                                                              </span>
+
+                                                                {/* Three Dots Icon */}
+                                                                <span onClick={handleToggleDropdownTwo}
+                                                                      className="cursor-pointer">
+                                                                <BiDotsHorizontalRounded
+                                                                    size={20}
+                                                                    className={openTwo ? "text-primary" : "text-graycolor"}
+                                                                />
+                                                              </span>
+                                                                <span
+                                                                    className="cursor-pointer bg-gray-100 rounded text-xl transform transition-transform duration-200 hover:scale-125">
+                                                            ❤️
+                                                          </span>
+                                                                <span
+                                                                    className="cursor-pointer text-xl transform transition-transform duration-200 hover:scale-125">
+                                                                🔥
+                                                              </span>
+                                                                <span
+                                                                    className="cursor-pointer text-xl transform transition-transform duration-200 hover:scale-125">
+                                                                😂
+                                                              </span>
+                                                                {/* Dots Dropdown Menu Two */}
+                                                                {openTwo && (
+                                                                    <div
+                                                                        className="absolute top-[37px] left-0 w-40 bg-white shadow-lg rounded-md py-2 z-50">
+                                                                        <ul className="flex flex-col text-sm text-gray-700">
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuPen className="text-graycolor"
+                                                                                       size={16}/> Edit
+                                                                            </li>
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuMessageSquareX
+                                                                                    className="text-graycolor"
+                                                                                    size={16}/> Unsend
+                                                                            </li>
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuCornerUpLeft
+                                                                                    className="text-graycolor"
+                                                                                    size={16}/> Reply
+                                                                            </li>
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuCopy className="text-graycolor"
+                                                                                        size={16}/> Copy
+                                                                            </li>
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuSmile className="text-graycolor"
+                                                                                         size={16}/> React
+                                                                            </li>
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuCornerUpRight
+                                                                                    className="text-graycolor"
+                                                                                    size={16}/> Forward
+                                                                            </li>
+                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                                <LuTrash2 className="text-graycolor"
+                                                                                          size={16}/> Delete
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                )}
+                                                            </div>
                                                         </div>
                                                         <h6 className="text-[10px] mt-2 text-graycolor leading-none">
                                                             Oct 20, 2017, 1:23 AM
