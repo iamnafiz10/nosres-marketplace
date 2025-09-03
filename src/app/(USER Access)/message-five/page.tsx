@@ -236,12 +236,8 @@ function Page() {
 
     // This callback will set both refs
     const setRefs = (el: HTMLDivElement | null) => {
-        if (el) {
-            menuRef.current = el;
-        }
-        if (el) {
-            pickerOneRef.current = el;
-        }
+        menuRef.current = el;
+        pickerOneRef.current = el;
     };
 
     return (
