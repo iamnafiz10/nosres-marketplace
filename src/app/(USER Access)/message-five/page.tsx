@@ -236,8 +236,11 @@ function Page() {
 
     // This callback will set both refs
     const setRefs = (el: HTMLDivElement | null) => {
-        menuRef.current = el;
-        pickerOneRef.current = el;
+        // Assign only if element exists
+        if (el) {
+            (menuRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+            (pickerOneRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        }
     };
 
     return (
