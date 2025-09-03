@@ -769,7 +769,7 @@ function Page() {
                                                             } items-center gap-2 bg-white rounded border px-3 py-1 transition-all duration-300`}
                                                         >
                                                           <span
-                                                              className="cursor-pointer text-xl transform transition-transform duration-200 hover:scale-125">
+                                                              className="cursor-pointer bg-gray-100 rounded text-xl transform transition-transform duration-200 hover:scale-125">
                                                             ❤️
                                                           </span>
                                                             <span
