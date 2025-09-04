@@ -1053,6 +1053,9 @@ function Page() {
                                                                             </div>
                                                                             <div className="image">
                                                                                 <Image src={SliderThreeImg}
+                                                                                       width="full"
+                                                                                       height="full"
+                                                                                       alt="slider_image"
                                                                                        className="w-[60px] h-[50px] rounded"/>
                                                                             </div>
                                                                         </div>
@@ -1210,8 +1213,11 @@ function Page() {
                                                 <div className="message mt-4 w-[82%] sm:w-[62%]">
                                                     <div
                                                         className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded pl-4 py-3">
-                                                        <Image src={SliderOneImg} className="w-[18%] h-[55px] rounded"
-                                                               alt="PostImg"/>
+                                                        <Image src={SliderOneImg}
+                                                               width="full"
+                                                               height="full"
+                                                               alt="slider_image"
+                                                               className="w-[18%] h-[55px] rounded"/>
                                                         <div className="content_area">
                                                             <h4 className="text-[14px] text-black font-[500]">
                                                                 Experience cutting-edge of technology Iphone...
@@ -1487,8 +1493,11 @@ function Page() {
                                                     <div className="wrap">
                                                         <div onClick={() => setOpenStartMessageImageModal(true)}
                                                              className="w-[200px] h-[191px] cursor-pointer">
-                                                            <Image src={MessageImg} className="rounded"
-                                                                   alt="MessageImg"/>
+                                                            <Image src={MessageImg}
+                                                                   width="full"
+                                                                   height="full"
+                                                                   alt="slider_image"
+                                                                   className="rounded"/>
                                                         </div>
                                                         <h6 className="text-[10px] mt-2 text-graycolor leading-none">
                                                             Oct 20, 2017, 1:22 AM
@@ -1815,6 +1824,9 @@ function Page() {
                                                                 </div>
                                                                 <div className="image mr-4">
                                                                     <Image src={SliderThreeImg}
+                                                                           width="full"
+                                                                           height="full"
+                                                                           alt="slider_image"
                                                                            className="w-[60px] h-[50px] rounded"/>
                                                                 </div>
                                                             </div>
@@ -2838,9 +2850,14 @@ function Page() {
                         <div className="slide_wrapper">
                             <div className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                 <Carousel slide={false} indicators={false}>
-                                    <Image src={MessageImg} className="message_slider_image py-10 md:py-0"
+                                    <Image src={MessageImg}
+                                           width="full"
+                                           height="full"
+                                           className="message_slider_image py-10 md:py-0"
                                            alt="MessageImg"/>
                                     <Image src={SliderThreeImg}
+                                           width="full"
+                                           height="full"
                                            className="message_slider_image py-10 md:py-0"
                                            alt="SliderThreeImg"/>
                                 </Carousel>
