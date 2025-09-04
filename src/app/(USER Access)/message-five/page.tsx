@@ -1053,8 +1053,8 @@ function Page() {
                                                                             </div>
                                                                             <div className="image">
                                                                                 <Image src={SliderThreeImg}
-                                                                                       width="full"
-                                                                                       height="full"
+                                                                                       width={0}
+                                                                                       height={0}
                                                                                        alt="slider_image"
                                                                                        className="w-[60px] h-[50px] rounded"/>
                                                                             </div>
@@ -1214,8 +1214,8 @@ function Page() {
                                                     <div
                                                         className="flex cursor-pointer items-center gap-3 bg-[#F3F4F6] rounded pl-4 py-3">
                                                         <Image src={SliderOneImg}
-                                                               width="full"
-                                                               height="full"
+                                                               width={0}
+                                                               height={0}
                                                                alt="slider_image"
                                                                className="w-[18%] h-[55px] rounded"/>
                                                         <div className="content_area">
@@ -1494,8 +1494,8 @@ function Page() {
                                                         <div onClick={() => setOpenStartMessageImageModal(true)}
                                                              className="w-[200px] h-[191px] cursor-pointer">
                                                             <Image src={MessageImg}
-                                                                   width="full"
-                                                                   height="full"
+                                                                   width={0}
+                                                                   height={0}
                                                                    alt="slider_image"
                                                                    className="rounded"/>
                                                         </div>
@@ -1824,8 +1824,8 @@ function Page() {
                                                                 </div>
                                                                 <div className="image mr-4">
                                                                     <Image src={SliderThreeImg}
-                                                                           width="full"
-                                                                           height="full"
+                                                                           width={0}
+                                                                           height={0}
                                                                            alt="slider_image"
                                                                            className="w-[60px] h-[50px] rounded"/>
                                                                 </div>
@@ -2851,13 +2851,13 @@ function Page() {
                             <div className="slider_wrapper sticky top-0 h-56 sm:h-64 md:h-[450px] bg-black">
                                 <Carousel slide={false} indicators={false}>
                                     <Image src={MessageImg}
-                                           width="full"
-                                           height="full"
+                                           width={0}
+                                           height={0}
                                            className="message_slider_image py-10 md:py-0"
                                            alt="MessageImg"/>
                                     <Image src={SliderThreeImg}
-                                           width="full"
-                                           height="full"
+                                           width={0}
+                                           height={0}
                                            className="message_slider_image py-10 md:py-0"
                                            alt="SliderThreeImg"/>
                                 </Carousel>
