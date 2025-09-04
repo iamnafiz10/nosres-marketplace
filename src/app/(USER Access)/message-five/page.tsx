@@ -1085,7 +1085,7 @@ function Page() {
                                                             <div
                                                                 className="bg-[#3197F5] inline-block py-2 px-2 rounded-2xl rounded-br-none">
                                                                 <div
-                                                                    className="bg-white w-full pl-2 pr-8 py-2 rounded-xl">
+                                                                    className="bg-white w-full pl-2 pr-2 py-2 rounded-xl">
                                                                     <div className="border-l-2 border-green-500">
                                                                         <div
                                                                             className="flex items-center justify-between">
