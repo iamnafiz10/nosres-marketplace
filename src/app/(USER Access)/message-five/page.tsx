@@ -43,6 +43,7 @@ import SliderThreeImg from "../../../../public/assets/images/slider3.jpg";
 import {FcPrivacy} from "react-icons/fc";
 import {BiDotsHorizontalRounded} from "react-icons/bi";
 import {RxCross2} from "react-icons/rx";
+import {IoMdCheckmark} from "react-icons/io";
 
 function Page() {
     const loading = useLoading();
@@ -325,6 +326,20 @@ function Page() {
     // -------------- Edit/Reply --------------//
     const [showEdit, setShowEdit] = useState(false);
     const [showReply, setShowReply] = useState(false);
+
+    //--------- Click To Copy -------------//
+    const [copied, setCopied] = useState(false);
+
+    const textToCopy = "As a matter of security, we are unable to assist with Account Security Issues. Please reach out to the link we provided.";
+
+    const handleCopyText = async () => {
+        try {
+            await navigator.clipboard.writeText(textToCopy);
+            setCopied(true);
+        } catch (err) {
+            console.error("Failed to copy: ", err);
+        }
+    };
 
     return (
         <>
@@ -933,14 +948,26 @@ function Page() {
                                                                             <LuCornerUpLeft className="text-graycolor"
                                                                                             size={16}/> Reply
                                                                         </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuCopy className="text-graycolor"
-                                                                                    size={16}/> Copy
+                                                                        <li onClick={handleCopyText}
+                                                                            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                                                            <div
+                                                                                className="icon cursor-pointer group flex items-center gap-2">
+                                                                                {copied ? (
+                                                                                    <IoMdCheckmark
+                                                                                        className="text-graycolor"
+                                                                                        size={16}/>
+                                                                                ) : (
+                                                                                    <LuCopy className="text-graycolor"
+                                                                                            size={16}/>
+                                                                                )}
+                                                                                {copied ? (
+                                                                                    <span>Copied</span>
+                                                                                ) : (
+                                                                                    <span>Copy</span>
+                                                                                )}
+                                                                            </div>
                                                                         </li>
-                                                                        <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                            <LuSmile className="text-graycolor"
-                                                                                     size={16}/> React
-                                                                        </li>
+
                                                                         <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
                                                                             <LuCornerUpRight className="text-graycolor"
                                                                                              size={16}/> Forward
@@ -953,6 +980,32 @@ function Page() {
                                                                     </ul>
                                                                 </div>
                                                             )}
+                                                        </div>
+                                                    </div>
+                                                    <h6 className="text-[10px] mt-2 text-graycolor leading-none">
+                                                        Oct 20, 2017, 1:22 AM
+                                                    </h6>
+                                                </div>
+
+                                                <div className="message pt-[25px]">
+                                                    <div className="relative w-fit group">
+                                                        {/* Message Bubble */}
+                                                        <div
+                                                            className="bg-gray-100 relative inline-block py-3 pl-4 pr-14 rounded-2xl rounded-bl-none">
+                                                            <h4 className="text-[14px] text-prgcolor text-left">
+                                                                Hello, John! How are you?
+                                                            </h4>
+
+                                                            <div className="absolute -right-[30px] -top-[20px]">
+                                                                <div className="icons flex items-center gap-0">
+                                                                    <div
+                                                                        className="one cursor-pointer text-[20px] bg-gray-100 p-[1px] rounded-full">❤️
+                                                                    </div>
+                                                                    <div
+                                                                        className="two cursor-pointer text-[20px] bg-gray-100 p-[1px] rounded-full">🔥
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <h6 className="text-[10px] mt-2 text-graycolor leading-none">
@@ -1166,10 +1219,6 @@ function Page() {
                                                                             <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
                                                                                 <LuCopy className="text-graycolor"
                                                                                         size={16}/> Copy
-                                                                            </li>
-                                                                            <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                                                                <LuSmile className="text-graycolor"
-                                                                                         size={16}/> React
                                                                             </li>
                                                                             <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
                                                                                 <LuCornerUpRight
