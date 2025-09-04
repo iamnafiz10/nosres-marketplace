@@ -77,6 +77,7 @@ function Page() {
             const codePoint = parseInt(hexCodePoint, 16); // Convert hexadecimal to decimal
             if (!isNaN(codePoint)) {
                 const emoji = String.fromCodePoint(codePoint);
+                // @ts-expect-error
                 setStartPostText(startPostText + emoji);
             } else {
                 console.error("Invalid Unicode code point:", e.unified);
