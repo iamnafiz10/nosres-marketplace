@@ -999,10 +999,10 @@ function Page() {
                                                             <div className="absolute -right-[30px] -top-[20px]">
                                                                 <div className="icons flex items-center gap-0">
                                                                     <div
-                                                                        className="one cursor-pointer text-[20px] bg-gray-100 p-[1px] rounded-full">❤️
+                                                                        className="one cursor-pointer border-2 border-white text-[22px] bg-gray-100 w-[37px] text-center rounded-full">❤️
                                                                     </div>
                                                                     <div
-                                                                        className="two cursor-pointer text-[20px] bg-gray-100 p-[1px] rounded-full">🔥
+                                                                        className="two cursor-pointer border-2 border-white text-[22px] w-[37px] bg-gray-100 text-center rounded-full">🔥
                                                                     </div>
                                                                 </div>
                                                             </div>
