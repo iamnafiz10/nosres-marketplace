@@ -1017,7 +1017,7 @@ function Page() {
                                                     <div className="relative w-fit group">
                                                         {/* Message Bubble */}
                                                         <div
-                                                            className="bg-gray-100 inline-block py-3 px-2 rounded-2xl rounded-bl-none">
+                                                            className="bg-gray-100 inline-block py-2 px-2 rounded-2xl rounded-bl-none">
                                                             <div className="bg-white w-full pl-2 pr-8 py-2 rounded-xl">
                                                                 <div className="border-l-2 border-blue-500">
                                                                     <h4 className="ml-1 text-blue-500 text-[14px]">
@@ -1048,7 +1048,7 @@ function Page() {
                                                         <div className="relative w-fit group">
                                                             {/* Message Bubble */}
                                                             <div
-                                                                className="bg-[#3197F5] inline-block py-3 px-2 rounded-2xl rounded-br-none">
+                                                                className="bg-[#3197F5] inline-block py-2 px-2 rounded-2xl rounded-br-none">
                                                                 <div
                                                                     className="bg-white w-full pl-2 pr-8 py-2 rounded-xl">
                                                                     <div className="border-l-2 border-green-500">
@@ -1083,7 +1083,7 @@ function Page() {
                                                         <div className="relative w-fit group">
                                                             {/* Message Bubble */}
                                                             <div
-                                                                className="bg-[#3197F5] inline-block py-3 px-2 rounded-2xl rounded-br-none">
+                                                                className="bg-[#3197F5] inline-block py-2 px-2 rounded-2xl rounded-br-none">
                                                                 <div
                                                                     className="bg-white w-full pl-2 pr-8 py-2 rounded-xl">
                                                                     <div className="border-l-2 border-green-500">
