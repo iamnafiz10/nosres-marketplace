@@ -117,6 +117,7 @@ function Page() {
     const defaultMessageHeight = 56; // Default height percentage
 
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        // @ts-expect-error
         setStartPostText(e.target.value);
 
         if (textareaRef.current) {
